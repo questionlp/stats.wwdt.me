@@ -1,0 +1,25 @@
+{
+    "database": {
+        "host": "",
+        "user": "",
+        "password": "",
+        "database": "",
+        "port": 3306,
+        "raise_on_warnings": true,
+        "compress": true,
+        "charset": "utf8mb4",
+        "collation": "utf8mb4_unicode_ci"
+    },
+
+    "settings": {
+        "api_url": "",
+        "blog_url": "",
+        "graphs_url": "",
+        "reports_url": "",
+        "site_url": "",
+        "ga_property_code": null,
+        "recent_days_ahead": 1,
+        "recent_days_back": 31,
+        "time_zone": "UTC"
+    }
+}

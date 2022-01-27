@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{% for panelist in panelists %}
+  <url>
+    <loc>{{ site_url }}{{ url_for("get_panelist_details", panelist=panelist.slug) }}</loc>
+    <changefreq>weekly</changefreq>
+  </url>
+{% endfor %}
+</urlset>

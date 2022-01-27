@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}On This Day | Shows{% endblock %}
+
+{% block content %}
+<div class="page-breadcrumb">
+    <ul>
+        <li>
+            <a href="{{ url_for('main.index') }}">Home</a>
+        </li>
+        <li>
+            <a href="{{ url_for('shows.index') }}">Shows</a>
+        </li>
+        <li>
+            On This Day
+        </li>
+    </ul>
+</div>
+
+<h1>Show Details: On This Day</h1>
+
+<p>
+    This page provides a list of shows that have aired on past years on this month and day.
+</p>
+
+{% if shows %}
+{% include "shows/details.html" %}
+{% else %}
+<p>
+    There currently are no shows available on this day.
+</p>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,26 @@
+<footer class="page-footer blue darken-4">
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                <ul class="right footer-nav-links">
+                    <li><a href="{{ url_for('main.about') }}">About</a></li>
+                    <li><a href="{{ url_for('main.site_history') }}">Site History</a></li>
+                    <li><a href="{{ api_url }}/docs/">API Docs</a></li>
+                    <li><a href="{{ blog_url }}">Blog</a></li>
+                    <li><a href="{{ graphs_url }}">Graphs</a></li>
+                    <li><a href="{{ reports_url }}">Reports</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright">
+        <div class="container">
+            Copyright &copy; 2007&ndash;{{ current_year(time_zone) }} <a href="http://linhpham.org/">Linh Pham</a>. All rights reserved.
+            <span class="right">
+                <span title="Page Rendered at Time">R: {{ rendered_at(time_zone) }}</span> |
+                <span title="Application Version">V: {{ app_version }}</span> |
+                <span title="wwdtm Version">L: {{ wwdtm_version }}</span>
+            </span>
+        </div>
+    </div>
+</footer>

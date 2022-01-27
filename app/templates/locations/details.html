@@ -1,0 +1,64 @@
+{% for location in locations %}
+{# Sanity Check in case of a None and skipping certain placeholder locations #}
+{% if location and not (location.id == 3 or location.id == 38) %}
+<h2><a href="{{ url_for('get_location_details',
+                         location=location.slug) }}">{{ format_location_name(location) }}</a></h2>
+
+<div class="location-block">
+<div class="row location-badges">
+    <div class="col s12">
+        <span class="database-id">DB ID: {{ location.id }}</span>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col s12 l6">
+        <div class="label">Recordings</div>
+        {% if location.recordings.count %}
+        {{ location.recordings.count.regular_shows }}
+        {% else %}
+        <span class="data-na">N/A</span>
+        {% endif %}
+    </div>
+    <div class="col s12 l6">
+        <div class="label">Recordings including Best Of and Repeats</div>
+        {% if location.recordings.count %}
+        {{ location.recordings.count.all_shows }}
+        {% else %}
+        <span class="data-na">N/A</span>
+        {% endif %}
+    </div>
+</div>
+
+<div class="row">
+    <div class="col s12">
+        <div class="location-appearance-list">
+            <div class="label">List of Recordings</div>
+            {% if location.recordings %}
+            <ul class="location-list">
+            {% for show in location.recordings.shows %}
+                {% set show_date = date_string_to_date(date_string=show.date) %}
+                <li>
+                    <a href="{{ url_for('get_show_year_month_day',
+                                        year=show_date.year,
+                                        month=show_date.month,
+                                        day=show_date.day) }}">
+                    {{show.date}}</a>
+                    {% if show.best_of %}
+                        <span class="location-show-bestof">Best Of</span>
+                    {% endif %}
+                    {% if show.repeat_show %}
+                        <span class="location-show-repeat">Repeat</span>
+                    {% endif %}
+                </li>
+            {% endfor %}
+            </ul>
+            {% else %}
+            <span class="data-na">N/A</span>
+            {% endif %}
+        </div>
+    </div>
+</div>
+</div>
+{% endif %}
+{% endfor %}

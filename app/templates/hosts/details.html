@@ -1,0 +1,65 @@
+{% for host in hosts %}
+{% if host and not host.slug == "tbd" %}{# {# Sanity Check in case of a None and Skip TBD Host #}
+<h2><a href="{{ url_for('hosts.details',
+                         host_slug=host.slug) }}">{{ host.name }}</a></h2>
+
+<div class="host-block">
+<div class="row host-badges">
+    <div class="col s12">
+        <span class="database-id">DB ID: {{ host.id }}</span>
+    </div>
+</div>
+<div class="row">
+    <div class="col s12 l6">
+        <div class="label">Appearances</div>
+        {% if host.appearances.count %}
+        {{ host.appearances.count.regular_shows }}
+        {% else %}
+        <span class="data-na">N/A</span>
+        {% endif %}
+    </div>
+    <div class="col s12 l6">
+        <div class="label">Appearances including Best Of and Repeats</div>
+        {% if host.appearances.count %}
+        {{ host.appearances.count.all_shows }}
+        {% else %}
+        <span class="data-na">N/A</span>
+        {% endif %}
+    </div>
+</div>
+
+<div class="row">
+    <div class="col s12">
+        <div class="host-appearance-list">
+            <div class="label">List of Appearances</div>
+            {% if host.appearances.shows %}
+            <ul class="host-list">
+            {% for appearance in host.appearances.shows %}
+                {% set show_date = date_string_to_date(date_string=appearance.date) %}
+                <li>
+                    <a href="{{ url_for('shows.year_month_day',
+                                        year=show_date.year,
+                                        month=show_date.month,
+                                        day=show_date.day) }}">
+                    {{appearance.date}}</a>
+                    {% if appearance.guest %}
+                        <span class="host-guest">Guest</span>
+                    {% endif %}
+                    {% if appearance.best_of %}
+                        <span class="host-show-bestof">Best Of</span>
+                    {% endif %}
+                    {% if appearance.repeat_show %}
+                        <span class="host-show-repeat">Repeat</span>
+                    {% endif %}
+                </li>
+            {% endfor %}
+            </ul>
+            {% else %}
+            <span class="data-na">N/A</span>
+            {% endif %}
+        </div>
+    </div>
+</div>
+</div>
+{% endif %}
+{% endfor %}

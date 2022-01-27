@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<h1>Welcome!</h1>
+<p>
+    Welcome to the Wait Wait... Don't Tell Me! Stats Page! Here, you'll find
+    almost everything that you might want to know about NPR's weekly news
+    quiz show.
+</p>
+
+<p>
+    Below is a list of shows that have recently aired and the next show that
+    will air.
+</p>
+
+{% include "shows/details.html" %}
+{% endblock %}

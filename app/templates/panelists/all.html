@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}All Panelists | Panelists{% endblock %}
+
+{% block content %}
+<div class="page-breadcrumb">
+    <ul>
+        <li>
+            <a href="{{ url_for('main.index') }}">Home</a>
+        </li>
+        <li>
+            <a href="{{ url_for('panelists.index') }}">Panelists</a>
+        </li>
+        <li>
+            All
+        </li>
+    </ul>
+</div>
+
+<h1>Panelists Details</h1>
+
+{% include "panelists/details.html" %}
+{% endblock %}

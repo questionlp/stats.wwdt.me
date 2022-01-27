@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}Scorekeepers{% endblock %}
+
+{% block content %}
+<div class="page-breadcrumb">
+    <ul>
+        <li>
+            <a href="{{ url_for('main.index') }}">Home</a>
+        </li>
+        <li>
+            Scorekeepers
+        </li>
+    </ul>
+</div>
+
+<h1>Scorekeepers</h1>
+<p>
+    Choose from one of the scorekeepers below to view their appearance
+    details.
+</p>
+
+<ul class="collection">
+    <li class="collection-item">
+        <a href="{{ url_for('scorekeepers.random') }}">Random
+        <i class="material-icons right">shuffle</i></a>
+    </li>
+    {% for scorekeeper in scorekeepers %}
+        {% if scorekeeper.slug != "tbd" %}
+    <li class="collection-item">
+        <a href="{{ url_for('scorekeepers.details',
+                            scorekeeper_slug=scorekeeper.slug) }}">{{ scorekeeper.name }}</a>
+    </li>
+        {% endif %}
+    {% endfor %}
+</ul>
+
+{% endblock %}

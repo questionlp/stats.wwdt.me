@@ -1,0 +1,71 @@
+{% for scorekeeper in scorekeepers %}
+{% if scorekeeper.slug != "tbd" %}
+{% if scorekeeper %}{# Sanity Check in case of a None #}
+<h2><a href="{{ url_for('scorekeepers.details',
+                         scorekeeper_slug=scorekeeper.slug) }}">{{ scorekeeper.name }}</a></h2>
+
+<div class="scorekeeper-block">
+<div class="row scorekeeper-badges">
+    <div class="col s12">
+        {% if scorekeeper.slug == 'carl-kasell' %}
+        <span class="scorekeeper-emeritus">Scorekeeper Emeritus</span>
+        {% endif %}
+        <span class="database-id">DB ID: {{ scorekeeper.id }}</span>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col s12 l6">
+        <div class="label">Appearances</div>
+        {% if scorekeeper.appearances.count %}
+        {{ scorekeeper.appearances.count.regular_shows }}
+        {% else %}
+        <span class="data-na">N/A</span>
+        {% endif %}
+    </div>
+    <div class="col s12 l6">
+        <div class="label">Appearances including Best Of and Repeats</div>
+        {% if scorekeeper.appearances.count %}
+        {{ scorekeeper.appearances.count.all_shows }}
+        {% else %}
+        <span class="data-na">N/A</span>
+        {% endif %}
+    </div>
+</div>
+
+<div class="row">
+    <div class="col s12">
+        <div class="scorekeeper-appearance-list">
+            <div class="label">List of Appearances</div>
+            {% if scorekeeper.appearances.shows %}
+            <ul class="scorekeeper-list">
+            {% for appearance in scorekeeper.appearances.shows %}
+                {% set show_date = date_string_to_date(date_string=appearance.date) %}
+                <li>
+                    <a href="{{ url_for('shows.year_month_day',
+                                        year=show_date.year,
+                                        month=show_date.month,
+                                        day=show_date.day) }}">
+                    {{appearance.date}}</a>
+                    {% if appearance.guest %}
+                        <span class="scorekeeper-guest">Guest</span>
+                    {% endif %}
+                    {% if appearance.best_of %}
+                        <span class="scorekeeper-show-bestof">Best Of</span>
+                    {% endif %}
+                    {% if appearance.repeat_show %}
+                        <span class="scorekeeper-show-repeat">Repeat</span>
+                    {% endif %}
+                </li>
+            {% endfor %}
+            </ul>
+            {% else %}
+            <span class="data-na">N/A</span>
+            {% endif %}
+        </div>
+    </div>
+</div>
+</div>
+{% endif %}
+{% endif %}
+{% endfor %}

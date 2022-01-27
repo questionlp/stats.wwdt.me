@@ -1,0 +1,10 @@
+{% extends "errors/base.html" %}
+{% block title %}Error 500{% endblock %}
+
+{% block content %}
+<h1>Oops...</h1>
+<p>Something went terrible wrong!</p>
+
+<h2>Error Details</h2>
+<pre class="traceback">{{ error_traceback }}</pre>
+{% endblock %}

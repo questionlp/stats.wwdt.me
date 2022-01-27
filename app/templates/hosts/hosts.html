@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Hosts{% endblock %}
+
+{% block content %}
+<div class="page-breadcrumb">
+    <ul>
+        <li>
+            <a href="{{ url_for('main.index') }}">Home</a>
+        </li>
+        <li>
+            Hosts
+        </li>
+    </ul>
+</div>
+
+<h1>Hosts</h1>
+<p>
+    Choose from one of the show hosts below to view their appearance details.
+</p>
+
+<ul class="collection">
+    <li class="collection-item">
+        <a href="{{ url_for('hosts.random') }}">Random
+        <i class="material-icons right">shuffle</i></a>
+    </li>
+    {% for host in hosts %}
+        {% if host.slug != "tbd" %}
+    <li class="collection-item">
+        <a href="{{ url_for('hosts.details', host_slug=host.slug) }}">{{ host.name }}</a>
+    </li>
+        {% endif %}
+    {% endfor %}
+</ul>
+
+{% endblock %}

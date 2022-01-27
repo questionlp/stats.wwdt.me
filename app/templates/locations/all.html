@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}All Locations | Locations{% endblock %}
+
+{% block content %}
+<div class="page-breadcrumb">
+    <ul>
+        <li>
+            <a href="{{ url_for('index') }}">Home</a>
+        </li>
+        <li>
+            <a href="{{ url_for('get_locations') }}">Locations</a>
+        </li>
+        <li>
+            All
+        </li>
+    </ul>
+</div>
+
+<h1>Location Details</h1>
+
+{% include "locations/details.html" %}
+{% endblock %}

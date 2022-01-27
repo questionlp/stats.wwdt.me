@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Panelists{% endblock %}
+
+{% block content %}
+<div class="page-breadcrumb">
+    <ul>
+        <li>
+            <a href="{{ url_for('main.index') }}">Home</a>
+        </li>
+        <li>
+            Panelists
+        </li>
+    </ul>
+</div>
+
+<h1>Panelists</h1>
+<p>
+    Choose from one of the panelists below to view their appearance details.
+</p>
+
+<ul class="collection">
+    <li class="collection-item">
+        <a href="{{ url_for('panelists.random') }}">Random
+        <i class="material-icons right">shuffle</i></a>
+    </li>
+    {% for panelist in panelists %}
+    <li class="collection-item">
+        <a href="{{ url_for('panelists.details', panelist_slug=panelist.slug) }}">{{ panelist.name }}</a>
+    </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

@@ -1,0 +1,60 @@
+<!-- Start Navigation -->
+<nav class="blue darken-4 z-depth-0">
+    <div class="nav-wrapper">
+        <a href="#" data-target="slide-out" class="sidenav-trigger">
+            <i class="material-icons">menu</i>
+        </a>
+        <a href="{{ url_for('main.index') }}" class="brand-logo">Wait Wait Stats Page</a>
+        <ul id="dropdown-more" class="dropdown-content z-depth-0">
+            <li><a href="{{ url_for('locations.index') }}">Locations</a></li>
+            <li class="divider" tabindex="-1"></li>
+            <li><a href="{{ url_for('main.about') }}">About</a></li>
+            <li><a href="{{ url_for('main.site_history') }}">Site History</a></li>
+            <li class="divider" tabindex="-1"></li>
+            <li><a href="{{ api_url }}/docs/">API Docs</a></li>
+            <li><a href="{{ blog_url }}">Blog</a></li>
+            <li><a href="{{ graphs_url }}">Graphs</a></li>
+            <li><a href="{{ reports_url }}">Reports</a></li>
+            <li class="divider" tabindex="-1"></li>
+            <li><a href="{{ blog_url }}/contact-me/">Contact Me</a></li>
+        </ul>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="{{ url_for('guests.index') }}">Guests</a></li>
+            <li><a href="{{ url_for('hosts.index') }}">Hosts</a></li>
+
+            <li><a href="{{ url_for('panelists.index') }}">Panelists</a></li>
+            <li><a href="{{ url_for('scorekeepers.index') }}">Scorekeepers</a></li>
+            <li><a href="{{ url_for('shows.index') }}">Shows</a></li>
+            <li><a href="{{ url_for('shows.random') }}"><i class="material-icons" title="Random Show">shuffle</i></a></li>
+            <li><a href="{{ url_for('shows.on_this_day') }}">On This Day</a></li>
+            <li><a href="#" class="dropdown-trigger" data-target="dropdown-more">
+                More<i class="material-icons right">arrow_drop_down</i></a></li>
+        </ul>
+    </div>
+</nav>
+
+<div id="slide-out" class="sidenav z-depth-0">
+    <ul>
+        <li><a href="{{ url_for('main.index') }}">Home</a></li>
+        <li><div class="divider"></div></li>
+        <li><a href="{{ url_for('guests.index') }}">Guests</a></li>
+        <li><a href="{{ url_for('hosts.index') }}">Hosts</a></li>
+        <li><a href="{{ url_for('locations.index') }}">Locations</a></li>
+        <li><a href="{{ url_for('panelists.index') }}">Panelists</a></li>
+        <li><a href="{{ url_for('scorekeepers.index') }}">Scorekeepers</a></li>
+        <li><a href="{{ url_for('shows.index') }}">Shows</a></li>
+        <li><a href="{{ url_for('shows.random') }}">Random Show</a></li>
+        <li><a href="{{ url_for('shows.on_this_day') }}">On This Day</a></li>
+        <li><div class="divider"></div></li>
+        <li><a href="{{ url_for('main.about') }}">About</a></li>
+        <li><a href="{{ url_for('main.site_history') }}">Site History</a></li>
+        <li><div class="divider"></div></li>
+        <li><a href="{{ api_url }}/docs/">API Docs</a></li>
+        <li><a href="{{ blog_url }}">Blog</a></li>
+        <li><a href="{{ graphs_url }}">Graphs</a></li>
+        <li><a href="{{ reports_url }}">Reports</a></li>
+        <li><div class="divider"></div></li>
+        <li><a href="{{ blog_url }}/contact-me/">Contact Me</a></li>
+    </ul>
+</div>
+<!-- End Navigation -->

@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block title %}About{% endblock %}
+
+{% block content %}
+<div class="page-breadcrumb">
+    <ul>
+        <li>
+            <a href="{{ url_for('main.index') }}">Home</a>
+        </li>
+        <li>
+            About
+        </li>
+    </ul>
+</div>
+
+<h1>About</h1>
+<h2>Overview</h2>
+<p>
+    The Wait Wait... Don't Tell Me! Stats Page is collection of details
+    and statistics for the weekly NPR news quiz show,
+    &quot;<a href="//waitwait.npr.org">Wait Wait... Don't Tell Me!</a>&quot;
+    This site contains data for each of the hosts, panelist, scorekeeper and
+    Not My Job guest that has appeared on the show.
+</p>
+
+<h2>Site History</h2>
+<p>
+    For more information about the site's history, check out the
+    &quot;<a href="{{ url_for('main.site_history') }}">Site History</a>&quot;
+    page.
+</p>
+
+<h2>Disclaimer</h2>
+<p>
+    I am not an employee of or associated with NPR, Chicago Public Radio
+    (WBEZ), or Urgent Haircut Productions.
+</p>
+
+<h2>Source Code</h2>
+
+<p>
+    The source code for this site is released under the terms of 
+    <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache
+    License 2.0</a> and is available on
+    <a href="https://github.com/questionlp/stats.wwdt.me">GitHub</a>.
+</p>
+
+<h2>Acknowledgments</h2>
+<p>
+        One of the inspirations that I had when building this site was
+        <a href="http://www.mrkland.com/mrkland.com/passive/WWDTM/index.htm">mrk.'s
+        Wait Wait Don't Tell Me Statistics Pages</a> 
+        (<a href="https://web.archive.org/web/20190404122827/http://www.mrkland.com/zone/WWDTM/index.htm">Internet
+        Archive</a>). I used some of the scoring data from that site
+        to fill in some of the informational blanks for some of the shows prior
+        to Peter Sagal becoming the show's host.
+</p>
+
+{% endblock %}

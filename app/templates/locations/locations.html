@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}Locations{% endblock %}
+
+{% block content %}
+<div class="page-breadcrumb">
+    <ul>
+        <li>
+            <a href="{{ url_for('index') }}">Home</a>
+        </li>
+        <li>
+            Locations
+        </li>
+    </ul>
+</div>
+
+<h1>Locations</h1>
+<p>
+    Choose from one of the locations below to view their recording details.
+</p>
+
+<ul class="collection">
+    <li class="collection-item">
+        <a href="{{ url_for('get_locations_random') }}">Random
+        <i class="material-icons right">shuffle</i></a>
+    </li>
+    {% for location in locations %}
+    {% if "id" in location and not (location.id == 3 or location.id == 38) %}
+    <li class="collection-item">
+        <a href="{{ url_for('get_location_details', location=location.slug) }}">
+            {{ format_location_name(location) }}
+        </a>
+    </li>
+    {% endif %}
+    {% endfor %}
+</ul>
+
+{% endblock %}

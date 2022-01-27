@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}{{ year.year }} | Shows{% endblock %}
+
+{% block content %}
+<div class="page-breadcrumb">
+    <ul>
+        <li>
+            <a href="{{ url_for('main.index') }}">Home</a>
+        </li>
+        <li>
+            <a href="{{ url_for('shows.index') }}">Shows</a>
+        </li>
+        <li>
+            {{ year.year }}
+        </li>
+    </ul>
+</div>
+
+<h1>Shows: {{ year.year }}</h1>
+<p>
+    Choose from one of the month and year items below to view the details for
+    the shows that month and year.
+</p>
+
+<ul class="collection">
+    {% for month in show_months %}
+    <li class="collection-item">
+        <a href="{{ url_for('shows.year_month', year=month.year, month=month.month) }}">
+        {{ month.strftime("%B %Y") }}</a>
+    </li>
+    {% endfor %}
+    <li class="collection-item">
+        <a href="{{ url_for('shows.year_all', year=year.year) }}">All Shows from {{ year.year }}</a>
+    </li>
+</ul>
+
+{% include "shows/details.html" %}
+{% endblock %}

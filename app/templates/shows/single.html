@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}{{ show_date.isoformat() }} | Shows{% endblock %}
+
+{% block content %}
+<div class="page-breadcrumb">
+    <ul>
+        <li>
+            <a href="{{ url_for('main.index') }}">Home</a>
+        </li>
+        <li>
+            <a href="{{ url_for('shows.index') }}">Shows</a>
+        </li>
+        <li>
+            <a href="{{ url_for('shows.year', year=show_date.year) }}">{{ show_date.year }}</a>
+        </li>
+        <li>
+            <a href="{{ url_for('shows.year_month', year=show_date.year, month=show_date.month) }}">
+                {{ show_date.strftime("%B") }}</a>
+        </li>
+        <li>
+            {{ show_date.strftime("%d") }}
+        </li>
+    </ul>
+</div>
+
+<h1>Show Details</h1>
+
+{% include "shows/details.html" %}
+{% endblock %}

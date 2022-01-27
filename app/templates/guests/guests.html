@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Guests{% endblock %}
+
+{% block content %}
+<div class="page-breadcrumb">
+    <ul>
+        <li>
+            <a href="{{ url_for('main.index') }}">Home</a>
+        </li>
+        <li>
+            Guests
+        </li>
+</div>
+
+<h1>Guests</h1>
+<p>
+    Choose from one of the Not My Job guests below to view their appearance
+    details.
+</p>
+
+<ul class="collection">
+    <li class="collection-item">
+        <a href="{{ url_for('guests.random') }}">Random
+        <i class="material-icons right">shuffle</i></a>
+    </li>
+    {% for guest in guests %}
+    <li class="collection-item">
+        <a href="{{ url_for('guests.details', guest_slug=guest.slug) }}">{{ guest.name }}</a>
+    </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

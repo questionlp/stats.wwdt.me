@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>{{ site_url }}{{ url_for("index") }}</loc>
+    <changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>{{ site_url }}{{ url_for("about") }}</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  <url>
+    <loc>{{ site_url }}{{ url_for("site_history") }}</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  <url>
+    <loc>{{ site_url }}{{ url_for("get_guests") }}</loc>
+    <changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>{{ site_url }}{{ url_for("get_hosts") }}</loc>
+    <changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>{{ site_url }}{{ url_for("get_panelists") }}</loc>
+    <changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>{{ site_url }}{{ url_for("get_scorekeepers") }}</loc>
+    <changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>{{ site_url }}{{ url_for("get_shows") }}</loc>
+    <changefreq>weekly</changefreq>
+  </url>
+{% for year in show_years %}
+  <url>
+    <loc>{{ site_url }}{{ url_for("get_shows_year", year=year) }}</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+{% endfor %}
+</urlset>

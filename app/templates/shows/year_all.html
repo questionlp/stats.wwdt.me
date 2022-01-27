@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}All: {{ year }} | Shows{% endblock %}
+
+{% block content %}
+<div class="page-breadcrumb">
+    <ul>
+        <li>
+            <a href="{{ url_for('main.index') }}">Home</a>
+        </li>
+        <li>
+            <a href="{{ url_for('shows.index') }}">Shows</a>
+        </li>
+        <li>
+            <a href="{{ url_for('shows.year', year=year) }}">{{ year }}</a>
+        </li>
+        <li>
+            All
+        </li>
+    </ul>
+</div>
+
+<h1>Show Details: {{ year }}</h1>
+
+{% include "shows/details.html" %}
+{% endblock %}

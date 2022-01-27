@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Shows{% endblock %}
+
+{% block content %}
+<div class="page-breadcrumb">
+    <ul>
+        <li>
+            <a href="{{ url_for('main.index') }}">Home</a>
+        </li>
+        <li>
+            Shows
+        </li>
+    </ul>
+</div>
+
+<h1>Shows</h1>
+<p>
+    Choose from one of the years below to view the available shows for that year.
+</p>
+
+<ul class="collection">
+    <li class="collection-item">
+        <a href="{{ url_for('shows.random') }}">Random
+        <i class="material-icons right">shuffle</i></a>
+    </li>
+    {% for year in show_years %}
+    <li class="collection-item">
+        <a href="{{ url_for('shows.year', year=year) }}">{{ year }}</a>
+    </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
