@@ -6,7 +6,6 @@
 from typing import Dict
 
 
-# region Formatting Functions
 def format_location_name(location: Dict):
     """Returns a string with a combination of venue name, city
     and state, depending on what information is available"""
@@ -27,5 +26,3 @@ def format_location_name(location: Dict):
         return "({}, {})".format(location["city"], location["state"])
     elif location["city"] and not location["state"]:
         return location["city"]
-
-# endregion Formatting Functions

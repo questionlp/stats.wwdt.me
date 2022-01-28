@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 {% for scorekeeper in scorekeepers %}
+  {% if scorekeeper.slug != "tbd" %}
   <url>
-    <loc>{{ site_url }}{{ url_for("get_scorekeeper_details",
-                                  scorekeeper=scorekeeper.slug) }}</loc>
+    <loc>{{ site_url }}{{ url_for("scorekeepers.details",
+                                  scorekeeper_slug=scorekeeper.slug) }}</loc>
     <changefreq>weekly</changefreq>
   </url>
+  {% endif %}
 {% endfor %}
 </urlset>

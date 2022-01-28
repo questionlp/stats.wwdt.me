@@ -3,7 +3,7 @@
 <head>
     <title>{% block title %}{% endblock %} | Wait Wait Don't Tell Me! Stats Page</title>
     {% include "errors/head.html" with context %}
-    
+
     {% if ga_property_code %}
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id={{ ga_property_code }}"></script>

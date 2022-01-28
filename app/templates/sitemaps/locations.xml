@@ -4,7 +4,7 @@
 {# Skip any placeholder locations #}
 {% if "id" in location and not (location.id == 3 or location.id == 38) %}
   <url>
-    <loc>{{ site_url }}{{ url_for("get_location_details", location=location.slug) }}</loc>
+    <loc>{{ site_url }}{{ url_for("locations.details", location_slug=location.slug) }}</loc>
     <changefreq>weekly</changefreq>
   </url>
 {% endif %}

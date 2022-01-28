@@ -41,13 +41,13 @@ def pretty_jsonify(data):
     return json.dumps(data, indent=2)
 
 
-def redirect_url(url: str):
+def redirect_url(url: str, status_code: int = 302):
     """Returns a redirect response for a given URL"""
 
     # Use a custom response class to force set response headers
     # and handle the redirect to prevent browsers from caching redirect
     response = current_app.response_class(response=None,
-                                          status=302,
+                                          status=status_code,
                                           mimetype="text/plain")
 
     response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"

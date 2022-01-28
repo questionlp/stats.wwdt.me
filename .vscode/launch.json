@@ -5,13 +5,6 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Python: Current File",
-            "type": "python",
-            "request": "launch",
-            "program": "${file}",
-            "console": "integratedTerminal"
-        },
-        {
             "name": "Python: Flask",
             "type": "python",
             "request": "launch",
@@ -19,6 +12,7 @@
             "env": {
                 "FLASK_APP": "${workspaceRoot}/stats.py",
                 "FLASK_ENV": "development",
+                "FLASK_RUN_PORT": "9080",
                 "FLASK_DEBUG": "0"
             },
             "args": [

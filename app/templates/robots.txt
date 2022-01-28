@@ -1,0 +1,15 @@
+Sitemap: {{ site_url }}{{ url_for("sitemaps.primary") }}
+Sitemap: {{ site_url }}{{ url_for("sitemaps.guests") }}
+Sitemap: {{ site_url }}{{ url_for("sitemaps.hosts") }}
+Sitemap: {{ site_url }}{{ url_for("sitemaps.locations") }}
+Sitemap: {{ site_url }}{{ url_for("sitemaps.panelists") }}
+Sitemap: {{ site_url }}{{ url_for("sitemaps.scorekeepers") }}
+Sitemap: {{ site_url }}{{ url_for("sitemaps.shows") }}
+
+User-agent: *
+Disallow: {{ url_for("guests.all") }}$
+Disallow: {{ url_for("hosts.all") }}$
+Disallow: {{ url_for("panelists.all") }}$
+Disallow: {{ url_for("scorekeepers.all") }}$
+Disallow: {{ url_for("shows.all") }}$
+Disallow: /s/

@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 {% for host in hosts %}
+  {% if host.slug != "tbd" %}
   <url>
-    <loc>{{ site_url }}{{ url_for("get_host_details", host=host.slug) }}</loc>
+    <loc>{{ site_url }}{{ url_for("hosts.details", host_slug=host.slug) }}</loc>
     <changefreq>weekly</changefreq>
   </url>
+  {% endif %}
 {% endfor %}
 </urlset>

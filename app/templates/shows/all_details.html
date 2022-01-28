@@ -32,7 +32,7 @@
         <div class="label">Location</div>
         {# Only provide a link to non-placeholder locations #}
         {% if not (show.location.id == 3 or show.location.id == 38) %}
-            <a href="{{ url_for('locations.details', location=show.location.slug) }}">{{ format_location_name(show.location) }}</a>
+            <a href="{{ url_for('locations.details', location_slug=show.location.slug) }}">{{ format_location_name(show.location) }}</a>
         {% else %}
             <span class="data-tbd">TBD</span>
         {% endif %}

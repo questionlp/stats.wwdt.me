@@ -1,8 +1,8 @@
 {% for location in locations %}
 {# Sanity Check in case of a None and skipping certain placeholder locations #}
 {% if location and not (location.id == 3 or location.id == 38) %}
-<h2><a href="{{ url_for('get_location_details',
-                         location=location.slug) }}">{{ format_location_name(location) }}</a></h2>
+<h2><a href="{{ url_for('locations.details',
+                         location_slug=location.slug) }}">{{ format_location_name(location) }}</a></h2>
 
 <div class="location-block">
 <div class="row location-badges">
@@ -39,7 +39,7 @@
             {% for show in location.recordings.shows %}
                 {% set show_date = date_string_to_date(date_string=show.date) %}
                 <li>
-                    <a href="{{ url_for('get_show_year_month_day',
+                    <a href="{{ url_for('shows.year_month_day',
                                         year=show_date.year,
                                         month=show_date.month,
                                         day=show_date.day) }}">

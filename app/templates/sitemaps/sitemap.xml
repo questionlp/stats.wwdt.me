@@ -1,42 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>{{ site_url }}{{ url_for("index") }}</loc>
+    <loc>{{ site_url }}{{ url_for("main.index") }}</loc>
     <changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>{{ site_url }}{{ url_for("about") }}</loc>
+    <loc>{{ site_url }}{{ url_for("main.about") }}</loc>
     <changefreq>monthly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
-    <loc>{{ site_url }}{{ url_for("site_history") }}</loc>
+    <loc>{{ site_url }}{{ url_for("main.site_history") }}</loc>
     <changefreq>monthly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
-    <loc>{{ site_url }}{{ url_for("get_guests") }}</loc>
+    <loc>{{ site_url }}{{ url_for("guests.index") }}</loc>
     <changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>{{ site_url }}{{ url_for("get_hosts") }}</loc>
+    <loc>{{ site_url }}{{ url_for("hosts.index") }}</loc>
     <changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>{{ site_url }}{{ url_for("get_panelists") }}</loc>
+    <loc>{{ site_url }}{{ url_for("panelists.index") }}</loc>
     <changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>{{ site_url }}{{ url_for("get_scorekeepers") }}</loc>
+    <loc>{{ site_url }}{{ url_for("scorekeepers.index") }}</loc>
     <changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>{{ site_url }}{{ url_for("get_shows") }}</loc>
+    <loc>{{ site_url }}{{ url_for("shows.index") }}</loc>
     <changefreq>weekly</changefreq>
   </url>
 {% for year in show_years %}
   <url>
-    <loc>{{ site_url }}{{ url_for("get_shows_year", year=year) }}</loc>
+    <loc>{{ site_url }}{{ url_for("shows.year", year=year) }}</loc>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
   </url>

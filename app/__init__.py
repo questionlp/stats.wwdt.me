@@ -14,6 +14,7 @@ from app.main.routes import blueprint as main_bp
 from app.main.redirects import blueprint as redirects_bp
 from app.panelists.routes import blueprint as panelists_bp
 from app.scorekeepers.routes import blueprint as scorekeepers_bp
+from app.sitemaps.routes import blueprint as sitemaps_bp
 from app.shows.routes import blueprint as shows_bp
 from app.version import APP_VERSION
 
@@ -61,6 +62,7 @@ def create_app():
     # Register application blueprints
     app.register_blueprint(main_bp)
     app.register_blueprint(redirects_bp)
+    app.register_blueprint(sitemaps_bp)
     app.register_blueprint(guests_bp, url_prefix="/guests")
     app.register_blueprint(hosts_bp, url_prefix="/hosts")
     app.register_blueprint(locations_bp, url_prefix="/locations")

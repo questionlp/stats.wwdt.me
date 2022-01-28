@@ -13,8 +13,8 @@ blueprint = Blueprint("scorekeepers", __name__)
 
 def random_scorekeeper_slug() -> str:
     """Return a random scorekeeper slug from ww_scorekeepers table"""
-    _database_connection = mysql.connector.connect(**current_app.config["database"])
-    cursor = _database_connection.cursor(dictionary=False)
+    database_connection = mysql.connector.connect(**current_app.config["database"])
+    cursor = database_connection.cursor(dictionary=False)
     query = ("SELECT sk.scorekeeperslug FROM ww_scorekeepers sk "
              "WHERE sk.scorekeeperslug <> 'tbd' "
              "ORDER BY RAND() "
@@ -22,6 +22,7 @@ def random_scorekeeper_slug() -> str:
     cursor.execute(query)
     result = cursor.fetchone()
     cursor.close()
+    database_connection.close()
 
     if not result:
         return None
@@ -31,24 +32,26 @@ def random_scorekeeper_slug() -> str:
 
 @blueprint.route("/")
 def index():
-    _database_connection = mysql.connector.connect(**current_app.config["database"])
-    scorekeeper = Scorekeeper(database_connection=_database_connection)
+    """View: Scorekeepers Index"""
+    database_connection = mysql.connector.connect(**current_app.config["database"])
+    scorekeeper = Scorekeeper(database_connection=database_connection)
     scorekeepers = scorekeeper.retrieve_all()
-    _database_connection.close()
+    database_connection.close()
 
     if not scorekeepers:
         return redirect(url_for("main.index"))
 
-    return render_template("scorekeepers/scorekeepers.html",
+    return render_template("scorekeepers/index.html",
                            scorekeepers=scorekeepers)
 
 
 @blueprint.route("/<string:scorekeeper_slug>")
 def details(scorekeeper_slug: str):
-    _database_connection = mysql.connector.connect(**current_app.config["database"])
-    scorekeeper = Scorekeeper(database_connection=_database_connection)
+    """View: Scorekeeper Details"""
+    database_connection = mysql.connector.connect(**current_app.config["database"])
+    scorekeeper = Scorekeeper(database_connection=database_connection)
     details = scorekeeper.retrieve_details_by_slug(scorekeeper_slug)
-    _database_connection.close()
+    database_connection.close()
 
     if not details:
         return redirect(url_for("scorekeepers.index"))
@@ -62,10 +65,11 @@ def details(scorekeeper_slug: str):
 
 @blueprint.route("/all")
 def all():
-    _database_connection = mysql.connector.connect(**current_app.config["database"])
-    scorekeeper = Scorekeeper(database_connection=_database_connection)
+    """View: Scorekeeper Details for All Scorekeepers"""
+    database_connection = mysql.connector.connect(**current_app.config["database"])
+    scorekeeper = Scorekeeper(database_connection=database_connection)
     scorekeepers = scorekeeper.retrieve_all_details()
-    _database_connection.close()
+    database_connection.close()
 
     if not scorekeepers:
         return redirect(url_for("scorekeepers.index"))
@@ -76,6 +80,7 @@ def all():
 
 @blueprint.route("/random")
 def random():
+    """View: Random Scorekeeper Redirect"""
     _slug = random_scorekeeper_slug()
     return redirect_url(url_for("scorekeepers.details",
                                 scorekeeper_slug=_slug))

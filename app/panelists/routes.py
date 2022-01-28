@@ -13,8 +13,8 @@ blueprint = Blueprint("panelists", __name__)
 
 def random_panelist_slug() -> str:
     """Return a random panelist slug from ww_panelists table"""
-    _database_connection = mysql.connector.connect(**current_app.config["database"])
-    cursor = _database_connection.cursor(dictionary=False)
+    database_connection = mysql.connector.connect(**current_app.config["database"])
+    cursor = database_connection.cursor(dictionary=False)
     query = ("SELECT p.panelistslug FROM ww_panelists p "
              "WHERE p.panelistslug <> 'multiple' "
              "ORDER BY RAND() "
@@ -22,6 +22,7 @@ def random_panelist_slug() -> str:
     cursor.execute(query)
     result = cursor.fetchone()
     cursor.close()
+    database_connection.close()
 
     if not result:
         return None
@@ -31,23 +32,25 @@ def random_panelist_slug() -> str:
 
 @blueprint.route("/")
 def index():
-    _database_connection = mysql.connector.connect(**current_app.config["database"])
-    panelist = Panelist(database_connection=_database_connection)
+    """View: Panelists Index"""
+    database_connection = mysql.connector.connect(**current_app.config["database"])
+    panelist = Panelist(database_connection=database_connection)
     panelists = panelist.retrieve_all()
-    _database_connection.close()
+    database_connection.close()
 
     if not panelists:
         return redirect(url_for("main.index"))
 
-    return render_template("panelists/panelists.html", panelists=panelists)
+    return render_template("panelists/index.html", panelists=panelists)
 
 
 @blueprint.route("/<string:panelist_slug>")
 def details(panelist_slug: str):
-    _database_connection = mysql.connector.connect(**current_app.config["database"])
-    panelist = Panelist(database_connection=_database_connection)
+    """View: Panelists Details"""
+    database_connection = mysql.connector.connect(**current_app.config["database"])
+    panelist = Panelist(database_connection=database_connection)
     details = panelist.retrieve_details_by_slug(panelist_slug)
-    _database_connection.close()
+    database_connection.close()
 
     if not details:
         return redirect(url_for("panelists.index"))
@@ -61,10 +64,11 @@ def details(panelist_slug: str):
 
 @blueprint.route("/all")
 def all():
-    _database_connection = mysql.connector.connect(**current_app.config["database"])
-    panelist = Panelist(database_connection=_database_connection)
+    """View: Panelist Details for All Panelists"""
+    database_connection = mysql.connector.connect(**current_app.config["database"])
+    panelist = Panelist(database_connection=database_connection)
     panelists = panelist.retrieve_all_details()
-    _database_connection.close()
+    database_connection.close()
 
     if not panelists:
         return redirect(url_for("panelists.index"))
@@ -74,5 +78,6 @@ def all():
 
 @blueprint.route("/random")
 def random():
+    """View: Random Panelist Redirect"""
     _slug = random_panelist_slug()
     return redirect_url(url_for("panelists.details", panelist_slug=_slug))

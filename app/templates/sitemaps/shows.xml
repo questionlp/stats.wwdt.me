@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 {% for years_months in show_years_months %}
   <url>
-    <loc>{{ site_url }}{{ url_for("get_shows_year_month",
+    <loc>{{ site_url }}{{ url_for("shows.year_month",
                                   year=years_months[0],
                                   month=years_months[1]) }}</loc>
     <changefreq>weekly</changefreq>
@@ -10,7 +10,7 @@
 {% endfor %}
 {% for shows in show_dates %}
   <url>
-    <loc>{{ site_url }}{{ url_for("get_show_year_month_day",
+    <loc>{{ site_url }}{{ url_for("shows.year_month_day",
                                   year=shows[0],
                                   month=shows[1],
                                   day=shows[2]) }}</loc>
@@ -18,7 +18,7 @@
   </url>
 {% endfor %}
   <url>
-    <loc>{{ site_url }}{{ url_for("get_shows_on_this_day")}}</loc>
+    <loc>{{ site_url }}{{ url_for("shows.on_this_day")}}</loc>
     <changefreq>daily</changefreq>
   </url>
 </urlset>

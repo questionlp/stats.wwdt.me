@@ -14,43 +14,43 @@ blueprint = Blueprint("main_redirects", __name__)
 
 @blueprint.route("/guest")
 def guest():
-    """Redirect /guest to /guests"""
+    """Redirect: /guest to /guests"""
     return redirect_url(url_for("guests.index"))
 
 
 @blueprint.route("/help")
 def help():
-    """Redirecting /help to /"""
+    """Redirect: /help to /"""
     return redirect_url(url_for("main.index"))
 
 
 @blueprint.route("/host")
 def host():
-    """Redirect /host to /hosts"""
+    """Redirect: /host to /hosts"""
     return redirect_url(url_for("hosts.index"))
 
 
 @blueprint.route("/location")
 def location():
-    """Redirect /location to /locations"""
+    """Redirect: /location to /locations"""
     return redirect_url(url_for("locations.index"))
 
 
 @blueprint.route("/scorekeeper")
 def scorekeeper():
-    """Redirect /scorekeeper to /scorekeepers"""
+    """Redirect: /scorekeeper to /scorekeepers"""
     return redirect_url(url_for("scorekeepers.index"))
 
 
 @blueprint.route("/search")
 def search():
-    """Redirecting /search to /"""
+    """Redirect: /search to /"""
     return redirect_url(url_for("main.index"))
 
 
 @blueprint.route("/show")
 def show():
-    """Redirect /show to /shows"""
+    """Redirect: /show to /shows"""
     return redirect_url(url_for("shows.index"))
 
 
@@ -58,11 +58,12 @@ def show():
 def npr_show_redirect(show_date: str):
     """Takes an ISO-like date string and redirects to the appropriate
     show page on NPR's website."""
-    _database_connection = mysql.connector.connect(**current_app.config["database"])
-    show_utility = ShowUtility(database_connection=_database_connection)
+    database_connection = mysql.connector.connect(**current_app.config["database"])
+    show_utility = ShowUtility(database_connection=database_connection)
     show_date_object = date_string_to_date(date_string=show_date)
 
     if not show_date_object:
+        database_connection.close()
         return redirect_url(url_for("main.index"))
 
     if show_utility.date_exists(year=show_date_object.year,
@@ -80,8 +81,9 @@ def npr_show_redirect(show_date: str):
             month = show_date_object.strftime("%b").lower()
             url = f"{legacy_url_prefix}/{year}/{month}/{show_date_string}{legacy_url_suffix}"
 
-        _database_connection.close()
+        database_connection.close()
 
         return redirect_url(url)
 
+    database_connection.close()
     return redirect_url(url_for("main.index"))

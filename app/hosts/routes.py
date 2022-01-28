@@ -13,8 +13,8 @@ blueprint = Blueprint("hosts", __name__)
 
 def random_host_slug() -> str:
     """Return a random host slug from ww_hosts table"""
-    _database_connection = mysql.connector.connect(**current_app.config["database"])
-    cursor = _database_connection.cursor(dictionary=False)
+    database_connection = mysql.connector.connect(**current_app.config["database"])
+    cursor = database_connection.cursor(dictionary=False)
     query = ("SELECT h.hostslug FROM ww_hosts h "
              "WHERE h.hostslug <> 'tbd' "
              "ORDER BY RAND() "
@@ -22,6 +22,7 @@ def random_host_slug() -> str:
     cursor.execute(query)
     result = cursor.fetchone()
     cursor.close()
+    database_connection.close()
 
     if not result:
         return None
@@ -31,23 +32,25 @@ def random_host_slug() -> str:
 
 @blueprint.route("/")
 def index():
-    _database_connection = mysql.connector.connect(**current_app.config["database"])
-    host = Host(database_connection=_database_connection)
+    """View: Hosts Index"""
+    database_connection = mysql.connector.connect(**current_app.config["database"])
+    host = Host(database_connection=database_connection)
     hosts = host.retrieve_all()
-    _database_connection.close()
+    database_connection.close()
 
     if not hosts:
         return redirect(url_for("main.index"))
 
-    return render_template("hosts/hosts.html", hosts=hosts)
+    return render_template("hosts/index.html", hosts=hosts)
 
 
 @blueprint.route("/<string:host_slug>")
 def details(host_slug: str):
-    _database_connection = mysql.connector.connect(**current_app.config["database"])
-    host = Host(database_connection=_database_connection)
+    """View: Host Details"""
+    database_connection = mysql.connector.connect(**current_app.config["database"])
+    host = Host(database_connection=database_connection)
     details = host.retrieve_details_by_slug(host_slug)
-    _database_connection.close()
+    database_connection.close()
 
     if not details:
         return redirect(url_for("hosts.index"))
@@ -61,10 +64,11 @@ def details(host_slug: str):
 
 @blueprint.route("/all")
 def all():
-    _database_connection = mysql.connector.connect(**current_app.config["database"])
-    host = Host(database_connection=_database_connection)
+    """View: Host Details for All Hosts"""
+    database_connection = mysql.connector.connect(**current_app.config["database"])
+    host = Host(database_connection=database_connection)
     hosts = host.retrieve_all_details()
-    _database_connection.close()
+    database_connection.close()
 
     if not hosts:
         return redirect(url_for("hosts.index"))
@@ -74,5 +78,6 @@ def all():
 
 @blueprint.route("/random")
 def random():
+    """View: Random Host Redirect"""
     _slug = random_host_slug()
     return redirect_url(url_for("hosts.details", host_slug=_slug))
