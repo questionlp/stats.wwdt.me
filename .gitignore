@@ -12,8 +12,8 @@ uwsgi.service
 *.sock
 
 # Ignore local log directory
-_log/access.log
-_log/error.log
+_log/*
+_log/*
 
 
 # Ignore robots.txt

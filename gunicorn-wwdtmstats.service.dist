@@ -1,0 +1,27 @@
+[Unit]
+Description=Wait Wait Stats API Web Application
+After=network.target
+
+[Service]
+; Set the user and group the service should run as
+User=
+Group=
+
+; Set to base location of the application directory
+WorkingDirectory=
+
+; Add the full path to the application's venv/bin directory
+; to PATH
+Environment="PATH="
+
+; Also add the full path to the application's venv/bin directory
+; before 'gunicorn'
+ExecStart=gunicorn stats:app
+
+; Uncomment the following two lines to enable auto-restart
+; on application failure
+Restart=on-failure
+RestartSec=10s
+
+[Install]
+WantedBy=multi-user.target
