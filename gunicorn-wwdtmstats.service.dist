@@ -1,5 +1,5 @@
 [Unit]
-Description=Wait Wait Stats API Web Application
+Description=Wait Wait Stats Page Web Application
 After=network.target
 
 [Service]
