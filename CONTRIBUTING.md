@@ -6,7 +6,7 @@ that you'll want to review below.
 ## Code of Conduct
 
 A copy of this project's [Code of Conduct](CODE_OF_CONDUCT.md) is based on
-version 2.0 of the Contributor Covenant.
+version 2.1 of the Contributor Covenant.
 
 ## Branching
 
@@ -16,7 +16,7 @@ development needs to be branched off of the `develop` branch.
 Once you have cloned this repository, you can create a new  branch off of
 `develop` by using the following command:
 
-    git checkout -b new-branch develop
+    git checkout develop; git branch new-branch
 
 Once development has been completed for the new feature or fix and local
 testing has been completed, it can be pushed using the following command:
