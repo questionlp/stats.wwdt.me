@@ -14,6 +14,12 @@ from app.utility import date_string_to_date, redirect_url
 blueprint = Blueprint("main_redirects", __name__)
 
 
+@blueprint.route("/favicon.ico")
+def favicon():
+    """Redirect: /favicon.ico to /static/favicon.ico"""
+    return redirect_url(url_for("static", filename="favicon.ico"))
+
+
 @blueprint.route("/guest")
 def guest():
     """Redirect: /guest to /guests"""

@@ -9,6 +9,13 @@ import pytest
 from tests.fixture import client
 
 
+def test_favicon(client):
+    """Testing main_redirects.favicon"""
+    response = client.get("/favicon.ico")
+    assert response.status_code == 302
+    assert response.location
+
+
 def test_guest(client):
     """Testing main_redirects.guest"""
     response = client.get("/guest")
