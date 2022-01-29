@@ -14,7 +14,7 @@ weekly quiz show [Wait Wait... Don't Tell Me!](http://waitwait.npr.org)
 ## Installation
 
 Refer to [INSTALLING.md](INSTALLING.md) for information on how to set up an
-instance of this web application that can be served through NGINX and uWSGI.
+instance of this web application that can be served through NGINX and Gunicorn.
 
 ## Contributing
 
