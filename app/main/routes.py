@@ -37,8 +37,9 @@ def index():
 
     try:
         show = Show(database_connection=database_connection)
-        recent = show.retrieve_recent_details(include_days_ahead=days_ahead,
-                                              include_days_back=days_back)
+        recent = show.retrieve_recent_details(
+            include_days_ahead=days_ahead, include_days_back=days_back
+        )
         recent.reverse()
     except AttributeError:
         recent = show.retrieve_recent_details()
@@ -46,9 +47,9 @@ def index():
     finally:
         database_connection.close()
 
-    return render_template("pages/index.html",
-                           shows=recent,
-                           format_location_name=format_location_name)
+    return render_template(
+        "pages/index.html", shows=recent, format_location_name=format_location_name
+    )
 
 
 @blueprint.route("/robots.txt")
@@ -58,8 +59,9 @@ def robots_txt():
         response = render_template("robots.txt")
         return Response(response, mimetype="text/plain")
     else:
-        return send_file(join(current_app.root_path, "static", "robots.txt"),
-                         mimetype="text/plain")
+        return send_file(
+            join(current_app.root_path, "static", "robots.txt"), mimetype="text/plain"
+        )
 
 
 @blueprint.route("/about")

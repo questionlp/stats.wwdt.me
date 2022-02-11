@@ -48,9 +48,9 @@ def redirect_url(url: str, status_code: int = 302):
 
     # Use a custom response class to force set response headers
     # and handle the redirect to prevent browsers from caching redirect
-    response = current_app.response_class(response=None,
-                                          status=status_code,
-                                          mimetype="text/plain")
+    response = current_app.response_class(
+        response=None, status=status_code, mimetype="text/plain"
+    )
 
     response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
     response.headers["Pragma"] = "no-cache"

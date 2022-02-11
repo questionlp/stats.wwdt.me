@@ -46,12 +46,16 @@ def test_random(client):
     assert response.location
 
 
-@pytest.mark.parametrize("location",
-                         [{
-                             "venue": "Chase Auditorium",
-                             "city": "Chicago",
-                             "state": "IL",
-                         }])
+@pytest.mark.parametrize(
+    "location",
+    [
+        {
+            "venue": "Chase Auditorium",
+            "city": "Chicago",
+            "state": "IL",
+        }
+    ],
+)
 def test_format_location_name(client, location: Dict[str, Any]):
     """Testing locations.utility.format_location_name()"""
     name = format_location_name(location)

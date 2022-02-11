@@ -19,9 +19,9 @@ def format_location_name(location: Dict):
         return None
 
     if location["venue"] and location["city"] and location["state"]:
-        return "{} ({}, {})".format(location["venue"],
-                                    location["city"],
-                                    location["state"])
+        return "{} ({}, {})".format(
+            location["venue"], location["city"], location["state"]
+        )
     elif location["venue"] and (not location["city"] and not location["state"]):
         return location["venue"]
     elif location["city"] and location["state"] and not location["venue"]:

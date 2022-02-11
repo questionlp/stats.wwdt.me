@@ -17,10 +17,12 @@ def random_guest_slug() -> str:
     """Return a random guest slug from ww_guests table"""
     database_connection = mysql.connector.connect(**current_app.config["database"])
     cursor = database_connection.cursor(dictionary=False)
-    query = ("SELECT g.guestslug FROM ww_guests g "
-             "WHERE g.guestslug <> 'none' "
-             "ORDER BY RAND() "
-             "LIMIT 1;")
+    query = (
+        "SELECT g.guestslug FROM ww_guests g "
+        "WHERE g.guestslug <> 'none' "
+        "ORDER BY RAND() "
+        "LIMIT 1;"
+    )
     cursor.execute(query)
     result = cursor.fetchone()
     cursor.close()
@@ -59,9 +61,9 @@ def details(guest_slug: str):
 
     guests = []
     guests.append(details)
-    return render_template("guests/single.html",
-                           guest_name=details["name"],
-                           guests=guests)
+    return render_template(
+        "guests/single.html", guest_name=details["name"], guests=guests
+    )
 
 
 @blueprint.route("/all")
