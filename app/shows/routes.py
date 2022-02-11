@@ -22,10 +22,12 @@ def random_show_date() -> str:
     """Return a random show date from the ww_shows table"""
     database_connection = mysql.connector.connect(**current_app.config["database"])
     cursor = database_connection.cursor(dictionary=False)
-    query = ("SELECT s.showdate FROM ww_shows s "
-             "WHERE s.showdate <= NOW() "
-             "ORDER BY RAND() "
-             "LIMIT 1;")
+    query = (
+        "SELECT s.showdate FROM ww_shows s "
+        "WHERE s.showdate <= NOW() "
+        "ORDER BY RAND() "
+        "LIMIT 1;"
+    )
     cursor.execute(query)
     result = cursor.fetchone()
     cursor.close()
@@ -58,15 +60,20 @@ def date_string(date_string: int):
         parsed_date = parser.parse(date_string)
         database_connection = mysql.connector.connect(**current_app.config["database"])
         show_utility = ShowUtility(database_connection=database_connection)
-        if not show_utility.date_exists(year=parsed_date.year,
-                                        month=parsed_date.month,
-                                        day=parsed_date.day):
+        if not show_utility.date_exists(
+            year=parsed_date.year, month=parsed_date.month, day=parsed_date.day
+        ):
             return redirect_url(url_for("shows.index"))
 
-        return redirect_url(url_for("shows.year_month_day",
-                                    year=parsed_date.year,
-                                    month=parsed_date.month,
-                                    day=parsed_date.day), 301)
+        return redirect_url(
+            url_for(
+                "shows.year_month_day",
+                year=parsed_date.year,
+                month=parsed_date.month,
+                day=parsed_date.day,
+            ),
+            301,
+        )
     except parser.ParserError:
         return redirect_url(url_for("shows.index"))
     except OverflowError:
@@ -94,9 +101,7 @@ def year(year: Union[str, int]):
         for month in show_months:
             months.append(date(year=year, month=month, day=1))
 
-        return render_template("shows/year.html",
-                               year=date_year,
-                               show_months=months)
+        return render_template("shows/year.html", year=date_year, show_months=months)
     except ValueError:
         return redirect_url(url_for("shows.index"))
     except TypeError:
@@ -119,10 +124,12 @@ def year_month(year: int, month: int):
         if not shows:
             return redirect_url(url_for("shows.year", year=year))
 
-        return render_template("shows/year_month.html",
-                               year_month=year_month,
-                               shows=shows,
-                               format_location_name=format_location_name)
+        return render_template(
+            "shows/year_month.html",
+            year_month=year_month,
+            shows=shows,
+            format_location_name=format_location_name,
+        )
     except ValueError:
         return redirect_url(url_for("shows.year", year=year))
 
@@ -139,16 +146,16 @@ def year_month_day(year: int, month: int, day: int):
         database_connection.close()
 
         if not details:
-            return redirect_url(url_for("shows.year_month",
-                                year=year,
-                                month=month))
+            return redirect_url(url_for("shows.year_month", year=year, month=month))
 
         show_list = []
         show_list.append(details)
-        return render_template("shows/single.html",
-                               show_date=show_date,
-                               shows=show_list,
-                               format_location_name=format_location_name)
+        return render_template(
+            "shows/single.html",
+            show_date=show_date,
+            shows=show_list,
+            format_location_name=format_location_name,
+        )
     except ValueError:
         database_connection.close()
         return redirect_url(url_for("shows.index"))
@@ -168,10 +175,12 @@ def year_all(year: int):
         if not shows:
             return redirect_url(url_for("shows.index"), year=year)
 
-        return render_template("shows/year_all.html",
-                               year=year,
-                               shows=shows,
-                               format_location_name=format_location_name)
+        return render_template(
+            "shows/year_all.html",
+            year=year,
+            shows=shows,
+            format_location_name=format_location_name,
+        )
     except ValueError:
         return redirect_url(url_for("shows.year"), year=year)
 
@@ -195,10 +204,12 @@ def all():
 
         database_connection.close()
 
-        return render_template("shows/all.html",
-                               show_years=show_years,
-                               shows=shows_by_year,
-                               format_location_name=format_location_name)
+        return render_template(
+            "shows/all.html",
+            show_years=show_years,
+            shows=shows_by_year,
+            format_location_name=format_location_name,
+        )
     except ValueError:
         return redirect_url(url_for("shows.index"))
 
@@ -215,9 +226,9 @@ def on_this_day():
     if not shows:
         return redirect_url(url_for("shows.index"))
 
-    return render_template("shows/on_this_day.html",
-                           shows=shows,
-                           format_location_name=format_location_name)
+    return render_template(
+        "shows/on_this_day.html", shows=shows, format_location_name=format_location_name
+    )
 
 
 @blueprint.route("/random")

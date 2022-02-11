@@ -14,8 +14,9 @@ DEFAULT_RECENT_DAYS_AHEAD = 2
 DEFAULT_RECENT_DAYS_BACK = 30
 
 
-def load_config(config_file_path: str = "config.json",
-                connection_pool_size: int = 12) -> Dict[str, Dict[str, Any]]:
+def load_config(
+    config_file_path: str = "config.json", connection_pool_size: int = 12
+) -> Dict[str, Dict[str, Any]]:
     with open(config_file_path, "r") as config_file:
         app_config = json.load(config_file)
 

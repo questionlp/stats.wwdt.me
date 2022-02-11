@@ -117,7 +117,7 @@ def shows():
     if not dates or not years_months:
         return ""
 
-    sitemap = render_template("sitemaps/shows.xml",
-                              show_dates=dates,
-                              show_years_months=years_months)
+    sitemap = render_template(
+        "sitemaps/shows.xml", show_dates=dates, show_years_months=years_months
+    )
     return Response(sitemap, mimetype="text/xml")

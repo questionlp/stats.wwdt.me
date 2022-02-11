@@ -10,5 +10,5 @@ PANELIST_RANKS = {
     "1t": "First Tied",
     "2": "Second",
     "2t": "Second Tied",
-    "3": "Third"
+    "3": "Third",
 }

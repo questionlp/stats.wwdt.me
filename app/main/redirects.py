@@ -74,10 +74,14 @@ def npr_show_redirect(show_date: str):
         database_connection.close()
         return redirect_url(url_for("main.index"))
 
-    if show_utility.date_exists(year=show_date_object.year,
-                                month=show_date_object.month,
-                                day=show_date_object.day):
-        current_url_prefix = "https://www.npr.org/programs/wait-wait-dont-tell-me/archive?date="
+    if show_utility.date_exists(
+        year=show_date_object.year,
+        month=show_date_object.month,
+        day=show_date_object.day,
+    ):
+        current_url_prefix = (
+            "https://www.npr.org/programs/wait-wait-dont-tell-me/archive?date="
+        )
         legacy_url_prefix = "https://legacy.npr.org/programs/waitwait/archrndwn"
         legacy_url_suffix = ".waitwait.html"
         if show_date_object >= datetime(year=2006, month=1, day=7):

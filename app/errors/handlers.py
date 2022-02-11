@@ -10,8 +10,7 @@ from werkzeug.exceptions import HTTPException
 
 def not_found(error):
     """Handle resource not found conditions"""
-    return render_template("errors/404.html",
-                           error_description=error.description), 404
+    return render_template("errors/404.html", error_description=error.description), 404
 
 
 def handle_exception(error):
