@@ -19,7 +19,8 @@ blueprint = Blueprint("shows", __name__)
 
 
 def random_show_date() -> str:
-    """Return a random show date from the ww_shows table"""
+    """Return a random show date from the ww_shows table in YYYY-MM-DD
+    format"""
     database_connection = mysql.connector.connect(**current_app.config["database"])
     cursor = database_connection.cursor(dictionary=False)
     query = (
@@ -36,7 +37,7 @@ def random_show_date() -> str:
     if not result:
         return None
 
-    return result[0].isoformat()
+    return result[0].strftime("%Y/%m/%d")
 
 
 @blueprint.route("/")
