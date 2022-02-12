@@ -48,6 +48,7 @@
     q.scorekeeper-description { display: inline-block; font-style: italic; }
     ul.show-all-years { list-style: none; column-count: 4;}
     .show-description, .show-notes { white-space: pre-line; }
+    .show-notes>p { margin: 0; }
     .show-repeat>a { border-bottom: none !important; }
     .show-nprlink { background-color: #3366cc; color: white; }
     .show-nprlink>a { border-bottom: none !important; color: white; }

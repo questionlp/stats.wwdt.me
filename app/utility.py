@@ -9,6 +9,7 @@ import json
 from datetime import datetime
 from dateutil import parser
 from flask import current_app
+import markdown
 import pytz
 
 
@@ -35,6 +36,11 @@ def generate_date_time_stamp(time_zone: pytz.timezone = pytz.timezone("UTC")):
     """Generate a current date/timestamp string"""
     now = datetime.now(time_zone)
     return now.strftime("%Y-%m-%d %H:%M:%S %Z")
+
+
+def md_to_html(text: str):
+    """Converts Markdown text into HTML"""
+    return markdown.markdown(text, output_format="html")
 
 
 def pretty_jsonify(data):

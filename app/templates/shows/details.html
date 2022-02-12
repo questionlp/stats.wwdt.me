@@ -161,7 +161,7 @@
 <div class="row">
     <div class="col s12">
         <div class="label">Notes</div>
-        <div class="show-notes">{{ show.notes }}</div>
+        <div class="show-notes">{{ show.notes|markdown|safe }}</div>
     </div>
 </div>
 {% endif %}
