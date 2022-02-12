@@ -27,10 +27,7 @@ def create_app():
 
     # Override base Jinja options
     app.jinja_options = Flask.jinja_options.copy()
-    app.jinja_options.update({
-        "trim_blocks": True,
-        "lstrip_blocks": True
-    })
+    app.jinja_options.update({"trim_blocks": True, "lstrip_blocks": True})
     app.create_jinja_environment()
 
     # Register error handlers
@@ -51,7 +48,9 @@ def create_app():
     app.jinja_env.globals["rendered_at"] = utility.generate_date_time_stamp
 
     app.jinja_env.globals["time_zone"] = app.config["app_settings"]["app_time_zone"]
-    app.jinja_env.globals["ga_property_code"] = app.config["app_settings"]["ga_property_code"]
+    app.jinja_env.globals["ga_property_code"] = app.config["app_settings"][
+        "ga_property_code"
+    ]
     app.jinja_env.globals["api_url"] = app.config["app_settings"]["api_url"]
     app.jinja_env.globals["blog_url"] = app.config["app_settings"]["blog_url"]
     app.jinja_env.globals["graphs_url"] = app.config["app_settings"]["graphs_url"]
@@ -60,6 +59,7 @@ def create_app():
 
     # Register Jinja template filters
     app.jinja_env.filters["pretty_jsonify"] = utility.pretty_jsonify
+    app.jinja_env.filters["markdown"] = utility.md_to_html
 
     # Register application blueprints
     app.register_blueprint(main_bp)

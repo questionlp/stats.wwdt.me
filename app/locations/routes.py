@@ -19,10 +19,12 @@ def random_location_slug() -> str:
     """Return a random location slug from ww_locations table"""
     database_connection = mysql.connector.connect(**current_app.config["database"])
     cursor = database_connection.cursor(dictionary=False)
-    query = ("SELECT l.locationslug FROM ww_locations l "
-             "WHERE l.locationslug <> 'tbd' "
-             "ORDER BY RAND() "
-             "LIMIT 1;")
+    query = (
+        "SELECT l.locationslug FROM ww_locations l "
+        "WHERE l.locationslug <> 'tbd' "
+        "ORDER BY RAND() "
+        "LIMIT 1;"
+    )
     cursor.execute(query)
     result = cursor.fetchone()
     cursor.close()
@@ -45,9 +47,11 @@ def index():
     if not location_list:
         return redirect_url(url_for("main.index"))
 
-    return render_template("locations/index.html",
-                           locations=location_list,
-                           format_location_name=format_location_name)
+    return render_template(
+        "locations/index.html",
+        locations=location_list,
+        format_location_name=format_location_name,
+    )
 
 
 @blueprint.route("/<string:location_slug>")
@@ -73,10 +77,12 @@ def details(location_slug: str):
     locations = []
     locations.append(details)
     location_name = format_location_name(details)
-    return render_template("locations/single.html",
-                           locations=locations,
-                           location_name=location_name,
-                           format_location_name=format_location_name)
+    return render_template(
+        "locations/single.html",
+        locations=locations,
+        location_name=location_name,
+        format_location_name=format_location_name,
+    )
 
 
 @blueprint.route("/all")
@@ -90,9 +96,11 @@ def all():
     if not locations:
         return redirect_url(url_for("locations.index"))
 
-    return render_template("locations/all.html",
-                           locations=locations,
-                           format_location_name=format_location_name)
+    return render_template(
+        "locations/all.html",
+        locations=locations,
+        format_location_name=format_location_name,
+    )
 
 
 @blueprint.route("/random")

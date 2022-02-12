@@ -9,6 +9,7 @@ import json
 from datetime import datetime
 from dateutil import parser
 from flask import current_app
+import markdown
 import pytz
 
 
@@ -37,6 +38,11 @@ def generate_date_time_stamp(time_zone: pytz.timezone = pytz.timezone("UTC")):
     return now.strftime("%Y-%m-%d %H:%M:%S %Z")
 
 
+def md_to_html(text: str):
+    """Converts Markdown text into HTML"""
+    return markdown.markdown(text, output_format="html")
+
+
 def pretty_jsonify(data):
     """Returns a prettier JSON output for an object than Flask's default
     tojson filter"""
@@ -48,9 +54,9 @@ def redirect_url(url: str, status_code: int = 302):
 
     # Use a custom response class to force set response headers
     # and handle the redirect to prevent browsers from caching redirect
-    response = current_app.response_class(response=None,
-                                          status=status_code,
-                                          mimetype="text/plain")
+    response = current_app.response_class(
+        response=None, status=status_code, mimetype="text/plain"
+    )
 
     response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
     response.headers["Pragma"] = "no-cache"

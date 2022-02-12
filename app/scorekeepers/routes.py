@@ -17,10 +17,12 @@ def random_scorekeeper_slug() -> str:
     """Return a random scorekeeper slug from ww_scorekeepers table"""
     database_connection = mysql.connector.connect(**current_app.config["database"])
     cursor = database_connection.cursor(dictionary=False)
-    query = ("SELECT sk.scorekeeperslug FROM ww_scorekeepers sk "
-             "WHERE sk.scorekeeperslug <> 'tbd' "
-             "ORDER BY RAND() "
-             "LIMIT 1;")
+    query = (
+        "SELECT sk.scorekeeperslug FROM ww_scorekeepers sk "
+        "WHERE sk.scorekeeperslug <> 'tbd' "
+        "ORDER BY RAND() "
+        "LIMIT 1;"
+    )
     cursor.execute(query)
     result = cursor.fetchone()
     cursor.close()
@@ -43,8 +45,7 @@ def index():
     if not scorekeepers:
         return redirect(url_for("main.index"))
 
-    return render_template("scorekeepers/index.html",
-                           scorekeepers=scorekeepers)
+    return render_template("scorekeepers/index.html", scorekeepers=scorekeepers)
 
 
 @blueprint.route("/<string:scorekeeper_slug>")
@@ -60,9 +61,11 @@ def details(scorekeeper_slug: str):
 
     scorekeepers = []
     scorekeepers.append(details)
-    return render_template("scorekeepers/single.html",
-                           scorekeeper_name=details["name"],
-                           scorekeepers=scorekeepers)
+    return render_template(
+        "scorekeepers/single.html",
+        scorekeeper_name=details["name"],
+        scorekeepers=scorekeepers,
+    )
 
 
 @blueprint.route("/all")
@@ -76,13 +79,11 @@ def all():
     if not scorekeepers:
         return redirect(url_for("scorekeepers.index"))
 
-    return render_template("scorekeepers/all.html",
-                           scorekeepers=scorekeepers)
+    return render_template("scorekeepers/all.html", scorekeepers=scorekeepers)
 
 
 @blueprint.route("/random")
 def random():
     """View: Random Scorekeeper Redirect"""
     _slug = random_scorekeeper_slug()
-    return redirect_url(url_for("scorekeepers.details",
-                                scorekeeper_slug=_slug))
+    return redirect_url(url_for("scorekeepers.details", scorekeeper_slug=_slug))

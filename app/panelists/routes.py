@@ -17,10 +17,12 @@ def random_panelist_slug() -> str:
     """Return a random panelist slug from ww_panelists table"""
     database_connection = mysql.connector.connect(**current_app.config["database"])
     cursor = database_connection.cursor(dictionary=False)
-    query = ("SELECT p.panelistslug FROM ww_panelists p "
-             "WHERE p.panelistslug <> 'multiple' "
-             "ORDER BY RAND() "
-             "LIMIT 1;")
+    query = (
+        "SELECT p.panelistslug FROM ww_panelists p "
+        "WHERE p.panelistslug <> 'multiple' "
+        "ORDER BY RAND() "
+        "LIMIT 1;"
+    )
     cursor.execute(query)
     result = cursor.fetchone()
     cursor.close()
@@ -59,9 +61,9 @@ def details(panelist_slug: str):
 
     panelists = []
     panelists.append(details)
-    return render_template("panelists/single.html",
-                           panelist_name=details["name"],
-                           panelists=panelists)
+    return render_template(
+        "panelists/single.html", panelist_name=details["name"], panelists=panelists
+    )
 
 
 @blueprint.route("/all")
