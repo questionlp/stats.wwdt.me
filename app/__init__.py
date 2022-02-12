@@ -59,6 +59,7 @@ def create_app():
 
     # Register Jinja template filters
     app.jinja_env.filters["pretty_jsonify"] = utility.pretty_jsonify
+    app.jinja_env.filters["markdown"] = utility.md_to_html
 
     # Register application blueprints
     app.register_blueprint(main_bp)
