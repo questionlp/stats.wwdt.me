@@ -15,9 +15,4 @@ def not_found(error):
 
 def handle_exception(error):
     """Handle exceptions in a slightly more graceful manner"""
-    # Pass through any HTTP errors and exceptions
-    if isinstance(error, HTTPException):
-        return error
-
-    # Handle everything else with a basic 500 error page
     return render_template("errors/500.html"), 500
