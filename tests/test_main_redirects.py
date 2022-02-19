@@ -6,8 +6,6 @@
 """Testing Main Redirects Module and Blueprint Views"""
 import pytest
 
-from tests.fixture import client
-
 
 def test_favicon(client):
     """Testing main_redirects.favicon"""
