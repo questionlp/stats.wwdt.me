@@ -44,6 +44,12 @@ def location():
     return redirect_url(url_for("locations.index"))
 
 
+@blueprint.route("/panelist")
+def panelist():
+    """Redirect: /panelist to /panelists"""
+    return redirect_url(url_for("panelists.index"))
+
+
 @blueprint.route("/scorekeeper")
 def scorekeeper():
     """Redirect: /scorekeeper to /scorekeepers"""

@@ -9,7 +9,6 @@ from typing import Any, Dict
 import pytest
 
 from app.locations.utility import format_location_name
-from tests.fixture import client
 
 
 def test_index(client):

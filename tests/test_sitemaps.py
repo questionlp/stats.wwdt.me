@@ -4,7 +4,6 @@
 # Copyright (c) 2018-2022 Linh Pham
 # stats.wwdt.me is released under the terms of the Apache License 2.0
 """Testing Sitemaps Module and Blueprint Views"""
-from tests.fixture import client
 
 
 def test_primary(client):

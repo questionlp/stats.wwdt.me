@@ -6,8 +6,6 @@
 """Testing Panelists Module and Blueprint Views"""
 import pytest
 
-from tests.fixture import client
-
 
 def test_index(client):
     """Testing panelists.index"""
