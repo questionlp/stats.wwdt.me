@@ -174,7 +174,7 @@ def year_all(year: int):
         database_connection.close()
 
         if not shows:
-            return redirect_url(url_for("shows.index"), year=year)
+            return redirect_url(url_for("shows.index"))
 
         return render_template(
             "shows/year_all.html",
