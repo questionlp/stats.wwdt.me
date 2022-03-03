@@ -24,5 +24,5 @@ the [Code of Conduct](CODE_OF_CONDUCT.md) and the
 
 ## License
 
-This library is licensed under the terms of the
+This web application is licensed under the terms of the
 [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0).
