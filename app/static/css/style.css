@@ -27,6 +27,7 @@
     .sidenav li>a { font-size: initial; font-weight: initial; }
     div.label { border-bottom: 2px solid rgba(0, 0, 0, 0.25); font-weight: 600; }
     ul.panelist-list, ul.guest-list, ul.host-list, ul.location-list, ul.panelist-list, ul.panelist-stats, ul.scorekeeper-list { line-height: 1.75; list-style: none; margin: 0; padding: 0; }
+    #map { width: 50%; height: 100vh; }
     .data-tbd, .data-na, .data-multiple { font-style: italic; }
     .database-id { background-color: #393b40; color: #eceff1; }
     .scorekeeper-emeritus { background-color: #c5cae9; }

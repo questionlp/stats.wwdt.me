@@ -59,6 +59,15 @@
         </div>
     </div>
 </div>
+
+{% if location.coordinates %}
+<div class="row">
+    <div class="col s12">
+        <div id="map" x="{{ location.coordinates.x }}" y="{{ location.coordinates.y }}">
+        </div>
+    </div>
+</div>
+{% endif %}
 </div>
 {% endif %}
 {% endfor %}
