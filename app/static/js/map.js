@@ -1,9 +1,9 @@
 if (document.getElementById("map")) {
-	let x = document.getElementById("map").getAttribute("x");
-	let y = document.getElementById("map").getAttribute("y");
+	let lat = document.getElementById("map").getAttribute("lat");
+	let lon = document.getElementById("map").getAttribute("lon");
 
 	let mapOptions = {
-		center: [x, y],
+		center: [lat, lon],
 		zoom: 100
 	}
 
