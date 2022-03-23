@@ -39,9 +39,37 @@ activated:
 gunicorn stats:app --reload
 ```
 
-Once started, open a browser and go to http://127.0.0.1:8000/. This should
-bring up the Swagger UI interface. Use the interface to test the various
-endpoints provided.
+Once started, open a browser and browse to <http://127.0.0.1:8000/>. This
+should bring up the Stats Page web application.
+
+## MySQL sql_mode Flags
+
+The Stats Page includes SQL queries that were written to target MySQL 5.5 and
+MariaDB 10.x. Some of the queries may throw errors due to violation of the
+`sql_mode` flag `ONLY_FULL_GROUP_BY` on newer versions of MySQL.
+
+To remove the `ONLY_FULL_GROUP_BY` flag from the global `sql_mode` variable,
+you will first need to query the current value of `sql_mode` by running:
+
+```sql
+select @@sql_mode;
+```
+
+Copy the result and remove the `ONLY_FULL_GROUP_BY` flag from the string and
+run the following command to unset the flag globally until the MySQL service
+is restarted:
+
+```sql
+set global sql_mode='<flags>';
+```
+
+In order for the flag to be set on MySQL service startup, you will need to
+update the `mysqld.cnf` file on the server with the following configuration
+line:
+
+```text
+sql-mode = <flags>
+```
 
 ## Configuring Gunicorn
 
@@ -72,7 +100,7 @@ options avaiable, check out the [Gunicorn documentation site](https://docs.gunic
 
 ## Setting up a Gunicorn systemd Service
 
-A template `systemd` service file is included in the repository named 
+A template `systemd` service file is included in the repository named
 `gunicorn-wwdtmstats.service.dist`. That service file provides the commands and
 arguments used to start a Gunicorn instance to serve up the application. A copy
 of that template file can be modified and installed under `/etc/systemd/system`.
@@ -122,11 +150,11 @@ upstream gunicorn-wwdtmstats {
 server {
     location / {
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-		proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header X-Forwarded-Proto $scheme;
         proxy_set_header X-Real-IP $remote_addr;
-		proxy_set_header Host $http_host;
-		proxy_redirect off;
-		proxy_pass http://gunicorn-wwdtmstats;
+        proxy_set_header Host $http_host;
+        proxy_redirect off;
+        proxy_pass http://gunicorn-wwdtmstats;
     }
 }
 ```
