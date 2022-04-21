@@ -1,5 +1,11 @@
 # Changes
 
+## 5.1.0
+
+### Component Changes
+
+- Upgrade Materialize from 1.1.0-alpha to 1.1.0
+
 ## 5.0.3
 
 ### Component Changes
@@ -27,7 +33,7 @@
 
 - Replace (lib)wwdtm 1.2.x with wwdtm 2.0.2
 - Upgrade Flask from 2.0.1 to 2.0.2
-- Upgrade Materialize CSS from 1.0.0 to 1.1.0-alpha
+- Upgrade Materialize from 1.0.0 to 1.1.0-alpha
 
 ### Application Changes
 
