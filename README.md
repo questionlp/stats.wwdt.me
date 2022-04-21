@@ -13,16 +13,23 @@ weekly quiz show [Wait Wait... Don't Tell Me!](http://waitwait.npr.org)
 
 ## Installation
 
-Refer to [INSTALLING.md](INSTALLING.md) for information on how to set up an
+Refer to [INSTALLING.md](./INSTALLING.md) for information on how to set up an
 instance of this web application that can be served through NGINX and Gunicorn.
+
+## Changes
+
+For changelogs, refer to [CHANGELOG.md](./CHANGELOG.md).
 
 ## Contributing
 
 If you would like contribute to this project, please make sure to review both
-the [Code of Conduct](CODE_OF_CONDUCT.md) and the
-[Contributing](CONTRIBUTING.md) documents in this repository.
+the [Code of Conduct](./CODE_OF_CONDUCT.md) and the
+[Contributing](./CONTRIBUTING.md) documents in this repository.
 
 ## License
 
 This web application is licensed under the terms of the
-[Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0).
+[Apache License 2.0](./LICENSE).
+
+Original version of the Apache License 2.0 can also be found at:
+<http://www.apache.org/licenses/LICENSE-2.0>.
