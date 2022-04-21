@@ -10,31 +10,29 @@ version 2.1 of the Contributor Covenant.
 
 ## Branching
 
-Although the default branch for this repository is `main`, all active
-development needs to be branched off of the `develop` branch.
+The default branch for this repository and the branch used to deploy the
+application into production is `main`. Any bugs that are found in production
+should be made by creating a branch off of the latest version of `main` with
+a descriptive name.
 
-Once you have cloned this repository, you can create a new  branch off of
-`develop` by using the following command:
-
-    git checkout develop; git branch new-branch
-
-Once development has been completed for the new feature or fix and local
-testing has been completed, it can be pushed using the following command:
-
-    git push -u origin new-branch
+All new feature development is handled off of the `develop` branch, which in
+turn would be merged into `main` after thorough unit and regression testing
+in a development and/or staging environment.
 
 ## Pull Requests
 
 Once the new branch has been published to Github, the next step will be to
-create a new pull request to merge the new branch with the `develop` branch.
+create a new pull request to merge the new branch with the `main` branch for
+production bugfixes or the `develop` branch for new features.
 
 After creating the pull request, it will go through a review and the request
 will either be accepted or declined based on needs, code quality, testing
 problems or any other reason that will be included in the commit message or
 request declined message.
 
-Pull requests from new branches to the `main` branch that do not go through
-the `develop` branch via a pull request will be declined.
+Pull requests for new feature branches to merge directly with the `main`
+branch and have not gone through the `develop` branch pull request process
+(as well as the required testing) will be declined.
 
 ## License
 
