@@ -1,4 +1,3 @@
 [tool.black]
 required-version = "22.1.0"
 target-version = ["py36", "py37", "py38", "py39"]
-
