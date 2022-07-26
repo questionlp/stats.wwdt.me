@@ -1,10 +1,13 @@
 # Changes
 
-## 5.1.0
+## 5.0.4
 
 ### Component Changes
 
 - Upgrade Materialize from 1.1.0-alpha to 1.1.0
+- Upgrade Flask from 2.1.1 to 2.1.3
+- Set Werkzeug version to 2.1.2
+  - Version 2.2.0 includes a breaking change regarding route parsing and handling
 
 ## 5.0.3
 
