@@ -11,7 +11,7 @@ def test_index(client):
     """Testing scorekeepers.index"""
     response = client.get("/scorekeepers")
     assert response.status_code == 200
-    assert b"Panelists" in response.data
+    assert b"Scorekeepers" in response.data
     assert b"Random" in response.data
 
 
