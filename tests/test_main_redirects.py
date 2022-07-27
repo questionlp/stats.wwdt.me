@@ -37,14 +37,14 @@ def test_host(client):
 
 def test_location(client):
     """Testing main_redirects.location"""
-    response = client.get("/guest")
+    response = client.get("/location")
     assert response.status_code == 302
     assert response.location
 
 
 def test_scorekeeper(client):
     """Testing main_redirects.scorekeeper"""
-    response = client.get("/guest")
+    response = client.get("/scorekeeper")
     assert response.status_code == 302
     assert response.location
 
