@@ -23,6 +23,10 @@
     <changefreq>daily</changefreq>
   </url>
   <url>
+    <loc>{{ site_url }}{{ url_for("locations.index") }}</loc>
+    <changefreq>daily</changefreq>
+  </url>
+  <url>
     <loc>{{ site_url }}{{ url_for("panelists.index") }}</loc>
     <changefreq>daily</changefreq>
   </url>
