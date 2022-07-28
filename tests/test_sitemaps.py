@@ -4,11 +4,13 @@
 # Copyright (c) 2018-2022 Linh Pham
 # stats.wwdt.me is released under the terms of the Apache License 2.0
 """Testing Sitemaps Module and Blueprint Views"""
+from flask.testing import FlaskClient
+from werkzeug.test import TestResponse
 
 
-def test_primary(client):
+def test_primary(client: FlaskClient):
     """Testing sitemaps.primary"""
-    response = client.get("/sitemap.xml")
+    response: TestResponse = client.get("/sitemap.xml")
     assert response.status_code == 200
     assert "Content-Type" in response.headers
     assert response.headers["Content-Type"] == "text/xml; charset=utf-8"
@@ -16,9 +18,9 @@ def test_primary(client):
     assert b"urlset" in response.data
 
 
-def test_guest(client):
+def test_guest(client: FlaskClient):
     """Testing sitemaps.guests"""
-    response = client.get("/sitemap-guests.xml")
+    response: TestResponse = client.get("/sitemap-guests.xml")
     assert response.status_code == 200
     assert "Content-Type" in response.headers
     assert response.headers["Content-Type"] == "text/xml; charset=utf-8"
@@ -26,9 +28,9 @@ def test_guest(client):
     assert b"urlset" in response.data
 
 
-def test_hosts(client):
+def test_hosts(client: FlaskClient):
     """Testing sitemaps.hosts"""
-    response = client.get("/sitemap-hosts.xml")
+    response: TestResponse = client.get("/sitemap-hosts.xml")
     assert response.status_code == 200
     assert "Content-Type" in response.headers
     assert response.headers["Content-Type"] == "text/xml; charset=utf-8"
@@ -36,9 +38,9 @@ def test_hosts(client):
     assert b"urlset" in response.data
 
 
-def test_locations(client):
+def test_locations(client: FlaskClient):
     """Testing sitemaps.primary"""
-    response = client.get("/sitemap-locations.xml")
+    response: TestResponse = client.get("/sitemap-locations.xml")
     assert response.status_code == 200
     assert "Content-Type" in response.headers
     assert response.headers["Content-Type"] == "text/xml; charset=utf-8"
@@ -46,9 +48,9 @@ def test_locations(client):
     assert b"urlset" in response.data
 
 
-def test_panelists(client):
+def test_panelists(client: FlaskClient):
     """Testing sitemaps.panelists"""
-    response = client.get("/sitemap-panelists.xml")
+    response: TestResponse = client.get("/sitemap-panelists.xml")
     assert response.status_code == 200
     assert "Content-Type" in response.headers
     assert response.headers["Content-Type"] == "text/xml; charset=utf-8"
@@ -56,9 +58,9 @@ def test_panelists(client):
     assert b"urlset" in response.data
 
 
-def test_scorekeepers(client):
+def test_scorekeepers(client: FlaskClient):
     """Testing sitemaps.scorekeepers"""
-    response = client.get("/sitemap-scorekeepers.xml")
+    response: TestResponse = client.get("/sitemap-scorekeepers.xml")
     assert response.status_code == 200
     assert "Content-Type" in response.headers
     assert response.headers["Content-Type"] == "text/xml; charset=utf-8"
@@ -66,9 +68,9 @@ def test_scorekeepers(client):
     assert b"urlset" in response.data
 
 
-def test_shows(client):
+def test_shows(client: FlaskClient):
     """Testing sitemaps.shows"""
-    response = client.get("/sitemap-shows.xml")
+    response: TestResponse = client.get("/sitemap-shows.xml")
     assert response.status_code == 200
     assert "Content-Type" in response.headers
     assert response.headers["Content-Type"] == "text/xml; charset=utf-8"

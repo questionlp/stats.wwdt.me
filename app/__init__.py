@@ -23,7 +23,7 @@ from app.version import APP_VERSION
 
 def create_app():
     app = Flask(__name__)
-    app.url_map.strict_slashes = False
+    app.url_map.strict_slashes = True
 
     # Override base Jinja options
     app.jinja_options = Flask.jinja_options.copy()

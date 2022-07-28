@@ -4,12 +4,14 @@
 # Copyright (c) 2018-2022 Linh Pham
 # stats.wwdt.me is released under the terms of the Apache License 2.0
 """Testing Hosts Module and Blueprint Views"""
+from flask.testing import FlaskClient
 import pytest
+from werkzeug.test import TestResponse
 
 
 def test_index(client):
     """Testing hosts.index"""
-    response = client.get("/hosts")
+    response = client.get("/hosts/")
     assert response.status_code == 200
     assert b"Hosts" in response.data
     assert b"Random" in response.data
