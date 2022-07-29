@@ -12,7 +12,7 @@ from wwdtm.location import Location
 from app.locations.utility import format_location_name
 from app.utility import redirect_url
 
-blueprint = Blueprint("locations", __name__)
+blueprint = Blueprint("locations", __name__, template_folder="templates")
 
 
 def random_location_slug() -> str:

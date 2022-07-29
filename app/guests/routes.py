@@ -10,7 +10,7 @@ from wwdtm.guest import Guest
 
 from app.utility import redirect_url
 
-blueprint = Blueprint("guests", __name__)
+blueprint = Blueprint("guests", __name__, template_folder="templates")
 
 
 def random_guest_slug() -> str:
