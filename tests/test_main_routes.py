@@ -8,7 +8,7 @@ from flask.testing import FlaskClient
 from werkzeug.test import TestResponse
 
 
-def test_index(client: FlaskClient):
+def test_index(client: FlaskClient) -> None:
     """Testing main.index"""
     response: TestResponse = client.get("/")
     assert response.status_code == 200
@@ -16,7 +16,7 @@ def test_index(client: FlaskClient):
     assert b"DB ID:" in response.data
 
 
-def test_robots_txt(client: FlaskClient):
+def test_robots_txt(client: FlaskClient) -> None:
     """Testing main.robots_txt"""
     response: TestResponse = client.get("/robots.txt")
     assert response.status_code == 200
@@ -24,7 +24,7 @@ def test_robots_txt(client: FlaskClient):
     assert b"User-agent:" in response.data
 
 
-def test_about(client: FlaskClient):
+def test_about(client: FlaskClient) -> None:
     """Testing main.about"""
     response: TestResponse = client.get("/about")
     assert response.status_code == 200
@@ -32,7 +32,7 @@ def test_about(client: FlaskClient):
     assert b"Source Code" in response.data
 
 
-def test_site_history(client: FlaskClient):
+def test_site_history(client: FlaskClient) -> None:
     """Testing main.site_history"""
     response: TestResponse = client.get("/site-history")
     assert response.status_code == 200

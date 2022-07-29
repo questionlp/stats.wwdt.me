@@ -13,7 +13,7 @@ from werkzeug.test import TestResponse
 from app.locations.utility import format_location_name
 
 
-def test_index(client):
+def test_index(client: FlaskClient) -> None:
     """Testing locations.index"""
     response: TestResponse = client.get("/locations/")
     assert response.status_code == 200
@@ -22,7 +22,7 @@ def test_index(client):
 
 
 @pytest.mark.parametrize("location_slug", ["chase-auditorium-chicago-il"])
-def test_details(client, location_slug: str):
+def test_details(client: FlaskClient, location_slug: str) -> None:
     """Testing locations.details"""
     response: TestResponse = client.get(f"/locations/{location_slug}")
     assert response.status_code == 200
@@ -31,7 +31,7 @@ def test_details(client, location_slug: str):
     assert b"Recordings" in response.data
 
 
-def test_all(client: FlaskClient):
+def test_all(client: FlaskClient) -> None:
     """Testing locations.all"""
     response: TestResponse = client.get("/locations/all")
     assert response.status_code == 200
@@ -40,7 +40,7 @@ def test_all(client: FlaskClient):
     assert b"Recordings" in response.data
 
 
-def test_random(client: FlaskClient):
+def test_random(client: FlaskClient) -> None:
     """Testing locations.random"""
     response: TestResponse = client.get("/locations/random")
     assert response.status_code == 302
@@ -57,7 +57,7 @@ def test_random(client: FlaskClient):
         }
     ],
 )
-def test_format_location_name(client: FlaskClient, location: Dict[str, str]):
+def test_format_location_name(location: Dict[str, str]) -> None:
     """Testing locations.utility.format_location_name()"""
     name: Union[str, None] = format_location_name(location)
     assert name

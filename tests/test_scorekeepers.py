@@ -9,7 +9,7 @@ import pytest
 from werkzeug.test import TestResponse
 
 
-def test_index(client: FlaskClient):
+def test_index(client: FlaskClient) -> None:
     """Testing scorekeepers.index"""
     response: TestResponse = client.get("/scorekeepers/")
     assert response.status_code == 200
@@ -18,7 +18,7 @@ def test_index(client: FlaskClient):
 
 
 @pytest.mark.parametrize("scorekeepers_slug", ["bill-kurtis"])
-def test_details(client: FlaskClient, scorekeepers_slug: str):
+def test_details(client: FlaskClient, scorekeepers_slug: str) -> None:
     """Testing scorekeepers.details"""
     response: TestResponse = client.get(f"/scorekeepers/{scorekeepers_slug}")
     assert response.status_code == 200
@@ -27,7 +27,7 @@ def test_details(client: FlaskClient, scorekeepers_slug: str):
     assert b"Appearances" in response.data
 
 
-def test_all(client: FlaskClient):
+def test_all(client: FlaskClient) -> None:
     """Testing scorekeepers.all"""
     response: TestResponse = client.get("/scorekeepers/all")
     assert response.status_code == 200
@@ -36,7 +36,7 @@ def test_all(client: FlaskClient):
     assert b"Appearances" in response.data
 
 
-def test_random(client: FlaskClient):
+def test_random(client: FlaskClient) -> None:
     """Testing scorekeepers.random"""
     response: TestResponse = client.get("/scorekeepers/random")
     assert response.status_code == 302
