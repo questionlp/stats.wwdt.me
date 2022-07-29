@@ -21,6 +21,7 @@
 ### Development Changes
 
 - Upgrade pytest from 6.2.5 to 7.1.2
+- Add type hinting to pytest scripts
 - Upgrade Black from 22.1.0 to 22.6.0
 - Change Black `target-version` to remove `py36` and `py37`, and add `py310`
 
