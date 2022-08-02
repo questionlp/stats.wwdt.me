@@ -15,7 +15,7 @@ from wwdtm.show import Show, ShowUtility
 from app.locations.utility import format_location_name
 from app.utility import redirect_url
 
-blueprint = Blueprint("shows", __name__)
+blueprint = Blueprint("shows", __name__, template_folder="templates")
 
 
 def random_show_date() -> str:

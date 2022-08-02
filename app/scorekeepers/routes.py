@@ -10,7 +10,7 @@ from wwdtm.scorekeeper import Scorekeeper
 
 from app.utility import redirect_url
 
-blueprint = Blueprint("scorekeepers", __name__)
+blueprint = Blueprint("scorekeepers", __name__, template_folder="templates")
 
 
 def random_scorekeeper_slug() -> str:

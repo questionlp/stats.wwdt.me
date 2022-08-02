@@ -4,68 +4,110 @@
 # Copyright (c) 2018-2022 Linh Pham
 # stats.wwdt.me is released under the terms of the Apache License 2.0
 """Testing Main Redirects Module and Blueprint Views"""
+from flask.testing import FlaskClient
 import pytest
+from werkzeug.test import TestResponse
 
 
-def test_favicon(client):
+def test_favicon(client: FlaskClient) -> None:
     """Testing main_redirects.favicon"""
-    response = client.get("/favicon.ico")
+    response: TestResponse = client.get("/favicon.ico")
     assert response.status_code == 302
     assert response.location
 
 
-def test_guest(client):
-    """Testing main_redirects.guest"""
-    response = client.get("/guest")
+def test_guests(client: FlaskClient) -> None:
+    """Testing main_redirects.guests"""
+    response: TestResponse = client.get("/guest")
+    assert response.status_code == 302
+    assert response.location
+
+    response: TestResponse = client.get("/guest/")
+    assert response.status_code == 302
+    assert response.location
+
+    response: TestResponse = client.get("/guests")
     assert response.status_code == 302
     assert response.location
 
 
-def test_help(client):
+def test_help(client: FlaskClient) -> None:
     """Testing main_redirects.help"""
-    response = client.get("/help")
+    response: TestResponse = client.get("/help")
     assert response.status_code == 302
     assert response.location
 
 
-def test_host(client):
-    """Testing main_redirects.host"""
-    response = client.get("/host")
+def test_hosts(client: FlaskClient) -> None:
+    """Testing main_redirects.hosts"""
+    response: TestResponse = client.get("/host")
+    assert response.status_code == 302
+    assert response.location
+
+    response: TestResponse = client.get("/host/")
+    assert response.status_code == 302
+    assert response.location
+
+    response: TestResponse = client.get("/hosts")
     assert response.status_code == 302
     assert response.location
 
 
-def test_location(client):
-    """Testing main_redirects.location"""
-    response = client.get("/location")
+def test_locations(client: FlaskClient) -> None:
+    """Testing main_redirects.locations"""
+    response: TestResponse = client.get("/location")
+    assert response.status_code == 302
+    assert response.location
+
+    response: TestResponse = client.get("/location/")
+    assert response.status_code == 302
+    assert response.location
+
+    response: TestResponse = client.get("/locations")
     assert response.status_code == 302
     assert response.location
 
 
-def test_scorekeeper(client):
-    """Testing main_redirects.scorekeeper"""
-    response = client.get("/scorekeeper")
+def test_scorekeepers(client: FlaskClient) -> None:
+    """Testing main_redirects.scorekeepers"""
+    response: TestResponse = client.get("/scorekeeper")
+    assert response.status_code == 302
+    assert response.location
+
+    response: TestResponse = client.get("/scorekeeper/")
+    assert response.status_code == 302
+    assert response.location
+
+    response: TestResponse = client.get("/scorekeepers")
     assert response.status_code == 302
     assert response.location
 
 
-def test_search(client):
+def test_search(client: FlaskClient) -> None:
     """Testing main_redirects.search"""
-    response = client.get("/search")
+    response: TestResponse = client.get("/search")
     assert response.status_code == 302
     assert response.location
 
 
-def test_show(client):
-    """Testing main_redirects.show"""
-    response = client.get("/show")
+def test_shows(client: FlaskClient) -> None:
+    """Testing main_redirects.shows"""
+    response: TestResponse = client.get("/show")
+    assert response.status_code == 302
+    assert response.location
+
+    response: TestResponse = client.get("/show/")
+    assert response.status_code == 302
+    assert response.location
+
+    response: TestResponse = client.get("/shows")
     assert response.status_code == 302
     assert response.location
 
 
 @pytest.mark.parametrize("show_date", ["2018-10-27"])
-def test_npr_show_redirect(client, show_date: str):
+def test_npr_show_redirect(client: FlaskClient, show_date: str) -> None:
     """Testing main_redirects.guest"""
-    response = client.get(f"/s/{show_date}")
+    response: TestResponse = client.get(f"/s/{show_date}")
     assert response.status_code == 302
     assert response.location

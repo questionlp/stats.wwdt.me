@@ -21,8 +21,10 @@ def favicon():
 
 
 @blueprint.route("/guest")
-def guest():
-    """Redirect: /guest to /guests"""
+@blueprint.route("/guest/")
+@blueprint.route("/guests")
+def guests():
+    """Redirect: /guest and /guests to /guests/"""
     return redirect_url(url_for("guests.index"))
 
 
@@ -33,26 +35,34 @@ def help():
 
 
 @blueprint.route("/host")
-def host():
-    """Redirect: /host to /hosts"""
+@blueprint.route("/host/")
+@blueprint.route("/hosts")
+def hosts():
+    """Redirect: /host and /hosts to /hosts/"""
     return redirect_url(url_for("hosts.index"))
 
 
 @blueprint.route("/location")
-def location():
-    """Redirect: /location to /locations"""
+@blueprint.route("/location/")
+@blueprint.route("/locations")
+def locations():
+    """Redirect: /location and /locations to /locations/"""
     return redirect_url(url_for("locations.index"))
 
 
 @blueprint.route("/panelist")
-def panelist():
-    """Redirect: /panelist to /panelists"""
+@blueprint.route("/panelist/")
+@blueprint.route("/panelists")
+def panelists():
+    """Redirect: /panelist and /panelists to /panelists/"""
     return redirect_url(url_for("panelists.index"))
 
 
 @blueprint.route("/scorekeeper")
-def scorekeeper():
-    """Redirect: /scorekeeper to /scorekeepers"""
+@blueprint.route("/scorekeeper/")
+@blueprint.route("/scorekeepers")
+def scorekeepers():
+    """Redirect: /scorekeeper and /scorekeepers to /scorekeepers/"""
     return redirect_url(url_for("scorekeepers.index"))
 
 
@@ -63,8 +73,10 @@ def search():
 
 
 @blueprint.route("/show")
-def show():
-    """Redirect: /show to /shows"""
+@blueprint.route("/show/")
+@blueprint.route("/shows")
+def shows():
+    """Redirect: /show and /shows to /shows/"""
     return redirect_url(url_for("shows.index"))
 
 

@@ -10,7 +10,7 @@ from wwdtm.panelist import Panelist
 
 from app.utility import redirect_url
 
-blueprint = Blueprint("panelists", __name__)
+blueprint = Blueprint("panelists", __name__, template_folder="templates")
 
 
 def random_panelist_slug() -> str:

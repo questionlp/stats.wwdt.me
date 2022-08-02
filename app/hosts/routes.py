@@ -10,7 +10,7 @@ from wwdtm.host import Host
 
 from app.utility import redirect_url
 
-blueprint = Blueprint("hosts", __name__)
+blueprint = Blueprint("hosts", __name__, template_folder="templates")
 
 
 def random_host_slug() -> str:
