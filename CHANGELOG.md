@@ -1,6 +1,6 @@
 # Changes
 
-## 5.1.0 (In Progress)
+## 5.1.0
 
 ### Component Changes
 
