@@ -16,7 +16,6 @@
 - Update guests, hosts, locations, panelists, scorekeepers and shows routes
   and redirects so that canonical routes now have a trailing slash and requests
   made without a trailing slash will get redirected
-- Change `app.url_map.strict_slashes` from `False` to `True`
 
 ### Development Changes
 
