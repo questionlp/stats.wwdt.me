@@ -1,5 +1,14 @@
 # Changes
 
+## 5.1.2
+
+### Component Changes
+
+- Upgrade wwdtm from 2.0.5 to 2.0.7, which also includes the following changes:
+  - Upgrade MySQL Connector/Python from 8.0.28 to 8.0.30
+  - Upgrade NumPy from 1.22.3 to 1.23.2
+  - Upgrade pytz from 2022.1 to 2022.2.1
+
 ## 5.1.1
 
 ### Component Changes
