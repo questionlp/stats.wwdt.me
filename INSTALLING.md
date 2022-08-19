@@ -1,8 +1,9 @@
 # INSTALLING
 
-The following instructions target Ubuntu 20.04 LTS but should also apply to any
-system that uses `systemd` to install and manage services. Python 3.8 or newer
-is required and the system must already have a working installation available.
+The following instructions target Ubuntu 20.04 LTS and Ubuntu 22.04 LTS; but,
+with some minor changes, should also apply to Linux distribution that uses
+`systemd` to manage services. Python 3.8 or newer is required and the system
+must already have a working installation available.
 
 This document provides instructions on how to serve the application through
 [Gunicorn](https://gunicorn.org) and use [NGINX](https://nginx.org/) as a
@@ -46,26 +47,21 @@ should bring up the Stats Page web application.
 
 The Stats Page includes SQL queries that were written to target MySQL 5.5 and
 MariaDB 10.x. Some of the queries may throw errors due to violation of the
-`sql_mode` flag `ONLY_FULL_GROUP_BY` on newer versions of MySQL.
+`sql_mode` flag `ONLY_FULL_GROUP_BY` on newer versions of MySQL. These SQL
+queries should already be updated to resolve such errors.
 
-To remove the `ONLY_FULL_GROUP_BY` flag from the global `sql_mode` variable,
-you will first need to query the current value of `sql_mode` by running:
+In case these errors persist when running older versions of the Stats Page
+application, the `ONLY_FULL_GROUP_BY` flag needs to be removed from the global
+`sql_mode` variable. To verify which flags are currently set, you will first
+need to query the current value of `sql_mode` by running:
 
 ```sql
 select @@sql_mode;
 ```
 
-Copy the result and remove the `ONLY_FULL_GROUP_BY` flag from the string and
-run the following command to unset the flag globally until the MySQL service
-is restarted:
-
-```sql
-set global sql_mode='<flags>';
-```
-
 In order for the flag to be set on MySQL service startup, you will need to
 update the `mysqld.cnf` file on the server with the following configuration
-line:
+line and then restart the service.
 
 ```text
 sql-mode = <flags>
