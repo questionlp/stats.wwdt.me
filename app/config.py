@@ -57,11 +57,11 @@ def load_config(
 
         settings_config["app_time_zone"] = time_zone_object
         settings_config["time_zone"] = time_zone_string
-        settings_config["time_zone"] = time_zone_string
+        database_config["time_zone"] = time_zone_string
     else:
         settings_config["app_time_zone"] = pytz.timezone("UTC")
         settings_config["time_zone"] = "UTC"
-        settings_config["time_zone"] = "UTC"
+        database_config["time_zone"] = "UTC"
 
     return {
         "database": database_config,
