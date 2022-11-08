@@ -20,6 +20,8 @@
         "ga_property_code": null,
         "recent_days_ahead": 1,
         "recent_days_back": 31,
-        "time_zone": "UTC"
+        "time_zone": "UTC",
+        "mastodon_url": "",
+        "mastodon_user": ""
     }
 }

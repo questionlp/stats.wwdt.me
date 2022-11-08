@@ -1,5 +1,16 @@
 # Changes
 
+## 5.1.4
+
+### Application Changes
+
+- Update the URL in footer to use HTTPS instead of HTTP
+- Use `dict.get(key, default_value)` in `app/__init__.py` to get/set configuration values in order to avoid application startup errors if configuration keys are not set.
+  - Default value for `time_zone` is `UTC`
+  - Default values for any URL is an empty string
+- Adding `mastodon_url` and `mastodon_user` configuration keys in the `settings` section of the config file.
+- If the `mastodon_url` and `mastodon_user` keys contain a value, insert a link with `rel="me"` attribute for profile link validation.
+
 ## 5.1.3
 
 ### Bugfix
