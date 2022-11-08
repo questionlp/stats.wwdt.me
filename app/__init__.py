@@ -47,15 +47,15 @@ def create_app():
     app.jinja_env.globals["rank_map"] = dicts.PANELIST_RANKS
     app.jinja_env.globals["rendered_at"] = utility.generate_date_time_stamp
 
-    app.jinja_env.globals["time_zone"] = app.config["app_settings"]["app_time_zone"]
-    app.jinja_env.globals["ga_property_code"] = app.config["app_settings"][
-        "ga_property_code"
-    ]
-    app.jinja_env.globals["api_url"] = app.config["app_settings"]["api_url"]
-    app.jinja_env.globals["blog_url"] = app.config["app_settings"]["blog_url"]
-    app.jinja_env.globals["graphs_url"] = app.config["app_settings"]["graphs_url"]
-    app.jinja_env.globals["reports_url"] = app.config["app_settings"]["reports_url"]
-    app.jinja_env.globals["site_url"] = app.config["app_settings"]["site_url"]
+    app.jinja_env.globals["time_zone"] = app.config["app_settings"].get("app_time_zone", "UTC")
+    app.jinja_env.globals["ga_property_code"] = app.config["app_settings"].get("ga_property_code", "")
+    app.jinja_env.globals["api_url"] = app.config["app_settings"].get("api_url", "")
+    app.jinja_env.globals["blog_url"] = app.config["app_settings"].get("blog_url", "")
+    app.jinja_env.globals["graphs_url"] = app.config["app_settings"].get("graphs_url", "")
+    app.jinja_env.globals["reports_url"] = app.config["app_settings"].get("reports_url", "")
+    app.jinja_env.globals["site_url"] = app.config["app_settings"].get("site_url", "")
+    app.jinja_env.globals["mastodon_url"] = app.config["app_settings"].get("mastodon_url", "")
+    app.jinja_env.globals["mastodon_user"] = app.config["app_settings"].get("mastodon_user", "")
 
     # Register Jinja template filters
     app.jinja_env.filters["pretty_jsonify"] = utility.pretty_jsonify
