@@ -1,5 +1,28 @@
 # Changes
 
+## 5.1.5
+
+### Application Changes
+
+- Continue refactoring how application and database connection settings are loaded and setting default values
+
+### Component Changes
+
+- Upgrade wwdtm from 2.0.7 to 2.0.8, which also includes the following changes:
+  - Upgrade MySQL Connector/Python from 8.0.30 to 8.0.31
+  - Upgrade NumPy from 1.23.2 to 1.23.4
+  - Upgrade python-slugify from 5.0.2 to 6.1.2
+  - Upgrade pytz from 2022.2.1 to 2022.6
+- Upgrade Flask from 2.2.0 to 2.2.2
+- Upgrade Werkzeug from 2.2.1 to 2.2.2
+
+### Development Changes
+
+- Upgrade flake8 from 4.0.1 to 5.0.4
+- Upgrade pycodestyle from 2.8.0 to 2.9.1
+- Upgrade pytest from 7.1.2 to 7.2.0
+- Upgrade black from 22.6.0 to 22.10.0
+
 ## 5.1.4
 
 ### Application Changes
