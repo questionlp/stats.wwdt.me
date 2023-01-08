@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # vim: set noai syntax=python ts=4 sw=4:
 #
-# Copyright (c) 2018-2022 Linh Pham
+# Copyright (c) 2018-2023 Linh Pham
 # stats.wwdt.me is released under the terms of the Apache License 2.0
 """Hosts Routes for Wait Wait Stats Page"""
 from flask import Blueprint, current_app, redirect, render_template, url_for

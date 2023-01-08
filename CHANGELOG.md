@@ -1,5 +1,15 @@
 # Changes
 
+## 5.2.0
+
+### Component Changes
+
+- Upgrade Materialize from 1.1.0 to 1.2.1
+
+### Other Changes
+
+- Updating copyright year for all code files and add copyright block to `static/css/style.css` and `static/js/init.js`
+
 ## 5.1.5
 
 ### Application Changes
