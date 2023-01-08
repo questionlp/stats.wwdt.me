@@ -1,5 +1,11 @@
 # Changes
 
+## 5.2.1
+
+### Other Changes
+
+- Updating copyright year for code files under `tests`
+
 ## 5.2.0
 
 ### Component Changes
