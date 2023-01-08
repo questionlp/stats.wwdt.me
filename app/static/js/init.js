@@ -1,4 +1,10 @@
-document.addEventListener('DOMContentLoaded', function() {
+/*!
+ * stats.wwdt.me (https://github.com/questionlp/stats.wwdt.me_v5)
+ * Copyright 2018-2023 Linh Pham
+ * Apache License 2.0 (https://github.com/questionlp/stats.wwdt.me_v5/blob/main/LICENSE)
+ */
+
+document.addEventListener('DOMContentLoaded', function () {
     var sidenav_elems = document.querySelectorAll(".sidenav");
     var dropdown_elems = document.querySelectorAll(".dropdown-trigger");
     var collapsible_elems = document.querySelectorAll(".collapsible");
@@ -18,4 +24,4 @@ document.addEventListener('DOMContentLoaded', function() {
     var dropdown_instances = M.Dropdown.init(dropdown_elems, dropdown_options);
     var collapsible_instances = M.Collapsible.init(collapsible_elems);
     var materialboxed_instances = M.Materialbox.init(materialboxed_elems);
-  });
+});
