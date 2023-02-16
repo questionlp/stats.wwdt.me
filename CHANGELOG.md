@@ -1,5 +1,12 @@
 # Changes
 
+## 5.2.2
+
+### Component Changes
+
+- Upgrade Flask from 2.2.2 to 2.2.3
+- Upgrade Werkzeug from 2.2.2 to 2.2.3 to fix a security vulnerability
+
 ## 5.2.1
 
 ### Other Changes
