@@ -59,7 +59,7 @@ A template configuration file is included in the repository called `gunicorn.con
 * `accesslog`: The file that will be used to write access log entries to. Change the value from a string to `None` to disable access logging if that'll be handled by NGINX or a front-end HTTP server.
 * `errorlog`: The file that will be used to write error log entries to. Change the value from a string to `None` to disable error logging (not recommended). The directory needs to be created before running the application.
 
-For more information on the above configuration options and other configuration options avaiable, check out the [Gunicorn documentation site](https://docs.gunicorn.org/en/stable/settings.html).
+For more information on the above configuration options and other configuration options available, check out the [Gunicorn documentation site](https://docs.gunicorn.org/en/stable/settings.html).
 
 ## Setting up a Gunicorn systemd Service
 
