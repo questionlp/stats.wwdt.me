@@ -1,5 +1,11 @@
 # Changes
 
+## 5.2.3
+
+### Component Changes
+
+- Upgrade Materialize from 1.2.1 to 1.2.2
+
 ## 5.2.2
 
 ### Component Changes
