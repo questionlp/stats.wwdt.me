@@ -1,7 +1,6 @@
-python-dateutil==2.8.2
 Flask==2.2.3
 Werkzeug==2.2.3
 gunicorn==20.1.0
-Markdown==3.4.1
+Markdown==3.4.3
 
-wwdtm==2.0.8
+wwdtm==2.0.9

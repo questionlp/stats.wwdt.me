@@ -5,7 +5,6 @@
 # stats.wwdt.me is released under the terms of the Apache License 2.0
 """Configuration Loading and Parsing for Wait Wait Stats Page"""
 import json
-from multiprocessing import pool
 from typing import Any, Dict
 
 from app import utility
@@ -18,7 +17,7 @@ def load_config(
     config_file_path: str = "config.json",
     connection_pool_size: int = 12,
     connection_pool_name: str = "wwdtm_stats",
-    app_time_zone: str = "UTC"
+    app_time_zone: str = "UTC",
 ) -> Dict[str, Dict[str, Any]]:
     with open(config_file_path, "r") as config_file:
         app_config = json.load(config_file)
