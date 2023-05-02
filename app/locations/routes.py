@@ -41,7 +41,7 @@ def index():
     """View: Locations Index"""
     database_connection = mysql.connector.connect(**current_app.config["database"])
     location = Location(database_connection=database_connection)
-    location_list = location.retrieve_all()
+    location_list = location.retrieve_all(current_app.config["app_settings"]["sort_by_venue"])
     database_connection.close()
 
     if not location_list:

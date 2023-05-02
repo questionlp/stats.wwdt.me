@@ -1,5 +1,16 @@
 # Changes
 
+## 5.3.0
+
+### Application Changes
+
+- Add `settings.sort_by_venue` configuration setting that is used to determine whether to sort the locations by venue name or by state and city for the `/locations`. Defaults to `false`, which matches the previous behavior.
+
+### Component Changes
+
+- Upgrade Flask from 2.2.3 to 2.3.2
+- Upgrade wwdtm from 2.0.9 to 2.1.0
+
 ## 5.2.4
 
 ### Component Changes
