@@ -59,6 +59,9 @@ def load_config(
     settings_config["time_zone"] = time_zone_string
     database_config["time_zone"] = time_zone_string
 
+    # Read in setting to override locations sorting
+    settings_config["sort_by_venue"] = bool(settings_config.get("sort_by_venue", False))
+
     return {
         "database": database_config,
         "settings": settings_config,

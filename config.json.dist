@@ -22,6 +22,7 @@
         "recent_days_back": 31,
         "time_zone": "UTC",
         "mastodon_url": "",
-        "mastodon_user": ""
+        "mastodon_user": "",
+        "sort_by_venue": false
     }
 }

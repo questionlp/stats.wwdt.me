@@ -1,6 +1,5 @@
-Flask==2.2.3
-Werkzeug==2.2.3
+Flask==2.3.2
 gunicorn==20.1.0
 Markdown==3.4.3
 
-wwdtm==2.0.9
+wwdtm==2.1.0
