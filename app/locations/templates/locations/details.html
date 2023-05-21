@@ -12,7 +12,7 @@
 </div>
 
 <div class="row">
-    <div class="col s12 l6">
+    <div class="col s12 l6 location-recording-info">
         <div class="label">Recordings</div>
         {% if location.recordings.count %}
         {{ location.recordings.count.regular_shows }}
@@ -20,7 +20,7 @@
         <span class="data-na">N/A</span>
         {% endif %}
     </div>
-    <div class="col s12 l6">
+    <div class="col s12 l6 location-recording-info">
         <div class="label">Recordings including Best Of and Repeats</div>
         {% if location.recordings.count %}
         {{ location.recordings.count.all_shows }}

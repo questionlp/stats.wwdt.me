@@ -1,5 +1,16 @@
 # Changes
 
+## 5.3.1
+
+### Application Changes
+
+- Revamping of the formatting and styles when printing pages from the site to reduce wasted whitespace and other tweaks, including:
+  - Adding site title at the top of the document
+  - Update the guest, host, location, panelist, scorekeeper and show info blocks to mimic a two-column layout
+  - Change the `main` block to not cause the footer to be pushed to a new page
+  - Render the collection lists in a more compact manner
+  - Correct a few `color` values for a few types of links
+
 ## 5.3.0
 
 ### Application Changes
