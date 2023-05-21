@@ -10,7 +10,7 @@
     </div>
 </div>
 <div class="row">
-    <div class="col s12 l6">
+    <div class="col s12 l6 guest-appearance-info">
         <div class="label">Appearances</div>
         {% if guest.appearances.count %}
         {{ guest.appearances.count.regular_shows }}
@@ -18,7 +18,7 @@
         <span class="data-na">N/A</span>
         {% endif %}
     </div>
-    <div class="col s12 l6">
+    <div class="col s12 l6 guest-appearance-info">
         <div class="label">Appearances including Best Of and Repeats</div>
         {% if guest.appearances.count %}
         {{ guest.appearances.count.all_shows }}

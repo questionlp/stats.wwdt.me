@@ -17,6 +17,7 @@
     footer { margin-top: 2rem; }
     footer a { border-bottom: 1px dotted; color: rgba(255,255,255,0.9); }
     h1 { font-size: 1.5rem; font-weight: 600; margin: 1.5rem 0 1.5rem 0; }
+    h1.print-only { display: none; visibility: hidden; }
     h2 { font-size: 1.25rem; font-weight: 600; margin: 1.25rem 0 1.25rem 0; }
     .collection .collection-item { padding: 1.1rem; }
     .collection-item>a { border-bottom: 1px dotted !important; font-size: 1.1rem; }
@@ -110,12 +111,31 @@
 }
 
 @media only print {
-    *, html { background-color: initial; color: black !important; margin: 1rem; }
-    a:link { border-bottom: none; }
-    nav, div.sidenav, .show-nprlink, .page-breadcrumb, .footer-nav-links { display: none; visibility: hidden; }
-    div.label, div.show-block { border: none; }
+    html { background-color: initial !important; color: black !important; margin: 0.5rem; }
+    main { flex: initial; }
+    footer { margin-top: 1rem; }
+    a:link, a:visited { border-bottom: none; }
+    ul.collection { list-style: none; padding: 0 0.25rem; }
+    .collection .collection-item { padding: initial; margin: 0.75rem 0; }
+    .footer-copyright a:link, .footer-copyright a:visited { color: #3060c0 !important; }
+    nav, div.sidenav, .show-nprlink, .database-id, .page-breadcrumb, .show-all-intro, .show-all-years, .footer-nav { display: none; visibility: hidden; }
+    div.container h1.print-only { display: initial !important; margin-bottom: 1rem; visibility: initial !important; }
+    div.container h1.show-all-year-header { margin: 0.75rem 0; }
+    div.label, div.host-block, div.guest-block, div.location-block, div.panelist-block, div.scorekeeper-block, div.show-block { border: none; }
     div.show-block { margin-left: 0; }
     div.row.show-badges { margin-bottom: 1rem; }
-    .database-id, .show-bestof, .show-repeat { background-color: initial; color: initial; padding: initial; }
-    .database-id>a, .show-bestof>a, .show-repeat>a { color: black; }
+    .show-bestof, .show-repeat { background-color: initial; color: initial; font-style: italic; font-size: 110%; line-height: 1.5; padding: initial; }
+    .show-bestof>a, .show-repeat>a { color: black; }
+
+    div.guest-block div.row, div.host-block div.row,
+    div.location-block div.row, div.panelist-block div.row,
+    div.scorekeeper-block div.row, div.show-block div.row { margin: .75rem 0; }
+
+    ul.panelist-list, ul.guest-list { margin: 0 0 0.5rem 0; }
+    div.guest-appearance-info, div.host-appearance-info, div.location-recording-info,
+    div.panelist-appearance-info, div.panelist-bluff-info,
+    div.panelist-graph-appearance, div.panelist-graph-breakdown,
+    div.panelist-ranking-info, div.panelist-scoring-info, div.scorekeeper-appearance-info,
+    div.show-bluff-chosen, div.show-bluff-correct, div.show-host-info,
+    div.show-guest-info, div.show-panelist-info, div.show-scorekeeper-info { display: inline-block; vertical-align: top; width: 48%; }
 }

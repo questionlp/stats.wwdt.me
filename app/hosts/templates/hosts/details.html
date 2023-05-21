@@ -1,5 +1,6 @@
 {% for host in hosts %}
-{% if host and not host.slug == "tbd" %}{# {# Sanity Check in case of a None and Skip TBD Host #}
+{# Sanity Check in case of a None and Skip TBD Host #}
+{% if host and not host.slug == "tbd" %}
 <h2><a href="{{ url_for('hosts.details',
                          host_slug=host.slug) }}">{{ host.name }}</a></h2>
 
@@ -10,7 +11,7 @@
     </div>
 </div>
 <div class="row">
-    <div class="col s12 l6">
+    <div class="col s12 l6 host-appearance-info">
         <div class="label">Appearances</div>
         {% if host.appearances.count %}
         {{ host.appearances.count.regular_shows }}
@@ -18,7 +19,7 @@
         <span class="data-na">N/A</span>
         {% endif %}
     </div>
-    <div class="col s12 l6">
+    <div class="col s12 l6 host-appearance-info">
         <div class="label">Appearances including Best Of and Repeats</div>
         {% if host.appearances.count %}
         {{ host.appearances.count.all_shows }}

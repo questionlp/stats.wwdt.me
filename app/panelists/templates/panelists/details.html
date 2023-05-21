@@ -11,7 +11,7 @@
 </div>
 
 <div class="row">
-    <div class="col s12 l6">
+    <div class="col s12 l6 panelist-appearance-info">
         <div class="label">Appearances</div>
         {% if panelist.appearances.count %}
         <ul class="panelist-stats">
@@ -39,7 +39,7 @@
         <span class="data-na">N/A</span>
         {% endif %}
     </div>
-    <div class="col s12 l6">
+    <div class="col s12 l6 panelist-scoring-info">
         <div class="label">Scoring</div>
             {% if panelist.statistics %}
             <ul class="panelist-stats">
@@ -57,7 +57,7 @@
 </div>
 
 <div class="row">
-    <div class="col s12 l6">
+    <div class="col s12 l6 panelist-ranking-info">
         <div class="label">Rankings</div>
             {% if panelist.statistics %}
             <ul class="panelist-stats">
@@ -81,7 +81,7 @@
                 <span class="data-na">N/A</span>
             {% endif %}
     </div>
-    <div class="col s12 l6">
+    <div class="col s12 l6 panelist-bluff-info">
         <div class="label">Bluff (Data available for January 2000 to present)</div>
         <ul class="panelist-stats">
             <li>Chosen: {{ panelist.bluffs.chosen }}</li>
@@ -94,12 +94,12 @@
     <div class="col s12">
         <div class="label">Available Graphs</div>
     </div>
-    <div class="col s12 m6">
+    <div class="col s12 m6 panelist-graph-breakdown">
         <a href="{{ graphs_url }}/panelists/score-breakdown/{{ panelist.slug }}">
             Score Breakdown
         </a>
     </div>
-    <div class="col s12 m6">
+    <div class="col s12 m6 panelist-graph-appearance">
         <a href="{{ graphs_url }}/panelists/scores-by-appearance/{{ panelist.slug }}">
             Scores by Appearance
         </a>

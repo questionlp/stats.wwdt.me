@@ -15,7 +15,7 @@
 </div>
 
 <div class="row">
-    <div class="col s12 l6">
+    <div class="col s12 l6 scorekeeper-appearance-info">
         <div class="label">Appearances</div>
         {% if scorekeeper.appearances.count %}
         {{ scorekeeper.appearances.count.regular_shows }}
@@ -23,7 +23,7 @@
         <span class="data-na">N/A</span>
         {% endif %}
     </div>
-    <div class="col s12 l6">
+    <div class="col s12 l6 scorekeeper-appearance-info">
         <div class="label">Appearances including Best Of and Repeats</div>
         {% if scorekeeper.appearances.count %}
         {{ scorekeeper.appearances.count.all_shows }}

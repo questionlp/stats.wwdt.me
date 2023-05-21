@@ -1,5 +1,5 @@
 {% for show_year in shows %}
-<h1 id="show-{{ show_year }}">{{ show_year }}</h1>
+<h1 id="show-{{ show_year }}" class="show-all-year-header">{{ show_year }}</h1>
 
 {% for show in shows[show_year] %}
 {% if show %}{# Sanity Check in case of a None #}
@@ -40,7 +40,7 @@
 </div>
 
 <div class="row">
-    <div class="col s12 m6">
+    <div class="col s12 m6 show-host-info">
         <div class="label">Host</div>
         {% if show.host.slug != "tbd" %}
             {% if show.host.guest %}
@@ -52,7 +52,7 @@
             <span class="data-tbd">TBD</span>
         {% endif %}
     </div>
-    <div class="col s12 m6">
+    <div class="col s12 m6 show-scorekeeper-info ">
         <div class="label">Scorekeeper</div>
         {% if show.scorekeeper.slug != "tbd" %}
             {% if show.scorekeeper.description %}
@@ -72,7 +72,7 @@
 </div>
 
 <div class="row">
-    <div class="col s12 m6">
+    <div class="col s12 m6 show-panelist-info">
         <div class="label">Panelists</div>
         {% if show.panelists %}
             <ul class="panelist-list">
@@ -101,7 +101,7 @@
         {% endif %}
     </div>
 
-    <div class="col s12 m6">
+    <div class="col s12 m6 show-guest-info">
         <div class="label">Guests</div>
         {% if show.guests %}
             <ul class="guest-list">
@@ -130,7 +130,7 @@
     <div class="col s12">
         <div class="label">Bluff</div>
     </div>
-    <div class="col s12 m6">
+    <div class="col s12 m6 show-bluff-chosen">
         Chosen:
         {% if show.bluff.chosen_panelist %}
             <a href="{{ url_for('panelists.details',
@@ -139,7 +139,7 @@
             <span class="data-na">N/A</span>
         {% endif %}
     </div>
-    <div class="col s12 m6">
+    <div class="col s12 m6 show-bluff-correct">
         Correct:
         {% if show.bluff.correct_panelist %}
             <a href="{{ url_for('panelists.details',
