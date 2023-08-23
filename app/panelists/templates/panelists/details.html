@@ -120,7 +120,15 @@
                                         month=show_date.month,
                                         day=show_date.day) }}">
                     {{appearance.date}}</a>
-                    {% if appearance.score != None %}
+                    {% if appearance.score_decimal != None %}
+                        {{ "{:f}".format(appearance.score_decimal.normalize()) }}
+                        {% if appearance.lightning_round_start != None and appearance.lightning_round_correct != None %}
+                            ({{ appearance.lightning_round_start}} / {{ appearance.lightning_round_correct}})
+                        {% endif %}
+                        {% if appearance.rank %}
+                            <span class="panelist-rank">[{{ rank_map[appearance.rank] }}]</span>
+                        {% endif %}
+                    {% elif appearance.score != None %}
                         {{ appearance.score }}
                         {% if appearance.lightning_round_start != None and appearance.lightning_round_correct != None %}
                             ({{ appearance.lightning_round_start}} / {{ appearance.lightning_round_correct}})
