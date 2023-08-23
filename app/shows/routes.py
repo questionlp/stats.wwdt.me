@@ -92,12 +92,7 @@ def year(year: Union[str, int]):
     try:
         year = int(year)
         date_year = date(year=year, month=1, day=1)
-        show_months = show.retrieve_months_by_year(
-            year=year,
-            include_decimal_scores=current_app.config["app_settings"][
-                "use_decimal_scores"
-            ],
-        )
+        show_months = show.retrieve_months_by_year(year=year)
         database_connection.close()
 
         if not show_months:
