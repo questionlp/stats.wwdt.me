@@ -41,7 +41,16 @@
     </div>
     <div class="col s12 l6 panelist-scoring-info">
         <div class="label">Scoring</div>
-            {% if panelist.statistics %}
+            {% if panelist.statistics.scoring_decimal %}
+            <ul class="panelist-stats">
+                <li>Minimum / Maximum: {{ "{:f}".format(panelist.statistics.scoring_decimal.minimum.normalize()) }}
+                    / {{ "{:f}".format(panelist.statistics.scoring_decimal.maximum.normalize()) }}</li>
+                <li>Mean: {{ "{:f}".format(panelist.statistics.scoring_decimal.mean.normalize()) }}</li>
+                <li>Median: {{ "{:f}".format(panelist.statistics.scoring_decimal.median.normalize()) }}</li>
+                <li>Standard Deviation: {{ "{:f}".format(panelist.statistics.scoring_decimal.standard_deviation.normalize()) }}</li>
+                <li>Total: {{ "{:f}".format(panelist.statistics.scoring_decimal.total.normalize()) }}</li>
+            </ul>
+            {% elif panelist.statistics.scoring %}
             <ul class="panelist-stats">
                 <li>Minimum / Maximum: {{ panelist.statistics.scoring.minimum }}
                     / {{ panelist.statistics.scoring.maximum }}</li>
@@ -120,7 +129,15 @@
                                         month=show_date.month,
                                         day=show_date.day) }}">
                     {{appearance.date}}</a>
-                    {% if appearance.score != None %}
+                    {% if appearance.score_decimal != None %}
+                        {{ "{:f}".format(appearance.score_decimal.normalize()) }}
+                        {% if appearance.lightning_round_start != None and appearance.lightning_round_correct != None %}
+                            ({{ appearance.lightning_round_start}} / {{ appearance.lightning_round_correct}})
+                        {% endif %}
+                        {% if appearance.rank %}
+                            <span class="panelist-rank">[{{ rank_map[appearance.rank] }}]</span>
+                        {% endif %}
+                    {% elif appearance.score != None %}
                         {{ appearance.score }}
                         {% if appearance.lightning_round_start != None and appearance.lightning_round_correct != None %}
                             ({{ appearance.lightning_round_start}} / {{ appearance.lightning_round_correct}})

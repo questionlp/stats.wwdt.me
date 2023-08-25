@@ -79,7 +79,13 @@
             {% for panelist in show.panelists %}
                 <li>
                     {{ "%s:"|format(rank_map[panelist.rank]) if panelist.rank }}
-                    {% if panelist.score %}
+                    {% if use_decimal_scores and panelist.score_decimal %}
+                        <a href="{{ url_for('panelists.details',
+                                            panelist_slug=panelist.slug) }}">{{ panelist.name }}</a> {{ "{:f}".format(panelist.score_decimal.normalize()) }}
+                        {% if panelist.lightning_round_start != None and panelist.lightning_round_correct != None %}
+                            ({{ panelist.lightning_round_start}} / {{ panelist.lightning_round_correct}})
+                        {% endif %}
+                    {% elif panelist.score %}
                         <a href="{{ url_for('panelists.details',
                                             panelist_slug=panelist.slug) }}">{{ panelist.name }}</a> {{ panelist.score }}
                         {% if panelist.lightning_round_start != None and panelist.lightning_round_correct != None %}

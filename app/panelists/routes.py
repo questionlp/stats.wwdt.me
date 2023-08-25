@@ -53,7 +53,10 @@ def details(panelist_slug: str):
     """View: Panelists Details"""
     database_connection = mysql.connector.connect(**current_app.config["database"])
     panelist = Panelist(database_connection=database_connection)
-    details = panelist.retrieve_details_by_slug(panelist_slug)
+    details = panelist.retrieve_details_by_slug(
+        panelist_slug,
+        use_decimal_scores=current_app.config["app_settings"]["use_decimal_scores"],
+    )
     database_connection.close()
 
     if not details:
@@ -71,7 +74,9 @@ def all():
     """View: Panelist Details for All Panelists"""
     database_connection = mysql.connector.connect(**current_app.config["database"])
     panelist = Panelist(database_connection=database_connection)
-    panelists = panelist.retrieve_all_details()
+    panelists = panelist.retrieve_all_details(
+        use_decimal_scores=current_app.config["app_settings"]["use_decimal_scores"]
+    )
     database_connection.close()
 
     if not panelists:

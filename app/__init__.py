@@ -60,6 +60,9 @@ def create_app():
     app.jinja_env.globals["mastodon_user"] = _config["settings"].get(
         "mastodon_user", ""
     )
+    app.jinja_env.globals["use_decimal_scores"] = _config["settings"][
+        "use_decimal_scores"
+    ]
 
     # Register Jinja template filters
     app.jinja_env.filters["pretty_jsonify"] = utility.pretty_jsonify

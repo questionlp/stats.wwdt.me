@@ -119,7 +119,13 @@ def year_month(year: int, month: int):
 
     try:
         year_month = date(year=year, month=month, day=1)
-        shows = show.retrieve_details_by_year_month(year=year, month=month)
+        shows = show.retrieve_details_by_year_month(
+            year=year,
+            month=month,
+            include_decimal_scores=current_app.config["app_settings"][
+                "use_decimal_scores"
+            ],
+        )
         database_connection.close()
 
         if not shows:
@@ -143,7 +149,14 @@ def year_month_day(year: int, month: int, day: int):
 
     try:
         show_date = date(year=year, month=month, day=day)
-        details = show.retrieve_details_by_date(year=year, month=month, day=day)
+        details = show.retrieve_details_by_date(
+            year=year,
+            month=month,
+            day=day,
+            include_decimal_scores=current_app.config["app_settings"][
+                "use_decimal_scores"
+            ],
+        )
         database_connection.close()
 
         if not details:
@@ -170,7 +183,12 @@ def year_all(year: int):
 
     try:
         _ = date(year=year, month=1, day=1)
-        shows = show.retrieve_details_by_year(year=year)
+        shows = show.retrieve_details_by_year(
+            year=year,
+            include_decimal_scores=current_app.config["app_settings"][
+                "use_decimal_scores"
+            ],
+        )
         database_connection.close()
 
         if not shows:
@@ -200,7 +218,12 @@ def all():
 
         shows_by_year = {}
         for year in show_years:
-            shows = show.retrieve_details_by_year(year=year)
+            shows = show.retrieve_details_by_year(
+                year=year,
+                include_decimal_scores=current_app.config["app_settings"][
+                    "use_decimal_scores"
+                ],
+            )
             shows_by_year[year] = shows
 
         database_connection.close()
@@ -221,7 +244,11 @@ def on_this_day():
     database_connection = mysql.connector.connect(**current_app.config["database"])
     show = Show(database_connection=database_connection)
     today = date.today()
-    shows = show.retrieve_details_by_month_day(month=today.month, day=today.day)
+    shows = show.retrieve_details_by_month_day(
+        month=today.month,
+        day=today.day,
+        include_decimal_scores=current_app.config["app_settings"]["use_decimal_scores"],
+    )
     database_connection.close()
 
     if not shows:
