@@ -24,6 +24,6 @@
         "mastodon_url": "",
         "mastodon_user": "",
         "sort_by_venue": false,
-        "use_decimal_scores": true
+        "use_decimal_scores": false
     }
 }
