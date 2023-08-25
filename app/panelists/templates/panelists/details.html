@@ -45,9 +45,9 @@
             <ul class="panelist-stats">
                 <li>Minimum / Maximum: {{ "{:f}".format(panelist.statistics.scoring_decimal.minimum.normalize()) }}
                     / {{ "{:f}".format(panelist.statistics.scoring_decimal.maximum.normalize()) }}</li>
-                <li>Mean: {{ "{:.4f}".format(panelist.statistics.scoring_decimal.mean.normalize()) }}</li>
+                <li>Mean: {{ "{:f}".format(panelist.statistics.scoring_decimal.mean.normalize()) }}</li>
                 <li>Median: {{ "{:f}".format(panelist.statistics.scoring_decimal.median.normalize()) }}</li>
-                <li>Standard Deviation: {{ "{:.4f}".format(panelist.statistics.scoring_decimal.standard_deviation.normalize()) }}</li>
+                <li>Standard Deviation: {{ "{:f}".format(panelist.statistics.scoring_decimal.standard_deviation.normalize()) }}</li>
                 <li>Total: {{ "{:f}".format(panelist.statistics.scoring_decimal.total.normalize()) }}</li>
             </ul>
             {% elif panelist.statistics.scoring %}

@@ -5,6 +5,7 @@
 ### Application Changes
 
 - Add support for displaying panelist decimal scores stored in a new table column in the Wait Wait Stats Database instead of the standard than integer scores. This is handled via version 2.2.0 of the `wwdtm` library and a new `use_decimal_scores` setting in the `config.json` application configuration file. By default, the value will be set to `false` and must be changed to `true` and the appropriate changes deployed to the Wait Wait Stats Database.
+- Increase the number of digits displayed after the decimal point for certain panelist statistics from 4 to 5
 
 ### Component Changes
 
