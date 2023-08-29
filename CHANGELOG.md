@@ -15,6 +15,9 @@
 ### Development Changes
 
 - Upgrade black from 23.3.0 to 23.7.0
+- Upgrade flake8 from 6.0.0 to 6.1.0
+- Upgrade pycodestyle from 2.10.0 to 2.11.0
+- Upgrade pytest from 7.3.1 to 7.4.0
 
 ## 5.3.1
 
