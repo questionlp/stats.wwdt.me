@@ -23,6 +23,7 @@
         "time_zone": "UTC",
         "mastodon_url": "",
         "mastodon_user": "",
-        "sort_by_venue": false
+        "sort_by_venue": false,
+        "use_decimal_scores": false
     }
 }

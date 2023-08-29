@@ -62,6 +62,11 @@ def load_config(
     # Read in setting to override locations sorting
     settings_config["sort_by_venue"] = bool(settings_config.get("sort_by_venue", False))
 
+    # Read in setting on whether to use decimal scores
+    settings_config["use_decimal_scores"] = bool(
+        settings_config.get("use_decimal_scores", False)
+    )
+
     return {
         "database": database_config,
         "settings": settings_config,
