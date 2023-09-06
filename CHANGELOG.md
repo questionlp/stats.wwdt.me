@@ -1,5 +1,15 @@
 # Changes
 
+## 5.5.0
+
+### Application Changes
+
+- Add support for displaying panelist Lightning Fill-in-the-Blank starting score and correct answers stored in the corresponding new table columns. This is handled via version 2.3.0 of the `wwdtm` library and depends on setting the `use_decimal_scores` setting in the `config.json` application configuration file.
+
+### Component Changes
+
+- Upgrade wwdtm from 2.2.0 to 2.3.0
+
 ## 5.4.0
 
 ### Application Changes

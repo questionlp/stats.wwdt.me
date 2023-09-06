@@ -132,7 +132,8 @@
                     {% if appearance.score_decimal != None %}
                         {{ "{:f}".format(appearance.score_decimal.normalize()) }}
                         {% if appearance.lightning_round_start != None and appearance.lightning_round_correct != None %}
-                            ({{ appearance.lightning_round_start}} / {{ appearance.lightning_round_correct}})
+                            ({{ "{:f}".format(appearance.lightning_round_start_decimal.normalize()) if appearance.lightning_round_start_decimal else appearance.lightning_round_start }}
+                            / {{ "{:f}".format(appearance.lightning_round_correct_decimal.normalize()) if appearance.lightning_round_correct_decimal else appearance.lightning_round_correct }})
                         {% endif %}
                         {% if appearance.rank %}
                             <span class="panelist-rank">[{{ rank_map[appearance.rank] }}]</span>
