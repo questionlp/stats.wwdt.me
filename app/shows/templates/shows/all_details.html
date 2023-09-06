@@ -83,7 +83,8 @@
                         <a href="{{ url_for('panelists.details',
                                             panelist_slug=panelist.slug) }}">{{ panelist.name }}</a> {{ "{:f}".format(panelist.score_decimal.normalize()) }}
                         {% if panelist.lightning_round_start != None and panelist.lightning_round_correct != None %}
-                            ({{ panelist.lightning_round_start}} / {{ panelist.lightning_round_correct}})
+                            ({{ "{:f}".format(panelist.lightning_round_start_decimal.normalize()) if panelist.lightning_round_start_decimal else panelist.lightning_round_start }}
+                            / {{ "{:f}".format(panelist.lightning_round_correct_decimal.normalize()) if panelist.lightning_round_correct_decimal else panelist.lightning_round_correct }})
                         {% endif %}
                     {% elif panelist.score %}
                         <a href="{{ url_for('panelists.details',
