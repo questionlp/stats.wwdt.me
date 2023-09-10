@@ -1,5 +1,11 @@
 # Changes
 
+## 5.5.1
+
+### Component Changes
+
+- Upgrade wwdtm from 2.3.0 to 2.4.0
+
 ## 5.5.0
 
 ### Application Changes
