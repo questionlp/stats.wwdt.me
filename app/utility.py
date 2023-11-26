@@ -7,7 +7,6 @@
 import json
 
 from datetime import datetime
-from dateutil import parser
 from flask import current_app
 import markdown
 import pytz
@@ -23,7 +22,7 @@ def date_string_to_date(**kwargs):
     """Used to convert an ISO-style date string into a datetime object"""
     if "date_string" in kwargs and kwargs["date_string"]:
         try:
-            date_object = parser.parse(kwargs["date_string"])
+            date_object = datetime.strptime(kwargs["date_string"], "%Y-%m-%d")
             return date_object
 
         except ValueError:
