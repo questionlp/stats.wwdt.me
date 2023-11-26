@@ -6,7 +6,7 @@ Flask-based web application that serves up statistics and details for the NPR we
 
 ## Requirements
 
-- Python 3.8 or newer
+- Python 3.10 or newer
 - MySQL Server 8.0 or newer, or another MySQL Server distribution based on MySQL Server 8.0 or newer, hosting a version of the aforementioned Wait Wait Don't Tell Me! Stats database
 
 ## Installation

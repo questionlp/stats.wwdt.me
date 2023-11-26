@@ -5,8 +5,8 @@
 # stats.wwdt.me is released under the terms of the Apache License 2.0
 """Shows Routes for Wait Wait Stats Page"""
 from datetime import date
+import datetime
 
-from dateutil import parser
 from flask import Blueprint, current_app, render_template, url_for
 import mysql.connector
 from typing import Union
@@ -58,7 +58,7 @@ def index():
 def date_string(date_string: int):
     """View: Show Details for a given ISO Date String"""
     try:
-        parsed_date = parser.parse(date_string)
+        parsed_date = datetime.datetime.strptime(date_string, "%Y-%m-%d")
         database_connection = mysql.connector.connect(**current_app.config["database"])
         show_utility = ShowUtility(database_connection=database_connection)
         if not show_utility.date_exists(
@@ -75,7 +75,7 @@ def date_string(date_string: int):
             ),
             301,
         )
-    except parser.ParserError:
+    except ValueError:
         return redirect_url(url_for("shows.index"))
     except OverflowError:
         return redirect_url(url_for("shows.index"))
