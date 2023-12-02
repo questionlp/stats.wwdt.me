@@ -1,5 +1,11 @@
 # Changes
 
+## 5.7.1
+
+### Application Changes
+
+- Remove unneeded slash in an empty tag for the Materialize CSS include
+
 ## 5.7.0
 
 **Starting with version 5.7.0, support for all versions of Python prior to 3.10 have been deprecated.**
