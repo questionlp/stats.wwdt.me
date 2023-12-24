@@ -1,5 +1,11 @@
 # Changes
 
+## 5.7.2
+
+### Application Changes
+
+- Fix CSS for list and list item rendering within the show notes
+
 ## 5.7.1
 
 ### Application Changes

@@ -56,6 +56,8 @@
     ul.show-all-years { list-style: none; column-count: 4;}
     .show-description, .show-notes { white-space: pre-line; }
     .show-notes>p { margin: 0; }
+    .show-notes ul, .show-notes ol { margin-top: -1.5rem; }
+    .show-notes li { list-style: inside disc !important; line-height: 0.1; margin-left: 0.5rem; }
     .show-repeat>a { border-bottom: none !important; }
     .show-nprlink { background-color: #3366cc; color: white; }
     .show-nprlink>a { border-bottom: none !important; color: white; }
