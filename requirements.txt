@@ -2,4 +2,4 @@ Flask==3.0.0
 gunicorn==21.2.0
 Markdown==3.5.1
 
-wwdtm==2.6.0
+wwdtm==2.6.1

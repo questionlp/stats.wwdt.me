@@ -1,5 +1,11 @@
 # Changes
 
+## 5.8.1
+
+### Component Changes
+
+- Upgrade wwdtm from 2.6.0 to 2.6.1
+
 ## 5.8.0
 
 ### Application Changes
