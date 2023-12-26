@@ -1,5 +1,16 @@
 # Changes
 
+## 5.8.0
+
+### Application Changes
+
+- Add support for rendering multiple Bluff the Listener segment results for a given show
+
+### Component Changes
+
+- Upgrade wwdtm from 2.5.0 to 2.6.0, which requires Wait Wait Stats Database version 4.4 or higher
+- Upgrade Markdown from 3.4.3 to 3.5.1
+
 ## 5.7.2
 
 ### Application Changes

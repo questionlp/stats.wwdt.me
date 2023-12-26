@@ -129,30 +129,42 @@
     </div>
 </div>
 
-{% if show.bluff.chosen_panelist or show.bluff.correct_panelist %}
-<div class="row">
+{% if show.bluffs and show.bluffs|length >= 1 %}
+    {% if show.bluffs[0]["chosen_panelist"] and show.bluffs[0]["correct_panelist"] %}
+<div class="row bluff-label">
     <div class="col s12">
-        <div class="label">Bluff</div>
-    </div>
-    <div class="col s12 m6 show-bluff-chosen">
-        Chosen:
-        {% if show.bluff.chosen_panelist %}
-            <a href="{{ url_for('panelists.details',
-                                panelist_slug=show.bluff.chosen_panelist.slug) }}">{{ show.bluff.chosen_panelist.name }}</a>
-        {% else %}
-            <span class="data-na">N/A</span>
-        {% endif %}
-    </div>
-    <div class="col s12 m6 show-bluff-correct">
-        Correct:
-        {% if show.bluff.correct_panelist %}
-            <a href="{{ url_for('panelists.details',
-                                panelist_slug=show.bluff.correct_panelist.slug) }}">{{ show.bluff.correct_panelist.name }}</a>
-        {% else %}
-            <span class="data-na">N/A</span>
-        {% endif %}
+        <div class="label">Bluff(s)</div>
     </div>
 </div>
+
+<div class="bluff-wrap">
+    {% for bluff in show.bluffs %}
+    <div class="row bluff-segment">
+        <div class="col s12 m1 l1 bluff-segment-num">
+            #{{ bluff.segment }}
+        </div>
+        <div class="col s12 m5 l5 show-bluff-chosen">
+            Chosen:
+            {% if bluff.chosen_panelist %}
+                <a href="{{ url_for('panelists.details',
+                                    panelist_slug=bluff.chosen_panelist.slug) }}">{{ bluff.chosen_panelist.name }}</a>
+            {% else %}
+                <span class="data-na">N/A</span>
+            {% endif %}
+        </div>
+        <div class="col s12 m6 l6 show-bluff-correct">
+            Correct:
+            {% if bluff.correct_panelist %}
+                <a href="{{ url_for('panelists.details',
+                                    panelist_slug=bluff.correct_panelist.slug) }}">{{ bluff.correct_panelist.name }}</a>
+            {% else %}
+                <span class="data-na">N/A</span>
+            {% endif %}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+    {% endif %}
 {% endif %}
 
 {% if show.description %}
