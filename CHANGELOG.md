@@ -1,5 +1,28 @@
 # Changes
 
+## 5.9.0
+
+### Application Changes
+
+- Add type hints for a majority of the return types for routes and utility methods
+- Replace use of `typing.Optional` and `typing.Union` with the with the conventions documented in PEP-484 and PEP-604.
+
+### Component Changes
+
+- Upgrade wwdtm from 2.6.1 to 2.7.0, which includes:
+  - Upgrade numpy from 1.26.0 to 1.26.3
+- Upgrade Markdown from 3.5.1 to 3.5.2
+
+### Development Changes
+
+- Switch to Ruff for code linting and formatting (with the help of Black)
+- Upgrade pytest from 7.4.3 to 7.4.4
+- Upgrade black from 23.11.0 to 23.12.1
+
+### Documentation Changes
+
+- Update the copyright block at the top of each file to remove `coding` line and to include the appropriate SPDX license identifier
+
 ## 5.8.1
 
 ### Component Changes

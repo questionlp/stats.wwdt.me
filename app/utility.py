@@ -1,56 +1,56 @@
-# -*- coding: utf-8 -*-
-# vim: set noai syntax=python ts=4 sw=4:
-#
-# Copyright (c) 2018-2023 Linh Pham
+# Copyright (c) 2018-2024 Linh Pham
 # stats.wwdt.me is released under the terms of the Apache License 2.0
-"""Utility functions used by the Wait Wait Stats Page"""
+# SPDX-License-Identifier: Apache-2.0
+#
+# vim: set noai syntax=python ts=4 sw=4:
+"""Utility functions used by the Wait Wait Stats Page."""
 import json
-
 from datetime import datetime
-from flask import current_app
+
 import markdown
 import pytz
+from flask import current_app
 
 
-def current_year(time_zone: pytz.timezone = pytz.timezone("UTC")):
-    """Return the current year"""
-    now = datetime.now(time_zone)
+def current_year(time_zone: str = "UTC") -> str:
+    """Return the current year."""
+    _time_zone = pytz.timezone(time_zone)
+    now = datetime.now(_time_zone)
     return now.strftime("%Y")
 
 
-def date_string_to_date(**kwargs):
-    """Used to convert an ISO-style date string into a datetime object"""
+def date_string_to_date(**kwargs) -> datetime | None:
+    """Used to convert an ISO-style date string into a datetime object."""
     if "date_string" in kwargs and kwargs["date_string"]:
         try:
             date_object = datetime.strptime(kwargs["date_string"], "%Y-%m-%d")
-            return date_object
-
         except ValueError:
             return None
+
+        return date_object
 
     return None
 
 
-def generate_date_time_stamp(time_zone: pytz.timezone = pytz.timezone("UTC")):
-    """Generate a current date/timestamp string"""
-    now = datetime.now(time_zone)
+def generate_date_time_stamp(time_zone: str = "UTC") -> str:
+    """Generate a current date/timestamp string."""
+    _time_zone = pytz.timezone(time_zone)
+    now = datetime.now(_time_zone)
     return now.strftime("%Y-%m-%d %H:%M:%S %Z")
 
 
 def md_to_html(text: str):
-    """Converts Markdown text into HTML"""
+    """Converts Markdown text into HTML."""
     return markdown.markdown(text, output_format="html")
 
 
 def pretty_jsonify(data):
-    """Returns a prettier JSON output for an object than Flask's default
-    tojson filter"""
+    """Returns a prettified JSON output of the data."""
     return json.dumps(data, indent=2)
 
 
 def redirect_url(url: str, status_code: int = 302):
-    """Returns a redirect response for a given URL"""
-
+    """Returns a redirect response for a given URL."""
     # Use a custom response class to force set response headers
     # and handle the redirect to prevent browsers from caching redirect
     response = current_app.response_class(
@@ -64,12 +64,12 @@ def redirect_url(url: str, status_code: int = 302):
     return response
 
 
-def time_zone_parser(time_zone: str) -> pytz.timezone:
+def time_zone_parser(time_zone: str) -> tuple:
     """Parses a time zone name into a pytz.timezone object.
 
     Returns pytz.timezone object and string if time_zone is valid.
-    Otherwise, returns UTC if time zone is not a valid tz value."""
-
+    Otherwise, returns UTC if time zone is not a valid tz value.
+    """
     try:
         time_zone_object = pytz.timezone(time_zone)
         time_zone_string = time_zone_object.zone

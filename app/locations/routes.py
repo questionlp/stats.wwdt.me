@@ -1,11 +1,11 @@
-# -*- coding: utf-8 -*-
-# vim: set noai syntax=python ts=4 sw=4:
-#
-# Copyright (c) 2018-2023 Linh Pham
+# Copyright (c) 2018-2024 Linh Pham
 # stats.wwdt.me is released under the terms of the Apache License 2.0
-"""Locations Routes for Wait Wait Stats Page"""
-from flask import Blueprint, current_app, render_template, url_for
+# SPDX-License-Identifier: Apache-2.0
+#
+# vim: set noai syntax=python ts=4 sw=4:
+"""Locations Routes for Wait Wait Stats Page."""
 import mysql.connector
+from flask import Blueprint, Response, current_app, render_template, url_for
 from slugify import slugify
 from wwdtm.location import Location
 
@@ -15,8 +15,8 @@ from app.utility import redirect_url
 blueprint = Blueprint("locations", __name__, template_folder="templates")
 
 
-def random_location_slug() -> str:
-    """Return a random location slug from ww_locations table"""
+def random_location_slug() -> str | None:
+    """Return a random location slug from ww_locations table."""
     database_connection = mysql.connector.connect(**current_app.config["database"])
     cursor = database_connection.cursor(dictionary=False)
     query = (
@@ -33,12 +33,12 @@ def random_location_slug() -> str:
     if not result:
         return None
 
-    return result[0]
+    return str(result[0])
 
 
 @blueprint.route("/")
-def index():
-    """View: Locations Index"""
+def index() -> Response | str:
+    """View: Locations Index."""
     database_connection = mysql.connector.connect(**current_app.config["database"])
     location = Location(database_connection=database_connection)
     location_list = location.retrieve_all(
@@ -57,8 +57,8 @@ def index():
 
 
 @blueprint.route("/<string:location_slug>")
-def details(location_slug: str):
-    """View: Location Details"""
+def details(location_slug: str) -> Response | str:
+    """View: Location Details."""
     slug = slugify(location_slug)
     if location_slug and location_slug != slug:
         return redirect_url(url_for("locations.details", location_slug=slug))
@@ -88,8 +88,8 @@ def details(location_slug: str):
 
 
 @blueprint.route("/all")
-def all():
-    """View: Location Details for All Locations"""
+def all() -> Response | str:
+    """View: Location Details for All Locations."""
     database_connection = mysql.connector.connect(**current_app.config["database"])
     location = Location(database_connection=database_connection)
     locations = location.retrieve_all_details()
@@ -106,7 +106,7 @@ def all():
 
 
 @blueprint.route("/random")
-def random():
-    """View: Random Location Redirect"""
+def random() -> Response:
+    """View: Random Location Redirect."""
     _slug = random_location_slug()
     return redirect_url(url_for("locations.details", location_slug=_slug))

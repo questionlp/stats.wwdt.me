@@ -1,12 +1,13 @@
-# -*- coding: utf-8 -*-
-# vim: set noai syntax=python ts=4 sw=4:
-#
-# Copyright (c) 2018-2023 Linh Pham
+# Copyright (c) 2018-2024 Linh Pham
 # stats.wwdt.me is released under the terms of the Apache License 2.0
-"""Main Routes for Wait Wait Stats Page"""
-from os.path import exists, join
-from flask import Blueprint, Response, current_app, render_template, send_file
+# SPDX-License-Identifier: Apache-2.0
+#
+# vim: set noai syntax=python ts=4 sw=4:
+"""Main Routes for Wait Wait Stats Page."""
+from pathlib import Path
+
 import mysql.connector
+from flask import Blueprint, Response, current_app, render_template, send_file
 from wwdtm.show import Show
 
 from app.config import DEFAULT_RECENT_DAYS_AHEAD, DEFAULT_RECENT_DAYS_BACK
@@ -16,8 +17,8 @@ blueprint = Blueprint("main", __name__)
 
 
 @blueprint.route("/")
-def index():
-    """View: Site Index Page"""
+def index() -> str:
+    """View: Site Index Page."""
     database_connection = mysql.connector.connect(**current_app.config["database"])
     _settings = current_app.config["app_settings"]
 
@@ -53,24 +54,23 @@ def index():
 
 
 @blueprint.route("/robots.txt")
-def robots_txt():
-    """View: robots.txt File"""
-    if not exists(join(current_app.root_path, "static", "robots.txt")):
+def robots_txt() -> Response:
+    """View: robots.txt File."""
+    robots_txt_path = Path(current_app.root_path) / "static" / "robots.txt"
+    if not robots_txt_path.exists():
         response = render_template("robots.txt")
         return Response(response, mimetype="text/plain")
     else:
-        return send_file(
-            join(current_app.root_path, "static", "robots.txt"), mimetype="text/plain"
-        )
+        return send_file(robots_txt_path, mimetype="text/plain")
 
 
 @blueprint.route("/about")
-def about():
-    """View: About Page"""
+def about() -> str:
+    """View: About Page."""
     return render_template("pages/about.html")
 
 
 @blueprint.route("/site-history")
-def site_history():
-    """View: Site History Page"""
+def site_history() -> str:
+    """View: Site History Page."""
     return render_template("pages/site_history.html")

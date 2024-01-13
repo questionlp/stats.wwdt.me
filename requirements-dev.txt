@@ -1,10 +1,9 @@
-flake8==6.1.0
-pycodestyle==2.11.1
-pytest==7.4.3
-black==23.11.0
+ruff==0.1.13
+black==23.12.1
+pytest==7.4.4
 
 Flask==3.0.0
 gunicorn==21.2.0
-Markdown==3.5.1
+Markdown==3.5.2
 
-wwdtm==2.6.1
+wwdtm==2.7.0

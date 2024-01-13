@@ -1,11 +1,11 @@
-# -*- coding: utf-8 -*-
-# vim: set noai syntax=python ts=4 sw=4:
-#
-# Copyright (c) 2018-2023 Linh Pham
+# Copyright (c) 2018-2024 Linh Pham
 # stats.wwdt.me is released under the terms of the Apache License 2.0
-"""Panelists Routes for Wait Wait Stats Page"""
-from flask import Blueprint, current_app, redirect, render_template, url_for
+# SPDX-License-Identifier: Apache-2.0
+#
+# vim: set noai syntax=python ts=4 sw=4:
+"""Panelists Routes for Wait Wait Stats Page."""
 import mysql.connector
+from flask import Blueprint, Response, current_app, redirect, render_template, url_for
 from wwdtm.panelist import Panelist
 
 from app.utility import redirect_url
@@ -13,8 +13,8 @@ from app.utility import redirect_url
 blueprint = Blueprint("panelists", __name__, template_folder="templates")
 
 
-def random_panelist_slug() -> str:
-    """Return a random panelist slug from ww_panelists table"""
+def random_panelist_slug() -> str | None:
+    """Return a random panelist slug from ww_panelists table."""
     database_connection = mysql.connector.connect(**current_app.config["database"])
     cursor = database_connection.cursor(dictionary=False)
     query = (
@@ -31,12 +31,12 @@ def random_panelist_slug() -> str:
     if not result:
         return None
 
-    return result[0]
+    return str(result[0])
 
 
 @blueprint.route("/")
-def index():
-    """View: Panelists Index"""
+def index() -> Response | str:
+    """View: Panelists Index."""
     database_connection = mysql.connector.connect(**current_app.config["database"])
     panelist = Panelist(database_connection=database_connection)
     panelists = panelist.retrieve_all()
@@ -49,8 +49,8 @@ def index():
 
 
 @blueprint.route("/<string:panelist_slug>")
-def details(panelist_slug: str):
-    """View: Panelists Details"""
+def details(panelist_slug: str) -> Response | str:
+    """View: Panelists Details."""
     database_connection = mysql.connector.connect(**current_app.config["database"])
     panelist = Panelist(database_connection=database_connection)
     details = panelist.retrieve_details_by_slug(
@@ -70,8 +70,8 @@ def details(panelist_slug: str):
 
 
 @blueprint.route("/all")
-def all():
-    """View: Panelist Details for All Panelists"""
+def all() -> Response | str:
+    """View: Panelist Details for All Panelists."""
     database_connection = mysql.connector.connect(**current_app.config["database"])
     panelist = Panelist(database_connection=database_connection)
     panelists = panelist.retrieve_all_details(
@@ -86,7 +86,7 @@ def all():
 
 
 @blueprint.route("/random")
-def random():
-    """View: Random Panelist Redirect"""
+def random() -> Response:
+    """View: Random Panelist Redirect."""
     _slug = random_panelist_slug()
     return redirect_url(url_for("panelists.details", panelist_slug=_slug))

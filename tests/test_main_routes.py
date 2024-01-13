@@ -1,15 +1,15 @@
-# -*- coding: utf-8 -*-
-# vim: set noai syntax=python ts=4 sw=4:
-#
-# Copyright (c) 2018-2023 Linh Pham
+# Copyright (c) 2018-2024 Linh Pham
 # stats.wwdt.me is released under the terms of the Apache License 2.0
-"""Testing Main Routes Module and Blueprint Views"""
+# SPDX-License-Identifier: Apache-2.0
+#
+# vim: set noai syntax=python ts=4 sw=4:
+"""Testing Main Routes Module and Blueprint Views."""
 from flask.testing import FlaskClient
 from werkzeug.test import TestResponse
 
 
 def test_index(client: FlaskClient) -> None:
-    """Testing main.index"""
+    """Testing main.index."""
     response: TestResponse = client.get("/")
     assert response.status_code == 200
     assert b"Welcome to the Wait Wait" in response.data
@@ -17,7 +17,7 @@ def test_index(client: FlaskClient) -> None:
 
 
 def test_robots_txt(client: FlaskClient) -> None:
-    """Testing main.robots_txt"""
+    """Testing main.robots_txt."""
     response: TestResponse = client.get("/robots.txt")
     assert response.status_code == 200
     assert b"Sitemap:" in response.data
@@ -25,7 +25,7 @@ def test_robots_txt(client: FlaskClient) -> None:
 
 
 def test_about(client: FlaskClient) -> None:
-    """Testing main.about"""
+    """Testing main.about."""
     response: TestResponse = client.get("/about")
     assert response.status_code == 200
     assert b"Overview" in response.data
@@ -33,7 +33,7 @@ def test_about(client: FlaskClient) -> None:
 
 
 def test_site_history(client: FlaskClient) -> None:
-    """Testing main.site_history"""
+    """Testing main.site_history."""
     response: TestResponse = client.get("/site-history")
     assert response.status_code == 200
     assert b"Versions 1 and 2" in response.data

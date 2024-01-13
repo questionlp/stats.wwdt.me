@@ -1,20 +1,18 @@
-# -*- coding: utf-8 -*-
-# vim: set noai syntax=python ts=4 sw=4:
-#
-# Copyright (c) 2018-2023 Linh Pham
+# Copyright (c) 2018-2024 Linh Pham
 # stats.wwdt.me is released under the terms of the Apache License 2.0
-"""Testing Locations Module and Blueprint Views"""
-from typing import Dict, Union
-
-from flask.testing import FlaskClient
+# SPDX-License-Identifier: Apache-2.0
+#
+# vim: set noai syntax=python ts=4 sw=4:
+"""Testing Locations Module and Blueprint Views."""
 import pytest
+from flask.testing import FlaskClient
 from werkzeug.test import TestResponse
 
 from app.locations.utility import format_location_name
 
 
 def test_index(client: FlaskClient) -> None:
-    """Testing locations.index"""
+    """Testing locations.index."""
     response: TestResponse = client.get("/locations/")
     assert response.status_code == 200
     assert b"Locations" in response.data
@@ -23,7 +21,7 @@ def test_index(client: FlaskClient) -> None:
 
 @pytest.mark.parametrize("location_slug", ["chase-auditorium-chicago-il"])
 def test_details(client: FlaskClient, location_slug: str) -> None:
-    """Testing locations.details"""
+    """Testing locations.details."""
     response: TestResponse = client.get(f"/locations/{location_slug}")
     assert response.status_code == 200
     assert b"Location Details" in response.data
@@ -32,7 +30,7 @@ def test_details(client: FlaskClient, location_slug: str) -> None:
 
 
 def test_all(client: FlaskClient) -> None:
-    """Testing locations.all"""
+    """Testing locations.all."""
     response: TestResponse = client.get("/locations/all")
     assert response.status_code == 200
     assert b"Location Details" in response.data
@@ -41,7 +39,7 @@ def test_all(client: FlaskClient) -> None:
 
 
 def test_random(client: FlaskClient) -> None:
-    """Testing locations.random"""
+    """Testing locations.random."""
     response: TestResponse = client.get("/locations/random")
     assert response.status_code == 302
     assert response.location
@@ -57,7 +55,7 @@ def test_random(client: FlaskClient) -> None:
         }
     ],
 )
-def test_format_location_name(location: Dict[str, str]) -> None:
-    """Testing locations.utility.format_location_name()"""
-    name: Union[str, None] = format_location_name(location)
+def test_format_location_name(location: dict[str, str]) -> None:
+    """Testing locations.utility.format_location_name()."""
+    name: str | None = format_location_name(location)
     assert name

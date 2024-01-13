@@ -1,11 +1,11 @@
-# -*- coding: utf-8 -*-
-# vim: set noai syntax=python ts=4 sw=4:
-#
-# Copyright (c) 2018-2023 Linh Pham
+# Copyright (c) 2018-2024 Linh Pham
 # stats.wwdt.me is released under the terms of the Apache License 2.0
-"""Guests Routes for Wait Wait Stats Page"""
-from flask import Blueprint, current_app, redirect, render_template, url_for
+# SPDX-License-Identifier: Apache-2.0
+#
+# vim: set noai syntax=python ts=4 sw=4:
+"""Guests Routes for Wait Wait Stats Page."""
 import mysql.connector
+from flask import Blueprint, Response, current_app, redirect, render_template, url_for
 from wwdtm.guest import Guest
 
 from app.utility import redirect_url
@@ -13,8 +13,8 @@ from app.utility import redirect_url
 blueprint = Blueprint("guests", __name__, template_folder="templates")
 
 
-def random_guest_slug() -> str:
-    """Return a random guest slug from ww_guests table"""
+def random_guest_slug() -> str | None:
+    """Return a random guest slug from ww_guests table."""
     database_connection = mysql.connector.connect(**current_app.config["database"])
     cursor = database_connection.cursor(dictionary=False)
     query = (
@@ -31,12 +31,12 @@ def random_guest_slug() -> str:
     if not result:
         return None
 
-    return result[0]
+    return str(result[0])
 
 
 @blueprint.route("/")
-def index():
-    """View: Guests Index"""
+def index() -> Response | str:
+    """View: Guests Index."""
     database_connection = mysql.connector.connect(**current_app.config["database"])
     guest = Guest(database_connection=database_connection)
     guests = guest.retrieve_all()
@@ -49,8 +49,8 @@ def index():
 
 
 @blueprint.route("/<string:guest_slug>")
-def details(guest_slug: str):
-    """View: Guest Details"""
+def details(guest_slug: str) -> Response | str:
+    """View: Guest Details."""
     database_connection = mysql.connector.connect(**current_app.config["database"])
     guest = Guest(database_connection=database_connection)
     details = guest.retrieve_details_by_slug(guest_slug)
@@ -67,8 +67,8 @@ def details(guest_slug: str):
 
 
 @blueprint.route("/all")
-def all():
-    """View: Guest Details for All Guests"""
+def all() -> Response | str:
+    """View: Guest Details for All Guests."""
     database_connection = mysql.connector.connect(**current_app.config["database"])
     guest = Guest(database_connection=database_connection)
     guests = guest.retrieve_all_details()
@@ -81,7 +81,7 @@ def all():
 
 
 @blueprint.route("/random")
-def random():
-    """View: Random Guest Redirect"""
+def random() -> Response:
+    """View: Random Guest Redirect."""
     _slug = random_guest_slug()
     return redirect_url(url_for("guests.details", guest_slug=_slug))
