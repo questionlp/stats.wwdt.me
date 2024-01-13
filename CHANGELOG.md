@@ -4,8 +4,9 @@
 
 ### Application Changes
 
-- Add type hints for a majority of the return types for routes and utility methods
-- Replace use of `typing.Optional` and `typing.Union` with the with the conventions documented in PEP-484 and PEP-604.
+- Add type hints for a majority of the return types for routes and utility modules
+- Replace use of `typing.Optional` and `typing.Union` with the with the conventions documented in PEP-484 and PEP-604
+- Change handling of `time_zone` configuration value to prevent use of `pytz.timezone()` in function arguments
 
 ### Component Changes
 
