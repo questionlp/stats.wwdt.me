@@ -1,15 +1,15 @@
-# -*- coding: utf-8 -*-
-# vim: set noai syntax=python ts=4 sw=4:
-#
-# Copyright (c) 2018-2023 Linh Pham
+# Copyright (c) 2018-2024 Linh Pham
 # stats.wwdt.me is released under the terms of the Apache License 2.0
-"""Shows Routes for Wait Wait Stats Page"""
-from datetime import date
+# SPDX-License-Identifier: Apache-2.0
+#
+# vim: set noai syntax=python ts=4 sw=4:
+"""Shows Routes for Wait Wait Stats Page."""
 import datetime
+from datetime import date
+from typing import Any
 
-from flask import Blueprint, current_app, render_template, url_for
 import mysql.connector
-from typing import Union
+from flask import Blueprint, Response, current_app, render_template, url_for
 from wwdtm.show import Show, ShowUtility
 
 from app.locations.utility import format_location_name
@@ -18,9 +18,8 @@ from app.utility import redirect_url
 blueprint = Blueprint("shows", __name__, template_folder="templates")
 
 
-def random_show_date() -> str:
-    """Return a random show date from the ww_shows table in YYYY-MM-DD
-    format"""
+def random_show_date() -> str | None:
+    """Return a random show date from the ww_shows table."""
     database_connection = mysql.connector.connect(**current_app.config["database"])
     cursor = database_connection.cursor(dictionary=False)
     query = (
@@ -41,8 +40,8 @@ def random_show_date() -> str:
 
 
 @blueprint.route("/")
-def index():
-    """View: Shows Index"""
+def index() -> Response | str:
+    """View: Shows Index."""
     database_connection = mysql.connector.connect(**current_app.config["database"])
     show = Show(database_connection=database_connection)
     years = show.retrieve_years()
@@ -55,8 +54,8 @@ def index():
 
 
 @blueprint.route("/<string:date_string>")
-def date_string(date_string: int):
-    """View: Show Details for a given ISO Date String"""
+def date_string(date_string: int) -> Response:
+    """View: Show Details for a given ISO Date String."""
     try:
         parsed_date = datetime.datetime.strptime(date_string, "%Y-%m-%d")
         database_connection = mysql.connector.connect(**current_app.config["database"])
@@ -84,8 +83,8 @@ def date_string(date_string: int):
 
 
 @blueprint.route("/<int:year>")
-def year(year: Union[str, int]):
-    """View: List of Available Months for Year"""
+def year(year: str | int) -> Response | str:
+    """View: List of Available Months for Year."""
     database_connection = mysql.connector.connect(**current_app.config["database"])
     show = Show(database_connection=database_connection)
 
@@ -112,8 +111,8 @@ def year(year: Union[str, int]):
 
 
 @blueprint.route("/<int:year>/<int:month>")
-def year_month(year: int, month: int):
-    """View: Show Details for Year, Month"""
+def year_month(year: int, month: int) -> Response | str:
+    """View: Show Details for Year, Month."""
     database_connection = mysql.connector.connect(**current_app.config["database"])
     show = Show(database_connection=database_connection)
 
@@ -142,8 +141,8 @@ def year_month(year: int, month: int):
 
 
 @blueprint.route("/<int:year>/<int:month>/<int:day>")
-def year_month_day(year: int, month: int, day: int):
-    """View: Show Details for a given Year, Month, Day"""
+def year_month_day(year: int, month: int, day: int) -> Response | str:
+    """View: Show Details for a given Year, Month, Day."""
     database_connection = mysql.connector.connect(**current_app.config["database"])
     show = Show(database_connection=database_connection)
 
@@ -176,8 +175,8 @@ def year_month_day(year: int, month: int, day: int):
 
 
 @blueprint.route("/<int:year>/all")
-def year_all(year: int):
-    """View: Show Details for Year"""
+def year_all(year: int) -> Response | str | Any:
+    """View: Show Details for Year."""
     database_connection = mysql.connector.connect(**current_app.config["database"])
     show = Show(database_connection=database_connection)
 
@@ -205,8 +204,8 @@ def year_all(year: int):
 
 
 @blueprint.route("/all")
-def all():
-    """View: Show Details for All Shows"""
+def all() -> Response | str:
+    """View: Show Details for All Shows."""
     database_connection = mysql.connector.connect(**current_app.config["database"])
     show = Show(database_connection=database_connection)
 
@@ -239,8 +238,8 @@ def all():
 
 
 @blueprint.route("/on-this-day")
-def on_this_day():
-    """View: Show Details for Shows Aired On This Day"""
+def on_this_day() -> Response | str:
+    """View: Show Details for Shows Aired On This Day."""
     database_connection = mysql.connector.connect(**current_app.config["database"])
     show = Show(database_connection=database_connection)
     today = date.today()
@@ -260,13 +259,13 @@ def on_this_day():
 
 
 @blueprint.route("/random")
-def random():
-    """View: Random Show Redirect"""
+def random() -> Response:
+    """View: Random Show Redirect."""
     _date = random_show_date()
     return redirect_url(url_for("shows.date_string", date_string=_date))
 
 
 @blueprint.route("/recent")
-def recent():
-    """Redirect: /shows/recent to /"""
+def recent() -> Response:
+    """Redirect: /shows/recent to /."""
     return redirect_url(url_for("main.index"))

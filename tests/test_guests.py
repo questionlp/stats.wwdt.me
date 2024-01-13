@@ -1,16 +1,16 @@
-# -*- coding: utf-8 -*-
-# vim: set noai syntax=python ts=4 sw=4:
-#
-# Copyright (c) 2018-2023 Linh Pham
+# Copyright (c) 2018-2024 Linh Pham
 # stats.wwdt.me is released under the terms of the Apache License 2.0
-"""Testing Guests Module and Blueprint Views"""
-from flask.testing import FlaskClient
+# SPDX-License-Identifier: Apache-2.0
+#
+# vim: set noai syntax=python ts=4 sw=4:
+"""Testing Guests Module and Blueprint Views."""
 import pytest
+from flask.testing import FlaskClient
 from werkzeug.test import TestResponse
 
 
 def test_index(client: FlaskClient) -> None:
-    """Testing guests.index"""
+    """Testing guests.index."""
     response: TestResponse = client.get("/guests/")
     assert response.status_code == 200
     assert b"Guests" in response.data
@@ -19,7 +19,7 @@ def test_index(client: FlaskClient) -> None:
 
 @pytest.mark.parametrize("guest_slug", ["tom-hanks"])
 def test_details(client: FlaskClient, guest_slug: str) -> None:
-    """Testing guests.details"""
+    """Testing guests.details."""
     response: TestResponse = client.get(f"/guests/{guest_slug}")
     assert response.status_code == 200
     assert b"Guest Details" in response.data
@@ -28,7 +28,7 @@ def test_details(client: FlaskClient, guest_slug: str) -> None:
 
 
 def test_all(client: FlaskClient) -> None:
-    """Testing guests.all"""
+    """Testing guests.all."""
     response: TestResponse = client.get("/guests/all")
     assert response.status_code == 200
     assert b"Guest Details" in response.data
@@ -37,7 +37,7 @@ def test_all(client: FlaskClient) -> None:
 
 
 def test_random(client: FlaskClient) -> None:
-    """Testing guests.random"""
+    """Testing guests.random."""
     response: TestResponse = client.get("/guests/random")
     assert response.status_code == 302
     assert response.location

@@ -1,11 +1,11 @@
-# -*- coding: utf-8 -*-
-# vim: set noai syntax=python ts=4 sw=4:
-#
-# Copyright (c) 2018-2023 Linh Pham
+# Copyright (c) 2018-2024 Linh Pham
 # stats.wwdt.me is released under the terms of the Apache License 2.0
-"""Hosts Routes for Wait Wait Stats Page"""
-from flask import Blueprint, current_app, redirect, render_template, url_for
+# SPDX-License-Identifier: Apache-2.0
+#
+# vim: set noai syntax=python ts=4 sw=4:
+"""Hosts Routes for Wait Wait Stats Page."""
 import mysql.connector
+from flask import Blueprint, Response, current_app, redirect, render_template, url_for
 from wwdtm.host import Host
 
 from app.utility import redirect_url
@@ -13,8 +13,8 @@ from app.utility import redirect_url
 blueprint = Blueprint("hosts", __name__, template_folder="templates")
 
 
-def random_host_slug() -> str:
-    """Return a random host slug from ww_hosts table"""
+def random_host_slug() -> str | None:
+    """Return a random host slug from ww_hosts table."""
     database_connection = mysql.connector.connect(**current_app.config["database"])
     cursor = database_connection.cursor(dictionary=False)
     query = (
@@ -31,12 +31,12 @@ def random_host_slug() -> str:
     if not result:
         return None
 
-    return result[0]
+    return str(result[0])
 
 
 @blueprint.route("/")
-def index():
-    """View: Hosts Index"""
+def index() -> Response | str:
+    """View: Hosts Index."""
     database_connection = mysql.connector.connect(**current_app.config["database"])
     host = Host(database_connection=database_connection)
     hosts = host.retrieve_all()
@@ -49,8 +49,8 @@ def index():
 
 
 @blueprint.route("/<string:host_slug>")
-def details(host_slug: str):
-    """View: Host Details"""
+def details(host_slug: str) -> Response | str:
+    """View: Host Details."""
     database_connection = mysql.connector.connect(**current_app.config["database"])
     host = Host(database_connection=database_connection)
     details = host.retrieve_details_by_slug(host_slug)
@@ -65,8 +65,8 @@ def details(host_slug: str):
 
 
 @blueprint.route("/all")
-def all():
-    """View: Host Details for All Hosts"""
+def all() -> Response | str:
+    """View: Host Details for All Hosts."""
     database_connection = mysql.connector.connect(**current_app.config["database"])
     host = Host(database_connection=database_connection)
     hosts = host.retrieve_all_details()
@@ -79,7 +79,7 @@ def all():
 
 
 @blueprint.route("/random")
-def random():
-    """View: Random Host Redirect"""
+def random() -> Response:
+    """View: Random Host Redirect."""
     _slug = random_host_slug()
     return redirect_url(url_for("hosts.details", host_slug=_slug))
