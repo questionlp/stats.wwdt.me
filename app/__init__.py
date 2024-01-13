@@ -1,9 +1,9 @@
-# -*- coding: utf-8 -*-
-# vim: set noai syntax=python ts=4 sw=4:
-#
-# Copyright (c) 2018-2023 Linh Pham
+# Copyright (c) 2018-2024 Linh Pham
 # stats.wwdt.me is released under the terms of the Apache License 2.0
-"""Core Application for Wait Wait Stats Page"""
+# SPDX-License-Identifier: Apache-2.0
+#
+# vim: set noai syntax=python ts=4 sw=4:
+"""Core Application for Wait Wait Stats Page."""
 from flask import Flask
 from wwdtm import VERSION as WWDTM_VERSION
 
@@ -12,16 +12,16 @@ from app.errors import handlers
 from app.guests.routes import blueprint as guests_bp
 from app.hosts.routes import blueprint as hosts_bp
 from app.locations.routes import blueprint as locations_bp
-from app.main.routes import blueprint as main_bp
 from app.main.redirects import blueprint as redirects_bp
+from app.main.routes import blueprint as main_bp
 from app.panelists.routes import blueprint as panelists_bp
 from app.scorekeepers.routes import blueprint as scorekeepers_bp
-from app.sitemaps.routes import blueprint as sitemaps_bp
 from app.shows.routes import blueprint as shows_bp
+from app.sitemaps.routes import blueprint as sitemaps_bp
 from app.version import APP_VERSION
 
 
-def create_app():
+def create_app() -> Flask:
     app = Flask(__name__)
     app.url_map.strict_slashes = False
 
@@ -47,7 +47,7 @@ def create_app():
     app.jinja_env.globals["rank_map"] = dicts.PANELIST_RANKS
     app.jinja_env.globals["rendered_at"] = utility.generate_date_time_stamp
 
-    app.jinja_env.globals["time_zone"] = _config["settings"]["app_time_zone"]
+    app.jinja_env.globals["time_zone"] = _config["settings"]["time_zone"]
     app.jinja_env.globals["ga_property_code"] = _config["settings"].get(
         "ga_property_code", ""
     )

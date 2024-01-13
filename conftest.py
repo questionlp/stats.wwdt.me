@@ -1,10 +1,9 @@
-# -*- coding: utf-8 -*-
-# vim: set noai syntax=python ts=4 sw=4:
-#
-# Copyright (c) 2018-2023 Linh Pham
+# Copyright (c) 2018-2024 Linh Pham
 # stats.wwdt.me is released under the terms of the Apache License 2.0
-"""pytest conftest.py File"""
-
+# SPDX-License-Identifier: Apache-2.0
+#
+# vim: set noai syntax=python ts=4 sw=4:
+"""pytest conftest.py File."""
 import pytest
 
 from app import create_app
