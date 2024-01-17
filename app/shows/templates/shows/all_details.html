@@ -22,7 +22,13 @@
                                                             month=repeat_show.month,
                                                             day=repeat_show.day) }}">{{ show.original_show_date }}</a></span>
         {% endif %}
-        <span class="show-nprlink"><a href="{{ url_for('main_redirects.npr_show_redirect', show_date=show.date) }}">NPR</a></span>
+        <span class="show-nprlink">
+        {% if show.show_url %}
+        <a href="{{ show.show_url }}">NPR</a>
+        {% else %}
+        <a href="{{ url_for('main_redirects.npr_show_redirect', show_date=show.date) }}">NPR</a>
+        {% endif %}
+        </span>
         <span class="database-id">DB ID: {{ show.id }}</span>
     </div>
 </div>

@@ -15,8 +15,10 @@
             <li><a href="{{ blog_url }}">Blog</a></li>
             <li><a href="{{ graphs_url }}">Graphs</a></li>
             <li><a href="{{ reports_url }}">Reports</a></li>
+            {% if patreon_url %}
             <li class="divider" tabindex="-1"></li>
-            <li><a href="{{ blog_url }}/contact-me/">Contact Me</a></li>
+            <li><a href="{{ patreon_url }}">Patreon</a></li>
+            {% endif %}
         </ul>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li><a href="{{ url_for('guests.index') }}">Guests</a></li>
@@ -53,8 +55,10 @@
         <li><a href="{{ blog_url }}">Blog</a></li>
         <li><a href="{{ graphs_url }}">Graphs</a></li>
         <li><a href="{{ reports_url }}">Reports</a></li>
+        {% if patreon_url %}
         <li><div class="divider"></div></li>
-        <li><a href="{{ blog_url }}/contact-me/">Contact Me</a></li>
+        <li><a href="{{ patreon_url }}">Patreon</a></li>
+        {% endif %}
     </ul>
 </div>
 <!-- End Navigation -->
