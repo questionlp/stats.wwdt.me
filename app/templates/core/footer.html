@@ -9,6 +9,9 @@
                     <li><a href="{{ blog_url }}">Blog</a></li>
                     <li><a href="{{ graphs_url }}">Graphs</a></li>
                     <li><a href="{{ reports_url }}">Reports</a></li>
+                    {% if patreon_url %}
+                    <li><a href="{{ patreon_url }}">Patreon</a></li>
+                    {% endif %}
                 </ul>
             </div>
         </div>

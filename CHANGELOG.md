@@ -1,5 +1,18 @@
 # Changes
 
+## 5.10.0
+
+### Application Changes
+
+- Add support for new show URL field from the Wait Wait Stats Database, which is used in place of
+  the `/s/` redirect link if there is a value stored for a particular show
+- Add support for Patreon link in the side pop-out nav, dropdown nav menu and in the footer by way
+  of the `settings.patreon_url` config key
+
+### Component Changes
+
+- Upgrade wwdtm from 2.7.0 to 2.8.0
+
 ## 5.9.0
 
 ### Application Changes
