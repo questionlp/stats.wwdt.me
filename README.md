@@ -21,6 +21,10 @@ For changelogs, refer to [CHANGELOG.md](./CHANGELOG.md).
 
 If you would like contribute to this project, please make sure to review both the [Code of Conduct](./CODE_OF_CONDUCT.md) and the [Contributing](./CONTRIBUTING.md) documents in this repository.
 
+## Sponsoring
+
+If you would like to help sponsor the continued development and maintenance of the Wait Wait Stats project, please consider sponsoring me on [GitHub](https://github.com/sponsors/questionlp) or on [Patreon](https://patreon.com/Linh_Pham).
+
 ## License
 
 This web application is licensed under the terms of the [Apache License 2.0](./LICENSE).
