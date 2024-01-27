@@ -112,3 +112,18 @@ server {
 ```
 
 NGINX can also be configured to cache rendered pages to quickly serve up pages that are commonly and frequently requested. NGINX has documentation on configuring and enable proxy caching in their [ngx_http_proxy_module](https://nginx.org/en/docs/http/ngx_http_proxy_module.html) module documentation.
+
+If proxy caching is used, the following configuration settings should be added to allow the random guests, hosts, locations, panelists, scorekeepers and shows routes to work correctly.
+
+```nginx
+    location ~* /(guests|hosts|locations|panelists|shows|scorekeepers)/random {
+        proxy_pass http://gunicorn-wwdtmstats$request_uri;
+        proxy_cache off;
+        proxy_set_header Host $http_host;
+        proxy_set_header X-Forwarded-For $remote_addr;
+        proxy_set_header X-Real-IP $remote_addr;
+        add_header Cache-Control 'no-store';
+        add_header Cache-Control 'no-cache';
+        expires 0;
+    }
+```
