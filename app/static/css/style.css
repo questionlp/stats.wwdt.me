@@ -24,6 +24,8 @@
     .container { max-width: initial; width: 95%; }
     .dropdown-content { border: 2px solid rgba(0, 0, 0, 0.1); }
     .dropdown-content li>a, .dropdown-content li>span { color: initial; }
+    .sidenav li>a.subheader { cursor: initial; text-transform: uppercase; font-size: 0.9rem; font-weight: bold; pointer-events: none;}
+    .dropdown-content li.subheader>a { cursor: initial; text-transform: uppercase; font-size: 0.825rem; font-weight: bold; pointer-events: none;}
     .page-breadcrumb { background-color: rgba(96, 96, 96, 0.05); margin: 1.25rem 0; padding: 0.25rem 1rem; }
     .page-breadcrumb ul { list-style: none; padding: 0; }
     .page-breadcrumb ul li { display: inline; padding: 0; }
@@ -67,6 +69,9 @@
     .show-nprlink { background-color: #3366cc; color: white; }
     .show-nprlink>a { border-bottom: none !important; color: white; }
     .show-nprlink>a::after { content: " \2192"; }
+    #app-copyright, #app-version { display: inline-block; padding: 0.5rem 0; }
+    #app-copyright { float: left; }
+    #app-version { float: right; }
     .traceback { border: 2px solid rgba(0, 0, 0, 0.25); font-size: 90%; overflow: scroll; padding: 1.5rem; width: 100%; }
 }
 
@@ -79,7 +84,8 @@
     html, main, button, input, select, textarea, .collection, .collection-item { background-color: #202124 !important; color: white !important; }
     nav, nav ul a, .brand-logo, .page-footer, .footer-copyright, .nav-wrapper, .sidenav li>a { color: white !important; }
     nav ul a { transition: background-color 0s; }
-    nav ul.dropdown-content a:hover, .sidenav li>a:hover { background-color: rgba(240, 240, 240, 0.5); color: #323438 !important; }
+    nav ul.dropdown-content a:hover, .sidenav li>a:hover, .dropdown-content li>a:hover { background-color: rgba(240, 240, 240, 0.5); color: #323438 !important; }
+    .dropdown-content li.subheader:hover { background-color: inherit; font-weight: bold; }
     main a { color: #64b5f6 !important; }
     div.label { border-bottom: 2px solid rgba(240, 240, 240, 0.5); }
     .collection, .collection-item { border-color: rgba(240, 240, 240, 0.5) !important; }
@@ -91,6 +97,11 @@
     .database-id, .show-nprlink>a { border-bottom: none !important; color: white !important; }
     .show-repeat>a { color: #26323b !important; }
     .sidenav, .sidenav ul, ul.dropdown-content { background-color: #323438 !important; }
+}
+
+@media only screen and (max-width: 1200px) {
+    #app-copyright, #app-version { float: none; }
+    #app-version { clear: both; display: block; }
 }
 
 @media only screen and (max-width: 1024px) {

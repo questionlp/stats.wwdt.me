@@ -9,8 +9,8 @@
                     <li><a href="{{ blog_url }}">Blog</a></li>
                     <li><a href="{{ graphs_url }}">Graphs</a></li>
                     <li><a href="{{ reports_url }}">Reports</a></li>
-                    {% if patreon_url %}
-                    <li><a href="{{ patreon_url }}">Patreon</a></li>
+                    {% if github_sponsor_url or patreon_url %}
+                    <li><a href="{{ url_for('main.about') }}#support-stats">Support Wait Wait Stats</a></li>
                     {% endif %}
                 </ul>
             </div>
@@ -18,14 +18,16 @@
     </div>
     <div class="footer-copyright">
         <div class="container">
-            Copyright &copy; 2007&ndash;{{ current_year(time_zone) }}
-            {% if mastodon_url and mastodon_user %}
-            <a href="https://linhpham.org/">Linh Pham</a> (<a rel="me" href="{{ mastodon_url }}">{{ mastodon_user }}</a>).
-            {% else %}
-            <a href="https://linhpham.org/">Linh Pham</a>.
-            {% endif %}
-            All rights reserved.
-            <span class="right">
+            <span id="app-copyright">
+                Copyright &copy; 2007&ndash;{{ current_year(time_zone) }}
+                {% if mastodon_url and mastodon_user %}
+                <a href="https://linhpham.org/">Linh Pham</a> (<a rel="me" href="{{ mastodon_url }}">{{ mastodon_user }}</a>).
+                {% else %}
+                <a href="https://linhpham.org/">Linh Pham</a>.
+                {% endif %}
+                All rights reserved.
+            </span>
+            <span id="app-version">
                 <span title="Page Rendered at Time">R: {{ rendered_at(time_zone) }}</span> |
                 <span title="Application Version">V: {{ app_version }}</span> |
                 <span title="wwdtm Version">L: {{ wwdtm_version }}</span>

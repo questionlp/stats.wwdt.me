@@ -61,13 +61,20 @@
     links for each show page on NPR.org for the shows from 2006 through 2023.
 </p>
 
-{% if patreon_url %}
-<h2>Supporting the Wait Wait Stats Project</h2>
+{% if github_sponsor_url or patreon_url %}
+<h2 id="support-stats">Support the Wait Wait Stats Project</h2>
+
 <p>
     If you would like to help support the Wait Wait Stats Project, including
     improvements, new features, or help cover the host of hosting and maintaining
     the Wait Wait Stats applications, consider supporting me on
+    {% if github_sponsor_url and patreon_url %}
+    <a href="{{ github_sponsor_url }}">GitHub</a> or <a href="{{ patreon_url }}">Patreon</a>.
+    {% elif patreon_url %}
     <a href="{{ patreon_url }}">Patreon</a>.
+    {% elif github_sponsor_url %}
+    <a href="{{ github_sponsor_url }}">GitHub</a>.
+    {% endif %}
 </p>
 {% endif %}
 

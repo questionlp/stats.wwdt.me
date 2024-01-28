@@ -61,6 +61,9 @@ def create_app() -> Flask:
         "mastodon_user", ""
     )
     app.jinja_env.globals["patreon_url"] = _config["settings"].get("patreon_url", "")
+    app.jinja_env.globals["github_sponsor_url"] = _config["settings"].get(
+        "github_sponsor_url", ""
+    )
     app.jinja_env.globals["use_decimal_scores"] = _config["settings"][
         "use_decimal_scores"
     ]
