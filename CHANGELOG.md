@@ -1,13 +1,18 @@
 # Changes
 
+## 5.10.1
+
+### Application Changes
+
+- Add support for GitHub sponsorship link in the side pop-out nav, dropdown nav menu and in the footer by way of the `settings.github_sponsor_url` config key
+- Change the how render and version information is rendered on screens with a width less than 1200px to align left rather than right
+
 ## 5.10.0
 
 ### Application Changes
 
-- Add support for new show URL field from the Wait Wait Stats Database, which is used in place of
-  the `/s/` redirect link if there is a value stored for a particular show
-- Add support for Patreon link in the side pop-out nav, dropdown nav menu and in the footer by way
-  of the `settings.patreon_url` config key
+- Add support for new show URL field from the Wait Wait Stats Database, which is used in place of the `/s/` redirect link if there is a value stored for a particular show
+- Add support for Patreon link in the side pop-out nav, dropdown nav menu and in the footer by way of the `settings.patreon_url` config key
 
 ### Component Changes
 

@@ -15,9 +15,15 @@
             <li><a href="{{ blog_url }}">Blog</a></li>
             <li><a href="{{ graphs_url }}">Graphs</a></li>
             <li><a href="{{ reports_url }}">Reports</a></li>
-            {% if patreon_url %}
+            {% if github_sponsor_url or patreon_url %}
             <li class="divider" tabindex="-1"></li>
+            <li class="subheader"><a>Support Wait Wait Stats</a></li>
+                {% if github_sponsor_url %}
+            <li><a href="{{ github_sponsor_url }}">GitHub Sponsor</a></li>
+                {% endif %}
+                {% if patreon_url %}
             <li><a href="{{ patreon_url }}">Patreon</a></li>
+                {% endif %}
             {% endif %}
         </ul>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
@@ -55,9 +61,15 @@
         <li><a href="{{ blog_url }}">Blog</a></li>
         <li><a href="{{ graphs_url }}">Graphs</a></li>
         <li><a href="{{ reports_url }}">Reports</a></li>
-        {% if patreon_url %}
+        {% if github_sponsor_url or patreon_url %}
         <li><div class="divider"></div></li>
+        <li><a class="subheader">Support Wait Wait Stats</a></li>
+            {% if github_sponsor_url %}
+        <li><a href="{{ github_sponsor_url }}">GitHub Sponsor</a></li>
+            {% endif %}
+            {% if patreon_url %}
         <li><a href="{{ patreon_url }}">Patreon</a></li>
+            {% endif %}
         {% endif %}
     </ul>
 </div>
