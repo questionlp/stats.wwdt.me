@@ -1,5 +1,11 @@
 # Changes
 
+## 5.10.2
+
+### Component Changes
+
+- Upgrade wwdtm from 2.8.0 to 2.8.1, which includes fixing an issue of panelists not being sorted by their decimal scores properly
+
 ## 5.10.1
 
 ### Application Changes
