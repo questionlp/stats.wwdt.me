@@ -1,5 +1,5 @@
 [tool.black]
-required-version = "23.12.1"
+required-version = "24.3.0"
 target-version = ["py310", "py311", "py312"]
 line-length = 88
 
@@ -88,7 +88,6 @@ convention = "pep257"
     "S101",   # use of "assert"
     "S102",   # use of "exec"
     "S106",   # possible hardcoded password.
-    "PGH001", # use of "eval"
 ]
 
 [tool.ruff.pep8-naming]

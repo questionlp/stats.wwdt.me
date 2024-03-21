@@ -1,5 +1,11 @@
 # Changes
 
+## 5.10.3
+
+### Development Changes
+
+- Upgrade black from 23.12.1 to 24.3.0
+
 ## 5.10.2
 
 ### Component Changes

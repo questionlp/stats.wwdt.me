@@ -1,5 +1,5 @@
 ruff==0.1.13
-black==23.12.1
+black==24.3.0
 pytest==7.4.4
 
 Flask==3.0.0
