@@ -1,5 +1,5 @@
-Flask==3.0.0
-gunicorn==21.2.0
+Flask==3.0.3
+gunicorn==22.0.0
 Markdown==3.5.2
 
-wwdtm==2.8.1
+wwdtm==2.8.2

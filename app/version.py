@@ -4,4 +4,4 @@
 #
 # vim: set noai syntax=python ts=4 sw=4:
 """Application Version for Wait Wait Stats Page."""
-APP_VERSION = "5.10.3"
+APP_VERSION = "5.10.4"
