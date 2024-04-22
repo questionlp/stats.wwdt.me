@@ -8,7 +8,8 @@
 if (document.getElementById("map")) {
     const lat = document.getElementById("map").getAttribute("lat");
     const lon = document.getElementById("map").getAttribute("lon");
-    const venue = document.getElementById("map").getAttribute("venue");
+    const altText = document.getElementById("map").getAttribute("alt-text");
+    const tooltip = document.getElementById("map").getAttribute("tooltip");
 
     const mapOptions = {
         center: [lat, lon],
@@ -17,7 +18,8 @@ if (document.getElementById("map")) {
 
     const map = new L.map("map", mapOptions);
     map.attributionControl.setPrefix('<a href="https://leafletjs.com">Leaflet</a>');
-    map.attributionControl.addAttribution('&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>');
+    map.attributionControl.addAttribution('<a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>');
     const layer = new L.TileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(map);
-    const marker = L.marker([lat, lon], {"alt": venue}).addTo(map);
+    const marker = L.marker([lat, lon], {"alt": altText}).addTo(map);
+    marker.bindTooltip(tooltip).openTooltip();
 }

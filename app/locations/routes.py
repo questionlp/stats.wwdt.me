@@ -102,6 +102,7 @@ def all() -> Response | str:
         "locations/all.html",
         locations=locations,
         format_location_name=format_location_name,
+        display_location_map=False,
     )
 
 

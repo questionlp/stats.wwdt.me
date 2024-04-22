@@ -65,7 +65,10 @@
     <div class="col s12">
         <div class="location-map-block">
             <div class="label">Map</div>
-            <div id="map" lat="{{ location.coordinates.latitude }}" lon="{{ location.coordinates.longitude }}" venue="{{ location.venue }}">
+            <div id="map"
+                lat="{{ location.coordinates.latitude }}" lon="{{ location.coordinates.longitude }}"
+                alt-text="{{ location.venue }} in {{ location.city }}, {{ location.state }}"
+                tooltip="{{ location.venue }}">
             </div>
         </div>
     </div>
