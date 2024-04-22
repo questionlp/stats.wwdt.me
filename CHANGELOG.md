@@ -1,5 +1,18 @@
 # Changes
 
+## 5.11.0
+
+### Application Changes
+
+- Adding a new section to the location details page that displays a map using Leaflet.js, OpenStreetMap and location longitude/latitude coordinates
+- Add a new config key `settings.display_location_map` with a default of `false` as a feature flag for the above new feature
+- Add PNG, SVG and Apple touch icon versions of the application's favicon
+
+### Component Changes
+
+- Adding Leaflet.js 1.9.4
+- Upgrade wwdtm from 2.8.2 to 2.9.1
+
 ## 5.10.4
 
 ### Component Changes

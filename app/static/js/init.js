@@ -1,6 +1,6 @@
 /*!
  * stats.wwdt.me (https://github.com/questionlp/stats.wwdt.me_v5)
- * Copyright 2018-2023 Linh Pham
+ * Copyright 2018-2024 Linh Pham
  * Apache License 2.0 (https://github.com/questionlp/stats.wwdt.me_v5/blob/main/LICENSE)
  */
 

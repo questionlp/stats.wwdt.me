@@ -67,6 +67,9 @@ def create_app() -> Flask:
     app.jinja_env.globals["use_decimal_scores"] = _config["settings"][
         "use_decimal_scores"
     ]
+    app.jinja_env.globals["display_location_map"] = _config["settings"][
+        "display_location_map"
+    ]
 
     # Register Jinja template filters
     app.jinja_env.filters["pretty_jsonify"] = utility.pretty_jsonify
