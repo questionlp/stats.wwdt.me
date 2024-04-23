@@ -1,13 +1,41 @@
 {% for location in locations %}
 {# Sanity Check in case of a None and skipping certain placeholder locations #}
 {% if location and not (location.id == 3 or location.id == 38) %}
+{% if postal_abbreviations and location.state %}
+    {% set state_name = postal_abbreviations[location.state].name %}
+{% endif %}
 <h2><a href="{{ url_for('locations.details',
-                         location_slug=location.slug) }}">{{ format_location_name(location) }}</a></h2>
+                         location_slug=location.slug) }}">{{ location.venue }}</a></h2>
 
 <div class="location-block">
 <div class="row location-badges">
     <div class="col s12">
         <span class="database-id">DB ID: {{ location.id }}</span>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col s6 location-info">
+        <div class="label">Locale</div>
+        {% if location.city and state_name %}
+        {{ location.city }}, {{ state_name }}
+        {% elif location.city and location.state %}
+        {{ location.city }}, {{ location.state }}
+        {% else %}
+        <span class="data-na">N/A</span>
+        {% endif %}
+    </div>
+    <div class="col s6 location-info">
+        <div class="label">Coordinates</div>
+        {% if location.coordinates.latitude and location.coordinates.longitude %}
+            {% set lat_deg, lat_min, lat_sec = decimal_to_degrees(location.coordinates.latitude) %}
+            {% set lon_deg, lon_min, lon_sec = decimal_to_degrees(location.coordinates.longitude) %}
+        <span title="{{ format_latitude(lat_deg, lat_min, lat_sec) | safe }}, {{ format_longitude(lon_deg, lon_min, lon_sec) | safe }}">
+            {{ "{:.5f}".format(location.coordinates.latitude.normalize()) }}&deg;, {{ "{:.5f}".format(location.coordinates.longitude.normalize()) }}&deg;
+        </span>
+        {% else %}
+        <span class="data-na">N/A</span>
+        {% endif %}
     </div>
 </div>
 
@@ -67,8 +95,8 @@
             <div class="label">Map</div>
             <div id="map"
                 lat="{{ location.coordinates.latitude }}" lon="{{ location.coordinates.longitude }}"
-                alt-text="{{ location.venue }} in {{ location.city }}, {{ location.state }}"
-                tooltip="{{ location.venue }}">
+                alt-text="{{ location.venue }} in {{ location.city }}, {{ state_name if state_name else location.state }}"
+                tooltip="<b>{{ location.venue }}</b><br>{{ location.city }}, {{ state_name }}">
             </div>
         </div>
     </div>

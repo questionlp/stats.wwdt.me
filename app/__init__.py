@@ -70,6 +70,9 @@ def create_app() -> Flask:
     app.jinja_env.globals["display_location_map"] = _config["settings"][
         "display_location_map"
     ]
+    app.jinja_env.globals["postal_abbreviations"] = dicts.postal_abbreviations(
+        database_config=_config["database"]
+    )
 
     # Register Jinja template filters
     app.jinja_env.filters["pretty_jsonify"] = utility.pretty_jsonify

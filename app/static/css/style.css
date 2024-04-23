@@ -131,7 +131,7 @@
     .database-id, .show-bestof, .scorekeeper-emeritus, .show-repeat, .show-nprlink { display: inline-flex; margin-bottom: 0.5rem; }
     .footer-copyright span.right { display: block; float: initial !important; }
     ul.footer-nav-links { line-height: 2.5rem; }
-    #map { height: 87.5vh; margin: 0.5rem auto; }
+    
 }
 
 @media only print {

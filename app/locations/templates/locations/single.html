@@ -1,4 +1,10 @@
 {% extends "base.html" %}
+{% if postal_abbreviations and location_details.state %}
+    {% set state_name = postal_abbreviations[location_details.state].name %}
+    {% set location_name = format_location_name(location_details, state_name=state_name) %}
+{% else %}
+    {% set location_name = format_location_name(location_details) %}
+{% endif %}
 {% block title %}{{ location_name }} | Locations{% endblock %}
 
 {% block content %}

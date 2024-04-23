@@ -4,8 +4,12 @@
 
 ### Application Changes
 
+- This version requires version 4.6.1 of the Wait Wait Stats Database, which includes a new `ww_postal_abbreviations` table that is required
 - Adding a new section to the location details page that displays a map using Leaflet.js, OpenStreetMap and location longitude/latitude coordinates
 - Add a new config key `settings.display_location_map` with a default of `false` as a feature flag for the above new feature
+- Move the city and state from the `h2` heading to a new locale field
+- Display full state, province or territory name rather than two-letter abbreviation in locations list or in show details page
+- Display decimal latitude/latitude coordinates in location details page with DMS coordinates in a tooltip
 - Add PNG, SVG and Apple touch icon versions of the application's favicon
 
 ### Component Changes
