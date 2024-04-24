@@ -69,6 +69,11 @@ def load_config(
         settings_config.get("use_decimal_scores", False)
     )
 
+    # Read in setting on whether to display location map
+    settings_config["display_location_map"] = bool(
+        settings_config.get("display_location_map", False)
+    )
+
     return {
         "database": database_config,
         "settings": settings_config,

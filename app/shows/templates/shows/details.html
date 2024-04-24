@@ -1,6 +1,9 @@
 {% for show in shows %}
 {% if show %}{# Sanity Check in case of a None #}
 {% set show_date = date_string_to_date(date_string=show.date) %}
+{% if postal_abbreviations and show.location.state %}
+    {% set state_name = postal_abbreviations[show.location.state].name %}
+{% endif %}
 <h2><a href="{{ url_for('shows.year_month_day',
                         year=show_date.year,
                         month=show_date.month,
@@ -35,7 +38,11 @@
         <div class="label">Location</div>
         {# Only provide a link to non-placeholder locations #}
         {% if not (show.location.id == 3 or show.location.id == 38) %}
+            {% if state_name %}
+            <a href="{{ url_for('locations.details', location_slug=show.location.slug) }}">{{ format_location_name(show.location, state_name=state_name) }}</a>
+            {% else %}
             <a href="{{ url_for('locations.details', location_slug=show.location.slug) }}">{{ format_location_name(show.location) }}</a>
+            {% endif %}
         {% else %}
             <span class="data-tbd">TBD</span>
         {% endif %}
