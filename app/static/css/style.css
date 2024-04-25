@@ -59,6 +59,7 @@
     .col.s12.bluff-segment-num { font-weight: 600; margin: 0; }
     .materialboxed { margin: 0 auto; }
     .panelist-rank { font-weight: 500; margin-left: 0.25rem; }
+    .dms-coordinates { border-bottom: 1px dotted; cursor: context-menu; }
     q.scorekeeper-description { display: inline-block; font-style: italic; }
     ul.show-all-years { list-style: none; column-count: 4;}
     .show-description, .show-notes { white-space: pre-line; }
@@ -131,7 +132,6 @@
     .database-id, .show-bestof, .scorekeeper-emeritus, .show-repeat, .show-nprlink { display: inline-flex; margin-bottom: 0.5rem; }
     .footer-copyright span.right { display: block; float: initial !important; }
     ul.footer-nav-links { line-height: 2.5rem; }
-    
 }
 
 @media only print {

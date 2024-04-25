@@ -16,7 +16,7 @@
 
 <div class="row">
     <div class="col s6 location-info">
-        <div class="label">Locale</div>
+        <div class="label">Located In</div>
         {% if location.city and state_name %}
         {{ location.city }}, {{ state_name }}
         {% elif location.city and location.state %}
@@ -30,7 +30,7 @@
         {% if location.coordinates.latitude and location.coordinates.longitude %}
             {% set lat_deg, lat_min, lat_sec = decimal_to_degrees(location.coordinates.latitude) %}
             {% set lon_deg, lon_min, lon_sec = decimal_to_degrees(location.coordinates.longitude) %}
-        <span title="{{ format_latitude(lat_deg, lat_min, lat_sec) | safe }}, {{ format_longitude(lon_deg, lon_min, lon_sec) | safe }}">
+        <span class="dms-coordinates" title="DMS Coordinates: {{ format_latitude(lat_deg, lat_min, lat_sec) | safe }}, {{ format_longitude(lon_deg, lon_min, lon_sec) | safe }}">
             {{ "{:.5f}".format(location.coordinates.latitude.normalize()) }}&deg;, {{ "{:.5f}".format(location.coordinates.longitude.normalize()) }}&deg;
         </span>
         {% else %}
