@@ -9,7 +9,12 @@ from flask import Blueprint, Response, current_app, render_template, url_for
 from slugify import slugify
 from wwdtm.location import Location
 
-from app.locations.utility import format_location_name
+from app.locations.utility import (
+    decimal_to_degrees,
+    format_latitude,
+    format_location_name,
+    format_longitude,
+)
 from app.utility import redirect_url
 
 blueprint = Blueprint("locations", __name__, template_folder="templates")
@@ -78,11 +83,13 @@ def details(location_slug: str) -> Response | str:
     # Template expects a list of location(s)
     locations = []
     locations.append(details)
-    location_name = format_location_name(details)
     return render_template(
         "locations/single.html",
         locations=locations,
-        location_name=location_name,
+        location_details=details,
+        decimal_to_degrees=decimal_to_degrees,
+        format_latitude=format_latitude,
+        format_longitude=format_longitude,
         format_location_name=format_location_name,
     )
 
@@ -101,7 +108,11 @@ def all() -> Response | str:
     return render_template(
         "locations/all.html",
         locations=locations,
+        decimal_to_degrees=decimal_to_degrees,
+        format_latitude=format_latitude,
+        format_longitude=format_longitude,
         format_location_name=format_location_name,
+        display_location_map=False,
     )
 
 

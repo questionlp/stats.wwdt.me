@@ -1,6 +1,6 @@
 /*!
  * stats.wwdt.me (https://github.com/questionlp/stats.wwdt.me_v5)
- * Copyright 2018-2023 Linh Pham
+ * Copyright 2018-2024 Linh Pham
  * Apache License 2.0 (https://github.com/questionlp/stats.wwdt.me_v5/blob/main/LICENSE)
  */
 
@@ -59,6 +59,7 @@
     .col.s12.bluff-segment-num { font-weight: 600; margin: 0; }
     .materialboxed { margin: 0 auto; }
     .panelist-rank { font-weight: 500; margin-left: 0.25rem; }
+    .dms-coordinates { border-bottom: 1px dotted; cursor: context-menu; }
     q.scorekeeper-description { display: inline-block; font-style: italic; }
     ul.show-all-years { list-style: none; column-count: 4;}
     .show-description, .show-notes { white-space: pre-line; }
@@ -69,6 +70,10 @@
     .show-nprlink { background-color: #3366cc; color: white; }
     .show-nprlink>a { border-bottom: none !important; color: white; }
     .show-nprlink>a::after { content: " \2192"; }
+    #map { height: 75vh; margin: 0.5rem auto; }
+    #map a::after { content: none; }
+    #map a, #map a:link, #map a:hover, #map a:active, #map a:visited { color: #0d47a1 !important; }
+    #map .leaflet-control-zoom a, #map .leaflet-control-zoom a:link, #map .leaflet-control-zoom a:hover, #map .leaflet-control-zoom a:active, #map .leaflet-control-zoom a:visited { color: #444 !important; }
     #app-copyright, #app-version { display: inline-block; padding: 0.5rem 0; }
     #app-copyright { float: left; }
     #app-version { float: right; }
@@ -113,6 +118,7 @@
     .guest-appearance-list>ul, .location-appearance-list>ul, .panelist-appearance-list>ul, .host-appearance-list>ul, .scorekeeper-appearance-list>ul { column-count: 1; column-fill: balance; }
     ul.guest-list { column-count: 1; column-fill: initial; }
     .guest-show-bestof, .guest-show-repeat { display: flexbox; }
+    #map { height: 62.5vh; margin: 0.5rem auto; }
 }
 
 @media only screen and (max-width: 600px) {
