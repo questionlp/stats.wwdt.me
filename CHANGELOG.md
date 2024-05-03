@@ -1,5 +1,12 @@
 # Changes
 
+## 5.11.1
+
+### Application Changes
+
+- Change the z-index for the map control area to `500` to prevent the controls from appearing over slide-out navigation or pop-up menus
+- Update styles for Leaflet to inherit font-family used for the rest of the application (IBM Plex Sans)
+
 ## 5.11.0
 
 ### Application Changes

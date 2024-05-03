@@ -71,9 +71,11 @@
     .show-nprlink>a { border-bottom: none !important; color: white; }
     .show-nprlink>a::after { content: " \2192"; }
     #map { height: 75vh; margin: 0.5rem auto; }
+    .leaflet-container, .leaflet-control-zoom-in, .leaflet-control-zoom-out { font-family: inherit !important; }
     #map a::after { content: none; }
     #map a, #map a:link, #map a:hover, #map a:active, #map a:visited { color: #0d47a1 !important; }
     #map .leaflet-control-zoom a, #map .leaflet-control-zoom a:link, #map .leaflet-control-zoom a:hover, #map .leaflet-control-zoom a:active, #map .leaflet-control-zoom a:visited { color: #444 !important; }
+    #map .leaflet-top, #map .leaflet-bottom { z-index: 500 !important; }
     #app-copyright, #app-version { display: inline-block; padding: 0.5rem 0; }
     #app-copyright { float: left; }
     #app-version { float: right; }
