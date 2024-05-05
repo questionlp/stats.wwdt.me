@@ -1,5 +1,11 @@
 # Changes
 
+## 5.11.2
+
+### Application Changes
+
+- Add a link next to the location coordinates that scrolls down to the location map in single location details view
+
 ## 5.11.1
 
 ### Application Changes
