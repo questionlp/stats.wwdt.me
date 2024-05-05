@@ -33,6 +33,9 @@
         <span class="dms-coordinates" title="DMS Coordinates: {{ format_latitude(lat_deg, lat_min, lat_sec) | safe }}, {{ format_longitude(lon_deg, lon_min, lon_sec) | safe }}">
             {{ "{:.5f}".format(location.coordinates.latitude.normalize()) }}&deg;, {{ "{:.5f}".format(location.coordinates.longitude.normalize()) }}&deg;
         </span>
+            {% if display_location_map %}
+        <span class="map-link">(<a href="#map" title="Scroll down to location map">Location Map</a>)</span>
+            {% endif %}
         {% else %}
         <span class="data-na">N/A</span>
         {% endif %}

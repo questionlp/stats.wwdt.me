@@ -52,6 +52,8 @@
     .host-guest, .scorekeeper-guest { background-color: #c8e6c9; color: #242f39; font-weight: 500; padding: 0.2rem 0.5rem; margin: 0 0.25rem; }
     .guest-show-repeat>a, .host-show-repeat>a, .location-show-repeat>a, .panelist-show-repeat>a, .scorekeeper-show-repeat>a { border-bottom: none !important; }
     .host-appearance-list>ul, .location-appearance-list>ul, .panelist-appearance-list>ul, .scorekeeper-appearance-list>ul { column-count: 3; column-fill: balance; }
+    .location-info .map-link { padding-left: 0.5rem; }
+    .location-info .map-link a::after { content: " \2193"; }
     .bluff-wrap { margin-bottom: 20px; }
     .row.bluff-label { margin-bottom: 0; }
     .row.bluff-segment { line-height: 1.75; margin-bottom: 0; }
