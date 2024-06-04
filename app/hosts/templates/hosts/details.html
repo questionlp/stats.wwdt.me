@@ -8,6 +8,9 @@
 <div class="row host-badges">
     <div class="col s12">
         <span class="database-id">DB ID: {{ host.id }}</span>
+        {% if host.pronouns %}
+        <span class="host-pronouns">Pronouns: {{ host.pronouns|join("/")}}</span>
+        {% endif %}
     </div>
 </div>
 <div class="row">

@@ -7,6 +7,9 @@
 <div class="row panelist-badges">
     <div class="col s12">
         <span class="database-id">DB ID: {{ panelist.id }}</span>
+        {% if panelist.pronouns %}
+        <span class="panelist-pronouns">Pronouns: {{ panelist.pronouns|join("/")}}</span>
+        {% endif %}
     </div>
 </div>
 
