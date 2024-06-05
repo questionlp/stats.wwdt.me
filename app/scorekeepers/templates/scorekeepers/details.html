@@ -11,6 +11,9 @@
         <span class="scorekeeper-emeritus">Scorekeeper Emeritus</span>
         {% endif %}
         <span class="database-id">DB ID: {{ scorekeeper.id }}</span>
+        {% if scorekeeper.pronouns %}
+        <span class="scorekeeper-pronouns">Pronouns: {{ scorekeeper.pronouns|join("/")}}</span>
+        {% endif %}
     </div>
 </div>
 

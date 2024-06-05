@@ -1,5 +1,11 @@
 # Changes
 
+## 5.12.0
+
+### Application Changes
+
+- Add support for host, panelist and scorekeeper preferred pronouns via a label (aka tag) next to the corresponding ID label in their details page
+
 ## 5.11.3
 
 ### Component Changes
