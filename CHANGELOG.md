@@ -1,5 +1,11 @@
 # Changes
 
+## 5.12.1
+
+### Application Changes
+
+- Change the footer font color to remove alpha transparency to improve readability
+
 ## 5.12.0
 
 ### Application Changes

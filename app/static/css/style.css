@@ -15,7 +15,8 @@
     nav a.sidenav-trigger { display: initial; }
     nav .brand-logo { font-size: 1.5rem; }
     footer { margin-top: 2rem; }
-    footer a { border-bottom: 1px dotted; color: rgba(255,255,255,0.9); }
+    footer a { border-bottom: 1px dotted; color: white !important; }
+    footer .footer-copyright { color: white !important; }
     h1 { font-size: 1.5rem; font-weight: 600; margin: 1.5rem 0 1.5rem 0; }
     h1.print-only { display: none; visibility: hidden; }
     h2 { font-size: 1.25rem; font-weight: 600; margin: 1.25rem 0 1.25rem 0; }
