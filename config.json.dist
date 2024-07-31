@@ -19,6 +19,7 @@
         "site_url": "",
         "ga_property_code": null,
         "umami_analytics": {
+            "_enabled": false,
             "url": "",
             "data_website_id": "",
             "data_domains": "",

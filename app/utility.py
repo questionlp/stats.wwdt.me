@@ -17,6 +17,11 @@ def format_umami_analytics(umami_analytics: dict = None) -> str:
     if not umami_analytics:
         return None
 
+    _enabled = bool(umami_analytics.get("_enabled", False))
+
+    if not _enabled:
+        return None
+
     url = umami_analytics.get("url")
     website_id = umami_analytics.get("data_website_id")
     auto_track = bool(umami_analytics.get("data_auto_track", True))

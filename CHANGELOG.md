@@ -4,7 +4,16 @@
 
 ### Application Changes
 
-- Add support for Umami Analytics via `settings.umami_analytics` config key
+- Add support for Umami web analytics via `settings.umami_analytics` config object with the following keys:
+
+| Config Key | Description |
+| ---------- | ----------- |
+| `_enabled` | Set value to `true` to enable adding Umami `script` tag (default: `false`) |
+| `url` | URL of the Umami analytics script |
+| `data_website_id` | Umami Site ID |
+| `data_auto_track` | Set value to `false` to disable auto event tracking (default: `true`) |
+| `data_host_url` | Override the location where Umami data is sent to |
+| `data_domains` | Comma-delimited list of domains where the Umami script should be active |
 
 ## Component Changes
 
