@@ -29,12 +29,12 @@ def format_umami_analytics(umami_analytics: dict = None) -> str:
     domains = umami_analytics.get("data_domains")
 
     if url and website_id:
-        host_url_prop = f'data_host_url="{host_url}"' if host_url else ""
-        auto_track_prop = f'data_auto_track="{str(auto_track).lower()}"'
-        domains_prop = f'data_domains="{domains}"' if domains else ""
+        host_url_prop = f'data-host-url="{host_url}"' if host_url else ""
+        auto_track_prop = f'data-auto-track="{str(auto_track).lower()}"'
+        domains_prop = f'data-domains="{domains}"' if domains else ""
 
         props = " ".join([host_url_prop, auto_track_prop, domains_prop])
-        return f'<script defer src="{url}" data_website_id="{website_id}" {props.strip()}></script>'
+        return f'<script defer src="{url}" data-website-id="{website_id}" {props.strip()}></script>'
 
     return None
 

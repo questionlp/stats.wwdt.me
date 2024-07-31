@@ -1,5 +1,11 @@
 # Changes
 
+## 5.13.1
+
+### Application Changes
+
+- Correct Umami `script` tag properties
+
 ## 5.13.0
 
 ### Application Changes
