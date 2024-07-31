@@ -1,5 +1,11 @@
 # Changes
 
+## 5.13.2
+
+### Application Changes
+
+- Add Umami `script` tag to errors base template
+
 ## 5.13.1
 
 ### Application Changes
