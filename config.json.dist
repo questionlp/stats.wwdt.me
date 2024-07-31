@@ -25,7 +25,7 @@
             "data_domains": "",
             "data_host_url": "",
             "data_auto_track": true
-        }
+        },
         "recent_days_ahead": 1,
         "recent_days_back": 31,
         "time_zone": "UTC",
