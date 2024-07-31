@@ -15,7 +15,7 @@
 | `data_host_url` | Override the location where Umami data is sent to |
 | `data_domains` | Comma-delimited list of domains where the Umami script should be active |
 
-## Component Changes
+### Component Changes
 
 - Upgrade wwdtm 2.10.0 to 2.10.1
 
