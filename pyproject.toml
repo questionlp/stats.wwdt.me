@@ -1,5 +1,5 @@
 [tool.black]
-required-version = "24.3.0"
+required-version = "24.4.2"
 target-version = ["py310", "py311", "py312"]
 line-length = 88
 

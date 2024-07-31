@@ -1,5 +1,30 @@
 # Changes
 
+## 5.13.0
+
+### Application Changes
+
+- Add support for Umami web analytics via `settings.umami_analytics` config object with the following keys:
+
+| Config Key | Description |
+| ---------- | ----------- |
+| `_enabled` | Set value to `true` to enable adding Umami `script` tag (default: `false`) |
+| `url` | URL of the Umami analytics script |
+| `data_website_id` | Umami Site ID |
+| `data_auto_track` | Set value to `false` to disable auto event tracking (default: `true`) |
+| `data_host_url` | Override the location where Umami data is sent to |
+| `data_domains` | Comma-delimited list of domains where the Umami script should be active |
+
+### Component Changes
+
+- Upgrade wwdtm 2.10.0 to 2.10.1
+
+### Development Changes
+
+- Upgrade ruff from 0.3.6 to 0.5.1
+- Upgrade black from 24.3.0 to 24.4.2
+- Upgrade pytest from 8.1.1 to 8.1.2
+
 ## 5.12.1
 
 ### Application Changes

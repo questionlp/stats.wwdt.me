@@ -18,6 +18,14 @@
         "reports_url": "",
         "site_url": "",
         "ga_property_code": null,
+        "umami_analytics": {
+            "_enabled": false,
+            "url": "",
+            "data_website_id": "",
+            "data_domains": "",
+            "data_host_url": "",
+            "data_auto_track": true
+        }
         "recent_days_ahead": 1,
         "recent_days_back": 31,
         "time_zone": "UTC",

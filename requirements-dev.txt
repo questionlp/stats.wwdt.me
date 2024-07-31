@@ -1,9 +1,9 @@
-ruff==0.3.6
-black==24.3.0
-pytest==8.1.1
+ruff==0.5.1
+black==24.4.2
+pytest==8.1.2
 
 Flask==3.0.3
 gunicorn==22.0.0
 Markdown==3.5.2
 
-wwdtm==2.10.0
+wwdtm==2.10.1
