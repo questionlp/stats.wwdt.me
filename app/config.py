@@ -20,6 +20,7 @@ def load_config(
     connection_pool_name: str = "wwdtm_stats",
     app_time_zone: str = "UTC",
 ) -> dict[str, dict[str, Any]]:
+    """Read configuration and database settings."""
     _config_file_path = Path(config_file_path)
     with _config_file_path.open(mode="r", encoding="utf-8") as config_file:
         app_config = json.load(config_file)

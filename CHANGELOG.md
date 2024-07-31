@@ -1,5 +1,21 @@
 # Changes
 
+## 5.13.0
+
+### Application Changes
+
+- Add support for Umami Analytics via `settings.umami_analytics` config key
+
+## Component Changes
+
+- Upgrade wwdtm 2.10.0 to 2.10.1
+
+### Development Changes
+
+- Upgrade ruff from 0.3.6 to 0.5.1
+- Upgrade black from 24.3.0 to 24.4.2
+- Upgrade pytest from 8.1.1 to 8.1.2
+
 ## 5.12.1
 
 ### Application Changes
