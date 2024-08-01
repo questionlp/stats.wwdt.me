@@ -21,3 +21,19 @@
     <!-- Import Leaflet -->
     <link rel="stylesheet" href="{{ url_for('static', filename='leaflet/leaflet.css') }}">
     <script src="{{ url_for('static', filename='leaflet/leaflet.js')}}"></script>
+
+    {% if ga_property_code %}
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ ga_property_code }}"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '{{ ga_property_code }}');
+    </script>
+    {% endif %}
+
+    {% if umami_analytics %}
+    <!-- Umami Analytics -->
+    {{ umami_analytics|safe }}
+    {% endif %}

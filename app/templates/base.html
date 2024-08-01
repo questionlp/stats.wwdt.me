@@ -3,22 +3,6 @@
 <head>
     <title>{% block title %}{% endblock %} | Wait Wait Don't Tell Me! Stats Page</title>
     {% include "core/head.html" with context %}
-
-    {% if ga_property_code %}
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id={{ ga_property_code }}"></script>
-    <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', '{{ ga_property_code }}');
-    </script>
-    {% endif %}
-
-    {% if umami_analytics %}
-    <!-- Umami Analytics -->
-    {{ umami_analytics|safe }}
-    {% endif %}
 </head>
 <body>
 {% include "core/nav.html" %}

@@ -1,5 +1,11 @@
 # Changes
 
+## 5.13.3
+
+### Application Changes
+
+- Move web analytics tags out of `base.html` into `head.html`
+
 ## 5.13.2
 
 ### Application Changes
