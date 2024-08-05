@@ -1,5 +1,7 @@
 # Wait Wait Don't Tell Me! Stats and Details Site
 
+**Note:** This project's repository has been renamed from `stats.wwdt.me_v5` to `stats.wwdt.me`. Please make sure that you update your `.git/config` accordingly. The `stats.wwdt.me_v5` repository on GitHub is now just a placeholder repository.
+
 ## Overview
 
 Flask-based web application that serves up statistics and details for the NPR weekly quiz show [Wait Wait... Don't Tell Me!](http://waitwait.npr.org)

@@ -9,7 +9,7 @@ This document provides instructions on how to serve the application through [Gun
 Clone a copy of this repository to a location of your choosing by running:
 
 ```bash
-git clone https://github.com/questionlp/stats.wwdt.me_v5.git
+git clone https://github.com/questionlp/stats.wwdt.me.git
 ```
 
 Within the new local copy of the repository, create a new virtual environment and install the required packages by running the following commands:
