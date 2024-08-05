@@ -1,5 +1,11 @@
 # Changes
 
+## 5.13.4
+
+### Application Changes
+
+- Update references to GitHub repository to point to [stats.wwdt.me](https://github.com/questionlp/stats.wwdt.me) instead of `stats.wwdt.me_v5`.
+
 ## 5.13.3
 
 ### Application Changes
