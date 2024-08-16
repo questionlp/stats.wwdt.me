@@ -1,0 +1,24 @@
+{
+    "name": "stats.wwdt.me-bootstrap",
+    "version": "0.0.1",
+    "description": "Bootstrap UI for stats.wwdt.me",
+    "author": {
+        "name": "Linh Pham",
+        "url": "https://linhpham.org/"
+    },
+    "license": "Apache-2.0",
+    "private": true,
+    "dependencies": {
+        "bootstrap": "^5.3.3",
+        "css-minify": "^2.0.0",
+        "sass": "^1.77.8",
+        "serve": "^14.2.3"
+    },
+    "scripts": {
+        "compile": "sass scss/main.scss app/static/css/app.css",
+        "compile-mini": "sass --style=compressed scss/main.scss app/static/css/app.min.css",
+        "watch": "sass --watch scss/main.scss app/static/css/app.css",
+        "js-copy-bundle": "cp node_modules/bootstrap/dist/js/bootstrap.bundle.min.js node_modules/bootstrap/dist/js/bootstrap.bundle.min.js.map app/static/js/",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    }
+}

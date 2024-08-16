@@ -1,0 +1,29 @@
+@media only print {
+    body {
+        background-color: $white;
+        color: $black;
+    }
+
+
+    main {
+        .details {
+            .appearances {
+                .appearance-list {
+                    column-count: 2; column-fill: balance;
+                }
+            }
+
+            .badge {
+                background-color: $white !important;
+                border: 1px solid $black;
+                margin: 0 0.2rem;
+                padding: 0.4rem;
+            }
+
+            .npr-link a {
+                background-color: $white;
+                color: $black !important;
+            }
+        }
+    }
+}

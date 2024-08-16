@@ -1,0 +1,22 @@
+// scss-docs-start theme-color-variables
+$primary: $blue !default;
+$secondary: ibm.$gray-60 !default;
+$success: $green !default;
+$info: $cyan !default;
+$warning: ibm.$alert-40 !default;
+$danger: ibm.$alert-60 !default;
+$light: ibm.$gray-10 !default;
+$dark: ibm.$gray-90 !default;
+// scss-docs-end theme-color-variables
+
+// scss-docs-start theme-colors-map
+$theme-colors: (
+    "primary": $primary,
+    "secondary": $secondary,
+    "success": $success,
+    "info": $info,
+    "warning": $warning,
+    "danger": $danger,
+    "light": $light,
+    "dark": $dark) !default;
+// scss-docs-end theme-colors-map

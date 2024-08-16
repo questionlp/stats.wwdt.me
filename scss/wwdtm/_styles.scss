@@ -1,0 +1,481 @@
+header {
+    color: $white;
+
+    .navbar {
+        background-color: $navbar-bg-color;
+        color: $white;
+
+        .navbar-brand {
+            color: $white;
+            font-weight: 600;
+            margin-left: 0.4rem;
+        }
+
+        .navbar-brand,
+        .nav-link {
+            color: $white;
+        }
+
+        .nav-link {
+            padding: var(--bs-nav-link-padding-y) $navbar-nav-link-padding-x * 1.25;
+        }
+
+        .nav-link:hover {
+            background-color: $navbar-bg-navlink-hover-color;
+            color: $white;
+        }
+
+        .offcanvas {
+            background-color: $offcanvas-bg-color;
+
+            .offcanvas-title {
+                color: $white;
+                font-size: 1.5rem;
+            }
+
+            .nav-link:hover {
+                background-color: $offcanvas-bg-navlink-hover-color;
+            }
+
+            .dropdown-toggle {
+                color: $white;
+            }
+        }
+
+        .navbar-toggler {
+            border: none;
+            color: $white;
+        }
+
+        .navbar-toggler:focus {
+            border: 1px dotted $white;
+        }
+
+        .dropdown-item.active,
+        .dropdown-item:active {
+            background-color: $offcanvas-bg-navlink-hover-color;
+        }
+
+        button#bd-theme {
+            margin-left: 0.4rem;
+
+            i {
+                padding-right: 0.2rem;
+            }
+        }
+
+        ul#theme-dropdown {
+            button i {
+                padding-right: 0.4rem;
+            }
+        }
+    }
+}
+
+main {
+    padding-top: 4rem;
+
+    a {
+        border-bottom: 1px dotted;
+        color: ibm.$blue-70;
+        text-decoration: none;
+    }
+
+    nav#nav-breadcrumb {
+        background-color: ibm.$gray-10;
+        font-size: 95%;
+        margin: 1rem 0;
+        padding: 1rem 1.2rem 1rem;
+        --bs-breadcrumb-divider: ">";
+
+        a {
+            border-bottom: none;
+            text-decoration: none;
+        }
+
+        
+        .breadcrumb {
+            margin-bottom: 0;
+            .active {
+                color: $black;
+                font-weight: 600;
+            }
+        }
+
+    }
+
+    .info {
+        margin-top: 0.4rem;
+        padding-right: 0.8rem;
+
+        h2.date,
+        h2.location,
+        h2.name {
+            font-size: 1.25em;
+            font-weight: 500;
+            padding-top: 1rem;
+
+            a {
+                border-bottom: none;
+                text-decoration: none;
+            }
+        }
+
+        .guests,
+        .hosts,
+        .locations,
+        .panelists,
+        .scorekeepers,
+        .shows {
+            padding-top: 1.2rem;
+        }
+
+        .name-list {
+            line-height: 2.5;
+            margin-left: 0.2rem;
+            margin-bottom: 3rem;
+
+            i {
+                padding-right: 0.6rem;
+            }
+
+            li {
+                padding: 0.4rem 0.4rem 0.4rem 1.2rem;
+            }
+        }
+
+        .dms-coordinates {
+            border-bottom: 1px dotted; cursor: context-menu;
+        }
+
+        .map-link {
+            padding-left: 0.4rem;
+        }
+
+        #map {
+            height: 75vh;
+            margin: 0.8rem auto 0.6rem;
+            //padding-top: 0.5rem;
+
+            a::after {
+                content: none;
+            }
+    
+            a, a:link, a:hover, a:active, a:visited {
+                color: #0d47a1 !important;
+            }
+        }
+
+        .leaflet-container, .leaflet-control-zoom-in, .leaflet-control-zoom-out {
+            font-family: inherit !important;
+        }
+
+        .leaflet-control-zoom a, .leaflet-control-zoom a:link, .leaflet-control-zoom a:hover, 
+        .leaflet-control-zoom a:active, .leaflet-control-zoom a:visited {
+            color: #444 !important;
+        }
+
+        .leaflet-top, .leaflet-bottom {
+            z-index: 500 !important;
+        }
+    }
+
+    .details {
+        border-left: $details-border-width solid rgba($details-border-color, $details-border-opacity);
+        margin: 1rem 0 2rem 0;
+        padding-left: 1rem;
+
+        .field-label {
+            border-bottom: 1px solid $info-field-border-color;
+            display: flex;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+            padding-bottom: 0.2rem;
+        }
+
+        a:hover {
+            color: $black;
+        }
+
+        .row {
+            padding: 0.8rem 0 0.4rem;
+        }
+
+        .badge {
+            font-weight: 600;
+            margin: 0.2rem 0.6rem 0.2rem 0;
+        }
+
+        .badge.best-of {
+            background-color: $badge-bg-best-of;
+            color: $badge-text-best-of;
+        }
+
+        .badge.db-id {
+            background-color: $badge-bg-db;
+            color: $badge-text-db;
+        }
+
+        .badge.npr-link {
+            background-color: $badge-bg-npr;
+            color: $badge-text-npr;
+
+            a {
+                border-bottom: none;
+                color: $badge-text-npr;
+                text-decoration: none;
+
+                i {
+                    padding-left: 0.6rem;
+                }
+            }
+        }
+
+        .badge.repeat {
+            background-color: $badge-bg-repeat;
+            color: $badge-text-repeat;
+
+            a {
+                border-bottom: none;
+                text-decoration: none;
+                color: ibm.$blue-70;
+            }
+        }
+
+        .bluff-info .sub-row {
+            padding: 0;
+        }
+
+        .bluff-info .sub-row .field-label {
+            border: none;
+            display: inline-flex;
+            padding-right: 0.2rem;
+        }
+
+        .bluff-info .sub-row .field-label::after {
+            content: ":";
+        }
+
+        .rank {
+            font-weight: 600;
+        }
+
+        .row ul {
+            list-style: none;
+            margin: 0;
+            padding: 0 0 0.4rem;
+        }
+
+        .scorekeeper-description {
+            display: block;
+            font-style: italic;
+        }
+
+        .stats,
+        .panelist-info ul,
+        .guest-info ul {
+            line-height: 1.75;
+        }
+
+        .graph-list {
+            column-count: 2;
+            column-fill: balance;
+            column-rule: none;
+            line-height: 1.75;
+        }
+
+        .appearances, .recordings {
+            .appearance-list, .recording-list {
+                column-count: 3;
+                column-fill: balance;
+                column-rule: 1px dotted $info-field-border-color;
+                line-height: 2.5;
+                list-style: none;
+                margin: 0;
+                padding: 0;
+
+                .badge {
+                    margin: 0.2rem 0 0.2rem 0.6rem;
+                }
+
+                .score {
+                    margin-left: 0.6rem;
+                }
+
+                .appearance-list.panelist {
+                    column-count: 2;
+                }
+            }
+        }
+    }
+
+    @if $details-border-hover {
+        .details:hover {
+            border-left: 4px solid $details-border-hover-color;
+        }
+    }
+}
+
+footer {
+    color: $white;
+
+    a {
+        border-bottom: 1px dotted;
+        color: $white;
+        text-decoration: none;
+    }
+
+    .footer.links {
+        background-color: $bg-footer-links;
+
+        ul {
+            list-style: none;
+            margin-bottom: 0;
+
+            li {
+                display: inline;
+                margin: 0 0.4rem;
+                padding: 0;
+            }
+        }
+    }
+
+    .footer.copyright {
+        background-color: $bg-footer-copyright;
+    }
+}
+
+[data-bs-theme=dark] {
+    main {
+        a {
+            color: ibm.$blue-40;
+        }
+
+        #nav-breadcrumb {
+            background-color: ibm.$gray-80;
+
+            .breadcrumb {
+                .active {
+                    color: $white;
+                }
+            }
+        }
+
+        .details {
+            a:hover {
+                color: $white;
+            }
+
+            .badge.db-id {
+                background-color: $badge-bg-db-dark;
+                color: $badge-text-db-dark;
+            }
+        }
+
+        .name-list {
+            column-rule: 1px dotted rgba($white, 0.6);
+        }
+    }
+}
+
+@media only screen and (max-width: 1201px) {
+    header {
+        .navbar {
+            button#bd-theme {
+                margin-left: 0;
+            }
+
+            .nav-link {
+                i {
+                    padding-right: 0.3rem;
+                }
+            }
+
+            #bd-theme-text {
+                padding-left: 0.35rem;
+                padding-right: 0.2rem;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 801px) {
+    main {
+        .details {
+            .appearances {
+                .appearance-list {
+                    column-count: 2;
+                }
+
+                .appearance-list.panelist {
+                    column-count: 1;
+                }
+            }
+        }
+
+        .info {
+            .name-list {
+                column-count: 2;
+            }
+        }
+    }
+}
+
+
+@media only screen and (max-width: 767px) {
+    main {
+        .details {
+            .col-md-6.scorekeeper-info,
+            .col-md-6.guest-info {
+                margin-top: 1.2rem;
+                margin-bottom: 0.4rem;
+            }
+
+            .bluff-segment-num {
+                font-weight: 600;
+                padding-bottom: 0.6rem;
+            }
+        }
+
+        .info {
+            .name-list {
+                margin-left: 0.6rem;
+                padding-right: 0;
+            }
+
+            #map {
+                height: 62.5vh;
+                margin: 0.6rem auto;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 601px) {
+    main {
+        .details {
+            .badge {
+                margin: 0.2rem 0.4rem 0.4rem 0;
+            }
+
+            .col-md-6.scorekeeper-info,
+            .col-md-6.guest-info {
+                margin-top: 1.25rem;
+                margin-bottom: .375rem;
+            }
+
+            .appearances {
+                .appearance-list {
+                    column-count: 1;
+                    column-fill: balance;
+                }
+            }
+        }
+
+        .info {
+            .name-list {
+                column-count: 1;
+            }
+        }
+    }
+}
