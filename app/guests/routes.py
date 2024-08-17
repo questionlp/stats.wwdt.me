@@ -53,21 +53,21 @@ def details(guest_slug: str) -> Response | str:
     """View: Guest Details."""
     database_connection = mysql.connector.connect(**current_app.config["database"])
     guest = Guest(database_connection=database_connection)
-    details = guest.retrieve_details_by_slug(guest_slug)
+    _details = guest.retrieve_details_by_slug(guest_slug)
     database_connection.close()
 
-    if not details:
+    if not _details:
         return redirect(url_for("guests.index"))
 
     guests = []
-    guests.append(details)
+    guests.append(_details)
     return render_template(
-        "guests/single.html", guest_name=details["name"], guests=guests
+        "guests/single.html", guest_name=_details["name"], guests=guests
     )
 
 
 @blueprint.route("/all")
-def all() -> Response | str:
+def _all() -> Response | str:
     """View: Guest Details for All Guests."""
     database_connection = mysql.connector.connect(**current_app.config["database"])
     guest = Guest(database_connection=database_connection)

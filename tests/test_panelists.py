@@ -28,7 +28,7 @@ def test_details(client: FlaskClient, panelist_slug: str) -> None:
 
 
 def test_all(client: FlaskClient) -> None:
-    """Testing panelists.all."""
+    """Testing panelists._all."""
     response: TestResponse = client.get("/panelists/all")
     assert response.status_code == 200
     assert b"Panelist Details" in response.data

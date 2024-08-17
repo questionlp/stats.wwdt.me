@@ -70,23 +70,23 @@ def details(location_slug: str) -> Response | str:
 
     database_connection = mysql.connector.connect(**current_app.config["database"])
     location = Location(database_connection=database_connection)
-    details = location.retrieve_details_by_slug(slug)
+    _details = location.retrieve_details_by_slug(slug)
     database_connection.close()
 
-    if not details:
+    if not _details:
         return redirect_url(url_for("locations.index"))
 
     # Redirect back to /locations for certain placeholder locations
-    if "id" in details and (details["id"] == 3 or details["id"] == 38):
+    if "id" in _details and (_details["id"] == 3 or _details["id"] == 38):
         return redirect_url(url_for("locations.index"))
 
     # Template expects a list of location(s)
     locations = []
-    locations.append(details)
+    locations.append(_details)
     return render_template(
         "locations/single.html",
         locations=locations,
-        location_details=details,
+        location_details=_details,
         decimal_to_degrees=decimal_to_degrees,
         format_latitude=format_latitude,
         format_longitude=format_longitude,
@@ -95,7 +95,7 @@ def details(location_slug: str) -> Response | str:
 
 
 @blueprint.route("/all")
-def all() -> Response | str:
+def _all() -> Response | str:
     """View: Location Details for All Locations."""
     database_connection = mysql.connector.connect(**current_app.config["database"])
     location = Location(database_connection=database_connection)

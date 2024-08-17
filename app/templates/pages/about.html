@@ -2,87 +2,78 @@
 {% block title %}About{% endblock %}
 
 {% block content %}
-<div class="page-breadcrumb">
-    <ul>
-        <li>
-            <a href="{{ url_for('main.index') }}">Home</a>
-        </li>
-        <li>
-            About
-        </li>
-    </ul>
+<div class="static-page">
+    <h2>About</h2>
+    <h3>Overview</h3>
+    <p>
+        The Wait Wait... Don't Tell Me! Stats Page is collection of details
+        and statistics for the weekly NPR news quiz show,
+        &quot;<a href="https://waitwait.npr.org">Wait Wait... Don't Tell Me!</a>&quot;
+        This site contains data for each of the hosts, panelist, scorekeeper and
+        Not My Job guest that has appeared on the show.
+    </p>
+
+    <h3>Site History</h3>
+    <p>
+        For more information about the site's history, check out the
+        &quot;<a href="{{ url_for('main.site_history') }}">Site History</a>&quot;
+        page.
+    </p>
+
+    <h3>Disclaimer</h3>
+    <p>
+        I am not an employee of or associated with NPR, Chicago Public Radio
+        (WBEZ), or Urgent Haircut Productions.
+    </p>
+
+    <h3>Source Code</h3>
+    <p>
+        The source code for this site is released under the terms of 
+        <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache
+        License 2.0</a> and is available on
+        <a href="https://github.com/questionlp/stats.wwdt.me">GitHub</a>.
+    </p>
+
+    <h3>Acknowledgments</h3>
+    <p>
+        One of the inspirations that I had when building this site was
+        <a href="http://www.mrkland.com/mrkland.com/passive/WWDTM/index.htm">mrk.'s
+        Wait Wait Don't Tell Me Statistics Pages</a> 
+        (<a href="https://web.archive.org/web/20190404122827/http://www.mrkland.com/zone/WWDTM/index.htm">Internet
+        Archive</a>). I used some of the scoring data from that site
+        to fill in some of the informational blanks for some of the shows prior
+        to Peter Sagal becoming the show's host.
+    </p>
+
+    <p>
+        I would like to thank David Moss for providing a list of the direct
+        links for each show page on NPR.org for the shows from 2006 through 2023.
+    </p>
+
+    <p>
+        I would also like to thank Elijah Conners for contributing code to
+        display a map of a location, using <a href="https://leafletjs.com">Leafjet</a>
+        and <a href="https://www.openstreetmap.org">OpenStreetMap</a>, in the location
+        details page.
+    </p>
+
+    {% if github_sponsor_url or patreon_url %}
+    <h3 id="support-stats">Support the Wait Wait Stats Project</h3>
+
+    <p>
+        If you would like to help support the Wait Wait Stats Project, including
+        improvements, new features, or help cover the host of hosting and maintaining
+        the Wait Wait Stats applications, consider supporting me on
+        {% if github_sponsor_url and patreon_url %}
+        <a href="{{ github_sponsor_url }}">GitHub</a> or <a href="{{ patreon_url }}">Patreon</a>.
+        {% elif patreon_url %}
+        <a href="{{ patreon_url }}">Patreon</a>.
+        {% elif github_sponsor_url %}
+        <a href="{{ github_sponsor_url }}">GitHub</a>.
+        {% endif %}
+    </p>
+    {% endif %}
 </div>
 
-<h1>About</h1>
-<h2>Overview</h2>
-<p>
-    The Wait Wait... Don't Tell Me! Stats Page is collection of details
-    and statistics for the weekly NPR news quiz show,
-    &quot;<a href="https://waitwait.npr.org">Wait Wait... Don't Tell Me!</a>&quot;
-    This site contains data for each of the hosts, panelist, scorekeeper and
-    Not My Job guest that has appeared on the show.
-</p>
-
-<h2>Site History</h2>
-<p>
-    For more information about the site's history, check out the
-    &quot;<a href="{{ url_for('main.site_history') }}">Site History</a>&quot;
-    page.
-</p>
-
-<h2>Disclaimer</h2>
-<p>
-    I am not an employee of or associated with NPR, Chicago Public Radio
-    (WBEZ), or Urgent Haircut Productions.
-</p>
-
-<h2>Source Code</h2>
-
-<p>
-    The source code for this site is released under the terms of 
-    <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache
-    License 2.0</a> and is available on
-    <a href="https://github.com/questionlp/stats.wwdt.me">GitHub</a>.
-</p>
-
-<h2>Acknowledgments</h2>
-<p>
-    One of the inspirations that I had when building this site was
-    <a href="http://www.mrkland.com/mrkland.com/passive/WWDTM/index.htm">mrk.'s
-    Wait Wait Don't Tell Me Statistics Pages</a> 
-    (<a href="https://web.archive.org/web/20190404122827/http://www.mrkland.com/zone/WWDTM/index.htm">Internet
-    Archive</a>). I used some of the scoring data from that site
-    to fill in some of the informational blanks for some of the shows prior
-    to Peter Sagal becoming the show's host.
-</p>
-
-<p>
-    I would like to thank David Moss for providing a list of the direct
-    links for each show page on NPR.org for the shows from 2006 through 2023.
-</p>
-
-<p>
-    I would also like to thank Elijah Conners for contributing code to
-    display a map of a location, using <a href="https://leafletjs.com">Leafjet</a>
-    and <a href="https://www.openstreetmap.org">OpenStreetMap</a>, in the location
-    details page.
-</p>
-
-{% if github_sponsor_url or patreon_url %}
-<h2 id="support-stats">Support the Wait Wait Stats Project</h2>
-
-<p>
-    If you would like to help support the Wait Wait Stats Project, including
-    improvements, new features, or help cover the host of hosting and maintaining
-    the Wait Wait Stats applications, consider supporting me on
-    {% if github_sponsor_url and patreon_url %}
-    <a href="{{ github_sponsor_url }}">GitHub</a> or <a href="{{ patreon_url }}">Patreon</a>.
-    {% elif patreon_url %}
-    <a href="{{ patreon_url }}">Patreon</a>.
-    {% elif github_sponsor_url %}
-    <a href="{{ github_sponsor_url }}">GitHub</a>.
-    {% endif %}
-</p>
-{% endif %}
 
 {% endblock %}

@@ -28,7 +28,7 @@ def test_details(client: FlaskClient, guest_slug: str) -> None:
 
 
 def test_all(client: FlaskClient) -> None:
-    """Testing guests.all."""
+    """Testing guests._all."""
     response: TestResponse = client.get("/guests/all")
     assert response.status_code == 200
     assert b"Guest Details" in response.data

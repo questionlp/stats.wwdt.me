@@ -53,11 +53,11 @@ def index() -> Response | str:
     return render_template("shows/index.html", show_years=years)
 
 
-@blueprint.route("/<string:date_string>")
-def date_string(date_string: int) -> Response:
+@blueprint.route("/<string:iso_date_string>")
+def date_string(iso_date_string: str) -> Response:
     """View: Show Details for a given ISO Date String."""
     try:
-        parsed_date = datetime.datetime.strptime(date_string, "%Y-%m-%d")
+        parsed_date = datetime.datetime.strptime(iso_date_string, "%Y-%m-%d")
         database_connection = mysql.connector.connect(**current_app.config["database"])
         show_utility = ShowUtility(database_connection=database_connection)
         if not show_utility.date_exists(
@@ -68,9 +68,9 @@ def date_string(date_string: int) -> Response:
         return redirect_url(
             url_for(
                 "shows.year_month_day",
-                year=parsed_date.year,
-                month=parsed_date.month,
-                day=parsed_date.day,
+                show_year=parsed_date.year,
+                show_month=parsed_date.month,
+                show_day=parsed_date.day,
             ),
             301,
         )
@@ -82,16 +82,16 @@ def date_string(date_string: int) -> Response:
         return redirect_url(url_for("shows.index"))
 
 
-@blueprint.route("/<int:year>")
-def year(year: str | int) -> Response | str:
+@blueprint.route("/<int:show_year>")
+def year(show_year: str | int) -> Response | str:
     """View: List of Available Months for Year."""
     database_connection = mysql.connector.connect(**current_app.config["database"])
     show = Show(database_connection=database_connection)
 
     try:
-        year = int(year)
-        date_year = date(year=year, month=1, day=1)
-        show_months = show.retrieve_months_by_year(year=year)
+        _year = int(show_year)
+        date_year = date(year=_year, month=1, day=1)
+        show_months = show.retrieve_months_by_year(year=_year)
         database_connection.close()
 
         if not show_months:
@@ -99,7 +99,7 @@ def year(year: str | int) -> Response | str:
 
         months = []
         for month in show_months:
-            months.append(date(year=year, month=month, day=1))
+            months.append(date(year=_year, month=month, day=1))
 
         return render_template("shows/year.html", year=date_year, show_months=months)
     except ValueError:
@@ -110,17 +110,17 @@ def year(year: str | int) -> Response | str:
         return redirect_url(url_for("shows.index"))
 
 
-@blueprint.route("/<int:year>/<int:month>")
-def year_month(year: int, month: int) -> Response | str:
+@blueprint.route("/<int:show_year>/<int:show_month>")
+def year_month(show_year: int, show_month: int) -> Response | str:
     """View: Show Details for Year, Month."""
     database_connection = mysql.connector.connect(**current_app.config["database"])
     show = Show(database_connection=database_connection)
 
     try:
-        year_month = date(year=year, month=month, day=1)
+        _year_month = date(year=show_year, month=show_month, day=1)
         shows = show.retrieve_details_by_year_month(
-            year=year,
-            month=month,
+            year=show_year,
+            month=show_month,
             include_decimal_scores=current_app.config["app_settings"][
                 "use_decimal_scores"
             ],
@@ -128,30 +128,30 @@ def year_month(year: int, month: int) -> Response | str:
         database_connection.close()
 
         if not shows:
-            return redirect_url(url_for("shows.year", year=year))
+            return redirect_url(url_for("shows.year", year=show_year))
 
         return render_template(
             "shows/year_month.html",
-            year_month=year_month,
+            year_month=_year_month,
             shows=shows,
             format_location_name=format_location_name,
         )
     except ValueError:
-        return redirect_url(url_for("shows.year", year=year))
+        return redirect_url(url_for("shows.year", year=show_year))
 
 
-@blueprint.route("/<int:year>/<int:month>/<int:day>")
-def year_month_day(year: int, month: int, day: int) -> Response | str:
+@blueprint.route("/<int:show_year>/<int:show_month>/<int:show_day>")
+def year_month_day(show_year: int, show_month: int, show_day: int) -> Response | str:
     """View: Show Details for a given Year, Month, Day."""
     database_connection = mysql.connector.connect(**current_app.config["database"])
     show = Show(database_connection=database_connection)
 
     try:
-        show_date = date(year=year, month=month, day=day)
+        show_date = date(year=show_year, month=show_month, day=show_day)
         details = show.retrieve_details_by_date(
-            year=year,
-            month=month,
-            day=day,
+            year=show_year,
+            month=show_month,
+            day=show_day,
             include_decimal_scores=current_app.config["app_settings"][
                 "use_decimal_scores"
             ],
@@ -159,7 +159,9 @@ def year_month_day(year: int, month: int, day: int) -> Response | str:
         database_connection.close()
 
         if not details:
-            return redirect_url(url_for("shows.year_month", year=year, month=month))
+            return redirect_url(
+                url_for("shows.year_month", year=show_year, month=show_month)
+            )
 
         show_list = []
         show_list.append(details)
@@ -174,16 +176,16 @@ def year_month_day(year: int, month: int, day: int) -> Response | str:
         return redirect_url(url_for("shows.index"))
 
 
-@blueprint.route("/<int:year>/all")
-def year_all(year: int) -> Response | str | Any:
+@blueprint.route("/<int:show_year>/all")
+def year_all(show_year: int) -> Response | str | Any:
     """View: Show Details for Year."""
     database_connection = mysql.connector.connect(**current_app.config["database"])
     show = Show(database_connection=database_connection)
 
     try:
-        _ = date(year=year, month=1, day=1)
+        _ = date(year=show_year, month=1, day=1)
         shows = show.retrieve_details_by_year(
-            year=year,
+            year=show_year,
             include_decimal_scores=current_app.config["app_settings"][
                 "use_decimal_scores"
             ],
@@ -195,16 +197,16 @@ def year_all(year: int) -> Response | str | Any:
 
         return render_template(
             "shows/year_all.html",
-            year=year,
+            year=show_year,
             shows=shows,
             format_location_name=format_location_name,
         )
     except ValueError:
-        return redirect_url(url_for("shows.year"), year=year)
+        return redirect_url(url_for("shows.year", show_year=show_year))
 
 
 @blueprint.route("/all")
-def all() -> Response | str:
+def _all() -> Response | str:
     """View: Show Details for All Shows."""
     database_connection = mysql.connector.connect(**current_app.config["database"])
     show = Show(database_connection=database_connection)
@@ -216,9 +218,9 @@ def all() -> Response | str:
             return redirect_url(url_for("shows.index"))
 
         shows_by_year = {}
-        for year in show_years:
+        for _year in show_years:
             shows = show.retrieve_details_by_year(
-                year=year,
+                year=_year,
                 include_decimal_scores=current_app.config["app_settings"][
                     "use_decimal_scores"
                 ],
@@ -262,7 +264,7 @@ def on_this_day() -> Response | str:
 def random() -> Response:
     """View: Random Show Redirect."""
     _date = random_show_date()
-    return redirect_url(url_for("shows.date_string", date_string=_date))
+    return redirect_url(url_for("shows.date_string", iso_date_string=_date))
 
 
 @blueprint.route("/recent")

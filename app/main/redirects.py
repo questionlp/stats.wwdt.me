@@ -30,7 +30,7 @@ def guests() -> Response:
 
 
 @blueprint.route("/help")
-def help() -> Response:
+def help_page() -> Response:
     """Redirect: /help to /."""
     return redirect_url(url_for("main.index"))
 

@@ -1,3 +1,50 @@
+<footer class="mt-auto pt-3">
+    <div class="footer mt-auto py-4 px-1 links">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col text-end">
+                    <ul>
+                        <li><a href="{{ url_for('main.about') }}">About</a></li>
+                        <li><a href="{{ url_for('main.site_history') }}">Site History</a></li>
+                        <li><a href="{{ api_url }}">API</a></li>
+                        <li><a href="{{ blog_url }}">Blog</a></li>
+                        <li><a href="{{ graphs_url }}">Graphs</a></li>
+                        <li><a href="{{ reports_url }}">Reports</a></li>
+                        {% if github_sponsor_url or patreon_url %}
+                        <li><a href="{{ url_for('main.about') }}#support-stats">Support Wait Wait Stats</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer mt-auto py-3 px-1 copyright">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6">
+                    Copyright &copy; 2007&ndash;{{ current_year(time_zone) }}
+                    {% if mastodon_url and mastodon_user %}
+                    <a href="https://linhpham.org/">Linh Pham</a> (<a rel="me" href="{{ mastodon_url }}">{{ mastodon_user }}</a>).
+                    {% else %}
+                    <a href="https://linhpham.org/">Linh Pham</a>.
+                    {% endif %}
+                    All rights reserved.
+                </div>
+                <div class="col-lg-6 text-lg-end">
+                    <span id="app-version">
+                        <span title="Page Rendered at Time">R: {{ rendered_at(time_zone) }}</span> |
+                        <span title="Application Version">V: {{ app_version }}</span> |
+                        <span title="wwdtm Version">L: {{ wwdtm_version }}</span>
+                    </span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</footer>
+
+{#
 <footer class="page-footer blue darken-4">
     <div class="container footer-nav">
         <div class="row">
@@ -35,3 +82,4 @@
         </div>
     </div>
 </footer>
+#}

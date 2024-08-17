@@ -1,4 +1,5 @@
 $enable-rounded: false;
+$enable-shadows: true;
 $enable-reduced-motion: true;
 $enable-transitions: false;
 
@@ -30,12 +31,19 @@ $badge-font-size: 0.925em;
 $badge-bg-best-of: ibm.$blue-30;
 $badge-bg-npr: ibm.$blue-70;
 $badge-bg-repeat: $yellow-100;
+$badge-bg-guest: ibm.$green-20;
+$badge-bg-emeritus: ibm.$purple-20;
+$badge-bg-pronouns: ibm.$teal-20;
 $badge-bg-db: ibm.$gray-10;
 $badge-bg-db-dark: ibm.$gray-90;
+
 
 $badge-text-best-of: $black;
 $badge-text-npr: $white;
 $badge-text-repeat: $black;
+$badge-text-guest: $black;
+$badge-text-emeritus: $black;
+$badge-text-pronouns: $black;
 $badge-text-db: $black;
 $badge-text-db-dark: $white;
 

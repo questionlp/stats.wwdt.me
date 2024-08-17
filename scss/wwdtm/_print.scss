@@ -1,9 +1,18 @@
-@media only print {
+@media print {
     body {
         background-color: $white;
         color: $black;
     }
 
+    header {
+        .navbar {
+            background-color: $white !important;
+
+            .navbar-brand {
+                color: $black !important;
+            }
+        }
+    }
 
     main {
         .details {
@@ -25,5 +34,9 @@
                 color: $black !important;
             }
         }
+    }
+
+    .shadow, .shadow-sm, .shadow-lg {
+        box-shadow: none !important;
     }
 }

@@ -7,6 +7,7 @@ header {
 
         .navbar-brand {
             color: $white;
+            font-size: 1.5rem;
             font-weight: 600;
             margin-left: 0.4rem;
         }
@@ -16,6 +17,13 @@ header {
             color: $white;
         }
 
+        .nav-item {
+            hr {
+                border: 1px solid ibm.$gray-50;
+                color: ibm.$gray-50;
+                opacity: 100;
+            }
+        }
         .nav-link {
             padding: var(--bs-nav-link-padding-y) $navbar-nav-link-padding-x * 1.25;
         }
@@ -31,6 +39,7 @@ header {
             .offcanvas-title {
                 color: $white;
                 font-size: 1.5rem;
+                padding-top: 0.425rem;
             }
 
             .nav-link:hover {
@@ -81,10 +90,16 @@ main {
         text-decoration: none;
     }
 
+    h1,
+    h2,
+    h3 {
+        margin: 1.2rem 0;
+    }
+
     nav#nav-breadcrumb {
         background-color: ibm.$gray-10;
         font-size: 95%;
-        margin: 1rem 0;
+        margin: 0.2rem 0 1.6rem;
         padding: 1rem 1.2rem 1rem;
         --bs-breadcrumb-divider: ">";
 
@@ -93,9 +108,10 @@ main {
             text-decoration: none;
         }
 
-        
+
         .breadcrumb {
             margin-bottom: 0;
+
             .active {
                 color: $black;
                 font-weight: 600;
@@ -104,13 +120,25 @@ main {
 
     }
 
+    .container-fluid.p-4 {
+        padding: 2rem !important;
+    }
+
+    .year-list {
+        column-count: 4;
+        column-fill: balance;
+        column-rule: none;
+        list-style: none;
+        margin-bottom: 2.4rem;
+    }
+
     .info {
         margin-top: 0.4rem;
         padding-right: 0.8rem;
 
-        h2.date,
-        h2.location,
-        h2.name {
+        h3.date, h4.date,
+        h3.location,
+        h3.name {
             font-size: 1.25em;
             font-weight: 500;
             padding-top: 1rem;
@@ -130,7 +158,11 @@ main {
             padding-top: 1.2rem;
         }
 
-        .name-list {
+        .data-tbd {
+            font-style: italic;
+        }
+
+        .location-list, .name-list, .show-list {
             line-height: 2.5;
             margin-left: 0.2rem;
             margin-bottom: 3rem;
@@ -144,8 +176,9 @@ main {
             }
         }
 
-        .dms-coordinates {
-            border-bottom: 1px dotted; cursor: context-menu;
+        .dms-coordinates, .score-exception {
+            border-bottom: 1px dotted;
+            cursor: help;
         }
 
         .map-link {
@@ -160,22 +193,32 @@ main {
             a::after {
                 content: none;
             }
-    
-            a, a:link, a:hover, a:active, a:visited {
+
+            a,
+            a:link,
+            a:hover,
+            a:active,
+            a:visited {
                 color: #0d47a1 !important;
             }
         }
 
-        .leaflet-container, .leaflet-control-zoom-in, .leaflet-control-zoom-out {
+        .leaflet-container,
+        .leaflet-control-zoom-in,
+        .leaflet-control-zoom-out {
             font-family: inherit !important;
         }
 
-        .leaflet-control-zoom a, .leaflet-control-zoom a:link, .leaflet-control-zoom a:hover, 
-        .leaflet-control-zoom a:active, .leaflet-control-zoom a:visited {
+        .leaflet-control-zoom a,
+        .leaflet-control-zoom a:link,
+        .leaflet-control-zoom a:hover,
+        .leaflet-control-zoom a:active,
+        .leaflet-control-zoom a:visited {
             color: #444 !important;
         }
 
-        .leaflet-top, .leaflet-bottom {
+        .leaflet-top,
+        .leaflet-bottom {
             z-index: 500 !important;
         }
     }
@@ -242,6 +285,21 @@ main {
             }
         }
 
+        .badge.guest {
+            background-color: $badge-bg-guest;
+            color: $badge-text-guest;
+        }
+
+        .badge.emeritus {
+            background-color: $badge-bg-emeritus;
+            color: $badge-text-emeritus;
+        }
+
+        .badge.pronouns {
+            background-color: $badge-bg-pronouns;
+            color: $badge-text-pronouns;
+        }
+
         .bluff-info .sub-row {
             padding: 0;
         }
@@ -284,8 +342,21 @@ main {
             line-height: 1.75;
         }
 
-        .appearances, .recordings {
-            .appearance-list, .recording-list {
+        .score {
+            font-weight: 500;
+            margin-left: 0.4rem;
+        }
+
+        .show-description-text,
+        .show-notes-text {
+            white-space: break-spaces;
+        }
+
+        .appearances,
+        .recordings {
+
+            .appearance-list,
+            .recording-list {
                 column-count: 3;
                 column-fill: balance;
                 column-rule: 1px dotted $info-field-border-color;
@@ -296,10 +367,6 @@ main {
 
                 .badge {
                     margin: 0.2rem 0 0.2rem 0.6rem;
-                }
-
-                .score {
-                    margin-left: 0.6rem;
                 }
 
                 .appearance-list.panelist {
@@ -314,6 +381,16 @@ main {
             border-left: 4px solid $details-border-hover-color;
         }
     }
+
+    .static-page {
+        h2 {
+            margin-bottom: 1.6rem;
+        }
+
+        img {
+            margin: 1.4rem auto;
+        }
+    }
 }
 
 footer {
@@ -325,7 +402,7 @@ footer {
         text-decoration: none;
     }
 
-    .footer.links {
+    .links {
         background-color: $bg-footer-links;
 
         ul {
@@ -340,7 +417,7 @@ footer {
         }
     }
 
-    .footer.copyright {
+    .copyright {
         background-color: $bg-footer-copyright;
     }
 }
@@ -401,6 +478,10 @@ footer {
 
 @media only screen and (max-width: 801px) {
     main {
+        .year-list {
+            column-count: 3;
+        }
+
         .details {
             .appearances {
                 .appearance-list {
@@ -425,6 +506,7 @@ footer {
 @media only screen and (max-width: 767px) {
     main {
         .details {
+
             .col-md-6.scorekeeper-info,
             .col-md-6.guest-info {
                 margin-top: 1.2rem;

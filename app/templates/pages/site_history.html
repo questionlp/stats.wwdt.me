@@ -2,161 +2,145 @@
 {% block title %}Site History{% endblock %}
 
 {% block content %}
-<div class="page-breadcrumb">
-    <ul>
-        <li>
-            <a href="{{ url_for('main.index') }}">Home</a>
-        </li>
-        <li>
-            Site History
-        </li>
-    </ul>
+<div class="static-page">
+    <h2>Site History</h2>
+
+    <h3>Versions 1 and 2</h3>
+    <p>
+        Although I started to regularly listen to Wait Wait... Don't Tell Me! in
+        2005, I didn't immediately start taking notes until some time later in
+        2006. While NPR site would include details about each show's segments,
+        guests and panelists, they didn't keep track of any scores or how many
+        times a panelist appeared on the show.
+    </p>
+
+    <p>
+        Eventually, I would start collecting that information in a small notebook;
+        but, I lost it after an office move or one of several cleaning sprees. So,
+        the idea of storing the data in a database and creating a front-end for
+        that came up.
+    </p>
+
+    <img class="d-block" src="{{ url_for('static', filename='img/wwdtm_v2-opt.png') }}"
+        alt="Screenshot of version 2 of the Stats Page">
+
+    <p>
+        I decided to build the site using PHP and use MySQL for the database as I
+        already had a web server at home that hosted my website, written in PHP,
+        and had a MySQL database server running on another server. After a couple
+        months of work during my spare time, I published the first version of the
+        site at the end of July 2007.
+    </p>
+
+    <p>
+        Version 2 of the Stats Page was an evolutionary update to the site with the
+        addition of more detailed panelist statistics and a pair of graphs showing
+        how well each panelist has done.
+    </p>
+
+    <h3>Version 3</h3>
+    <p>
+        The name "Stats Page" was pretty apt for the first two versions of the
+        site, due to the fact that everything was presented on a single web page.
+        As more features and details were added, along with the number of shows,
+        the single page design made became unwieldy from both a user experience
+        and a programming standpoint.
+    </p>
+
+    <p>
+        Thus, I postponed adding new features to the site until I could sit down
+        and do a complete overhaul of the site. Since PHP was still my go-to
+        language at that point, I decided to go with the Silex micro-framework
+        as the foundation for the new site. This allowed me to create a very
+        rudimentary MVC design and create views for each of the core items:
+        shows, guests, hosts, panelists and scorekeepers.
+    </p>
+
+    <img class="d-block" src="{{ url_for('static', filename='img/wwdtm_v3-opt.png') }}"
+        alt="Screenshot of Version 3 of the Stats Page">
+
+    <p>
+        Another key requirement that I had for the new version of the site was
+        to make it more mobile-friendly. At that time, I went as minimalistic as
+        possible when it came to the design and in terms of not requiring the use
+        of JavaScript. I would only make use of JavaScript later to create
+        interactive panelist graphs.
+    </p>
+
+    <p>
+        After a long-ish development process, the new version of the site launched
+        in 2014. Since then, people have asked for additional features and analysis
+        of the data that I've collected. I was able to add the introductions that
+        Bill Kurtis would use to describe himself at the start of the show and
+        started to keep track of Bluff the Listener data.
+    </p>
+
+    <h3>Version 4</h3>
+    <p>
+        As I continued to do more data analysis and field requests that I would
+        get, there wasn't a clean way to add those to the Stats Page. Between that
+        and the real need to extend and redesign the Stats Page for a more modern
+        and responsive web landscape, I decided to build the next version of the
+        Stats Page from scratch again.
+    </p>
+
+    <p>
+        By building the site from scratch again allowed me to move away from PHP
+        and actually code in the language that I really loved and had started to
+        get back into more: Python. I had been already been using Python for
+        projects at work and with some of the Wait Wait data analysis requests.
+    </p>
+
+    <p>
+        The development of the Stats Page actually started with the creation of a
+        data access library, libwwdtm. That data access library would be used as
+        the foundation for the Stats Page and for the
+        <a href="https://api.wwdt.me/">Wait Wait... Don't Tell Me! Stats API</a>.
+        The source code for both are released under the terms of Apache License
+        2.0 and are available on Github:
+        <a href="https://github.com/questionlp/libwwdtm">libwwdtm</a> |
+        <a href="https://github.com/questionlp/api.wwdt.me">api.wwdt.me</a>.
+    </p>
+
+    <p>
+        For the Stats Page itself, it had to be mobile-first and maintain a
+        minimalist design. For the front-end, I picked the Materialize framework,
+        and Flask and Jinja2 would handle the backend. To keep things as simple as
+        possible, I limited the front-end customization to only CSS overrides.
+    </p>
+
+    <img class="d-block" src="{{ url_for('static', filename='img/wwdtm_v4-opt.png') }}"
+        alt="Screenshot of Version 4 of the Stats Page">
+
+    <p>
+        While most of the features of the Stats Page made it over to the new
+        version, a few changes and omissions had to be made. The first change
+        is the omission of the panelist scoring graphs due to need to completely
+        overhaul them to be mobile-first. Those graphs will eventually be made
+        available via the Wait Wait... Don't Tell Me! Reports site.
+    </p>
+
+    <p>
+        Another change is that going to the guest, host, panelist, scorekeeper and
+        show views will only provide a list of the respective items. Most will
+        provide a link at the bottom to get a full detail view of all items. This
+        was done to reduce overall clutter.
+    </p>
+
+    <h3>Version 5</h3>
+    <p>
+        The new version brings two big changes behind the scenes: switching to
+        Version 2 of the Wait Wait Stats Library
+        (<a href="https://github.com/questionlp/wwdtm">wwdtm</a>) and making use
+        of Flask Blueprints to make the application code more modular and easier
+        to maintain.
+    </p>
+
+    <p>
+        While neither of those changes translate to anything visible in
+        the site's front-end, the Materialize version was bumped from 1.0.0 to
+        1.1.0-alpha. Even though it is an alpha release of the framework, it does
+        fix some issues and also includes some security fixes.
+    </p>
 </div>
-
-<h1>Site History</h1>
-
-<h2>Versions 1 and 2</h2>
-
-<p>
-    Although I started to regularly listen to Wait Wait... Don't Tell Me! in
-    2005, I didn't immediately start taking notes until some time later in
-    2006. While NPR site would include details about each show's segments,
-    guests and panelists, they didn't keep track of any scores or how many
-    times a panelist appeared on the show.
-</p>
-
-<p>
-    Eventually, I would start collecting that information in a small notebook;
-    but, I lost it after an office move or one of several cleaning sprees. So,
-    the idea of storing the data in a database and creating a front-end for
-    that came up.
-</p>
-
-<img src="{{ url_for('static', filename='img/wwdtm_v2-opt.png') }}"
-     class="materialboxed responsive-img"
-     alt="Screenshot of version 2 of the Stats Page">
-
-<p>
-    I decided to build the site using PHP and use MySQL for the database as I
-    already had a web server at home that hosted my website, written in PHP,
-    and had a MySQL database server running on another server. After a couple
-    months of work during my spare time, I published the first version of the
-    site at the end of July 2007.
-</p>
-
-<p>
-    Version 2 of the Stats Page was an evolutionary update to the site with the
-    addition of more detailed panelist statistics and a pair of graphs showing
-    how well each panelist has done.
-</p>
-
-<h2>Version 3</h2>
-
-<p>
-    The name "Stats Page" was pretty apt for the first two versions of the
-    site, due to the fact that everything was presented on a single web page.
-    As more features and details were added, along with the number of shows,
-    the single page design made became unwieldy from both a user experience
-    and a programming standpoint.
-</p>
-
-<p>
-    Thus, I postponed adding new features to the site until I could sit down
-    and do a complete overhaul of the site. Since PHP was still my go-to
-    language at that point, I decided to go with the Silex micro-framework
-    as the foundation for the new site. This allowed me to create a very
-    rudimentary MVC design and create views for each of the core items:
-    shows, guests, hosts, panelists and scorekeepers.
-</p>
-
-<img src="{{ url_for('static', filename='img/wwdtm_v3-opt.png') }}"
-     class="materialboxed responsive-img"
-     alt="Screenshot of Version 3 of the Stats Page">
-
-<p>
-    Another key requirement that I had for the new version of the site was
-    to make it more mobile-friendly. At that time, I went as minimalistic as
-    possible when it came to the design and in terms of not requiring the use
-    of JavaScript. I would only make use of JavaScript later to create
-    interactive panelist graphs.
-</p>
-
-<p>
-    After a long-ish development process, the new version of the site launched
-    in 2014. Since then, people have asked for additional features and analysis
-    of the data that I've collected. I was able to add the introductions that
-    Bill Kurtis would use to describe himself at the start of the show and
-    started to keep track of Bluff the Listener data.
-</p>
-
-<h2>Version 4</h2>
-
-<p>
-    As I continued to do more data analysis and field requests that I would
-    get, there wasn't a clean way to add those to the Stats Page. Between that
-    and the real need to extend and redesign the Stats Page for a more modern
-    and responsive web landscape, I decided to build the next version of the
-    Stats Page from scratch again.
-</p>
-
-<p>
-    By building the site from scratch again allowed me to move away from PHP
-    and actually code in the language that I really loved and had started to
-    get back into more: Python. I had been already been using Python for
-    projects at work and with some of the Wait Wait data analysis requests.
-</p>
-
-<p>
-    The development of the Stats Page actually started with the creation of a
-    data access library, libwwdtm. That data access library would be used as
-    the foundation for the Stats Page and for the
-    <a href="https://api.wwdt.me/">Wait Wait... Don't Tell Me! Stats API</a>.
-    The source code for both are released under the terms of Apache License
-    2.0 and are available on Github:
-    <a href="https://github.com/questionlp/libwwdtm">libwwdtm</a> |
-    <a href="https://github.com/questionlp/api.wwdt.me">api.wwdt.me</a>.
-</p>
-
-<p>
-    For the Stats Page itself, it had to be mobile-first and maintain a
-    minimalist design. For the front-end, I picked the Materialize framework,
-    and Flask and Jinja2 would handle the backend. To keep things as simple as
-    possible, I limited the front-end customization to only CSS overrides.
-</p>
-
-<img src="{{ url_for('static', filename='img/wwdtm_v4-opt.png') }}"
-     class="materialboxed responsive-img"
-     alt="Screenshot of Version 4 of the Stats Page">
-
-<p>
-    While most of the features of the Stats Page made it over to the new
-    version, a few changes and omissions had to be made. The first change
-    is the omission of the panelist scoring graphs due to need to completely
-    overhaul them to be mobile-first. Those graphs will eventually be made
-    available via the Wait Wait... Don't Tell Me! Reports site.
-</p>
-
-<p>
-    Another change is that going to the guest, host, panelist, scorekeeper and
-    show views will only provide a list of the respective items. Most will
-    provide a link at the bottom to get a full detail view of all items. This
-    was done to reduce overall clutter.
-</p>
-
-<h2>Version 5</h2>
-
-<p>
-    The new version brings two big changes behind the scenes: switching to
-    Version 2 of the Wait Wait Stats Library
-    (<a href="https://github.com/questionlp/wwdtm">wwdtm</a>) and making use
-    of Flask Blueprints to make the application code more modular and easier
-    to maintain.
-</p>
-
-<p>
-    While neither of those changes translate to anything visible in
-    the site's front-end, the Materialize version was bumped from 1.0.0 to
-    1.1.0-alpha. Even though it is an alpha release of the framework, it does
-    fix some issues and also includes some security fixes.
-</p>
 {% endblock %}

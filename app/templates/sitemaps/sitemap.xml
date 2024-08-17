@@ -40,7 +40,7 @@
   </url>
 {% for year in show_years %}
   <url>
-    <loc>{{ site_url }}{{ url_for("shows.year", year=year) }}</loc>
+    <loc>{{ site_url }}{{ url_for("shows.year", show_year=year) }}</loc>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
   </url>

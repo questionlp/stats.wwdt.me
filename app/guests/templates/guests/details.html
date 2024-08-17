@@ -1,67 +1,67 @@
 {% for guest in guests %}
+{% if guest.slug != "tbd" %}
 {% if guest %}{# Sanity Check in case of a None #}
-<h2><a href="{{ url_for('guests.details',
-                         guest_slug=guest.slug) }}">{{ guest.name }}</a></h2>
 
-<div class="guest-block">
-<div class="row guest-badges">
-    <div class="col s12">
-        <span class="database-id">DB ID: {{ guest.id }}</span>
-    </div>
-</div>
-<div class="row">
-    <div class="col s12 l6 guest-appearance-info">
-        <div class="label">Appearances</div>
-        {% if guest.appearances.count %}
-        {{ guest.appearances.count.regular_shows }}
-        {% else %}
-        <span class="data-na">N/A</span>
-        {% endif %}
-    </div>
-    <div class="col s12 l6 guest-appearance-info">
-        <div class="label">Appearances including Best Of and Repeats</div>
-        {% if guest.appearances.count %}
-        {{ guest.appearances.count.all_shows }}
-        {% else %}
-        <span class="data-na">N/A</span>
-        {% endif %}
-    </div>
-</div>
+<div class="info">
+    <h3 class="name">
+        <a href="{{ url_for('guests.details', guest_slug=guest.slug )}}">{{ guest.name }}</a>
+    </h3>
 
-<div class="row">
-    <div class="col s12">
-        <div class="guest-appearance-list">
-            <div class="label">List of Appearances</div>
-            {% if guest.appearances.shows %}
-            <ul>
-            {% for appearance in guest.appearances.shows %}
-                {% set show_date = date_string_to_date(date_string=appearance.date) %}
-                <li>
-                    <a href="{{ url_for('shows.year_month_day',
-                                        year=show_date.year,
-                                        month=show_date.month,
-                                        day=show_date.day) }}">
-                    {{appearance.date}}</a>
-                    {% if appearance.score != None and appearance.score_exception %}
-                        {{appearance.score }} *
-                    {% elif appearance.score != None and not appearance.score_exception %}
-                        {{ appearance.score }}
-                    {% endif %}
-                    {% if appearance.best_of %}
-                        <span class="guest-show-bestof">Best Of</span>
-                    {% endif %}
-                    {% if appearance.repeat_show %}
-                        <span class="guest-show-repeat">Repeat</span>
-                    {% endif %}
-                </li>
-            {% endfor %}
-            </ul>
-            {% else %}
-            <span class="data-na">N/A</span>
-            {% endif %}
+    <div class="details">
+        <div class="badges">
+            <span class="badge db-id">DB ID: {{ guest.id }}</span>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 appearance-count">
+                <span class="field-label">Appearances (Regular Shows Only)</span>
+                {% if guest.appearances.count %}
+                {{ guest.appearances.count.regular_shows }}
+                {% else %}
+                <span class="data-na">N/A</span>
+                {% endif %}
+            </div>
+            <div class="col-md-6 appearance-count">
+                <span class="field-label">Appearances (All Shows)</span>
+                {% if guest.appearances.count %}
+                {{ guest.appearances.count.all_shows }}
+                {% else %}
+                <span class="data-na">N/A</span>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 appearances">
+                <span class="field-label">List of Appearances</span>
+                {% if guest.appearances.shows %}
+                <ul class="appearance-list">
+                    {% for appearance in guest.appearances.shows %}
+                    {% set show_date = date_string_to_date(date_string=appearance.date) %}
+                    <li>
+                        <a href="{{ url_for('shows.year_month_day', show_year=show_date.year, show_month=show_date.month, show_day=show_date.day) }}">{{ appearance.date }}</a>
+                        {% if appearance.score != None and appearance.score_exception %}
+                        <span class="score">{{ appearance.score }} <span class="score-exception" title="Scoring Exception">{{ "*" if appearance.score_exception }}</span></span>
+                        {% elif appearance.score != None and not appearance.score_exception %}
+                        <span class="score">{{ appearance.score }}</span>
+                        {% endif %}
+                        {% if appearance.best_of %}
+                        <span class="badge best-of">Best Of</span>
+                        {% endif %}
+                        {% if appearance.repeat_show %}
+                        <span class="badge repeat">Repeat</span>
+                        {% endif %}
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                <span class="data-na">N/A</span>
+                {% endif %}
+                </ul>
+            </div>
         </div>
     </div>
 </div>
-</div>
+{% endif %}
 {% endif %}
 {% endfor %}
