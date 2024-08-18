@@ -11612,7 +11612,9 @@ main .info {
   margin-top: 0.4rem;
   padding-right: 0.8rem;
 }
-main .info h3.date, main .info .date.h3, main .info h4.date, main .info .date.h4,
+main .info h3.date, main .info .date.h3,
+main .info h4.date,
+main .info .date.h4,
 main .info h3.location,
 main .info .location.h3,
 main .info h3.name,
@@ -11621,7 +11623,9 @@ main .info .name.h3 {
   font-weight: 500;
   padding-top: 1rem;
 }
-main .info h3.date a, main .info .date.h3 a, main .info h4.date a, main .info .date.h4 a,
+main .info h3.date a, main .info .date.h3 a,
+main .info h4.date a,
+main .info .date.h4 a,
 main .info h3.location a,
 main .info .location.h3 a,
 main .info h3.name a,
@@ -11640,18 +11644,25 @@ main .info .shows {
 main .info .data-tbd {
   font-style: italic;
 }
-main .info .location-list, main .info .name-list, main .info .show-list {
+main .info .location-list,
+main .info .name-list,
+main .info .show-list {
   line-height: 2.5;
   margin-left: 0.2rem;
   margin-bottom: 3rem;
 }
-main .info .location-list i, main .info .name-list i, main .info .show-list i {
+main .info .location-list i,
+main .info .name-list i,
+main .info .show-list i {
   padding-right: 0.6rem;
 }
-main .info .location-list li, main .info .name-list li, main .info .show-list li {
+main .info .location-list li,
+main .info .name-list li,
+main .info .show-list li {
   padding: 0.4rem 0.4rem 0.4rem 1.2rem;
 }
-main .info .dms-coordinates, main .info .score-exception {
+main .info .dms-coordinates,
+main .info .score-exception {
   border-bottom: 1px dotted;
   cursor: help;
 }
@@ -11815,6 +11826,12 @@ main .details .appearances .appearance-list .appearance-list.panelist,
 main .details .appearances .recording-list .appearance-list.panelist,
 main .details .recordings .appearance-list .appearance-list.panelist,
 main .details .recordings .recording-list .appearance-list.panelist {
+  column-count: 2;
+}
+main .details .appearances .appearance-list.list-col-2,
+main .details .appearances .recording-list.list-col-2,
+main .details .recordings .appearance-list.list-col-2,
+main .details .recordings .recording-list.list-col-2 {
   column-count: 2;
 }
 main .static-page h2, main .static-page .h2 {

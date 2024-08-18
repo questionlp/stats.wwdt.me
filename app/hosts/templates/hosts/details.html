@@ -1,69 +1,65 @@
 {% for host in hosts %}
 {# Sanity Check in case of a None and Skip TBD Host #}
 {% if host and not host.slug == "tbd" %}
-<h2><a href="{{ url_for('hosts.details',
-                         host_slug=host.slug) }}">{{ host.name }}</a></h2>
 
-<div class="host-block">
-<div class="row host-badges">
-    <div class="col s12">
-        <span class="database-id">DB ID: {{ host.id }}</span>
-        {% if host.pronouns %}
-        <span class="host-pronouns">Pronouns: {{ host.pronouns|join("/")}}</span>
-        {% endif %}
-    </div>
-</div>
-<div class="row">
-    <div class="col s12 l6 host-appearance-info">
-        <div class="label">Appearances</div>
-        {% if host.appearances.count %}
-        {{ host.appearances.count.regular_shows }}
-        {% else %}
-        <span class="data-na">N/A</span>
-        {% endif %}
-    </div>
-    <div class="col s12 l6 host-appearance-info">
-        <div class="label">Appearances including Best Of and Repeats</div>
-        {% if host.appearances.count %}
-        {{ host.appearances.count.all_shows }}
-        {% else %}
-        <span class="data-na">N/A</span>
-        {% endif %}
-    </div>
-</div>
+<div class="info">
+    <h3 class="name">
+        <a href="{{ url_for('hosts.details', host_slug=host.slug )}}">{{ host.name }}</a>
+    </h3>
 
-<div class="row">
-    <div class="col s12">
-        <div class="host-appearance-list">
-            <div class="label">List of Appearances</div>
-            {% if host.appearances.shows %}
-            <ul class="host-list">
-            {% for appearance in host.appearances.shows %}
-                {% set show_date = date_string_to_date(date_string=appearance.date) %}
-                <li>
-                    <a href="{{ url_for('shows.year_month_day',
-                                        show_year=show_date.year,
-                                        show_month=show_date.month,
-                                        show_day=show_date.day) }}">
-                    {{appearance.date}}</a>
-                    {% if appearance.guest %}
-                        <span class="host-guest">Guest</span>
-                    {% endif %}
-                    {% if appearance.best_of %}
-                        <span class="host-show-bestof">Best Of</span>
-                    {% endif %}
-                    {% if appearance.repeat_show %}
-                        <span class="host-show-repeat">Repeat</span>
-                    {% endif %}
-                </li>
-            {% endfor %}
-            </ul>
-            {% else %}
-            <span class="data-na">N/A</span>
+    <div class="details">
+        <div class="badges">
+            {% if host.pronouns %}
+            <span class="badge pronouns">Pronouns: {{ host.pronouns|join("/")}}</span>
             {% endif %}
+            <span class="badge db-id">DB ID: {{ host.id }}</span>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 appearance-count">
+                <span class="field-label">Appearances (Regular Shows Only)</span>
+                {% if host.appearances.count %}
+                {{ host.appearances.count.regular_shows }}
+                {% else %}
+                <span class="data-na">N/A</span>
+                {% endif %}
+            </div>
+            <div class="col-md-6 appearance-count">
+                <span class="field-label">Appearances (All Shows)</span>
+                {% if host.appearances.count %}
+                {{ host.appearances.count.all_shows }}
+                {% else %}
+                <span class="data-na">N/A</span>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 appearances">
+                <span class="field-label">List of Appearances</span>
+                {% if host.appearances.shows %}
+                <ul class="appearance-list {{- ' list-col-2' if host.appearances.shows | length < 6 -}}">
+                    {% for appearance in host.appearances.shows %}
+                    {% set show_date = date_string_to_date(date_string=appearance.date) %}
+                    <li>
+                        <a href="{{ url_for('shows.year_month_day', show_year=show_date.year, show_month=show_date.month, show_day=show_date.day) }}">{{ appearance.date }}</a>
+                        {% if appearance.best_of %}
+                        <span class="badge best-of">Best Of</span>
+                        {% endif %}
+                        {% if appearance.repeat_show %}
+                        <span class="badge repeat">Repeat</span>
+                        {% endif %}
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                <span class="data-na">N/A</span>
+                {% endif %}
+                </ul>
+            </div>
         </div>
     </div>
 </div>
-</div>
+
 {% endif %}
 {% endfor %}

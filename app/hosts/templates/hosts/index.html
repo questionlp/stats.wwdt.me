@@ -2,34 +2,34 @@
 {% block title %}Hosts{% endblock %}
 
 {% block content %}
-<div class="page-breadcrumb">
-    <ul>
-        <li>
-            <a href="{{ url_for('main.index') }}">Home</a>
-        </li>
-        <li>
-            Hosts
-        </li>
-    </ul>
-</div>
+<nav aria-label="breadcrumb" id="nav-breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item active" aria-current="page">Hosts</li>
+    </ol>
+</nav>
 
-<h1>Hosts</h1>
+<h2>Hosts</h2>
 <p>
     Choose from one of the show hosts below to view their appearance details.
 </p>
 
-<ul class="collection">
-    <li class="collection-item">
-        <a href="{{ url_for('hosts.random') }}">Random
-        <i class="material-icons right">shuffle</i></a>
-    </li>
-    {% for host in hosts %}
-        {% if host.slug != "tbd" %}
-    <li class="collection-item">
-        <a href="{{ url_for('hosts.details', host_slug=host.slug) }}">{{ host.name }}</a>
-    </li>
-        {% endif %}
-    {% endfor %}
-</ul>
+<div class="info">
+    <div class="hosts">
+        <ul class="list-group name-list">
+            <li class="list-group-item">
+                <a href="{{ url_for('hosts.random') }}">
+                    <i class="bi-shuffle" aria-hidden="true"></i>Random Host
+                </a>
+            </li>
+            {% for host in hosts %}
+            {% if host.slug != "tbd" %}
+            <li class="list-group-item">
+                <a href="{{ url_for('hosts.details', host_slug=host.slug) }}">{{ host.name }}</a>
+            </li>
+            {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+</div>
 
 {% endblock %}

@@ -4,107 +4,104 @@
 {% if postal_abbreviations and location.state %}
     {% set state_name = postal_abbreviations[location.state].name %}
 {% endif %}
-<h2><a href="{{ url_for('locations.details',
-                         location_slug=location.slug) }}">{{ location.venue }}</a></h2>
 
-<div class="location-block">
-<div class="row location-badges">
-    <div class="col s12">
-        <span class="database-id">DB ID: {{ location.id }}</span>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col s6 location-info">
-        <div class="label">Located In</div>
-        {% if location.city and state_name %}
-        {{ location.city }}, {{ state_name }}
-        {% elif location.city and location.state %}
-        {{ location.city }}, {{ location.state }}
-        {% else %}
-        <span class="data-na">N/A</span>
-        {% endif %}
-    </div>
-    <div class="col s6 location-info">
-        <div class="label">Coordinates</div>
-        {% if location.coordinates.latitude and location.coordinates.longitude %}
-            {% set lat_deg, lat_min, lat_sec = decimal_to_degrees(location.coordinates.latitude) %}
-            {% set lon_deg, lon_min, lon_sec = decimal_to_degrees(location.coordinates.longitude) %}
-        <span class="dms-coordinates" title="DMS Coordinates: {{ format_latitude(lat_deg, lat_min, lat_sec) | safe }}, {{ format_longitude(lon_deg, lon_min, lon_sec) | safe }}">
-            {{ "{:.5f}".format(location.coordinates.latitude.normalize()) }}&deg;, {{ "{:.5f}".format(location.coordinates.longitude.normalize()) }}&deg;
-        </span>
-            {% if display_location_map %}
-        <span class="map-link">(<a href="#map" title="Scroll down to location map">Location Map</a>)</span>
-            {% endif %}
-        {% else %}
-        <span class="data-na">N/A</span>
-        {% endif %}
-    </div>
-</div>
-
-<div class="row">
-    <div class="col s12 l6 location-recording-info">
-        <div class="label">Recordings</div>
-        {% if location.recordings.count %}
-        {{ location.recordings.count.regular_shows }}
-        {% else %}
-        <span class="data-na">N/A</span>
-        {% endif %}
-    </div>
-    <div class="col s12 l6 location-recording-info">
-        <div class="label">Recordings including Best Of and Repeats</div>
-        {% if location.recordings.count %}
-        {{ location.recordings.count.all_shows }}
-        {% else %}
-        <span class="data-na">N/A</span>
-        {% endif %}
-    </div>
-</div>
-
-<div class="row">
-    <div class="col s12">
-        <div class="location-appearance-list">
-            <div class="label">List of Recordings</div>
-            {% if location.recordings %}
-            <ul class="location-list">
-            {% for show in location.recordings.shows %}
-                {% set show_date = date_string_to_date(date_string=show.date) %}
-                <li>
-                    <a href="{{ url_for('shows.year_month_day',
-                                        year=show_date.year,
-                                        month=show_date.month,
-                                        day=show_date.day) }}">
-                    {{show.date}}</a>
-                    {% if show.best_of %}
-                        <span class="location-show-bestof">Best Of</span>
-                    {% endif %}
-                    {% if show.repeat_show %}
-                        <span class="location-show-repeat">Repeat</span>
-                    {% endif %}
-                </li>
-            {% endfor %}
-            </ul>
-            {% else %}
-            <span class="data-na">N/A</span>
-            {% endif %}
+<div class="info">
+    <h3 class="location">
+        <a href="{{ url_for('locations.details', location_slug=location.slug) }}">{{ location.venue }}</a>
+    </h3>
+    <div class="details">
+        <div class="badges">
+            <span class="badge db-id">DB ID: 4</span>
         </div>
-    </div>
-</div>
 
-{% if location.coordinates and display_location_map %}
-<div class="row">
-    <div class="col s12">
-        <div class="location-map-block">
-            <div class="label">Map</div>
-            <div id="map"
-                lat="{{ location.coordinates.latitude }}" lon="{{ location.coordinates.longitude }}"
-                alt-text="{{ location.venue }} in {{ location.city }}, {{ state_name if state_name else location.state }}"
-                tooltip="<b>{{ location.venue }}</b><br>{{ location.city }}, {{ state_name }}">
+        <div class="row">
+            <div class="col-md-6 appearance-count">
+                <span class="field-label">Located In</span>
+                {% if location.city and state_name %}
+                {{ location.city }}, {{ state_name }}
+                {% elif location.city and location.state %}
+                {{ location.city }}, {{ location.state }}
+                {% else %}
+                <span class="data-na">N/A</span>
+                {% endif %}
+            </div>
+            <div class="col-md-6 appearance-count">
+                <span class="field-label">Coordinates</span>
+                {% if location.coordinates.latitude and location.coordinates.longitude %}
+                {% set lat_deg, lat_min, lat_sec = decimal_to_degrees(location.coordinates.latitude) %}
+                {% set lon_deg, lon_min, lon_sec = decimal_to_degrees(location.coordinates.longitude) %}
+                <span class="dms-coordinates" title="DMS Coordinates: {{ format_latitude(lat_deg, lat_min, lat_sec) | safe }}, {{ format_longitude(lon_deg, lon_min, lon_sec) | safe }}">
+                    {{ "{:.5f}".format(location.coordinates.latitude.normalize()) }}&deg;, {{
+                    "{:.5f}".format(location.coordinates.longitude.normalize()) }}&deg;
+                </span>
+                {% if display_location_map %}
+                <span class="map-link">(<a href="#map" title="Scroll down to location map">Location Map</a>)</span>
+                {% endif %}
+                {% else %}
+                <span class="data-na">N/A</span>
+                {% endif %}
             </div>
         </div>
+
+        <div class="row">
+            <div class="col-md-6 appearance-count">
+                <span class="field-label">Recordings (Regular Shows)</span>
+                {% if location.recordings.count %}
+                {{ location.recordings.count.regular_shows }}
+                {% else %}
+                <span class="data-na">N/A</span>
+                {% endif %}
+            </div>
+            <div class="col-md-6 appearance-count">
+                <span class="field-label">Recordings (All Shows)</span>
+                {% if location.recordings.count %}
+                {{ location.recordings.count.all_shows }}
+                {% else %}
+                <span class="data-na">N/A</span>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 recordings">
+                <span class="field-label">List of Recordings</span>
+                {% if location.recordings %}
+                <ul class="recording-list {{- ' list-col-2' if location.recordings.shows | length < 6 -}}">
+                {% for show in location.recordings.shows %}
+                    {% set show_date = date_string_to_date(date_string=show.date) %}
+                    <li>
+                        <a href="{{ url_for('shows.year_month_day', show_year=show_date.year, show_month=show_date.month, show_day=show_date.day) }}">
+                            {{show.date}}
+                        </a>
+                    {% if show.best_of %}
+                        <span class="badge best-of">Best Of</span>
+                    {% endif %}
+                    {% if show.repeat_show %}
+                        <span class="badge repeat">Repeat</span>
+                    {% endif %}
+                    </li>
+                {% endfor %}
+                </ul>
+                {% else %}
+                <span class="data-na">N/A</span>
+                {% endif %}
+            </div>
+        </div>
+
+        {% if location.coordinates and display_location_map %}
+        <div class="row">
+            <div class="col-md-12">
+                <div class="location-map-block">
+                    <span class="field-label">Map</span>
+                    <div id="map" lat="{{ location.coordinates.latitude }}" lon="{{ location.coordinates.longitude }}"
+                        alt-text="{{ location.venue }} in {{ location.city }}, {{ state_name if state_name else location.state }}"
+                        tooltip="<b>{{ location.venue }}</b><br>{{ location.city }}, {{ state_name }}">
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
     </div>
-</div>
-{% endif %}
 </div>
 {% endif %}
 {% endfor %}

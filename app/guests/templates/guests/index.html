@@ -25,8 +25,7 @@
             {% for guest in guests %}
             {% if guest.slug != "tbd" %}
             <li class="list-group-item">
-                <a href="{{ url_for('guests.details', guest_slug=guest.slug) }}">{{ guest.name
-                    }}</a>
+                <a href="{{ url_for('guests.details', guest_slug=guest.slug) }}">{{ guest.name }}</a>
             </li>
             {% endif %}
             {% endfor %}

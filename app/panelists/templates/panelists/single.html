@@ -2,21 +2,14 @@
 {% block title %}{{ panelist_name }} | Panelists{% endblock %}
 
 {% block content %}
-<div class="page-breadcrumb">
-    <ul>
-        <li>
-            <a href="{{ url_for('main.index') }}">Home</a>
-        </li>
-        <li>
-            <a href="{{ url_for('panelists.index') }}">Panelists</a>
-        </li>
-        <li>
-            {{ panelist_name }}
-        </li>
-    </ul>
-</div>
+<nav aria-label="breadcrumb" id="nav-breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ url_for('panelists.index') }}">Panelists</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{ panelist_name }}</li>
+    </ol>
+</nav>
 
-<h1>Panelist Details</h1>
+<h2>Panelist Details</h2>
 
 {% include "panelists/details.html" %}
 {% endblock %}

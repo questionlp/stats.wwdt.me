@@ -1,170 +1,163 @@
 {% for panelist in panelists %}
 {% if panelist %}{# Sanity Check in case of a None #}
-<h2><a href="{{ url_for('panelists.details',
-                        panelist_slug=panelist.slug) }}">{{ panelist.name }}</a></h2>
 
-<div class="panelist-block">
-<div class="row panelist-badges">
-    <div class="col s12">
-        <span class="database-id">DB ID: {{ panelist.id }}</span>
-        {% if panelist.pronouns %}
-        <span class="panelist-pronouns">Pronouns: {{ panelist.pronouns|join("/")}}</span>
-        {% endif %}
-    </div>
-</div>
-
-<div class="row">
-    <div class="col s12 l6 panelist-appearance-info">
-        <div class="label">Appearances</div>
-        {% if panelist.appearances.count %}
-        <ul class="panelist-stats">
-            <li>Regular Shows: {{ panelist.appearances.count.regular_shows }}</li>
-            <li>All Shows: {{ panelist.appearances.count.all_shows }}</li>
-            <li>Shows with Scores: {{ panelist.appearances.count.shows_with_scores }}</li>
-            {% if panelist.appearances.milestones %}
-                {% set first_show = date_string_to_date(date_string=panelist.appearances.milestones.first.show_date) %}
-                <li>First Show: <a href="{{ url_for('shows.year_month_day',
-                                                    year=first_show.year,
-                                                    month=first_show.month,
-                                                    day=first_show.day) }}">
-                    {{ panelist.appearances.milestones.first.show_date }}</a>
-                </li>
-                {% set most_recent_show = date_string_to_date(date_string=panelist.appearances.milestones.most_recent.show_date) %}
-                <li>Most Recent Show: <a href="{{ url_for('shows.year_month_day',
-                                                          year=most_recent_show.year,
-                                                          month=most_recent_show.month,
-                                                          day=most_recent_show.day) }}">
-                    {{ panelist.appearances.milestones.most_recent.show_date }}</a>
-                </li>
+<div class="info">
+    <h3 class="name"><a href="{{ url_for('panelists.details', panelist_slug=panelist.slug) }}">{{ panelist.name }}</a></h3>
+    <div class="details">
+        <div class="badges">
+            {% if panelist.pronouns %}
+            <span class="badge pronouns">Pronouns: {{ panelist.pronouns|join("/")}}</span>
             {% endif %}
-        </ul>
-        {% else %}
-        <span class="data-na">N/A</span>
-        {% endif %}
-    </div>
-    <div class="col s12 l6 panelist-scoring-info">
-        <div class="label">Scoring</div>
-            {% if panelist.statistics.scoring_decimal %}
-            <ul class="panelist-stats">
-                <li>Minimum / Maximum: {{ "{:f}".format(panelist.statistics.scoring_decimal.minimum.normalize()) }}
-                    / {{ "{:f}".format(panelist.statistics.scoring_decimal.maximum.normalize()) }}</li>
-                <li>Mean: {{ "{:f}".format(panelist.statistics.scoring_decimal.mean.normalize()) }}</li>
-                <li>Median: {{ "{:f}".format(panelist.statistics.scoring_decimal.median.normalize()) }}</li>
-                <li>Standard Deviation: {{ "{:f}".format(panelist.statistics.scoring_decimal.standard_deviation.normalize()) }}</li>
-                <li>Total: {{ "{:f}".format(panelist.statistics.scoring_decimal.total.normalize()) }}</li>
-            </ul>
-            {% elif panelist.statistics.scoring %}
-            <ul class="panelist-stats">
-                <li>Minimum / Maximum: {{ panelist.statistics.scoring.minimum }}
-                    / {{ panelist.statistics.scoring.maximum }}</li>
-                <li>Mean: {{ panelist.statistics.scoring.mean }}</li>
-                <li>Median: {{ panelist.statistics.scoring.median }}</li>
-                <li>Standard Deviation: {{ panelist.statistics.scoring.standard_deviation }}</li>
-                <li>Total: {{ panelist.statistics.scoring.total }}</li>
-            </ul>
-            {% else %}
+            <span class="badge db-id">DB ID: {{ panelist.id }}</span>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 appearance-count">
+                <span class="field-label">Appearances</span>
+                {% if panelist.appearances.count %}
+                <ul class="stats">
+                    <li>Regular Shows: {{ panelist.appearances.count.regular_shows }}</li>
+                    <li>All Shows: {{ panelist.appearances.count.all_shows }}</li>
+                    <li>Shows with Scores: {{ panelist.appearances.count.shows_with_scores }}</li>
+                    {% if panelist.appearances.milestones %}
+                    {% set first_show = date_string_to_date(date_string=panelist.appearances.milestones.first.show_date) %}
+                    <li>First Show:
+                        <a href="{{ url_for('shows.year_month_day', show_year=first_show.year, show_month=first_show.month, show_day=first_show.day) }}">
+                            {{ panelist.appearances.milestones.first.show_date }}
+                        </a>
+                    </li>
+                    {% set most_recent_show = date_string_to_date(date_string=panelist.appearances.milestones.most_recent.show_date) %}
+                    <li>Most Recent Show:
+                        <a href="{{ url_for('shows.year_month_day', show_year=most_recent_show.year, show_month=most_recent_show.month, show_day=most_recent_show.day) }}">
+                            {{ panelist.appearances.milestones.most_recent.show_date }}
+                        </a>
+                    </li>
+                    {% endif %}
+                </ul>
+                {% else %}
                 <span class="data-na">N/A</span>
-            {% endif %}
-    </div>
-</div>
-
-<div class="row">
-    <div class="col s12 l6 panelist-ranking-info">
-        <div class="label">Rankings</div>
-            {% if panelist.statistics %}
-            <ul class="panelist-stats">
-                <li>First: {{ panelist.statistics.ranking.rank.first }}
-                    ({{ panelist.statistics.ranking.percentage.first }} %)
-                </li>
-                <li>First Tied: {{ panelist.statistics.ranking.rank.first_tied }}
-                    ({{ panelist.statistics.ranking.percentage.first_tied }} %)
-                </li>
-                <li>Second: {{ panelist.statistics.ranking.rank.second }}
-                    ({{ panelist.statistics.ranking.percentage.second }} %)
-                </li>
-                <li>Second Tied: {{ panelist.statistics.ranking.rank.second_tied }}
-                    ({{ panelist.statistics.ranking.percentage.second_tied }} %)
-                </li>
-                <li>Third: {{ panelist.statistics.ranking.rank.third }}
-                    ({{ panelist.statistics.ranking.percentage.third }} %)
-                </li>
-            </ul>
-            {% else %}
+                {% endif %}
+            </div>
+            <div class="col-md-6 appearance-count">
+                <span class="field-label">Scoring</span>
+                {% if panelist.statistics.scoring_decimal %}
+                <ul class="stats">
+                    <li>Minimum / Maximum: {{ "{:f}".format(panelist.statistics.scoring_decimal.minimum.normalize()) }} / {{ "{:f}".format(panelist.statistics.scoring_decimal.maximum.normalize()) }}</li>
+                    <li>Mean: {{ "{:f}".format(panelist.statistics.scoring_decimal.mean.normalize()) }}</li>
+                    <li>Median: {{ "{:f}".format(panelist.statistics.scoring_decimal.median.normalize()) }}</li>
+                    <li>Standard Deviation: {{ "{:f}".format(panelist.statistics.scoring_decimal.standard_deviation.normalize()) }}</li>
+                    <li>Total: {{ "{:f}".format(panelist.statistics.scoring_decimal.total.normalize()) }}</li>
+                </ul>
+                {% elif panelist.statistics.scoring %}
+                <ul class="panelist-stats">
+                    <li>Minimum / Maximum: {{ panelist.statistics.scoring.minimum }} / {{ panelist.statistics.scoring.maximum }}</li>
+                    <li>Mean: {{ panelist.statistics.scoring.mean }}</li>
+                    <li>Median: {{ panelist.statistics.scoring.median }}</li>
+                    <li>Standard Deviation: {{ panelist.statistics.scoring.standard_deviation }}</li>
+                    <li>Total: {{ panelist.statistics.scoring.total }}</li>
+                </ul>
+                {% else %}
                 <span class="data-na">N/A</span>
-            {% endif %}
-    </div>
-    <div class="col s12 l6 panelist-bluff-info">
-        <div class="label">Bluff (Data available for January 2000 to present)</div>
-        <ul class="panelist-stats">
-            <li>Chosen: {{ panelist.bluffs.chosen }}</li>
-            <li>Correct: {{ panelist.bluffs.correct }}</li>
-        </ul>
-    </div>
-</div>
+                {% endif %}
+            </div>
+        </div>
 
-<div class="row">
-    <div class="col s12">
-        <div class="label">Available Graphs</div>
-    </div>
-    <div class="col s12 m6 panelist-graph-breakdown">
-        <a href="{{ graphs_url }}/panelists/score-breakdown/{{ panelist.slug }}">
-            Score Breakdown
-        </a>
-    </div>
-    <div class="col s12 m6 panelist-graph-appearance">
-        <a href="{{ graphs_url }}/panelists/scores-by-appearance/{{ panelist.slug }}">
-            Scores by Appearance
-        </a>
-    </div>
-</div>
+        <div class="row">
+            <div class="col-md-6 appearance-count">
+                <span class="field-label">Rankings</span>
+                {% if panelist.statistics %}
+                <ul class="stats">
+                    <li>
+                        First: {{ panelist.statistics.ranking.rank.first }} ({{ panelist.statistics.ranking.percentage.first }} %)
+                    </li>
+                    <li>
+                        First Tied: {{ panelist.statistics.ranking.rank.first_tied }} ({{ panelist.statistics.ranking.percentage.first_tied }} %)
+                    </li>
+                    <li>
+                        Second: {{ panelist.statistics.ranking.rank.second }} ({{ panelist.statistics.ranking.percentage.second }} %)
+                    </li>
+                    <li>
+                        Second Tied: {{ panelist.statistics.ranking.rank.second_tied }} ({{ panelist.statistics.ranking.percentage.second_tied }} %)
+                    </li>
+                    <li>
+                        Third: {{ panelist.statistics.ranking.rank.third }} ({{ panelist.statistics.ranking.percentage.third }} %)
+                    </li>
+                </ul>
+                {% else %}
+                <span class="data-na">N/A</span>
+                {% endif %}
+            </div>
+            <div class="col-md-6 appearance-count">
+                <span class="field-label">Bluff the Listener</span>
+                <ul class="stats">
+                {% if panelist.bluffs.chosen %}
+                    <li>Chosen: {{ panelist.bluffs.chosen }}</li>
+                {% else %}
+                    <li>Chosen: <span class="data-na">N/A</span></li>
+                {% endif %}
+                {% if panelist.bluffs.correct %}
+                    <li>Correct: {{ panelist.bluffs.correct }}</li>
+                {% else %}
+                    <li>Chosen: <span class="data-na">N/A</span></li>
+                {% endif%}
+                </ul>
+            </div>
+        </div>
 
-<div class="row">
-    <div class="col s12">
-        <div class="panelist-appearance-list">
-            <div class="label">List of Appearances</div>
-            {% if panelist.appearances.shows %}
-            <ul class="panelist-list">
-            {% for appearance in panelist.appearances.shows %}
-                {% set show_date = date_string_to_date(date_string=appearance.date) %}
-                <li>
-                    <a href="{{ url_for('shows.year_month_day',
-                                        year=show_date.year,
-                                        month=show_date.month,
-                                        day=show_date.day) }}">
-                    {{appearance.date}}</a>
-                    {% if appearance.score_decimal != None %}
-                        {{ "{:f}".format(appearance.score_decimal.normalize()) }}
-                        {% if appearance.lightning_round_start != None and appearance.lightning_round_correct != None %}
+        <div class="row">
+            <div class="col-md-12">
+                <span class="field-label">Available Graphs</span>
+                <ul class="graph-list">
+                    <li><a href="{{ graphs_url }}/panelists/score-breakdown/{{ panelist.slug }}">Score Breakdown</a></li>
+                    <li><a href="{{ graphs_url }}/panelists/scores-by-appearance/{{ panelist.slug }}">Scores by Appearance</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 appearances">
+                <span class="field-label">List of Appearances</span>
+                {% if panelist.appearances.shows %}
+                <ul class="appearance-list panelist">
+                    {% for appearance in panelist.appearances.shows %}
+                    {% set show_date = date_string_to_date(date_string=appearance.date) %}
+                    <li>
+                        <a href="{{ url_for('shows.year_month_day', show_year=show_date.year, show_month=show_date.month, show_day=show_date.day) }}">{{ appearance.date }}</a>
+                        {% if appearance.score_decimal != None %}
+                        <span class="score">
+                            {{ "{:f}".format(appearance.score_decimal.normalize()) }}
+                            {% if appearance.lightning_round_start != None and appearance.lightning_round_correct != None %}
                             ({{ "{:f}".format(appearance.lightning_round_start_decimal.normalize()) if appearance.lightning_round_start_decimal else appearance.lightning_round_start }}
                             / {{ "{:f}".format(appearance.lightning_round_correct_decimal.normalize()) if appearance.lightning_round_correct_decimal else appearance.lightning_round_correct }})
-                        {% endif %}
-                        {% if appearance.rank %}
-                            <span class="panelist-rank">[{{ rank_map[appearance.rank] }}]</span>
-                        {% endif %}
-                    {% elif appearance.score != None %}
-                        {{ appearance.score }}
-                        {% if appearance.lightning_round_start != None and appearance.lightning_round_correct != None %}
+                        </span>
+                            {% endif %}
+                            {% if appearance.rank %}
+                            <span class="rank">[{{ rank_map[appearance.rank] }}]</span>
+                            {% endif %}
+                        {% elif appearance.score != None %}
+                        <span class="score">{{ appearance.score }}</span>
+                            {% if appearance.lightning_round_start != None and appearance.lightning_round_correct != None %}
                             ({{ appearance.lightning_round_start}} / {{ appearance.lightning_round_correct}})
+                            {% endif %}
+                            {% if appearance.rank %}
+                            <span class="rank">[{{ rank_map[appearance.rank] }}]</span>
+                            {% endif %}
                         {% endif %}
-                        {% if appearance.rank %}
-                            <span class="panelist-rank">[{{ rank_map[appearance.rank] }}]</span>
+                        {% if appearance.best_of %}
+                        <span class="badge best-of">Best Of</span>
                         {% endif %}
-                    {% endif %}
-                    {% if appearance.best_of %}
-                        <span class="panelist-show-bestof">Best Of</span>
-                    {% endif %}
-                    {% if appearance.repeat_show %}
-                        <span class="panelist-show-repeat">Repeat</span>
-                    {% endif %}
-                </li>
-            {% endfor %}
-            </ul>
-            {% else %}
-            <span class="data-na">N/A</span>
-            {% endif %}
+                        {% if appearance.repeat_show %}
+                        <span class="badge repeat">Repeat</span>
+                        {% endif %}
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                <span class="data-na">N/A</span>
+                {% endif %}
+            </div>
         </div>
     </div>
-</div>
 </div>
 {% endif %}
 {% endfor %}

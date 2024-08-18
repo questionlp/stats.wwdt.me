@@ -35,7 +35,7 @@
             <div class="col-md-12 appearances">
                 <span class="field-label">List of Appearances</span>
                 {% if guest.appearances.shows %}
-                <ul class="appearance-list">
+                <ul class="appearance-list {{- ' list-col-2' if guest.appearances.shows | length < 6 -}}">
                     {% for appearance in guest.appearances.shows %}
                     {% set show_date = date_string_to_date(date_string=appearance.date) %}
                     <li>

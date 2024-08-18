@@ -24,6 +24,7 @@ header {
                 opacity: 100;
             }
         }
+
         .nav-link {
             padding: var(--bs-nav-link-padding-y) $navbar-nav-link-padding-x * 1.25;
         }
@@ -136,7 +137,8 @@ main {
         margin-top: 0.4rem;
         padding-right: 0.8rem;
 
-        h3.date, h4.date,
+        h3.date,
+        h4.date,
         h3.location,
         h3.name {
             font-size: 1.25em;
@@ -162,7 +164,9 @@ main {
             font-style: italic;
         }
 
-        .location-list, .name-list, .show-list {
+        .location-list,
+        .name-list,
+        .show-list {
             line-height: 2.5;
             margin-left: 0.2rem;
             margin-bottom: 3rem;
@@ -176,7 +180,8 @@ main {
             }
         }
 
-        .dms-coordinates, .score-exception {
+        .dms-coordinates,
+        .score-exception {
             border-bottom: 1px dotted;
             cursor: help;
         }
@@ -354,7 +359,6 @@ main {
 
         .appearances,
         .recordings {
-
             .appearance-list,
             .recording-list {
                 column-count: 3;
@@ -372,6 +376,11 @@ main {
                 .appearance-list.panelist {
                     column-count: 2;
                 }
+            }
+
+            .appearance-list.list-col-2,
+            .recording-list.list-col-2 {
+                column-count: 2;
             }
         }
     }
