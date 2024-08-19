@@ -538,9 +538,15 @@ footer {
 
 
 @media only screen and (max-width: 767px) {
+    header {
+        nav {
+            h1 {
+                margin-top: 0.4rem;
+            }
+        }
+    }
     main {
         .details {
-
             .col-md-6.scorekeeper-info,
             .col-md-6.guest-info {
                 margin-top: 1.2rem;

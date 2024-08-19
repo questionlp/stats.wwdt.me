@@ -11927,6 +11927,9 @@ footer .copyright {
   }
 }
 @media only screen and (max-width: 767px) {
+  header nav h1, header nav .h1 {
+    margin-top: 0.4rem;
+  }
   main .details .col-md-6.scorekeeper-info,
   main .details .col-md-6.guest-info {
     margin-top: 1.2rem;
@@ -12001,9 +12004,9 @@ footer .copyright {
   }
   main .details .badge {
     background-color: #ffffff !important;
-    border: 1px solid #000000;
-    margin: 0 0.2rem;
-    padding: 0;
+    border: 1px solid #000000 !important;
+    margin: 0 0.2rem !important;
+    padding: 0.4rem !important;
   }
   main .details .npr-link a {
     background-color: #ffffff;
