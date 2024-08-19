@@ -1,5 +1,23 @@
 # Changes
 
+## 6.0.0-alpha
+
+### Application Changes
+
+- Major frontend refactor due to switching from Materialize to Bootstrap
+  - Replacing Materialize 1.2.2 frontend toolkit with Bootstrap 5.3.3
+    - Existing Materialize CSS and JS files will be preserved to prevent cached versions of the application from breaking
+  - Replacing Materialize Icons with Bootstrap Icons
+  - Refactor the frontend structure to use Bootstrap frontend components and conventions
+  - Change the behavior of the main navigation to combine navigation links into a single list that are listed in the top navbar on `xl` screen size or in an off-canvas side nav on smaller screens
+  - Improve legibility and readability in font size changes and increased color contrast when using the dark mode color theme
+  - Include a color theme toggle in the main navigation to allow the reader to switch the theme on-the-fly
+  - Remove the rightwards arrow included after links in the main section of the page
+- Directly host IBM Plex web fonts instead of depending on Google Fonts
+- Render show description and notes text as Markdown
+- Add hover text for Not My Job scoring exceptions and Appearances/Recording
+- De-emphasize the DB ID badge by changing the background color to blend in with the background instead of being contrasting the background
+
 ## 5.13.4
 
 ### Application Changes

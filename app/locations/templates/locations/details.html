@@ -45,7 +45,7 @@
 
         <div class="row">
             <div class="col-md-6 appearance-count">
-                <span class="field-label">Recordings (Regular Shows)</span>
+                <span class="field-label">Recordings (<span class="help-notes" title="Excludes Best Of and Repeats">Regular Shows</span>)</span>
                 {% if location.recordings.count %}
                 {{ location.recordings.count.regular_shows }}
                 {% else %}
@@ -53,7 +53,7 @@
                 {% endif %}
             </div>
             <div class="col-md-6 appearance-count">
-                <span class="field-label">Recordings (All Shows)</span>
+                <span class="field-label">Recordings (<span class="help-notes" title="Includes Best Of and Repeats">All Shows</span>)</span>
                 {% if location.recordings.count %}
                 {{ location.recordings.count.all_shows }}
                 {% else %}

@@ -83,7 +83,7 @@ header {
 }
 
 main {
-    padding-top: 4rem;
+    padding-top: 3.2rem;
 
     a {
         border-bottom: 1px dotted;
@@ -95,6 +95,10 @@ main {
     h2,
     h3 {
         margin: 1.2rem 0;
+    }
+
+    h2#welcome {
+        margin-top: 0.4rem;
     }
 
     nav#nav-breadcrumb {
@@ -181,8 +185,9 @@ main {
         }
 
         .dms-coordinates,
-        .score-exception {
-            border-bottom: 1px dotted;
+        .score-exception,
+        .help-notes {
+            border-bottom: 1px dotted ibm.$blue-70;
             cursor: help;
         }
 
@@ -354,7 +359,9 @@ main {
 
         .show-description-text,
         .show-notes-text {
-            white-space: break-spaces;
+            p:last-of-type {
+                margin-bottom: 0;
+            }
         }
 
         .appearances,
@@ -447,6 +454,14 @@ footer {
             }
         }
 
+        .info {
+            .dms-coordinates,
+            .score-exception,
+            .help-notes {
+                border-bottom: 1px dotted ibm.$blue-20;
+            }
+        }
+
         .details {
             a:hover {
                 color: $white;
@@ -483,10 +498,20 @@ footer {
             }
         }
     }
+
+    .details {
+        .appearances {
+            .appearance-list.panelist {
+                column-count: 2;
+            }
+        }
+    }
 }
 
 @media only screen and (max-width: 801px) {
     main {
+        padding-top: 3rem;
+
         .year-list {
             column-count: 3;
         }

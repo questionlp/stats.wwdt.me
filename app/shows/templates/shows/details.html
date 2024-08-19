@@ -181,7 +181,7 @@
         <div class="row">
             <div class="col show-description">
                 <span class="field-label">Description</span>
-                <div class="show-description-text">{{ show.description }}</div>
+                <div class="show-description-text">{{ show.description | markdown | safe }}</div>
             </div>
         </div>
         {% endif %}
@@ -190,7 +190,7 @@
         <div class="row">
             <div class="col show-notes">
                 <span class="field-label">Notes</span>
-                <div class="show-notes-text">{{ show.notes }}</div>
+                <div class="show-notes-text">{{ show.notes | markdown | safe }}</div>
             </div>
         </div>
         {% endif %}
