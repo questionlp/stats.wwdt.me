@@ -11418,6 +11418,10 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+:root {
+  font-size: calc(15px + 0.390625vw);
+}
+
 header {
   color: #ffffff;
 }
@@ -11956,5 +11960,3 @@ footer .copyright {
     text-align: left !important;
   }
 }
-
-/*# sourceMappingURL=app.css.map */
