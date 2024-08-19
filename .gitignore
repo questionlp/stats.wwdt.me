@@ -1,3 +1,6 @@
+# Ignore CSS source maps
+app/static/css/*.css.map
+
 # Ignore venv directory
 venv/
 

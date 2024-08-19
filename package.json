@@ -15,9 +15,11 @@
         "serve": "^14.2.3"
     },
     "scripts": {
-        "compile": "sass scss/main.scss app/static/css/app.css",
-        "compile-mini": "sass --style=compressed scss/main.scss app/static/css/app.min.css",
-        "watch": "sass --watch scss/main.scss app/static/css/app.css",
+        "compile": "sass --no-source-map scss/main.scss app/static/css/app.css",
+        "compile-mini": "sass --no-source-map --style=compressed scss/main.scss app/static/css/app.min.css",
+        "compile-error": "sass --no-source-map scss/errors.scss app/static/css/errors.css",
+        "compile-error-mini": "sass --no-source-map --style=compressed scss/errors.scss app/static/css/errors.min.css",
+        "watch": "sass --no-source-map --watch scss/main.scss app/static/css/app.css",
         "js-copy-bundle": "cp node_modules/bootstrap/dist/js/bootstrap.bundle.min.js node_modules/bootstrap/dist/js/bootstrap.bundle.min.js.map app/static/js/",
         "test": "echo \"Error: no test specified\" && exit 1"
     }
