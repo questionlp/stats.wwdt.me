@@ -1,0 +1,17 @@
+{%- if umami.enabled -%}
+    {%- if umami.url and umami.website_id -%}
+        {%- set auto_track = "true" if umami.auto_track else "false" -%}
+        {%- set domains = umami.domains if umami.domains else None -%}
+        {%- set host_url = umami.host_url if umami.host_url else None -%}
+        {% if host_url and domains %}
+    <!-- Umami Analytics -->
+    <script defer src="{{ umami.url }}" data-website-id="{{ umami.website_id }}" data-auto-track="{{ auto_track }}" data-domains="{{ domains }}" data-host-url="{{ host_url }}"></script>
+        {% elif domains %}
+    <!-- Umami Analytics -->
+    <script defer src="{{ umami.url }}" data-website-id="{{ umami.website_id }}" data-auto-track="{{ auto_track }}" data-domains="{{ domains }}"></script>
+        {% else %}
+    <!-- Umami Analytics -->
+    <script defer src="{{ umami.url }}" data-website-id="{{ umami.website_id }}" data-auto-track="{{ auto_track }}"></script>
+        {% endif %}
+    {%- endif -%}
+{%- endif -%}

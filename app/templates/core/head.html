@@ -14,7 +14,7 @@
     {% endif %}
     <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap-icons/bootstrap-icons.min.css')}}">
 
-    <!-- Import Leaflet -->
+    <!-- Import Leaflet.js -->
     <link rel="stylesheet" href="{{ url_for('static', filename='leaflet/leaflet.css') }}">
     <script src="{{ url_for('static', filename='leaflet/leaflet.js')}}"></script>
 
@@ -29,7 +29,6 @@
     </script>
     {% endif %}
 
-    {% if umami_analytics %}
-    <!-- Umami Analytics -->
-    {{ umami_analytics|safe }}
-    {% endif %}
+    {%- if umami -%}
+        {% include "core/umami.html" %}
+    {%- endif -%}
