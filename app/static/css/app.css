@@ -11419,7 +11419,7 @@ textarea.form-control-lg {
   }
 }
 :root {
-  font-size: calc(15px + 0.390625vw);
+  font-size: clamp(15px, 15px + 0.390625vw, 20px);
 }
 
 header {
@@ -11525,7 +11525,7 @@ main nav#nav-breadcrumb .breadcrumb .active {
 main .container-fluid.p-4, main .p-4.container-sm, main .p-4.container-md, main .p-4.container-lg, main .p-4.container-xl, main .p-4.container-xxl {
   padding: 2rem !important;
 }
-main .year-list {
+main #year-list {
   column-count: 4;
   column-fill: balance;
   column-rule: none;
@@ -11729,6 +11729,17 @@ main .details .show-description-text p:last-of-type,
 main .details .show-notes-text p:last-of-type {
   margin-bottom: 0;
 }
+main .details .show-description-text ul,
+main .details .show-notes-text ul {
+  list-style: initial;
+  line-height: 1.5;
+  margin: initial;
+  padding: initial;
+}
+main .details .show-description-text ul li,
+main .details .show-notes-text ul li {
+  padding-left: 1.2rem;
+}
 main .details .appearances .appearance-list,
 main .details .appearances .recording-list,
 main .details .recordings .appearance-list,
@@ -11834,7 +11845,7 @@ footer .copyright {
   main {
     padding-top: 3rem;
   }
-  main .year-list {
+  main #year-list {
     column-count: 3;
   }
   main .details .appearances .appearance-list {
@@ -11859,6 +11870,9 @@ footer .copyright {
   main .details .bluff-segment-num {
     font-weight: 600;
     padding-bottom: 0.6rem;
+  }
+  main .details .graph-list {
+    column-count: 1;
   }
   main .info .name-list {
     margin-left: 0.6rem;

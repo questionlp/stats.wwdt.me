@@ -1,6 +1,6 @@
 :root {
     // Source: https: //matthewjamestaylor.com/responsive-font-size
-    font-size: calc(15px + 0.390625vw);
+    font-size: clamp(15px, calc(15px + 0.390625vw), 20px);
 }
 
 header {
@@ -134,7 +134,7 @@ main {
         padding: 2rem !important;
     }
 
-    .year-list {
+    #year-list {
         column-count: 4;
         column-fill: balance;
         column-rule: none;
@@ -367,6 +367,20 @@ main {
             p:last-of-type {
                 margin-bottom: 0;
             }
+
+            ul {
+                list-style: initial;
+                line-height: 1.5;
+                margin: revert;
+                padding: revert;
+
+                li {
+                    margin: revert;
+                    padding: revert;
+                    // margin-left: 2rem;
+                    // padding-left: 0.4rem;
+                }
+            }
         }
 
         .appearances,
@@ -517,7 +531,7 @@ footer {
     main {
         padding-top: 3rem;
 
-        .year-list {
+        #year-list {
             column-count: 3;
         }
 
@@ -561,6 +575,10 @@ footer {
             .bluff-segment-num {
                 font-weight: 600;
                 padding-bottom: 0.6rem;
+            }
+
+            .graph-list {
+                column-count: 1;
             }
         }
 

@@ -217,7 +217,7 @@ def _all() -> Response | str:
         if not show_years:
             return redirect_url(url_for("shows.index"))
 
-        shows_by_year = {}
+        _shows_by_year = {}
         for _year in show_years:
             shows = show.retrieve_details_by_year(
                 year=_year,
@@ -225,14 +225,14 @@ def _all() -> Response | str:
                     "use_decimal_scores"
                 ],
             )
-            shows_by_year[year] = shows
+            _shows_by_year[_year] = shows
 
         database_connection.close()
 
         return render_template(
             "shows/all.html",
             show_years=show_years,
-            shows=shows_by_year,
+            shows=_shows_by_year,
             format_location_name=format_location_name,
         )
     except ValueError:
