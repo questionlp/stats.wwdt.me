@@ -15,7 +15,7 @@
         </div>
 
         <div class="row">
-            <div class="col-md-6 appearance-count">
+            <div class="col-md-6 located-in">
                 <span class="field-label">Located In</span>
                 {% if location.city and state_name %}
                 {{ location.city }}, {{ state_name }}
@@ -25,18 +25,21 @@
                 <span class="data-na">N/A</span>
                 {% endif %}
             </div>
-            <div class="col-md-6 appearance-count">
+            <div class="col-md-6 coordinates">
                 <span class="field-label">Coordinates</span>
                 {% if location.coordinates.latitude and location.coordinates.longitude %}
-                {% set lat_deg, lat_min, lat_sec = decimal_to_degrees(location.coordinates.latitude) %}
-                {% set lon_deg, lon_min, lon_sec = decimal_to_degrees(location.coordinates.longitude) %}
-                <span class="dms-coordinates" title="DMS Coordinates: {{ format_latitude(lat_deg, lat_min, lat_sec) | safe }}, {{ format_longitude(lon_deg, lon_min, lon_sec) | safe }}">
+                    {% set lat_deg, lat_min, lat_sec = decimal_to_degrees(location.coordinates.latitude) %}
+                    {% set lon_deg, lon_min, lon_sec = decimal_to_degrees(location.coordinates.longitude) %}
+                <span class="dms-coordinates" data-bs-toggle="tooltip"
+                    title="DMS Coordinates: {{ format_latitude(lat_deg, lat_min, lat_sec) | safe }}, {{ format_longitude(lon_deg, lon_min, lon_sec) | safe }}">
                     {{ "{:.5f}".format(location.coordinates.latitude.normalize()) }}&deg;, {{
                     "{:.5f}".format(location.coordinates.longitude.normalize()) }}&deg;
                 </span>
-                {% if display_location_map %}
-                <span class="map-link">(<a href="#map" title="Scroll down to location map">Location Map</a>)</span>
-                {% endif %}
+                    {% if display_location_map %}
+                <span class="map-link">
+                    <i class="bi-map" aria-hidden="true"></i> <a href="#map-block" title="Scroll down to location map">Location Map</a>
+                </span>
+                    {% endif %}
                 {% else %}
                 <span class="data-na">N/A</span>
                 {% endif %}
@@ -44,16 +47,24 @@
         </div>
 
         <div class="row">
-            <div class="col-md-6 appearance-count">
-                <span class="field-label">Recordings (<span class="help-notes" title="Excludes Best Of and Repeats">Regular Shows</span>)</span>
+            <div class="col-md-6 recordings-regular">
+                <span class="field-label">
+                    Recordings
+                    (<span class="help-notes" data-bs-toggle="tooltip" data-bs-placement="top"
+                        title="Excludes Best Of and Repeat Shows">Regular Shows
+                    </span>)
+                </span>
                 {% if location.recordings.count %}
                 {{ location.recordings.count.regular_shows }}
                 {% else %}
                 <span class="data-na">N/A</span>
                 {% endif %}
             </div>
-            <div class="col-md-6 appearance-count">
-                <span class="field-label">Recordings (<span class="help-notes" title="Includes Best Of and Repeats">All Shows</span>)</span>
+            <div class="col-md-6 recordings-all">
+                <span class="field-label">
+                    Recordings
+                    (<span class="help-notes" data-bs-toggle="tooltip" data-bs-placement="top"
+                    title="Includes Best Of and Repeat Shows">All Shows</span>)</span>
                 {% if location.recordings.count %}
                 {{ location.recordings.count.all_shows }}
                 {% else %}
@@ -89,7 +100,7 @@
         </div>
 
         {% if location.coordinates and display_location_map %}
-        <div class="row">
+        <div class="row" id="map-block">
             <div class="col-md-12">
                 <div class="location-map-block">
                     <span class="field-label">Map</span>

@@ -19,16 +19,22 @@
         </div>
 
         <div class="row">
-            <div class="col-md-6 appearance-count">
-                <span class="field-label">Appearances (<span class="help-notes" title="Excludes Best Of and Repeats">Regular Shows</span>)</span>
+            <div class="col-md-6 appearances-regular">
+                <span class="field-label">
+                    Appearances
+                    (<span class="help-notes" data-bs-toggle="tooltip" title="Excludes Best Of and Repeat Shows">Regular Shows</span>)
+                </span>
                 {% if scorekeeper.appearances.count %}
                 {{ scorekeeper.appearances.count.regular_shows }}
                 {% else %}
                 <span class="data-na">N/A</span>
                 {% endif %}
             </div>
-            <div class="col-md-6 appearance-count">
-                <span class="field-label">Appearances (<span class="help-notes" title="Includes Best Of and Repeats">All Shows</span>)</span>
+            <div class="col-md-6 appearances-all">
+                <span class="field-label">
+                    Appearances
+                    (<span class="help-notes" data-bs-toggle="tooltip" title="Includes Best Of and Repeat Shows">All Shows</span>)
+                </span>
                 {% if scorekeeper.appearances.count %}
                 {{ scorekeeper.appearances.count.all_shows }}
                 {% else %}

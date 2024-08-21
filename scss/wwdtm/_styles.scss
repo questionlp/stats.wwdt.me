@@ -1,6 +1,10 @@
 :root {
     // Source: https: //matthewjamestaylor.com/responsive-font-size
-    font-size: clamp(15px, calc(15px + 0.390625vw), 20px);
+    font-size: clamp(15px, calc(14.5px + 0.390625vw), 19px);
+
+    .tooltip {
+        font-size: clamp(15px, calc(14.5px + 0.390625vw), 19px);
+    }
 }
 
 header {
@@ -108,7 +112,6 @@ main {
 
     nav#nav-breadcrumb {
         background-color: ibm.$gray-10;
-        font-size: 95%;
         margin: 0.2rem 0 1.6rem;
         padding: 1rem 1.2rem 1rem;
         --bs-breadcrumb-divider: ">";
@@ -124,10 +127,8 @@ main {
 
             .active {
                 color: $black;
-                font-weight: 600;
             }
         }
-
     }
 
     .container-fluid.p-4 {
@@ -192,12 +193,21 @@ main {
         .dms-coordinates,
         .score-exception,
         .help-notes {
-            border-bottom: 1px dotted ibm.$blue-70;
+            border-bottom: 1px dotted ibm.$green-70;
             cursor: help;
+        }
+
+        .dms-coordinates {
+            margin-right: 0.4rem;
         }
 
         .map-link {
             padding-left: 0.4rem;
+            text-wrap: nowrap;
+            
+            i {
+                padding-right: 0.2rem;
+            }
         }
 
         #map {
@@ -360,6 +370,7 @@ main {
         .score {
             font-weight: 500;
             margin-left: 0.4rem;
+            text-wrap: nowrap;
         }
 
         .show-description-text,
@@ -477,7 +488,7 @@ footer {
             .dms-coordinates,
             .score-exception,
             .help-notes {
-                border-bottom: 1px dotted ibm.$blue-20;
+                border-bottom: 1px dotted ibm.$green-20;
             }
         }
 
@@ -567,7 +578,12 @@ footer {
     main {
         .details {
             .col-md-6.scorekeeper-info,
-            .col-md-6.guest-info {
+            .col-md-6.guest-info,
+            .col-md-6.coordinates,
+            .col-md-6.appearances-all,
+            .col-md-6.recordings-all,
+            .col-md-6.scoring-stats,
+            .col-md-6.bluff-stats {
                 margin-top: 1.2rem;
                 margin-bottom: 0.4rem;
             }
