@@ -193,7 +193,7 @@ main {
         .dms-coordinates,
         .score-exception,
         .help-notes {
-            border-bottom: 1px dotted ibm.$green-70;
+            border-bottom: 1px dotted $tooltip-underline;
             cursor: help;
         }
 
@@ -204,7 +204,7 @@ main {
         .map-link {
             padding-left: 0.4rem;
             text-wrap: nowrap;
-            
+
             i {
                 padding-right: 0.2rem;
             }
@@ -373,6 +373,9 @@ main {
             text-wrap: nowrap;
         }
 
+        .bluff-segment-num {
+            font-weight: 600;
+        }
         .show-description-text,
         .show-notes-text {
             p:last-of-type {
@@ -488,7 +491,7 @@ footer {
             .dms-coordinates,
             .score-exception,
             .help-notes {
-                border-bottom: 1px dotted ibm.$green-20;
+                border-bottom: 1px dotted $tooltip-underline-dark;
             }
         }
 
@@ -575,6 +578,7 @@ footer {
             }
         }
     }
+
     main {
         .details {
             .col-md-6.scorekeeper-info,
@@ -615,9 +619,9 @@ footer {
 @media only screen and (max-width: 601px) {
     main {
         .container-fluid.p-4 {
-                padding: 1.4rem !important;
-                margin-top: 0.4rem;
-            }
+            padding: 1.4rem !important;
+            margin-top: 0.4rem;
+        }
 
         .details {
             .badge {

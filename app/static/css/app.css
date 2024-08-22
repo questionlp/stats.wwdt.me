@@ -11835,6 +11835,9 @@ main .details .score {
   margin-left: 0.4rem;
   text-wrap: nowrap;
 }
+main .details .bluff-segment-num {
+  font-weight: 600;
+}
 main .details .show-description-text p:last-of-type,
 main .details .show-notes-text p:last-of-type {
   margin-bottom: 0;
@@ -12035,7 +12038,8 @@ footer .copyright {
   header .navbar .navbar-brand {
     color: #000000 !important;
   }
-  header .navbar .offcanvasNavbar, header .navbar button {
+  header .navbar .offcanvasNavbar,
+  header .navbar button {
     display: none;
     visibility: hidden;
   }
@@ -12067,7 +12071,9 @@ footer .copyright {
     background-color: #ffffff;
     color: #000000 !important;
   }
-  .shadow, .shadow-sm, .shadow-lg {
+  .shadow,
+  .shadow-sm,
+  .shadow-lg {
     box-shadow: none !important;
   }
   footer .footer {
@@ -12081,12 +12087,15 @@ footer .copyright {
     display: none;
     visibility: hidden;
   }
-  footer .copyright-text, footer .app-details {
+  footer .copyright-text,
+  footer .app-details {
     display: block;
     flex: none;
     width: 100%;
   }
-  footer .text-lg-end, footer .app-details, footer .app-version {
+  footer .text-lg-end,
+  footer .app-details,
+  footer .app-version {
     text-align: left !important;
   }
 }

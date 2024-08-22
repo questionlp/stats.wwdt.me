@@ -7,7 +7,7 @@
         <li class="breadcrumb-item"><a href="#">Shows</a></li>
         <li class="breadcrumb-item"><a href="{{ url_for('shows.year', show_year=show_date.year) }}">{{ show_date.year }}</a></li>
         <li class="breadcrumb-item"><a href="{{ url_for('shows.year_month', show_year=show_date.year, show_month=show_date.month) }}">{{ show_date.strftime("%B") }}</a></li>
-        <li class="breadcrumb-item active" aria-current="page">{{ show_date.strftime("%d") }}</li>
+        <li class="breadcrumb-item active" aria-current="page">{{ show_date.strftime("%d")|lstrip("0") }}</li>
     </ol>
 </nav>
 

@@ -47,7 +47,12 @@
                     <li>
                         <a href="{{ url_for('shows.year_month_day', show_year=show_date.year, show_month=show_date.month, show_day=show_date.day) }}">{{ appearance.date }}</a>
                         {% if appearance.score != None and appearance.score_exception %}
-                        <span class="score">{{ appearance.score }} <span class="score-exception" title="Scoring Exception">{{ "*" if appearance.score_exception }}</span></span>
+                        <span class="score">
+                            {{ appearance.score }}
+                            <span class="score-exception" data-bs-toggle="tooltip"
+                                title="Scoring Exception">{{ "*" if appearance.score_exception }}
+                            </span>
+                        </span>
                         {% elif appearance.score != None and not appearance.score_exception %}
                         <span class="score">{{ appearance.score }}</span>
                         {% endif %}

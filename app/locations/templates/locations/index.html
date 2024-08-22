@@ -38,28 +38,4 @@
     </div>
 </div>
 
-{#
-<ul class="collection">
-    <li class="collection-item">
-        <a href="{{ url_for('locations.random') }}">Random
-        <i class="material-icons right">shuffle</i></a>
-    </li>
-    {% for location in locations %}
-    {% if "id" in location and not (location.id == 3 or location.id == 38) %}
-        {% if postal_abbreviations and location.state %}
-            {% set state_name = postal_abbreviations[location.state].name %}
-            {% set location_name = format_location_name(location, state_name=state_name) %}
-        {% else %}
-            {% set location_name = format_location_name(location) %}
-        {% endif %}
-    <li class="collection-item">
-        <a href="{{ url_for('locations.details', location_slug=location.slug) }}">
-            {{ location_name }}
-        </a>
-    </li>
-    {% endif %}
-    {% endfor %}
-</ul>
-
-#}
 {% endblock %}

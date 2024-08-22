@@ -17,7 +17,8 @@
                 color: $black !important;
             }
 
-            .offcanvasNavbar, button {
+            .offcanvasNavbar,
+            button {
                 display: none;
                 visibility: hidden;
             }
@@ -42,7 +43,8 @@
 
             .appearances {
                 .appearance-list {
-                    column-count: 2; column-fill: balance;
+                    column-count: 2;
+                    column-fill: balance;
                 }
             }
 
@@ -60,7 +62,9 @@
         }
     }
 
-    .shadow, .shadow-sm, .shadow-lg {
+    .shadow,
+    .shadow-sm,
+    .shadow-lg {
         box-shadow: none !important;
     }
 
@@ -79,13 +83,16 @@
             visibility: hidden;
         }
 
-        .copyright-text, .app-details {
+        .copyright-text,
+        .app-details {
             display: block;
             flex: none;
             width: 100%;
         }
 
-        .text-lg-end, .app-details, .app-version {
+        .text-lg-end,
+        .app-details,
+        .app-version {
             text-align: left !important;
         }
     }

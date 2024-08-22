@@ -124,7 +124,11 @@
                     <li>
                         <a href="{{ url_for('guests.details', guest_slug=guest.slug) }}">{{ guest.name }}</a>
                             {% if guest.score != None %}
-                        <span class="score">{{ guest.score }} <span class="score-exception" title="Scoring Exception">{{ "*" if guest.score_exception }}</span></span>
+                        <span class="score">
+                            {{ guest.score }}
+                            <span class="score-exception" data-bs-toggle="tooltip"
+                                title="Scoring Exception">{{ "*" if guest.score_exception }}</span>
+                        </span>
                             {% endif %}
                         {% else %}
                         <span class="data-na">N/A</span>
