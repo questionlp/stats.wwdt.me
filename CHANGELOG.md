@@ -5,8 +5,7 @@
 ### Application Changes
 
 - Frontend code refactor due to switching from Materialize to Bootstrap
-  - Replacing Materialize 1.2.2 frontend toolkit with Bootstrap 5.3.3
-    - Existing Materialize CSS and JS files will be preserved to prevent cached versions of the application from breaking
+  - Replacing Materialize frontend toolkit with Bootstrap
   - Replacing Materialize Icons with Bootstrap Icons
   - Refactor the frontend structure to use Bootstrap frontend components and conventions
   - Include the required IBM Plex web fonts with the application to remove use of Google Fonts
@@ -21,6 +20,14 @@
   - De-emphasize the DB ID badge by changing the background color to blend in, instead of contrasting, with the background
   - Remove "Home" from all navigational breadcrumbs
   - Remove zero-padded dates from navigational breadcrumbs
+- Fix warnings and errors reported by pylint
+
+### Component Changes
+
+- Upgrade gunicorn from 22.0.0 to 23.0.0
+- Replace Materialize CSS 1.2.2 with Bootstrap 5.3.3
+  - Existing Materialize CSS and JS files will be preserved to prevent cached versions of the application from breaking
+  - Materialize-related files will be removed in a future minor release
 
 ## 5.13.4
 
