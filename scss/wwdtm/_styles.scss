@@ -376,6 +376,7 @@ main {
         .bluff-segment-num {
             font-weight: 600;
         }
+
         .show-description-text,
         .show-notes-text {
             p:last-of-type {
@@ -391,14 +392,13 @@ main {
                 li {
                     margin: revert;
                     padding: revert;
-                    // margin-left: 2rem;
-                    // padding-left: 0.4rem;
                 }
             }
         }
 
         .appearances,
         .recordings {
+
             .appearance-list,
             .recording-list {
                 column-count: 3;
@@ -488,6 +488,7 @@ footer {
         }
 
         .info {
+
             .dms-coordinates,
             .score-exception,
             .help-notes {
@@ -550,8 +551,12 @@ footer {
         }
 
         .details {
-            .appearances {
-                .appearance-list {
+
+            .appearances,
+            .recordings {
+
+                .appearance-list,
+                .recording-list {
                     column-count: 2;
                 }
 
@@ -581,6 +586,7 @@ footer {
 
     main {
         .details {
+
             .col-md-6.scorekeeper-info,
             .col-md-6.guest-info,
             .col-md-6.coordinates,
@@ -634,10 +640,12 @@ footer {
                 margin-bottom: .375rem;
             }
 
-            .appearances {
-                .appearance-list {
+            .appearances,
+            .recordings {
+
+                .appearance-list,
+                .recording-list {
                     column-count: 1;
-                    column-fill: balance;
                 }
             }
         }

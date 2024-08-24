@@ -11962,10 +11962,14 @@ footer .copyright {
   main #year-list {
     column-count: 3;
   }
-  main .details .appearances .appearance-list {
+  main .details .appearances .appearance-list,
+  main .details .appearances .recording-list,
+  main .details .recordings .appearance-list,
+  main .details .recordings .recording-list {
     column-count: 2;
   }
-  main .details .appearances .appearance-list.panelist {
+  main .details .appearances .appearance-list.panelist,
+  main .details .recordings .appearance-list.panelist {
     column-count: 1;
   }
   main .info .name-list {
@@ -12015,9 +12019,11 @@ footer .copyright {
     margin-top: 1.25rem;
     margin-bottom: 0.375rem;
   }
-  main .details .appearances .appearance-list {
+  main .details .appearances .appearance-list,
+  main .details .appearances .recording-list,
+  main .details .recordings .appearance-list,
+  main .details .recordings .recording-list {
     column-count: 1;
-    column-fill: balance;
   }
   main .info .name-list {
     column-count: 1;
