@@ -28,7 +28,7 @@ def test_details(client: FlaskClient, host_slug: str) -> None:
 
 
 def test_all(client: FlaskClient) -> None:
-    """Testing hosts.all."""
+    """Testing hosts._all."""
     response: TestResponse = client.get("/hosts/all")
     assert response.status_code == 200
     assert b"Host Details" in response.data

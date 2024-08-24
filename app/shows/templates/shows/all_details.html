@@ -1,201 +1,197 @@
 {% for show_year in shows %}
-<h1 id="show-{{ show_year }}" class="show-all-year-header">{{ show_year }}</h1>
+<h3 id="show-{{ show_year }}">{{ show_year }}</h3>
 
 {% for show in shows[show_year] %}
 {% if show %}{# Sanity Check in case of a None #}
 {% set show_date = date_string_to_date(date_string=show.date) %}
-<h2><a href="{{ url_for('shows.year_month_day',
-                        year=show_date.year,
-                        month=show_date.month,
-                        day=show_date.day) }}">{{ show.date }}</a></h2>
+<h4 class="date">
+    <a href="{{ url_for('shows.year_month_day', show_year=show_date.year, show_month=show_date.month, show_day=show_date.day) }}">{{ show.date }}</a>
+</h4>
 
-<div class="show-block">
-<div class="row show-badges">
-    <div class="col s12">
+<div class="details">
+    <div class="badges">
         {% if show.best_of %}
-        <span class="show-bestof">Best Of</span>
+            <span class="badge best-of">Best Of</span>
         {% endif %}
         {% if show.repeat_show %}
             {% set repeat_show = date_string_to_date(date_string=show.original_show_date) %}
-        <span class="show-repeat">Repeat: <a href="{{ url_for('shows.year_month_day',
-                                                            year=repeat_show.year,
-                                                            month=repeat_show.month,
-                                                            day=repeat_show.day) }}">{{ show.original_show_date }}</a></span>
+            <span class="badge repeat">Repeat:
+                <a href="{{ url_for('shows.year_month_day', show_year=repeat_show.year, show_month=repeat_show.month, show_day=repeat_show.day) }}">{{ show.original_show_date }}</a>
+            </span>
         {% endif %}
-        <span class="show-nprlink">
+        <span class="badge npr-link">
         {% if show.show_url %}
-        <a href="{{ show.show_url }}">NPR</a>
+            <a href="{{ show.show_url }}">NPR<i class="bi-box-arrow-right" aria-hidden="true"></i></a>
         {% else %}
-        <a href="{{ url_for('main_redirects.npr_show_redirect', show_date=show.date) }}">NPR</a>
+            <a href="{{ url_for('main_redirects.npr_show_redirect', show_date=show.date) }}">NPR<i class="bi-box-arrow-right" aria-hidden="true"></i></a>
         {% endif %}
         </span>
-        <span class="database-id">DB ID: {{ show.id }}</span>
+        <span class="badge db-id">DB ID: {{ show.id }}</span>
     </div>
-</div>
 
-<div class="row">
-    <div class="col s12">
-        <div class="label">Location</div>
-        {# Only provide a link to non-placeholder locations #}
-        {% if not (show.location.id == 3 or show.location.id == 38) %}
-            <a href="{{ url_for('locations.details', location_slug=show.location.slug) }}">{{ format_location_name(show.location) }}</a>
-        {% else %}
+    <div class="row">
+        <div class="col location-info">
+            <span class="field-label">Location</span>
+            {# Only provide a link to non-placeholder locations #}
+            {% if not (show.location.id == 3 or show.location.id == 38) %}
+            {% if state_name %}
+            <a href="{{ url_for('locations.details', location_slug=show.location.slug) }}">{{ format_location_name(show.location,
+                state_name=state_name) }}</a>
+            {% else %}
+            <a href="{{ url_for('locations.details', location_slug=show.location.slug) }}">{{ format_location_name(show.location)
+                }}</a>
+            {% endif %}
+            {% else %}
             <span class="data-tbd">TBD</span>
-        {% endif %}
+            {% endif %}
+        </div>
     </div>
-</div>
 
-<div class="row">
-    <div class="col s12 m6 show-host-info">
-        <div class="label">Host</div>
-        {% if show.host.slug != "tbd" %}
+    <div class="row">
+        <div class="col-md-6 host-info">
+            <span class="field-label">Host</span>
+            {% if show.host.slug != "tbd" %}
             {% if show.host.guest %}
             Guest:
             {% endif %}
-            <a href="{{ url_for('hosts.details',
-                                host_slug=show.host.slug) }}">{{ show.host.name }}</a>
-        {% else %}
+            <a href="{{ url_for('hosts.details', host_slug=show.host.slug) }}">{{ show.host.name }}</a>
+            {% else %}
             <span class="data-tbd">TBD</span>
-        {% endif %}
-    </div>
-    <div class="col s12 m6 show-scorekeeper-info ">
-        <div class="label">Scorekeeper</div>
-        {% if show.scorekeeper.slug != "tbd" %}
-            {% if show.scorekeeper.description %}
-            <q class="scorekeeper-description">{{ show.scorekeeper.description }}</q><br>
             {% endif %}
-            <div>
+        </div>
+        <div class="col-md-6 scorekeeper-info">
+            <span class="field-label">Scorekeeper</span>
+            {% if show.scorekeeper.slug != "tbd" %}
+            {% if show.scorekeeper.description %}
+            <q class="scorekeeper-description">{{ show.scorekeeper.description }}</q>
+            {% endif %}
             {% if show.scorekeeper.guest %}
             Guest:
             {% endif %}
-            <a href="{{ url_for('scorekeepers.details',
-                                scorekeeper_slug=show.scorekeeper.slug) }}">{{ show.scorekeeper.name }}</a>
-            </div>
-        {% else %}
+            <a href="{{ url_for('scorekeepers.details', scorekeeper_slug=show.scorekeeper.slug) }}">{{ show.scorekeeper.name }}</a>
+            {% else %}
             <span class="data-tbd">TBD</span>
-        {% endif %}
-    </div>
-</div>
-
-<div class="row">
-    <div class="col s12 m6 show-panelist-info">
-        <div class="label">Panelists</div>
-        {% if show.panelists %}
-            <ul class="panelist-list">
-            {% for panelist in show.panelists %}
-                <li>
-                    {{ "%s:"|format(rank_map[panelist.rank]) if panelist.rank }}
-                    {% if use_decimal_scores and panelist.score_decimal %}
-                        <a href="{{ url_for('panelists.details',
-                                            panelist_slug=panelist.slug) }}">{{ panelist.name }}</a> {{ "{:f}".format(panelist.score_decimal.normalize()) }}
-                        {% if panelist.lightning_round_start != None and panelist.lightning_round_correct != None %}
-                            ({{ "{:f}".format(panelist.lightning_round_start_decimal.normalize()) if panelist.lightning_round_start_decimal else panelist.lightning_round_start }}
-                            / {{ "{:f}".format(panelist.lightning_round_correct_decimal.normalize()) if panelist.lightning_round_correct_decimal else panelist.lightning_round_correct }})
-                        {% endif %}
-                    {% elif panelist.score %}
-                        <a href="{{ url_for('panelists.details',
-                                            panelist_slug=panelist.slug) }}">{{ panelist.name }}</a> {{ panelist.score }}
-                        {% if panelist.lightning_round_start != None and panelist.lightning_round_correct != None %}
-                            ({{ panelist.lightning_round_start}} / {{ panelist.lightning_round_correct}})
-                        {% endif %}
-                    {% else %}
-                        {% if panelist.slug != 'multiple' %}
-                            <a href="{{ url_for('panelists.details',
-                                                panelist_slug=panelist.slug) }}">{{ panelist.name }}</a>
-                        {% else %}
-                            <span class="data-multiple">Multiple Panelists</span>
-                        {% endif %}
-                    {% endif %}
-                </li>
-            {% endfor %}
-            </ul>
-        {% else %}
-            <span class="data-na">N/A</span>
-        {% endif %}
+            {% endif %}
+        </div>
     </div>
 
-    <div class="col s12 m6 show-guest-info">
-        <div class="label">Guests</div>
-        {% if show.guests %}
-            <ul class="guest-list">
-                {% for guest in show.guests %}
-                    {% if guest.slug != 'none' %}
+    <div class="row">
+        <div class="col-md-6 panelist-info">
+            <span class="field-label">Panelists</span>
+            {% if show.panelists %}
+                <ul>
+                    {% for panelist in show.panelists %}
                     <li>
-                        <a href="{{ url_for('guests.details',
-                                            guest_slug=guest.slug) }}">{{ guest.name }}</a>
-                        {% if guest.score != None %}
-                        {{ guest.score }} {{ "*" if guest.score_exception }}
+                        {% if panelist.rank %}
+                        <span class="rank">{{- "{:s}".format(rank_map[panelist.rank]) -}}:</span>
+                        {% endif %}
+                        {% if panelist.slug == 'multiple' %}
+                        <span class="data-multiple">Multiple Panelists</span>
+                        {% else %}
+                        <a href="{{ url_for('panelists.details', panelist_slug=panelist.slug) }}">{{ panelist.name }}</a>
+                            {% if panelist.score_decimal != None %}
+                                {% set score = "{:f}".format(panelist.score_decimal.normalize()) %}
+                                {% if panelist.lightning_round_start_decimal != None and panelist.lightning_round_correct_decimal != None %}
+                                    {% set start = "{:f}".format(panelist.lightning_round_start_decimal.normalize()) %}
+                                    {% set correct = "{:f}".format(panelist.lightning_round_correct_decimal.normalize()) %}
+                        <span class="score">{{ score }} ({{ start }} / {{ correct }})</span>
+                                {% elif panelist.lightning_round_start != None and panelist.lightning_round_correct != None %}
+                                    {% set start = "{:f}".format(panelist.lightning_round_start) %}
+                                    {% set correct = "{:f}".format(panelist.lightning_round_correct) %}
+                        <span class="score">{{ score }} ({{ start }} / {{ correct }})</span>
+                                {% else %}
+                        <span class="score">{{ score }}</span>
+                                {% endif %}
+                            {% endif %}
                         {% endif %}
                     </li>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                <span class="data-na">N/A</span>
+                {% endif %}
+        </div>
+        <div class="col-md-6 guest-info">
+            <span class="field-label">Not My Job Guest(s)</span>
+            {% if show.guests %}
+            <ul>
+                {% for guest in show.guests %}
+                    {% if guest.slug != 'none' %}
+                <li>
+                    <a href="{{ url_for('guests.details', guest_slug=guest.slug) }}">{{ guest.name }}</a>
+                        {% if guest.score != None %}
+                    <span class="score">
+                        {{ guest.score }}
+                        <span class="score-exception" data-bs-toggle="tooltip"
+                            title="Scoring Exception">{{ "*" if guest.score_exception }}</span>
+                    </span>
+                        {% endif %}
                     {% else %}
                     <span class="data-na">N/A</span>
                     {% endif %}
+                </li>
                 {% endfor %}
             </ul>
-        {% else %}
+            {% else %}
             <span class="data-na">N/A</span>
+            {% endif %}
+        </div>
+    </div>
+
+    {% if show.bluffs and show.bluffs|length >= 1 %}
+        {% if show.bluffs[0]["chosen_panelist"] and show.bluffs[0]["correct_panelist"] %}
+    <div class="row bluff-info">
+        <div class="col">
+            <span class="field-label">Bluff</span>
+            {% for bluff in show.bluffs %}
+            <div class="row sub-row">
+                <div class="col-md-1 bluff-segment-num">#{{ bluff.segment }}</div>
+                <div class="col-md-5">
+                    <span class="field-label">Chosen</span>
+                {% if bluff.chosen_panelist %}
+                    <a href="{{ url_for('panelists.details', panelist_slug=bluff.chosen_panelist.slug) }}">{{ bluff.chosen_panelist.name }}</a>
+                {% else %}
+                    <span class="data-na">N/A</span>
+                {% endif %}
+                </div>
+                <div class="col-md-5">
+                    <span class="field-label">Chosen</span>
+                {% if bluff.correct_panelist %}
+                    <a href="{{ url_for('panelists.details', panelist_slug=bluff.correct_panelist.slug) }}">{{ bluff.correct_panelist.name }}</a>
+                {% else %}
+                    <span class="data-na">N/A</span>
+                {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
         {% endif %}
-    </div>
-</div>
-
-{% if show.bluffs and show.bluffs|length >= 1 %}
-    {% if show.bluffs[0]["chosen_panelist"] and show.bluffs[0]["correct_panelist"] %}
-<div class="row bluff-label">
-    <div class="col s12">
-        <div class="label">Bluff(s)</div>
-    </div>
-</div>
-
-<div class="bluff-wrap">
-    {% for bluff in show.bluffs %}
-    <div class="row bluff-segment">
-        <div class="col s12 m1 l1 bluff-segment-num">
-            #{{ bluff.segment }}
-        </div>
-        <div class="col s12 m5 l5 show-bluff-chosen">
-            Chosen:
-            {% if bluff.chosen_panelist %}
-                <a href="{{ url_for('panelists.details',
-                                    panelist_slug=bluff.chosen_panelist.slug) }}">{{ bluff.chosen_panelist.name }}</a>
-            {% else %}
-                <span class="data-na">N/A</span>
-            {% endif %}
-        </div>
-        <div class="col s12 m6 l6 show-bluff-correct">
-            Correct:
-            {% if bluff.correct_panelist %}
-                <a href="{{ url_for('panelists.details',
-                                    panelist_slug=bluff.correct_panelist.slug) }}">{{ bluff.correct_panelist.name }}</a>
-            {% else %}
-                <span class="data-na">N/A</span>
-            {% endif %}
-        </div>
-    </div>
-    {% endfor %}
-</div>
     {% endif %}
-{% endif %}
 
-{% if show.description %}
-<div class="row">
-    <div class="col s12">
-        <div class="label">Description</div>
-        <div class="show-description">{{ show.description }}</div>
+    {% if show.description %}
+    <div class="row">
+        <div class="col show-description">
+            <span class="field-label">Description</span>
+            <div class="show-description-text">{{ show.description | markdown | safe }}</div>
+        </div>
     </div>
-</div>
-{% endif %}
+    {% endif %}
 
-{% if show.notes %}
-<div class="row">
-    <div class="col s12">
-        <div class="label">Notes</div>
-        <div class="show-notes">{{ show.notes|markdown|safe }}</div>
+    {% if show.notes %}
+    <div class="row">
+        <div class="col show-notes">
+            <span class="field-label">Notes</span>
+            <div class="show-notes-text">{{ show.notes | markdown | safe }}</div>
+        </div>
     </div>
-</div>
-{% endif %}
-
+    {% endif %}
 </div>
 {% endif %}
 {% endfor %}
+
+<div class="my-4">
+    <a href="#year-list"><i class="bi-arrow-up" aria-hidden="true"></i>Return to Year List</a>
+</div>
 
 {% endfor %}

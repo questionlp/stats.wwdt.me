@@ -2,32 +2,27 @@
 {% block title %}All | Shows{% endblock %}
 
 {% block content %}
-<div class="page-breadcrumb">
-    <ul>
-        <li>
-            <a href="{{ url_for('main.index') }}">Home</a>
-        </li>
-        <li>
-            <a href="{{ url_for('shows.index') }}">Shows</a>
-        </li>
-        <li>
-            All
-        </li>
-    </ul>
-</div>
+<nav aria-label="breadcrumb" id="nav-breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ url_for('shows.index') }}">Shows</a></li>
+        <li class="breadcrumb-item active" aria-current="page">All</li>
+    </ol>
+</nav>
 
-<h1>All Show Details</h1>
+<h2>All Show Details</h2>
 
-<p class="show-all-intro">
+<p>
     Below is a list of available show years that you can click/tap on to jump
     down to that year's section on this page.
 </p>
 
-<ul class="show-all-years">
+<ul class="year-list" id="year-list">
 {% for year in show_years %}
     <li><a href="#show-{{year}}">{{ year }}</a></li>
 {% endfor %}
 </ul>
 
+<div class="info all-shows">
 {% include "shows/all_details.html" %}
+</div>
 {% endblock %}

@@ -2,32 +2,35 @@
 {% block title %}Guests{% endblock %}
 
 {% block content %}
-<div class="page-breadcrumb">
-    <ul>
-        <li>
-            <a href="{{ url_for('main.index') }}">Home</a>
-        </li>
-        <li>
-            Guests
-        </li>
-</div>
+<nav aria-label="breadcrumb" id="nav-breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item active" aria-current="page">Guests</li>
+    </ol>
+</nav>
 
-<h1>Guests</h1>
+<h2>Guests</h2>
 <p>
     Choose from one of the Not My Job guests below to view their appearance
     details.
 </p>
 
-<ul class="collection">
-    <li class="collection-item">
-        <a href="{{ url_for('guests.random') }}">Random
-        <i class="material-icons right">shuffle</i></a>
-    </li>
-    {% for guest in guests %}
-    <li class="collection-item">
-        <a href="{{ url_for('guests.details', guest_slug=guest.slug) }}">{{ guest.name }}</a>
-    </li>
-    {% endfor %}
-</ul>
+<div class="info">
+    <div class="guests">
+        <ul class="list-group name-list">
+            <li class="list-group-item">
+                <a href="{{ url_for('guests.random') }}">
+                    <i class="bi-shuffle" aria-hidden="true"></i>Random Guest
+                </a>
+            </li>
+            {% for guest in guests %}
+            {% if guest.slug != "tbd" %}
+            <li class="list-group-item">
+                <a href="{{ url_for('guests.details', guest_slug=guest.slug) }}">{{ guest.name }}</a>
+            </li>
+            {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+</div>
 
 {% endblock %}

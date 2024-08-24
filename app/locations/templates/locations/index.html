@@ -2,42 +2,40 @@
 {% block title %}Locations{% endblock %}
 
 {% block content %}
-<div class="page-breadcrumb">
-    <ul>
-        <li>
-            <a href="{{ url_for('main.index') }}">Home</a>
-        </li>
-        <li>
-            Locations
-        </li>
-    </ul>
-</div>
+<nav aria-label="breadcrumb" id="nav-breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item active" aria-current="page">Locations</li>
+    </ol>
+</nav>
 
 <h1>Locations</h1>
 <p>
     Choose from one of the locations below to view their recording details.
 </p>
 
-<ul class="collection">
-    <li class="collection-item">
-        <a href="{{ url_for('locations.random') }}">Random
-        <i class="material-icons right">shuffle</i></a>
-    </li>
-    {% for location in locations %}
-    {% if "id" in location and not (location.id == 3 or location.id == 38) %}
-        {% if postal_abbreviations and location.state %}
-            {% set state_name = postal_abbreviations[location.state].name %}
-            {% set location_name = format_location_name(location, state_name=state_name) %}
-        {% else %}
-            {% set location_name = format_location_name(location) %}
-        {% endif %}
-    <li class="collection-item">
-        <a href="{{ url_for('locations.details', location_slug=location.slug) }}">
-            {{ location_name }}
-        </a>
-    </li>
-    {% endif %}
-    {% endfor %}
-</ul>
+<div class="info">
+    <div class="locations">
+        <ul class="list-group location-list">
+            <li class="list-group-item">
+                <a href="{{ url_for('locations.random') }}">
+                    <i class="bi-shuffle" aria-hidden="true"></i>Random Location
+                </a>
+            </li>
+            {% for location in locations %}
+                {% if "id" in location and not (location.id == 3 or location.id == 38) %}
+                    {% if postal_abbreviations and location.state %}
+                        {% set state_name = postal_abbreviations[location.state].name %}
+                        {% set location_name = format_location_name(location, state_name=state_name) %}
+                    {% else %}
+                        {% set location_name = format_location_name(location) %}
+                {% endif %}
+            <li class="list-group-item">
+                <a href="{{ url_for('locations.details', location_slug=location.slug) }}">{{ location_name }}</a>
+            </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+</div>
 
 {% endblock %}

@@ -11,6 +11,7 @@ from app import create_app
 
 @pytest.fixture
 def client():
+    """Text Fixture Client."""
     app = create_app()
-    with app.test_client() as client:
-        yield client
+    with app.test_client() as _client:
+        yield _client

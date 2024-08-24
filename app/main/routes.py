@@ -60,8 +60,8 @@ def robots_txt() -> Response:
     if not robots_txt_path.exists():
         response = render_template("robots.txt")
         return Response(response, mimetype="text/plain")
-    else:
-        return send_file(robots_txt_path, mimetype="text/plain")
+
+    return send_file(robots_txt_path, mimetype="text/plain")
 
 
 @blueprint.route("/about")

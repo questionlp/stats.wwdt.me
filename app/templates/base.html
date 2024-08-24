@@ -1,15 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-100">
 <head>
     <title>{% block title %}{% endblock %} | Wait Wait Don't Tell Me! Stats Page</title>
     {% include "core/head.html" with context %}
 </head>
-<body>
+<body class="d-flex flex-column h-100">
 {% include "core/nav.html" %}
 
-<main>
-    <div class="container">
-    <h1 class="print-only">Wait Wait... Don't Tell Me! Stats Page</h1>
+<main id="main-content">
+    <div class="container-fluid p-4">
     {% block content %}{% endblock %}
     </div>
 </main>

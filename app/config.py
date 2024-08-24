@@ -70,6 +70,24 @@ def load_config(
         settings_config.get("use_decimal_scores", False)
     )
 
+    # Read in Umami Analytics settings
+    if "umami_analytics" in settings_config:
+        _umami = dict(settings_config["umami_analytics"])
+        settings_config["umami"] = {
+            "enabled": bool(_umami.get("enabled", False)),
+            "url": _umami.get("url"),
+            "website_id": _umami.get("data_website_id"),
+            "auto_track": bool(_umami.get("data_auto_track", True)),
+            "host_url": _umami.get("data_host_url"),
+            "domains": _umami.get("data_domains"),
+        }
+
+        del settings_config["umami_analytics"]
+    else:
+        settings_config["umami"] = {
+            "enabled": False,
+        }
+
     # Read in setting on whether to display location map
     settings_config["display_location_map"] = bool(
         settings_config.get("display_location_map", False)

@@ -68,7 +68,7 @@ def test_year_all(client: FlaskClient, year: int) -> None:
 
 
 def test_all(client: FlaskClient) -> None:
-    """Testing shows.all."""
+    """Testing shows._all."""
     response: TestResponse = client.get("/shows/all")
     assert response.status_code == 200
     assert b"All Show Details" in response.data

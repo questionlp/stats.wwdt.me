@@ -1,0 +1,99 @@
+@media print {
+    body {
+        background-color: $white;
+        color: $black;
+    }
+
+    header {
+        .fixed-top {
+            position: relative;
+        }
+
+        .navbar {
+            background-color: $white !important;
+            padding-bottom: 0;
+
+            .navbar-brand {
+                color: $black !important;
+            }
+
+            .offcanvasNavbar,
+            button {
+                display: none;
+                visibility: hidden;
+            }
+        }
+    }
+
+    main {
+        padding: 0.2rem;
+
+        .container-fluid.p-4 {
+            padding: 0.2rem 1rem !important;
+        }
+
+        #nav-breadcrumb {
+            display: none;
+            visibility: hidden;
+        }
+
+        .details {
+            border-left: none;
+            padding-left: 0;
+
+            .appearances {
+                .appearance-list {
+                    column-count: 2;
+                    column-fill: balance;
+                }
+            }
+
+            .badge {
+                background-color: $white !important;
+                border: 1px solid $black !important;
+                margin: 0 0.2rem !important;
+                padding: 0.4rem !important;
+            }
+
+            .npr-link a {
+                background-color: $white;
+                color: $black !important;
+            }
+        }
+    }
+
+    .shadow,
+    .shadow-sm,
+    .shadow-lg {
+        box-shadow: none !important;
+    }
+
+    footer {
+        .footer {
+            background-color: $white !important;
+            color: $black !important;
+
+            a {
+                color: $black !important;
+            }
+        }
+
+        .links {
+            display: none;
+            visibility: hidden;
+        }
+
+        .copyright-text,
+        .app-details {
+            display: block;
+            flex: none;
+            width: 100%;
+        }
+
+        .text-lg-end,
+        .app-details,
+        .app-version {
+            text-align: left !important;
+        }
+    }
+}

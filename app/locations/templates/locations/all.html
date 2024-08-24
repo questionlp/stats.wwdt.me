@@ -2,21 +2,14 @@
 {% block title %}All Locations | Locations{% endblock %}
 
 {% block content %}
-<div class="page-breadcrumb">
-    <ul>
-        <li>
-            <a href="{{ url_for('main.index') }}">Home</a>
-        </li>
-        <li>
-            <a href="{{ url_for('locations.index') }}">Locations</a>
-        </li>
-        <li>
-            All
-        </li>
-    </ul>
-</div>
+<nav aria-label="breadcrumb" id="nav-breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ url_for('locations.index') }}">Locations</a></li>
+        <li class="breadcrumb-item active" aria-current="page">All</li>
+    </ol>
+</nav>
 
-<h1>Location Details</h1>
+<h2>Location Details</h2>
 
 {% include "locations/details.html" %}
 {% endblock %}

@@ -20,8 +20,6 @@ from app.shows.routes import blueprint as shows_bp
 from app.sitemaps.routes import blueprint as sitemaps_bp
 from app.version import APP_VERSION
 
-from .utility import format_umami_analytics
-
 
 def create_app() -> Flask:
     """Create Flask application."""
@@ -54,10 +52,7 @@ def create_app() -> Flask:
     app.jinja_env.globals["ga_property_code"] = _config["settings"].get(
         "ga_property_code", ""
     )
-    umami = _config["settings"].get("umami_analytics", None)
-    app.jinja_env.globals["umami_analytics"] = format_umami_analytics(
-        umami_analytics=umami
-    )
+    app.jinja_env.globals["umami"] = _config["settings"]["umami"]
     app.jinja_env.globals["api_url"] = _config["settings"].get("api_url", "")
     app.jinja_env.globals["blog_url"] = _config["settings"].get("blog_url", "")
     app.jinja_env.globals["graphs_url"] = _config["settings"].get("graphs_url", "")
@@ -77,6 +72,12 @@ def create_app() -> Flask:
     app.jinja_env.globals["display_location_map"] = _config["settings"][
         "display_location_map"
     ]
+    app.jinja_env.globals["block_ai_scrapers"] = bool(
+        _config["settings"].get("block_ai_scrapers", False)
+    )
+    app.jinja_env.globals["use_minified_css"] = bool(
+        _config["settings"].get("use_minified_css", False)
+    )
     app.jinja_env.globals["postal_abbreviations"] = dicts.postal_abbreviations(
         database_config=_config["database"]
     )
@@ -84,6 +85,8 @@ def create_app() -> Flask:
     # Register Jinja template filters
     app.jinja_env.filters["pretty_jsonify"] = utility.pretty_jsonify
     app.jinja_env.filters["markdown"] = utility.md_to_html
+    app.jinja_env.filters["lstrip"] = str.lstrip
+    app.jinja_env.filters["rstrip"] = str.rstrip
 
     # Register application blueprints
     app.register_blueprint(main_bp)

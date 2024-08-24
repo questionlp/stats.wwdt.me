@@ -28,7 +28,7 @@ def test_details(client: FlaskClient, scorekeepers_slug: str) -> None:
 
 
 def test_all(client: FlaskClient) -> None:
-    """Testing scorekeepers.all."""
+    """Testing scorekeepers._all."""
     response: TestResponse = client.get("/scorekeepers/all")
     assert response.status_code == 200
     assert b"Scorekeeper Details" in response.data

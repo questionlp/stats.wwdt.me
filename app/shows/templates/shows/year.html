@@ -2,37 +2,33 @@
 {% block title %}{{ year.year }} | Shows{% endblock %}
 
 {% block content %}
-<div class="page-breadcrumb">
-    <ul>
-        <li>
-            <a href="{{ url_for('main.index') }}">Home</a>
-        </li>
-        <li>
-            <a href="{{ url_for('shows.index') }}">Shows</a>
-        </li>
-        <li>
-            {{ year.year }}
-        </li>
-    </ul>
-</div>
+<nav aria-label="breadcrumb" id="nav-breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ url_for('shows.index') }}">Shows</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{ year.year }}</li>
+    </ol>
+</nav>
 
-<h1>Shows: {{ year.year }}</h1>
+<h2>Shows: {{ year.year }}</h2>
 <p>
     Choose from one of the month and year items below to view the details for
     the shows that month and year.
 </p>
 
-<ul class="collection">
-    {% for month in show_months %}
-    <li class="collection-item">
-        <a href="{{ url_for('shows.year_month', year=month.year, month=month.month) }}">
-        {{ month.strftime("%B %Y") }}</a>
-    </li>
-    {% endfor %}
-    <li class="collection-item">
-        <a href="{{ url_for('shows.year_all', year=year.year) }}">All Shows from {{ year.year }}</a>
-    </li>
-</ul>
+<div class="info">
+    <div class="shows">
+        <ul class="list-group show-list">
+            {% for month in show_months %}
+            <li class="list-group-item">
+                <a href="{{ url_for('shows.year_month', show_year=month.year, show_month=month.month) }}">{{ month.strftime("%B %Y") }}</a>
+            </li>
+            {% endfor %}
+            <li class="list-group-item">
+                <a href="{{ url_for('shows.year_all', show_year=year.year) }}">All Shows from {{ year.year }}</a>
+            </li>
+        </ul>
+    </div>
+</div>
 
 {% include "shows/details.html" %}
 {% endblock %}

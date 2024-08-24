@@ -1,5 +1,34 @@
 # Changes
 
+## 6.0.0-alpha
+
+### Application Changes
+
+- Frontend code refactor due to switching from Materialize to Bootstrap
+  - Replacing Materialize frontend toolkit with Bootstrap
+  - Replacing Materialize Icons with Bootstrap Icons
+  - Refactor the frontend structure to use Bootstrap frontend components and conventions
+  - Include the required IBM Plex web fonts with the application to remove use of Google Fonts
+- User interface changes
+  - Change the behavior of the main navigation to combine navigation links into a single list that are listed in the top navbar on `xl` screen size or in an off-canvas side nav on smaller screens
+  - Improve legibility and readability in font size changes and increased color contrast when using the dark mode color theme
+  - Include a color theme toggle in the main navigation to allow the reader to switch the theme on-the-fly
+  - Remove the rightwards arrow included after links in the main section of the page
+  - Change wording of Appearances and Recordings in respective details pages and provide additional information via Bootstrap tooltip
+  - Add Bootstrap tooltip to Not My Job guest scoring exception marker
+  - Render show description and notes text as Markdown
+  - De-emphasize the DB ID badge by changing the background color to blend in, instead of contrasting, with the background
+  - Remove "Home" from all navigational breadcrumbs
+  - Remove zero-padded dates from navigational breadcrumbs
+- Fix warnings and errors reported by pylint
+
+### Component Changes
+
+- Upgrade gunicorn from 22.0.0 to 23.0.0
+- Replace Materialize CSS 1.2.2 with Bootstrap 5.3.3
+  - Existing Materialize CSS and JS files will be preserved to prevent cached versions of the application from breaking
+  - Materialize-related files will be removed in a future minor release
+
 ## 5.13.4
 
 ### Application Changes
