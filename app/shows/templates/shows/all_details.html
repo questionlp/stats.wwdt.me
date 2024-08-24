@@ -102,6 +102,12 @@
                                 {% else %}
                         <span class="score">{{ score }}</span>
                                 {% endif %}
+                            {% elif panelist.score %}
+                                {% if panelist.lightning_round_start != None and panelist.lightning_round_correct != None %}
+                        <span class="score">{{ panelist.score }} ({{ panelist.lightning_round_start }} / {{ panelist.light_round_correct }})</span>
+                                {% else %}
+                        <span class="score">{{ panelist.score }}</span>
+                                {% endif %}
                             {% endif %}
                         {% endif %}
                     </li>

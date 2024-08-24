@@ -1,6 +1,6 @@
 # Changes
 
-## 6.0.0-alpha
+## 6.0.0-beta
 
 ### Application Changes
 
@@ -21,6 +21,7 @@
   - Remove "Home" from all navigational breadcrumbs
   - Remove zero-padded dates from navigational breadcrumbs
 - Fix warnings and errors reported by pylint
+- Fix an issue where `use_decimal_scores` was not being passed through to the recent shows view
 
 ### Component Changes
 
