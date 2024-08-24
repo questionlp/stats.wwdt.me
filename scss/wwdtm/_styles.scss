@@ -644,7 +644,9 @@ footer {
             .recordings {
 
                 .appearance-list,
-                .recording-list {
+                .appearance-list.list-col-2,
+                .recording-list,
+                .recording-list.list-col-2 {
                     column-count: 1;
                 }
             }
