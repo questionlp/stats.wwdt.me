@@ -12019,8 +12019,10 @@ footer .copyright {
     margin-top: 1.25rem;
     margin-bottom: 0.375rem;
   }
-  main .details .appearances .appearance-list, main .details .appearances .appearance-list.list-col-2,
-  main .details .appearances .recording-list, main .details .appearances .recording-list.list-col-2,
+  main .details .appearances .appearance-list,
+  main .details .appearances .appearance-list.list-col-2,
+  main .details .appearances .recording-list,
+  main .details .appearances .recording-list.list-col-2,
   main .details .recordings .appearance-list,
   main .details .recordings .appearance-list.list-col-2,
   main .details .recordings .recording-list,
