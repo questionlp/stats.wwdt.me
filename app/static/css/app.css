@@ -12008,6 +12008,10 @@ footer .copyright {
   }
 }
 @media only screen and (max-width: 601px) {
+  header .navbar h1, header .navbar .h1 {
+    margin-top: 0.2rem;
+    margin-bottom: 0.4rem;
+  }
   main .container-fluid.p-4, main .p-4.container-sm, main .p-4.container-md, main .p-4.container-lg, main .p-4.container-xl, main .p-4.container-xxl {
     padding: 1.4rem !important;
     margin-top: 0.4rem;
