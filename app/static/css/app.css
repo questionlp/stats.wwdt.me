@@ -11538,6 +11538,7 @@ header .navbar .navbar-brand {
   font-size: 1.5rem;
   font-weight: 600;
   margin-left: 0.4rem;
+  vertical-align: middle;
 }
 header .navbar .navbar-brand,
 header .navbar .nav-link {
@@ -11951,6 +11952,9 @@ footer .copyright {
     padding-left: 0.35rem;
     padding-right: 0.2rem;
   }
+  header .navbar .navbar-brand {
+    margin-right: 0.4rem;
+  }
   .details .appearances .appearance-list.panelist {
     column-count: 2;
   }
@@ -11977,9 +11981,6 @@ footer .copyright {
   }
 }
 @media only screen and (max-width: 767px) {
-  header nav h1, header nav .h1 {
-    margin-top: 0.4rem;
-  }
   main .details .col-md-6.scorekeeper-info,
   main .details .col-md-6.guest-info,
   main .details .col-md-6.coordinates,
