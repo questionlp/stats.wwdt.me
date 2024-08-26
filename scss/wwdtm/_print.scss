@@ -1,7 +1,13 @@
 @media print {
+    :root {
+        --bs-body-font-size: 1em;
+    }
+
     body {
         background-color: $white;
         color: $black;
+        padding: 0;
+        margin: 0;
     }
 
     header {
@@ -28,7 +34,7 @@
     main {
         padding: 0.2rem;
 
-        .container-fluid.p-4 {
+        .container-fluid.p-3 {
             padding: 0.2rem 1rem !important;
         }
 
@@ -37,9 +43,31 @@
             visibility: hidden;
         }
 
+        h2#welcome {
+            margin: 0.4rem 0;
+        }
+
+        .info {
+            h3.date {
+                margin: 0.4rem 0.2rem;
+            }
+        }
+
         .details {
             border-left: none;
-            padding-left: 0;
+            margin-top: 0.4rem;
+            margin-bottom: 0.4rem;
+            padding: 0.2rem;
+
+            .row {
+                margin: 0 0 0.4rem 0;
+                padding: 0;
+            }
+
+            .row>* {
+                margin: 0;
+                padding: 0;
+            }
 
             .appearances {
                 .appearance-list {
@@ -48,16 +76,31 @@
                 }
             }
 
-            .badge {
-                background-color: $white !important;
-                border: 1px solid $black !important;
-                margin: 0 0.2rem !important;
-                padding: 0.4rem !important;
+            .badges {
+                margin: 0.6rem 0;
+                padding: 0;
+
+                .badge {
+                    background-color: $white !important;
+                    border: 1px solid $black !important;
+                    margin: 0 0.4rem 0 0 !important;
+                    padding: 0.4rem !important;
+                }
+
+                .npr-link a {
+                    background-color: $white;
+                    color: $black !important;
+                }
             }
 
-            .npr-link a {
-                background-color: $white;
-                color: $black !important;
+            .field-label {
+                border: none;
+                margin-bottom: 0.2rem;
+                padding: 0;
+            }
+
+            .location-map-block {
+                break-before: page;
             }
         }
     }

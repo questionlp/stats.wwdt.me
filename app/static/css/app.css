@@ -11520,10 +11520,7 @@ textarea.form-control-lg {
   }
 }
 :root {
-  font-size: clamp(15px, 14.5px + 0.390625vw, 19px);
-}
-:root .tooltip {
-  font-size: clamp(15px, 14.5px + 0.390625vw, 19px);
+  --bs-body-font-size: clamp(1em, calc(0.9375em + 0.390625vw), 1.3em);
 }
 
 header {
@@ -12039,9 +12036,14 @@ footer .copyright {
   }
 }
 @media print {
+  :root {
+    --bs-body-font-size: 1em;
+  }
   body {
     background-color: #ffffff;
     color: #000000;
+    padding: 0;
+    margin: 0;
   }
   header .fixed-top {
     position: relative;
@@ -12061,30 +12063,58 @@ footer .copyright {
   main {
     padding: 0.2rem;
   }
-  main .container-fluid.p-4, main .p-4.container-sm, main .p-4.container-md, main .p-4.container-lg, main .p-4.container-xl, main .p-4.container-xxl {
+  main .container-fluid.p-3, main .p-3.container-sm, main .p-3.container-md, main .p-3.container-lg, main .p-3.container-xl, main .p-3.container-xxl {
     padding: 0.2rem 1rem !important;
   }
   main #nav-breadcrumb {
     display: none;
     visibility: hidden;
   }
+  main h2#welcome, main #welcome.h2 {
+    margin: 0.4rem 0;
+  }
+  main .info h3.date, main .info .date.h3 {
+    margin: 0.4rem 0.2rem;
+  }
   main .details {
     border-left: none;
-    padding-left: 0;
+    margin-top: 0.4rem;
+    margin-bottom: 0.4rem;
+    padding: 0.2rem;
+  }
+  main .details .row {
+    margin: 0 0 0.4rem 0;
+    padding: 0;
+  }
+  main .details .row > * {
+    margin: 0;
+    padding: 0;
   }
   main .details .appearances .appearance-list {
     column-count: 2;
     column-fill: balance;
   }
-  main .details .badge {
+  main .details .badges {
+    margin: 0.6rem 0;
+    padding: 0;
+  }
+  main .details .badges .badge {
     background-color: #ffffff !important;
     border: 1px solid #000000 !important;
-    margin: 0 0.2rem !important;
+    margin: 0 0.4rem 0 0 !important;
     padding: 0.4rem !important;
   }
-  main .details .npr-link a {
+  main .details .badges .npr-link a {
     background-color: #ffffff;
     color: #000000 !important;
+  }
+  main .details .field-label {
+    border: none;
+    margin-bottom: 0.2rem;
+    padding: 0;
+  }
+  main .details .location-map-block {
+    break-before: page;
   }
   .shadow,
   .shadow-sm,

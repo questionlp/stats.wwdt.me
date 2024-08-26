@@ -1,10 +1,7 @@
 :root {
     // Source: https://matthewjamestaylor.com/responsive-font-size
-    font-size: clamp(15px, calc(14.5px + 0.390625vw), 19px);
-
-    .tooltip {
-        font-size: clamp(15px, calc(14.5px + 0.390625vw), 19px);
-    }
+    // --bs-body-font-size: clamp(15px, calc(14.5px + 0.390625vw), 19px);
+    --bs-body-font-size: clamp(1em, calc(0.9375em + 0.390625vw), 1.3em);
 }
 
 header {
@@ -625,6 +622,7 @@ footer {
             }
         }
     }
+
     main {
         .container-fluid.p-4 {
             padding: 1.4rem !important;
