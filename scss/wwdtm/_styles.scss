@@ -1,7 +1,7 @@
 :root {
     // Source: https://matthewjamestaylor.com/responsive-font-size
     // --bs-body-font-size: clamp(15px, calc(14.5px + 0.390625vw), 19px);
-    --bs-body-font-size: clamp(1em, calc(0.9375em + 0.390625vw), 1.3em);
+    --bs-body-font-size: clamp(1em, calc(0.9375em + 0.390625vw), 1.2em);
 }
 
 header {
@@ -91,6 +91,10 @@ header {
 
 main {
     padding-top: 3.2rem;
+
+    .p-3 {
+        padding: 1.4rem !important;
+    }
 
     a {
         border-bottom: 1px dotted;

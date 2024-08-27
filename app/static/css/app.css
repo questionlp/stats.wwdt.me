@@ -11520,7 +11520,7 @@ textarea.form-control-lg {
   }
 }
 :root {
-  --bs-body-font-size: clamp(1em, calc(0.9375em + 0.390625vw), 1.3em);
+  --bs-body-font-size: clamp(1em, calc(0.9375em + 0.390625vw), 1.2em);
 }
 
 header {
@@ -11590,6 +11590,9 @@ header .navbar ul#theme-dropdown button i {
 
 main {
   padding-top: 3.2rem;
+}
+main .p-3 {
+  padding: 1.4rem !important;
 }
 main a {
   border-bottom: 1px dotted;
