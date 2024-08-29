@@ -11523,6 +11523,10 @@ textarea.form-control-lg {
   --bs-body-font-size: clamp(1em, calc(0.9375em + 0.390625vw), 1.2em);
 }
 
+body .tooltip {
+  font-size: 0.9em;
+}
+
 header {
   color: #ffffff;
 }
