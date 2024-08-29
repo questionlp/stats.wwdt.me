@@ -22,6 +22,7 @@
   - Remove zero-padded dates from navigational breadcrumbs
 - Fix warnings and errors reported by pylint
 - Fix an issue where `use_decimal_scores` was not being passed through to the recent shows view
+- Add an experimental `block_ai_scrapers` config key that will block known AI scraping and crawling bots (default: false)
 
 ### Component Changes
 
