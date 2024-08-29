@@ -1,6 +1,6 @@
 # Changes
 
-## 6.0.0-beta
+## 6.0.0
 
 ### Application Changes
 
