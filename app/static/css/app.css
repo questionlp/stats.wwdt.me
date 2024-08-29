@@ -11591,6 +11591,9 @@ header .navbar button#bd-theme i {
 header .navbar ul#theme-dropdown button i {
   padding-right: 0.4rem;
 }
+header .navbar ul#theme-dropdown button.dropdown-item {
+  font-size: var(--bs-body-font-size);
+}
 
 main {
   padding-top: 3.2rem;

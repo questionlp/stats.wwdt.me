@@ -91,7 +91,13 @@ header {
             button i {
                 padding-right: 0.4rem;
             }
+
+            button.dropdown-item {
+                font-size: var(--bs-body-font-size);
+            }
         }
+
+        
     }
 }
 
