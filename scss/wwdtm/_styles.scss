@@ -6,7 +6,7 @@
 
 :root {
     // Adapted from: https://matthewjamestaylor.com/responsive-font-size
-    --bs-body-font-size: clamp(1em, calc(0.9375em + 0.390625vw), 1.2em);
+    --bs-body-font-size: clamp(15px, calc(15px + 0.390625vw), 18px);
 }
 
 body {
