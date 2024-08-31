@@ -53,7 +53,7 @@ def details(panelist_slug: str) -> Response | str:
     """View: Panelists Details."""
     database_connection = mysql.connector.connect(**current_app.config["database"])
     panelist = Panelist(database_connection=database_connection)
-    details = panelist.retrieve_details_by_slug(
+    _details = panelist.retrieve_details_by_slug(
         panelist_slug,
         use_decimal_scores=current_app.config["app_settings"]["use_decimal_scores"],
     )
@@ -63,14 +63,14 @@ def details(panelist_slug: str) -> Response | str:
         return redirect(url_for("panelists.index"))
 
     panelists = []
-    panelists.append(details)
+    panelists.append(_details)
     return render_template(
-        "panelists/single.html", panelist_name=details["name"], panelists=panelists
+        "panelists/single.html", panelist_name=_details["name"], panelists=panelists
     )
 
 
 @blueprint.route("/all")
-def all() -> Response | str:
+def _all() -> Response | str:
     """View: Panelist Details for All Panelists."""
     database_connection = mysql.connector.connect(**current_app.config["database"])
     panelist = Panelist(database_connection=database_connection)

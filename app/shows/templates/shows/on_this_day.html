@@ -2,21 +2,14 @@
 {% block title %}On This Day | Shows{% endblock %}
 
 {% block content %}
-<div class="page-breadcrumb">
-    <ul>
-        <li>
-            <a href="{{ url_for('main.index') }}">Home</a>
-        </li>
-        <li>
-            <a href="{{ url_for('shows.index') }}">Shows</a>
-        </li>
-        <li>
-            On This Day
-        </li>
-    </ul>
-</div>
+<nav aria-label="breadcrumb" id="nav-breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ url_for('shows.index') }}">Shows</a></li>
+        <li class="breadcrumb-item active" aria-current="page">On This Day</li>
+    </ol>
+</nav>
 
-<h1>Show Details: On This Day</h1>
+<h2>Show Details: On This Day</h2>
 
 <p>
     This page provides a list of shows that have aired on past years on this month and day.

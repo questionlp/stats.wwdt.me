@@ -30,7 +30,7 @@ def test_details(client: FlaskClient, location_slug: str) -> None:
 
 
 def test_all(client: FlaskClient) -> None:
-    """Testing locations.all."""
+    """Testing locations._all."""
     response: TestResponse = client.get("/locations/all")
     assert response.status_code == 200
     assert b"Location Details" in response.data

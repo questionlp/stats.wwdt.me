@@ -2,32 +2,34 @@
 {% block title %}Panelists{% endblock %}
 
 {% block content %}
-<div class="page-breadcrumb">
-    <ul>
-        <li>
-            <a href="{{ url_for('main.index') }}">Home</a>
-        </li>
-        <li>
-            Panelists
-        </li>
-    </ul>
-</div>
+<nav aria-label="breadcrumb" id="nav-breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item active" aria-current="page">Panelists</li>
+    </ol>
+</nav>
 
 <h1>Panelists</h1>
 <p>
     Choose from one of the panelists below to view their appearance details.
 </p>
 
-<ul class="collection">
-    <li class="collection-item">
-        <a href="{{ url_for('panelists.random') }}">Random
-        <i class="material-icons right">shuffle</i></a>
-    </li>
-    {% for panelist in panelists %}
-    <li class="collection-item">
-        <a href="{{ url_for('panelists.details', panelist_slug=panelist.slug) }}">{{ panelist.name }}</a>
-    </li>
-    {% endfor %}
-</ul>
+<div class="info">
+    <div class="panelists">
+        <ul class="list-group name-list">
+            <li class="list-group-item">
+                <a href="{{ url_for('panelists.random') }}">
+                    <i class="bi-shuffle" aria-hidden="true"></i>Random Panelist
+                </a>
+            </li>
+            {% for panelist in panelists %}
+            {% if panelist.slug != "tbd" %}
+            <li class="list-group-item">
+                <a href="{{ url_for('panelists.details', panelist_slug=panelist.slug) }}">{{ panelist.name }}</a>
+            </li>
+            {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+</div>
 
 {% endblock %}

@@ -1,0 +1,24 @@
+// Copyright (c) 2018-2024 Linh Pham
+// stats.wwdt.me is released under the terms of the Apache License 2.0
+// SPDX-License-Identifier: Apache-2.0
+//
+// vim: set noai syntax=python ts=4 sw=4:
+
+$primary: $blue !default;
+$secondary: ibm.$gray-60 !default;
+$success: $green !default;
+$info: $cyan !default;
+$warning: ibm.$alert-40 !default;
+$danger: ibm.$alert-60 !default;
+$light: ibm.$gray-10 !default;
+$dark: ibm.$gray-90 !default;
+
+$theme-colors: (
+    "primary": $primary,
+    "secondary": $secondary,
+    "success": $success,
+    "info": $info,
+    "warning": $warning,
+    "danger": $danger,
+    "light": $light,
+    "dark": $dark) !default;

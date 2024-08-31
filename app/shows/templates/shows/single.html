@@ -2,28 +2,16 @@
 {% block title %}{{ show_date.isoformat() }} | Shows{% endblock %}
 
 {% block content %}
-<div class="page-breadcrumb">
-    <ul>
-        <li>
-            <a href="{{ url_for('main.index') }}">Home</a>
-        </li>
-        <li>
-            <a href="{{ url_for('shows.index') }}">Shows</a>
-        </li>
-        <li>
-            <a href="{{ url_for('shows.year', year=show_date.year) }}">{{ show_date.year }}</a>
-        </li>
-        <li>
-            <a href="{{ url_for('shows.year_month', year=show_date.year, month=show_date.month) }}">
-                {{ show_date.strftime("%B") }}</a>
-        </li>
-        <li>
-            {{ show_date.strftime("%d") }}
-        </li>
-    </ul>
-</div>
+<nav aria-label="breadcrumb" id="nav-breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#">Shows</a></li>
+        <li class="breadcrumb-item"><a href="{{ url_for('shows.year', show_year=show_date.year) }}">{{ show_date.year }}</a></li>
+        <li class="breadcrumb-item"><a href="{{ url_for('shows.year_month', show_year=show_date.year, show_month=show_date.month) }}">{{ show_date.strftime("%B") }}</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{ show_date.strftime("%d")|lstrip("0") }}</li>
+    </ol>
+</nav>
 
-<h1>Show Details</h1>
+<h2>Show Details</h2>
 
 {% include "shows/details.html" %}
 {% endblock %}

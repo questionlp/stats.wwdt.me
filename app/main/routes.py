@@ -39,7 +39,11 @@ def index() -> str:
     try:
         show = Show(database_connection=database_connection)
         recent = show.retrieve_recent_details(
-            include_days_ahead=days_ahead, include_days_back=days_back
+            include_days_ahead=days_ahead,
+            include_days_back=days_back,
+            include_decimal_scores=current_app.config["app_settings"][
+                "use_decimal_scores"
+            ],
         )
         recent.reverse()
     except AttributeError:
@@ -60,8 +64,8 @@ def robots_txt() -> Response:
     if not robots_txt_path.exists():
         response = render_template("robots.txt")
         return Response(response, mimetype="text/plain")
-    else:
-        return send_file(robots_txt_path, mimetype="text/plain")
+
+    return send_file(robots_txt_path, mimetype="text/plain")
 
 
 @blueprint.route("/about")

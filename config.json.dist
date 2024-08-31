@@ -35,6 +35,8 @@
         "github_sponsor_url": "",
         "sort_by_venue": false,
         "use_decimal_scores": false,
-        "display_location_map": false
+        "display_location_map": false,
+        "block_ai_scrapers": false,
+        "use_minified_css": false,
     }
 }

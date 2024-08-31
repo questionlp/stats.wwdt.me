@@ -36,13 +36,13 @@ def guests() -> Response | None:
     """View: Guests Sitemap XML."""
     database_connection = mysql.connector.connect(**current_app.config["database"])
     guest = Guest(database_connection=database_connection)
-    guests = guest.retrieve_all()
+    _guests = guest.retrieve_all()
     database_connection.close()
 
     if not guests:
         return None
 
-    sitemap = render_template("sitemaps/guests.xml", guests=guests)
+    sitemap = render_template("sitemaps/guests.xml", guests=_guests)
     return Response(sitemap, mimetype="text/xml")
 
 
@@ -51,13 +51,13 @@ def hosts() -> Response | None:
     """View: Hosts Sitemap XML."""
     database_connection = mysql.connector.connect(**current_app.config["database"])
     host = Host(database_connection=database_connection)
-    hosts = host.retrieve_all()
+    _hosts = host.retrieve_all()
     database_connection.close()
 
     if not hosts:
         return None
 
-    sitemap = render_template("sitemaps/hosts.xml", hosts=hosts)
+    sitemap = render_template("sitemaps/hosts.xml", hosts=_hosts)
     return Response(sitemap, mimetype="text/xml")
 
 
@@ -66,13 +66,13 @@ def locations() -> Response | None:
     """View: Locations Sitemap XML."""
     database_connection = mysql.connector.connect(**current_app.config["database"])
     location = Location(database_connection=database_connection)
-    locations = location.retrieve_all(sort_by_venue=True)
+    _locations = location.retrieve_all(sort_by_venue=True)
     database_connection.close()
 
     if not locations:
         return None
 
-    sitemap = render_template("sitemaps/locations.xml", locations=locations)
+    sitemap = render_template("sitemaps/locations.xml", locations=_locations)
     return Response(sitemap, mimetype="text/xml")
 
 
@@ -81,12 +81,12 @@ def panelists() -> Response | None:
     """View: Panelists Sitemap XML."""
     database_connection = mysql.connector.connect(**current_app.config["database"])
     panelist = Panelist(database_connection=database_connection)
-    panelists = panelist.retrieve_all()
+    _panelists = panelist.retrieve_all()
 
     if not panelists:
         return None
 
-    sitemap = render_template("sitemaps/panelists.xml", panelists=panelists)
+    sitemap = render_template("sitemaps/panelists.xml", panelists=_panelists)
     return Response(sitemap, mimetype="text/xml")
 
 
@@ -95,13 +95,13 @@ def scorekeepers() -> Response | None:
     """View: Scorekeepers Sitemap XML."""
     database_connection = mysql.connector.connect(**current_app.config["database"])
     scorekeeper = Scorekeeper(database_connection=database_connection)
-    scorekeepers = scorekeeper.retrieve_all()
+    _scorekeepers = scorekeeper.retrieve_all()
     database_connection.close()
 
     if not scorekeepers:
         return None
 
-    sitemap = render_template("sitemaps/scorekeepers.xml", scorekeepers=scorekeepers)
+    sitemap = render_template("sitemaps/scorekeepers.xml", scorekeepers=_scorekeepers)
     return Response(sitemap, mimetype="text/xml")
 
 

@@ -3,17 +3,17 @@
 {% for years_months in show_years_months %}
   <url>
     <loc>{{ site_url }}{{ url_for("shows.year_month",
-                                  year=years_months[0],
-                                  month=years_months[1]) }}</loc>
+                                  show_year=years_months[0],
+                                  show_month=years_months[1]) }}</loc>
     <changefreq>weekly</changefreq>
   </url>
 {% endfor %}
 {% for shows in show_dates %}
   <url>
     <loc>{{ site_url }}{{ url_for("shows.year_month_day",
-                                  year=shows[0],
-                                  month=shows[1],
-                                  day=shows[2]) }}</loc>
+                                  show_year=shows[0],
+                                  show_month=shows[1],
+                                  show_day=shows[2]) }}</loc>
     <changefreq>weekly</changefreq>
   </url>
 {% endfor %}

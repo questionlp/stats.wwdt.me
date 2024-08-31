@@ -62,11 +62,17 @@ def format_location_name(location: dict, state_name: str = None) -> str | None:
     else:
         state = None
 
+    _name = None
     if location["venue"] and location["city"] and state:
-        return "{} ({}, {})".format(location["venue"], location["city"], state)
-    elif location["venue"] and (not location["city"] and not state):
-        return location["venue"]
-    elif location["city"] and location["state"] and not location["venue"]:
-        return "({}, {})".format(location["city"], state)
-    elif location["city"] and not state:
-        return location["city"]
+        _name = f"{location['venue']} ({location['city']}, {state})"
+
+    if location["venue"] and (not location["city"] and not state):
+        _name = location["venue"]
+
+    if location["city"] and location["state"] and not location["venue"]:
+        _name = f"({location['city']}, {state})"
+
+    if location["city"] and not state:
+        _name = location["city"]
+
+    return _name

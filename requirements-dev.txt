@@ -3,7 +3,7 @@ black==24.4.2
 pytest==8.1.2
 
 Flask==3.0.3
-gunicorn==22.0.0
+gunicorn==23.0.0
 Markdown==3.5.2
 
 wwdtm==2.10.1

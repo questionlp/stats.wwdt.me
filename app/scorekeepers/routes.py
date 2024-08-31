@@ -53,23 +53,23 @@ def details(scorekeeper_slug: str) -> Response | str:
     """View: Scorekeeper Details."""
     database_connection = mysql.connector.connect(**current_app.config["database"])
     scorekeeper = Scorekeeper(database_connection=database_connection)
-    details = scorekeeper.retrieve_details_by_slug(scorekeeper_slug)
+    _details = scorekeeper.retrieve_details_by_slug(scorekeeper_slug)
     database_connection.close()
 
-    if not details:
+    if not _details:
         return redirect(url_for("scorekeepers.index"))
 
     scorekeepers = []
-    scorekeepers.append(details)
+    scorekeepers.append(_details)
     return render_template(
         "scorekeepers/single.html",
-        scorekeeper_name=details["name"],
+        scorekeeper_name=_details["name"],
         scorekeepers=scorekeepers,
     )
 
 
 @blueprint.route("/all")
-def all() -> Response | str:
+def _all() -> Response | str:
     """View: Scorekeeper Details for All Scorekeepers."""
     database_connection = mysql.connector.connect(**current_app.config["database"])
     scorekeeper = Scorekeeper(database_connection=database_connection)

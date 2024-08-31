@@ -2,20 +2,14 @@
 {% block title %}All Guests | Guests{% endblock %}
 
 {% block content %}
-<div class="page-breadcrumb">
-    <ul>
-        <li>
-            <a href="{{ url_for('main.index') }}">Home</a>
-        </li>
-        <li>
-            <a href="{{ url_for('guests.index') }}">Guests</a>
-        </li>
-        <li>
-            All
-        </li>
-</div>
+<nav aria-label="breadcrumb" id="nav-breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ url_for('guests.index') }}">Guests</a></li>
+        <li class="breadcrumb-item active" aria-current="page">All</li>
+    </ol>
+</nav>
 
-<h1>Guest Details</h1>
+<h2>Guest Details</h2>
 
 {% include "guests/details.html" %}
 {% endblock %}

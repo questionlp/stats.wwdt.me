@@ -1,0 +1,59 @@
+// Copyright (c) 2018-2024 Linh Pham
+// stats.wwdt.me is released under the terms of the Apache License 2.0
+// SPDX-License-Identifier: Apache-2.0
+//
+// vim: set noai syntax=python ts=4 sw=4:
+
+$enable-rounded: false;
+$enable-shadows: false;
+$enable-reduced-motion: true;
+$enable-transitions: false;
+
+$navbar-bg-color: ibm.$blue-80;
+$navbar-bg-navlink-hover-color: ibm.$blue-70;
+$navbar-nav-link-padding-x: 0.6rem;
+$navbar-brand-font-size: 1.4rem;
+$navbar-brand-margin-end: 1.5rem;
+
+$offcanvas-bg-color: ibm.$blue-80;
+$offcanvas-bg-navlink-hover-color: ibm.$blue-70;
+$btn-close-color: $white;
+$btn-close-opacity: 1;
+
+$site-link-color: ibm.$blue-80;
+$site-link-color-dark: ibm.$blue-50;
+
+$details-border-color: ibm.$gray-50;
+$details-border-opacity: 0.8;
+$details-border-width: 3px;
+$details-border-hover: false;
+$details-border-hover-color: ibm.$blue-50;
+
+$info-field-border-color: ibm.$gray-50;
+
+$badge-padding-x: 1em;
+$badge-font-size: 0.925em;
+
+$badge-bg-best-of: ibm.$blue-30;
+$badge-bg-npr: ibm.$blue-70;
+$badge-bg-repeat: $yellow-100;
+$badge-bg-guest: ibm.$green-20;
+$badge-bg-emeritus: ibm.$purple-20;
+$badge-bg-pronouns: ibm.$teal-20;
+$badge-bg-db: ibm.$gray-10;
+$badge-bg-db-dark: ibm.$gray-90;
+
+$badge-text-best-of: $black;
+$badge-text-npr: $white;
+$badge-text-repeat: $black;
+$badge-text-guest: $black;
+$badge-text-emeritus: $black;
+$badge-text-pronouns: $black;
+$badge-text-db: $black;
+$badge-text-db-dark: $white;
+
+$bg-footer-links: ibm.$blue-70;
+$bg-footer-copyright: ibm.$blue-80;
+
+$tooltip-underline: ibm.$green-70;
+$tooltip-underline-dark: ibm.$green-20;

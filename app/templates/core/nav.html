@@ -1,76 +1,129 @@
 <!-- Start Navigation -->
-<nav class="blue darken-4 z-depth-0">
-    <div class="nav-wrapper">
-        <a href="#" data-target="slide-out" class="sidenav-trigger">
-            <i class="material-icons">menu</i>
-        </a>
-        <a href="{{ url_for('main.index') }}" class="brand-logo">Wait Wait Stats Page</a>
-        <ul id="dropdown-more" class="dropdown-content z-depth-0">
-            <li><a href="{{ url_for('locations.index') }}">Locations</a></li>
-            <li class="divider" tabindex="-1"></li>
-            <li><a href="{{ url_for('main.about') }}">About</a></li>
-            <li><a href="{{ url_for('main.site_history') }}">Site History</a></li>
-            <li class="divider" tabindex="-1"></li>
-            <li><a href="{{ api_url }}">API</a></li>
-            <li><a href="{{ blog_url }}">Blog</a></li>
-            <li><a href="{{ graphs_url }}">Graphs</a></li>
-            <li><a href="{{ reports_url }}">Reports</a></li>
-            {% if github_sponsor_url or patreon_url %}
-            <li class="divider" tabindex="-1"></li>
-            <li class="subheader"><a>Support Wait Wait Stats</a></li>
-                {% if github_sponsor_url %}
-            <li><a href="{{ github_sponsor_url }}">GitHub Sponsor</a></li>
-                {% endif %}
-                {% if patreon_url %}
-            <li><a href="{{ patreon_url }}">Patreon</a></li>
-                {% endif %}
-            {% endif %}
-        </ul>
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a href="{{ url_for('guests.index') }}">Guests</a></li>
-            <li><a href="{{ url_for('hosts.index') }}">Hosts</a></li>
+<a class="visually-hidden-focusable" id="skip-nav" href="#main-content">Skip to main content</a>
 
-            <li><a href="{{ url_for('panelists.index') }}">Panelists</a></li>
-            <li><a href="{{ url_for('scorekeepers.index') }}">Scorekeepers</a></li>
-            <li><a href="{{ url_for('shows.index') }}">Shows</a></li>
-            <li><a href="{{ url_for('shows.random') }}"><i class="material-icons" title="Random Show">shuffle</i></a></li>
-            <li><a href="{{ url_for('shows.on_this_day') }}">On This Day</a></li>
-            <li><a href="#" class="dropdown-trigger" data-target="dropdown-more">
-                More<i class="material-icons right">arrow_drop_down</i></a></li>
-        </ul>
-    </div>
-</nav>
+<!-- #region Header and Navigation -->
+<header>
+    <nav class="navbar fixed-top navbar-expand-xl" id="main-nav" role="navigation">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button"
+                data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+                aria-controls="offcanvasNavbar" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <i class="bi-list"></i>
+            </button>
+            <h1><a class="navbar-brand" href="{{ url_for('main.index') }}">Wait Wait Stats Page</a></h1>
 
-<div id="slide-out" class="sidenav z-depth-0">
-    <ul>
-        <li><a href="{{ url_for('main.index') }}">Home</a></li>
-        <li><div class="divider"></div></li>
-        <li><a href="{{ url_for('guests.index') }}">Guests</a></li>
-        <li><a href="{{ url_for('hosts.index') }}">Hosts</a></li>
-        <li><a href="{{ url_for('locations.index') }}">Locations</a></li>
-        <li><a href="{{ url_for('panelists.index') }}">Panelists</a></li>
-        <li><a href="{{ url_for('scorekeepers.index') }}">Scorekeepers</a></li>
-        <li><a href="{{ url_for('shows.index') }}">Shows</a></li>
-        <li><a href="{{ url_for('shows.random') }}">Random Show</a></li>
-        <li><a href="{{ url_for('shows.on_this_day') }}">On This Day</a></li>
-        <li><div class="divider"></div></li>
-        <li><a href="{{ url_for('main.about') }}">About</a></li>
-        <li><a href="{{ url_for('main.site_history') }}">Site History</a></li>
-        <li><div class="divider"></div></li>
-        <li><a href="{{ api_url }}">API</a></li>
-        <li><a href="{{ blog_url }}">Blog</a></li>
-        <li><a href="{{ graphs_url }}">Graphs</a></li>
-        <li><a href="{{ reports_url }}">Reports</a></li>
-        {% if github_sponsor_url or patreon_url %}
-        <li><div class="divider"></div></li>
-        <li><a class="subheader">Support Wait Wait Stats</a></li>
-            {% if github_sponsor_url %}
-        <li><a href="{{ github_sponsor_url }}">GitHub Sponsor</a></li>
-            {% endif %}
-            {% if patreon_url %}
-        <li><a href="{{ patreon_url }}">Patreon</a></li>
-            {% endif %}
-        {% endif %}
-    </ul>
-</div>
+            <div class="offcanvas offcanvas-start" data-bs-scroll="true"
+                tabindex="-1" id="offcanvasNavbar"
+                aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header pb-0">
+                    <h2 class="offcanvas-title" id="offcanvasNavbarLabel">Stats Page</h2>
+                    <button class="btn-close btn-close-white" type="button"
+                        data-bs-dismiss="offcanvas" data-bs-target="#offcanvasNavbar"
+                        aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-1">
+                        <li class="nav-item d-block d-xl-none">
+                            <hr>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('guests.index') }}">Guests</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('hosts.index') }}">Hosts</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('locations.index') }}">Locations</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('panelists.index') }}">Panelists</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('scorekeepers.index') }}">Scorekeepers</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('shows.index') }}">Shows</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('shows.on_this_day') }}" title="On This Day" aria-hidden="false"
+                                aria-label="On This Day">
+                                <i class="bi-calendar-event" aria-hidden="true"></i>
+                                <span class="d-xl-none">On This Day</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('shows.random') }}" title="Random Show"
+                                aria-hidden="false" aria-label="Random Show">
+                                <i class="bi-shuffle" aria-hidden="true"></i>
+                                <span class="d-xl-none">Random Show</span>
+                            </a>
+                        </li>
+                        <li class="nav-item d-block d-xl-none">
+                            <hr>
+                        </li>
+                        <li class="nav-item d-block d-xl-none">
+                            <a class="nav-link" href="{{ url_for('main.about') }}">About</a>
+                        </li>
+                        <li class="nav-item d-block d-xl-none">
+                            <a class="nav-link" href="{{ url_for('main.site_history') }}">Site History</a>
+                        </li>
+                        <li class="nav-item d-block d-xl-none">
+                            <a class="nav-link" href="{{ blog_url }}">Blog</a>
+                        </li>
+                        {% if github_sponsor_url or patreon_url %}
+                        <li class="nav-item d-block d-xl-none">
+                            <hr>
+                        </li>
+                        {% if github_sponsor_url %}
+                        <li class="nav-item d-block d-xl-none">
+                            <a class="nav-link" href="{{ github_sponsor_url }}">GitHub Sponsor</a>
+                        </li>
+                        {% endif %}
+                        {% if patreon_url %}
+                        <li class="nav-item d-block d-xl-none">
+                            <a class="nav-link" href="{{ patreon_url }}">Patreon</a>
+                        </li>
+                        {% endif %}
+                        {% endif %}
+                        <li class="nav-item d-block d-xl-none">
+                            <hr>
+                        </li>
+                        <li class="nav-item">
+                            <button class="btn btn-link nav-link dropdown-toggle d-flex align-items-center"
+                                id="bd-theme" type="button" aria-expanded="false" data-bs-toggle="dropdown"
+                                data-bs-display="static" aria-label="Toggle Theme (Auto)">
+                                <i class="bi-circle-half"></i>
+                                <span class="d-xl-none" id="bd-theme-text">Toggle theme</span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end" id="theme-dropdown"
+                                aria-labelledby="bd-theme-text">
+                                <li>
+                                    <button type="button" class="dropdown-item d-flex align-items-center"
+                                        data-bs-theme-value="light" aria-pressed="false">
+                                        <i class="bi-sun-fill"></i>
+                                        Light
+                                    </button>
+                                </li>
+                                <li>
+                                    <button type="button" class="dropdown-item d-flex align-items-center"
+                                        data-bs-theme-value="dark" aria-pressed="false">
+                                        <i class="bi-moon-stars-fill"></i>
+                                        Dark
+                                    </button>
+                                </li>
+                                <li>
+                                    <button type="button" class="dropdown-item d-flex align-items-center active"
+                                        data-bs-theme-value="auto" aria-pressed="true">
+                                        <i class="bi-circle-half"></i>
+                                        Auto
+                                    </button>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
 <!-- End Navigation -->

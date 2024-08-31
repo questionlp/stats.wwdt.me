@@ -2,21 +2,14 @@
 {% block title %}{{ host_name }} | Hosts{% endblock %}
 
 {% block content %}
-<div class="page-breadcrumb">
-    <ul>
-        <li>
-            <a href="{{ url_for('main.index') }}">Home</a>
-        </li>
-        <li>
-            <a href="{{ url_for('hosts.index') }}">Hosts</a>
-        </li>
-        <li>
-            {{ host_name }}
-        </li>
-    </ul>
-</div>
+<nav aria-label="breadcrumb" id="nav-breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ url_for('hosts.index') }}">Hosts</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{ host_name }}</li>
+    </ol>
+</nav>
 
-<h1>Host Details</h1>
+<h2>Host Details</h2>
 
 {% include "hosts/details.html" %}
 {% endblock %}

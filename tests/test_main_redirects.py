@@ -32,7 +32,7 @@ def test_guests(client: FlaskClient) -> None:
 
 
 def test_help(client: FlaskClient) -> None:
-    """Testing main_redirects.help."""
+    """Testing main_redirects.help_page."""
     response: TestResponse = client.get("/help")
     assert response.status_code == 302
     assert response.location

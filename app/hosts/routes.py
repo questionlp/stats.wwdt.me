@@ -53,19 +53,19 @@ def details(host_slug: str) -> Response | str:
     """View: Host Details."""
     database_connection = mysql.connector.connect(**current_app.config["database"])
     host = Host(database_connection=database_connection)
-    details = host.retrieve_details_by_slug(host_slug)
+    _details = host.retrieve_details_by_slug(host_slug)
     database_connection.close()
 
-    if not details:
+    if not _details:
         return redirect(url_for("hosts.index"))
 
     hosts = []
-    hosts.append(details)
-    return render_template("hosts/single.html", host_name=details["name"], hosts=hosts)
+    hosts.append(_details)
+    return render_template("hosts/single.html", host_name=_details["name"], hosts=hosts)
 
 
 @blueprint.route("/all")
-def all() -> Response | str:
+def _all() -> Response | str:
     """View: Host Details for All Hosts."""
     database_connection = mysql.connector.connect(**current_app.config["database"])
     host = Host(database_connection=database_connection)
