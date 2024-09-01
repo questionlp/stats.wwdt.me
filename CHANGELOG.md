@@ -1,5 +1,15 @@
 # Changes
 
+## 6.0.0-post0
+
+### Application Changes
+
+- This non-release does not include any application changes. The version number presented by the application will still be [6.0.0](https://github.com/questionlp/stats.wwdt.me/releases/tag/v6.0.0).
+
+### Development Changes
+
+- Contents of the `scss` directory has now been migrated to a new Git repository, [wwdtm-themes](https://github.com/questionlp/wwdtm-themes) and `scss` is now a Git submodule reference.
+
 ## 6.0.0
 
 ### Application Changes
