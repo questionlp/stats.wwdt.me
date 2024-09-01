@@ -1,3 +1,6 @@
+# Ignore SCSS backup
+scss.bak/
+
 # Ignore CSS source maps
 app/static/css/*.css.map
 
