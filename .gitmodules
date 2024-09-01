@@ -1,0 +1,3 @@
+[submodule "scss"]
+	path = scss
+	url = https://github.com/questionlp/wwdtm-theme.git
