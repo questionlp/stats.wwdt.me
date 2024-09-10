@@ -11670,6 +11670,7 @@ main .info .name.h3 a {
 main .info .guests,
 main .info .hosts,
 main .info .locations,
+main .info .pages,
 main .info .panelists,
 main .info .scorekeepers,
 main .info .shows {
@@ -11680,6 +11681,7 @@ main .info .data-tbd {
 }
 main .info .location-list,
 main .info .name-list,
+main .info .page-list,
 main .info .show-list {
   line-height: 2.5;
   margin-left: 0.2rem;
@@ -11687,11 +11689,13 @@ main .info .show-list {
 }
 main .info .location-list i,
 main .info .name-list i,
+main .info .page-list i,
 main .info .show-list i {
   padding-right: 0.6rem;
 }
 main .info .location-list li,
 main .info .name-list li,
+main .info .page-list li,
 main .info .show-list li {
   padding: 0.4rem 0.4rem 0.4rem 1.2rem;
 }
@@ -11740,6 +11744,9 @@ main .info .leaflet-control-zoom a:visited {
 main .info .leaflet-top,
 main .info .leaflet-bottom {
   z-index: 500 !important;
+}
+main .info #ww-chart {
+  height: 65vh;
 }
 main .details {
   border-left: 3px solid rgba(141, 141, 141, 0.8);

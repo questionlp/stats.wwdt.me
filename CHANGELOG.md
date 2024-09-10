@@ -5,6 +5,11 @@
 ### Application Changes
 
 - Fix an error caused by checking the wrong variable for `panelists.routes.details()`
+- Update generated Bootstrap CSS with latest changes
+
+### Development Changes
+
+- Set `max-locals` to 20 for Pylint
 
 ## 6.0.0-post0
 
