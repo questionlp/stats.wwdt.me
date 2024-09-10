@@ -1,5 +1,11 @@
 # Changes
 
+## 6.0.1
+
+### Application Changes
+
+- Fix an error caused by checking the wrong variable for `panelists.routes.details()`
+
 ## 6.0.0-post0
 
 ### Application Changes
