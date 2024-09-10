@@ -59,7 +59,7 @@ def details(panelist_slug: str) -> Response | str:
     )
     database_connection.close()
 
-    if not details:
+    if not _details:
         return redirect(url_for("panelists.index"))
 
     panelists = []
