@@ -5,6 +5,7 @@
 ### Application Changes
 
 - Fix an error caused by checking the wrong variable for `panelists.routes.details()`
+- Update generated Bootstrap CSS with latest changes
 
 ### Development Changes
 
