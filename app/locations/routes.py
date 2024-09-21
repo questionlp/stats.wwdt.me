@@ -47,7 +47,7 @@ def index() -> Response | str:
     database_connection = mysql.connector.connect(**current_app.config["database"])
     location = Location(database_connection=database_connection)
     location_list = location.retrieve_all(
-        current_app.config["app_settings"]["sort_by_venue"]
+        sort_by_venue=current_app.config["app_settings"]["sort_by_venue"]
     )
     database_connection.close()
 
@@ -99,7 +99,9 @@ def _all() -> Response | str:
     """View: Location Details for All Locations."""
     database_connection = mysql.connector.connect(**current_app.config["database"])
     location = Location(database_connection=database_connection)
-    locations = location.retrieve_all_details()
+    locations = location.retrieve_all_details(
+        sort_by_venue=current_app.config["app_settings"]["sort_by_venue"]
+    )
     database_connection.close()
 
     if not locations:

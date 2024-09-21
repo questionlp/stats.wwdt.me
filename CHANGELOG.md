@@ -1,5 +1,21 @@
 # Changes
 
+## 6.0.2
+
+### Application Changes
+
+- Fix ordering of locations due to a bug found in `wwdtm` version 2.10.1
+- Change ordering of locations for `/locations/all` to respect the value of `settings.sort_by_venue` in `config.json`
+- Fix issue where "N/A" is not shown when a location does not have any recordings
+
+### Component Changes
+
+- Upgrade wwdtm from 2.10.1 to 2.11.0
+
+### Development Changes
+
+- Upgrade ruff from 0.5.1 to 0.6.7
+
 ## 6.0.1-post0
 
 ### Application Changes
