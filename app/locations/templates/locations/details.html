@@ -76,7 +76,7 @@
         <div class="row">
             <div class="col-md-12 recordings">
                 <span class="field-label">List of Recordings</span>
-                {% if location.recordings %}
+                {% if location.recordings.shows %}
                 <ul class="recording-list {{- ' list-col-2' if location.recordings.shows | length < 6 -}}">
                 {% for show in location.recordings.shows %}
                     {% set show_date = date_string_to_date(date_string=show.date) %}
