@@ -1,10 +1,10 @@
 [tool.black]
-required-version = "24.4.2"
+required-version = "24.8.0"
 target-version = ["py310", "py311", "py312"]
 line-length = 88
 
 [tool.pytest.ini_options]
-minversion = "7.4"
+minversion = "8.0"
 filterwarnings = [
     "ignore::DeprecationWarning:mysql.*:",
 ]
