@@ -4,7 +4,7 @@
 
 ### Application Changes
 
-- Adding Best Of, Best Of Repeat and Repeat Shows views
+- Adding Best Of, Best Of Repeat and Repeat Shows pages
 - Initial support for Python 3.13
 
 ### Component Changes
