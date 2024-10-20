@@ -21,4 +21,16 @@
     <loc>{{ site_url }}{{ url_for("shows.on_this_day")}}</loc>
     <changefreq>daily</changefreq>
   </url>
+  <url>
+    <loc>{{ site_url }}{{ url_for("shows.best_ofs")}}</loc>
+    <changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>{{ site_url }}{{ url_for("shows.best_of_repeats")}}</loc>
+    <changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>{{ site_url }}{{ url_for("shows.repeats")}}</loc>
+    <changefreq>daily</changefreq>
+  </url>
 </urlset>

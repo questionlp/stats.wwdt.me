@@ -1,5 +1,23 @@
 # Changes
 
+## 6.2.0
+
+### Application Changes
+
+- Adding Best Of, Best Of Repeat and Repeat Shows views
+- Initial support for Python 3.13
+
+### Component Changes
+
+- Upgrade wwdtm from 2.12.1.post0 to 2.13.0
+
+### Development Changes
+
+- Upgrade black from 24.8.0 to 24.10.0
+- Upgrade ruff from 0.6.9 to 0.7.0
+- Increase minimum pytest version from 8.0 to 8.3 in ``pyproject.toml``
+- Add ``py313`` to ``tool.black.target-version``
+
 ## 6.1.0
 
 ### Application Changes
