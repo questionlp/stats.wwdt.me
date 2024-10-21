@@ -105,6 +105,13 @@ def test_shows(client: FlaskClient) -> None:
     assert response.location
 
 
+def test_shows_best_of_repeats(client: FlaskClient) -> None:
+    """Testing main_redirects.shows_best_of_repeats."""
+    response: TestResponse = client.get("/shows/best-of-repeats")
+    assert response.status_code == 302
+    assert response.location
+
+
 @pytest.mark.parametrize("show_date", ["2018-10-27"])
 def test_npr_show_redirect(client: FlaskClient, show_date: str) -> None:
     """Testing main_redirects.guest."""

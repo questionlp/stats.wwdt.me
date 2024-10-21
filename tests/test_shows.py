@@ -78,6 +78,16 @@ def test_all(client: FlaskClient) -> None:
     assert b"Scorekeeper" in response.data
 
 
+def test_best_ofs(client: FlaskClient) -> None:
+    """Testing shows.best_ofs."""
+    response: TestResponse = client.get("/shows/best-ofs")
+    assert response.status_code == 200
+    assert b"Show Details: Best Ofs" in response.data
+    assert b"Location" in response.data
+    assert b"Host" in response.data
+    assert b"Scorekeeper" in response.data
+
+
 def test_on_this_day(client: FlaskClient) -> None:
     """Testing shows.on_this_day."""
     response: TestResponse = client.get("/shows/on-this-day")
@@ -101,3 +111,23 @@ def test_recent(client: FlaskClient) -> None:
     response: TestResponse = client.get("/shows/recent")
     assert response.status_code == 302
     assert response.location
+
+
+def test_repeat_best_ofs(client: FlaskClient) -> None:
+    """Testing shows.repeat_best_ofs."""
+    response: TestResponse = client.get("/shows/repeat-best-ofs")
+    assert response.status_code == 200
+    assert b"Show Details: Repeat Best Ofs" in response.data
+    assert b"Location" in response.data
+    assert b"Host" in response.data
+    assert b"Scorekeeper" in response.data
+
+
+def test_repeats(client: FlaskClient) -> None:
+    """Testing shows.repeats."""
+    response: TestResponse = client.get("/shows/repeats")
+    assert response.status_code == 200
+    assert b"Show Details: Repeats" in response.data
+    assert b"Location" in response.data
+    assert b"Host" in response.data
+    assert b"Scorekeeper" in response.data
