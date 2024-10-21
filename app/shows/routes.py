@@ -71,24 +71,6 @@ def best_ofs() -> Response:
     )
 
 
-@blueprint.route("/best-of-repeats")
-def best_of_repeats() -> Response:
-    """View: Show Details for all Best Of Repeat shows."""
-    database_connection = mysql.connector.connect(**current_app.config["database"])
-    show = Show(database_connection=database_connection)
-    _shows = show.retrieve_all_best_of_repeats_details(
-        include_decimal_scores=current_app.config["app_settings"]["use_decimal_scores"]
-    )
-    if not _shows:
-        return redirect_url(url_for("main.index"))
-
-    return render_template(
-        "shows/best_of_repeats.html",
-        shows=_shows,
-        format_location_name=format_location_name,
-    )
-
-
 @blueprint.route("/<string:iso_date_string>")
 def date_string(iso_date_string: str) -> Response:
     """View: Show Details for a given ISO Date String."""
@@ -307,6 +289,24 @@ def random() -> Response:
 def recent() -> Response:
     """Redirect: /shows/recent to /."""
     return redirect_url(url_for("main.index"))
+
+
+@blueprint.route("/repeat-best-ofs")
+def repeat_best_ofs() -> Response:
+    """View: Show Details for all Repeat Best Of shows."""
+    database_connection = mysql.connector.connect(**current_app.config["database"])
+    show = Show(database_connection=database_connection)
+    _shows = show.retrieve_all_repeat_best_ofs_details(
+        include_decimal_scores=current_app.config["app_settings"]["use_decimal_scores"]
+    )
+    if not _shows:
+        return redirect_url(url_for("main.index"))
+
+    return render_template(
+        "shows/repeat_best_ofs.html",
+        shows=_shows,
+        format_location_name=format_location_name,
+    )
 
 
 @blueprint.route("/repeats")
