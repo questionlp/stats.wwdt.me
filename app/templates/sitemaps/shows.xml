@@ -26,7 +26,7 @@
     <changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>{{ site_url }}{{ url_for("shows.best_of_repeats")}}</loc>
+    <loc>{{ site_url }}{{ url_for("shows.repeat_best_ofs")}}</loc>
     <changefreq>daily</changefreq>
   </url>
   <url>

@@ -81,6 +81,12 @@ def shows() -> Response:
     return redirect_url(url_for("shows.index"))
 
 
+@blueprint.route("/shows/best-of-repeats")
+def shows_best_of_repeats() -> Response:
+    """Redirect: /shows/best-of-repeats to /shows/repeat-best-ofs."""
+    return redirect_url(url_for("shows.repeat_best_ofs"))
+
+
 @blueprint.route("/s/<string:show_date>")
 def npr_show_redirect(show_date: str) -> Response:
     """Redirects users to the appropriate show page on NPR.org."""

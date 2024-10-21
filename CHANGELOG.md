@@ -1,5 +1,20 @@
 # Changes
 
+## 6.2.1
+
+### Application Changes
+
+- Rename "Best Of Repeats" to "Repeat Best Ofs" pages and routes
+- Add a redirect for `/shows/best-of-repeats` to point to `/shows/repeat-best-ofs`
+
+### Component Changes
+
+- Upgrade wwdtm from 2.13.0 to 2.14.0
+
+### Development Changes
+
+- Add missing tests for Best Of, Repeat Best Of and Repeat Shows pages
+
 ## 6.2.0
 
 ### Application Changes
