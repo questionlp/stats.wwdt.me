@@ -25,7 +25,7 @@ If you would like contribute to this project, please make sure to review both th
 
 ## Sponsoring
 
-If you would like to help sponsor the continued development and maintenance of the Wait Wait Stats project, please consider sponsoring me on [GitHub](https://github.com/sponsors/questionlp) or on [Patreon](https://patreon.com/Linh_Pham).
+If you would like to help sponsor the continued development and maintenance of the Wait Wait Stats project, please consider sponsoring me on [GitHub](https://github.com/sponsors/questionlp).
 
 ## License and Acknowledgements
 
