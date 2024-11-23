@@ -1,5 +1,15 @@
 # Changes
 
+## 6.2.2
+
+### Application Changes
+
+- Remove responsive font sizing for `:root` in `wwdtm-theme`.
+
+### Development Changes
+
+- Upgrade ruff from 0.7.0 to 0.7.4
+
 ## 6.2.1
 
 ### Application Changes

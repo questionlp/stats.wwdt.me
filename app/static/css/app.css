@@ -829,10 +829,10 @@
   --bs-dark-bg-subtle: #a8a8a8;
   --bs-primary-border-subtle: #b5d0ff;
   --bs-secondary-border-subtle: #c5c5c5;
-  --bs-success-border-subtle: #a7d9b6;
-  --bs-info-border-subtle: #a0d3f6;
-  --bs-warning-border-subtle: #ffcdaa;
-  --bs-danger-border-subtle: #f0a5a9;
+  --bs-success-border-subtle: #24a148;
+  --bs-info-border-subtle: #a6c8ff;
+  --bs-warning-border-subtle: #ff832b;
+  --bs-danger-border-subtle: #da1e28;
   --bs-light-border-subtle: #e0e0e0;
   --bs-dark-border-subtle: #8d8d8d;
   --bs-white-rgb: 255, 255, 255;
@@ -11519,10 +11519,12 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+/*
 :root {
-  --bs-body-font-size: clamp(15px, calc(15px + 0.390625vw), 18px);
+    // Adapted from: https://matthewjamestaylor.com/responsive-font-size
+    --bs-body-font-size: clamp(15px, calc(15px + 0.390625vw), 18px);
 }
-
+*/
 body .tooltip {
   font-size: 0.9em;
 }
@@ -11682,6 +11684,7 @@ main .info .data-tbd {
 main .info .location-list,
 main .info .name-list,
 main .info .page-list,
+main .info .report-list,
 main .info .show-list {
   line-height: 2.5;
   margin-left: 0.2rem;
@@ -11690,14 +11693,27 @@ main .info .show-list {
 main .info .location-list i,
 main .info .name-list i,
 main .info .page-list i,
+main .info .report-list i,
 main .info .show-list i {
   padding-right: 0.6rem;
 }
 main .info .location-list li,
 main .info .name-list li,
 main .info .page-list li,
+main .info .report-list li,
 main .info .show-list li {
   padding: 0.4rem 0.4rem 0.4rem 1.2rem;
+}
+main .info .report-list h3.title, main .info .report-list .title.h3 {
+  font-size: 1.2rem;
+}
+main .info .report-list .description {
+  line-height: initial;
+  margin-bottom: 1.4rem;
+}
+main .info .report-list p {
+  line-height: initial;
+  margin-bottom: 1.2rem;
 }
 main .info .dms-coordinates,
 main .info .score-exception,
@@ -11899,6 +11915,157 @@ main .details .recordings .appearance-list.list-col-2,
 main .details .recordings .recording-list.list-col-2 {
   column-count: 2;
 }
+main ul.name-list-pvp {
+  list-style: none;
+  padding-left: 0;
+}
+main ul.name-list-pvp li {
+  margin-bottom: 0.6rem;
+}
+main .report.table > :not(caption) > * > * {
+  padding: 0.6rem 0.8rem;
+}
+main .report.table thead th,
+main .report.table tfoot th {
+  background-color: #f4f4f4;
+}
+main .report.table th {
+  text-align: center;
+  vertical-align: middle;
+}
+main .report.table col.state {
+  width: 6rem;
+}
+main .report.table col.boolean,
+main .report.table col.count,
+main .report.table col.date.year,
+main .report.table col.score,
+main .report.table col.stats.int {
+  width: 6rem;
+}
+main .report.table col.count.mix,
+main .report.table col.date,
+main .report.table col.stats.float {
+  width: 8rem;
+}
+main .report.table col.rank {
+  width: 9rem;
+}
+main .report.table col.city {
+  width: 12rem;
+}
+main .report.table col.count.long,
+main .report.table col.score.long {
+  width: 10rem;
+}
+main .report.table col.label,
+main .report.table col.name.host,
+main .report.table col.name.scorekeeper {
+  width: 12rem;
+}
+main .report.table col.date.long,
+main .report.table col.name.panelist,
+main .report.table col.name.guest {
+  width: 16rem;
+}
+main .report.table col.name.guest.long {
+  width: 20rem;
+}
+main .report.table col.name.venue {
+  width: 32rem;
+}
+main .report.table col.notes {
+  min-width: 28rem;
+}
+main .report.table col.introduction {
+  min-width: 36rem;
+}
+main .report.table col.long-text {
+  min-width: 48rem;
+}
+main .report.table .description-text p,
+main .report.table .notes-text p {
+  margin-top: 0;
+}
+main .report.table .description-text p:last-of-type,
+main .report.table .notes-text p:last-of-type {
+  margin-top: revert;
+  margin-bottom: 0;
+}
+main .report.table .description-text p:only-of-type,
+main .report.table .notes-text p:only-of-type {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+main .report.table .description-text ul:last-of-type,
+main .report.table .notes-text ul:last-of-type {
+  margin-bottom: 0 !important;
+}
+main .report.table td.notes p {
+  margin-block-start: 0;
+  margin-block-end: 1em;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+}
+main .report.table td.score-higher,
+main .report.table td.score-lower,
+main .report.table td.score-tied {
+  text-align: center;
+}
+main .report.table td.score-higher {
+  background-color: #a7f0ba;
+  color: #000000;
+  font-weight: 600;
+}
+main .report.table td.score-tied {
+  background-color: #edf5ff;
+  color: #000000;
+}
+main .report.table td.score-lower {
+  background-color: inherit;
+}
+main .report.table ul.no-bullets {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+main .report.table span.hover.tooltip {
+  cursor: help;
+}
+main .report.table #appearance-by-year,
+main .report.table #average-scores-by-year-all {
+  max-height: 80vh;
+  overflow: scroll;
+}
+main .report.table #appearance-by-year col.name.panelist,
+main .report.table #appearance-by-year td.name.panelist,
+main .report.table #average-scores-by-year-all col.name.panelist,
+main .report.table #average-scores-by-year-all td.name.panelist {
+  min-width: 7.5rem;
+}
+main .report.table #average-scores-by-year-all col.stats.float,
+main .report.table #average-scores-by-year-all td.stats.float {
+  min-width: 4.5rem;
+}
+main .report.table .header-info {
+  border-bottom: 1px dotted #0e6027;
+  cursor: help;
+}
+main .card.report-form .card-header {
+  font-weight: 600;
+}
+main .card.report-form input,
+main .card.report-form select {
+  font-size: unset;
+}
+main .card.report-form label,
+main .card.report-form input.btn-submit {
+  font-weight: 500;
+}
+main .card.report-form input.btn-submit {
+  background-color: #0043ce;
+  color: #ffffff;
+}
 main .static-page h2, main .static-page .h2 {
   margin-bottom: 1.6rem;
 }
@@ -11954,6 +12121,14 @@ footer .copyright {
 [data-bs-theme=dark] main .name-list {
   column-rule: 1px dotted rgba(255, 255, 255, 0.6);
 }
+[data-bs-theme=dark] main .report.table thead th,
+[data-bs-theme=dark] main .report.table tfoot th {
+  background-color: #393939;
+  color: #ffffff;
+}
+[data-bs-theme=dark] main .report.table .header-info {
+  border-bottom: 1px dotted #a7f0ba;
+}
 
 @media only screen and (max-width: 1201px) {
   header .navbar button#bd-theme {
@@ -11971,6 +12146,11 @@ footer .copyright {
   }
   .details .appearances .appearance-list.panelist {
     column-count: 2;
+  }
+}
+@media only screen and (max-width: 1199px) {
+  main ul.name-list-pvp {
+    column-count: 4;
   }
 }
 @media only screen and (max-width: 801px) {
@@ -11992,6 +12172,9 @@ footer .copyright {
   }
   main .info .name-list {
     column-count: 2;
+  }
+  main ul.name-list-pvp {
+    column-count: 3;
   }
 }
 @media only screen and (max-width: 767px) {
@@ -12050,6 +12233,11 @@ footer .copyright {
   }
   main .info .name-list {
     column-count: 1;
+  }
+}
+@media only screen and (max-width: 569px) {
+  main ul.name-list-pvp {
+    column-count: 2;
   }
 }
 @media print {
