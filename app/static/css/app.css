@@ -11520,7 +11520,7 @@ textarea.form-control-lg {
   }
 }
 :root {
-  --bs-body-font-size: clamp(14px, calc(14px + 0.325vw), 16.5px);
+  --bs-body-font-size: clamp(14.5px, calc(14px + 0.325vw), 16.75px);
 }
 
 body .tooltip {
@@ -11552,6 +11552,7 @@ header .navbar .nav-item hr {
 }
 header .navbar .nav-link {
   padding: var(--bs-nav-link-padding-y) 0.75rem;
+  font-weight: 500;
 }
 header .navbar .nav-link:hover {
   background-color: #0043ce;
@@ -12081,6 +12082,9 @@ footer a {
 }
 footer .links {
   background-color: #0043ce;
+}
+footer .links a {
+  font-weight: 500;
 }
 footer .links ul {
   list-style: none;
