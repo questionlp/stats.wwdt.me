@@ -6,6 +6,7 @@
 """Testing Guests Module and Blueprint Views."""
 import pytest
 from flask.testing import FlaskClient
+from slugify import slugify
 from werkzeug.test import TestResponse
 
 
@@ -25,6 +26,24 @@ def test_details(client: FlaskClient, guest_slug: str) -> None:
     assert b"Guest Details" in response.data
     assert b"DB ID" in response.data
     assert b"Appearances" in response.data
+
+
+@pytest.mark.parametrize("guest_slug", ["Tom Hanks", "A'ja Wilson"])
+def test_details_slug_match_redirect(client: FlaskClient, guest_slug: str) -> None:
+    """Testing guests.details with slug matching redirection."""
+    response: TestResponse = client.get(f"/guests/{guest_slug}")
+    _slug = slugify(guest_slug)
+    assert response.status_code == 302
+    assert f"{_slug}" in response.headers["Location"]
+
+
+@pytest.mark.parametrize("guest_slug", ["Thom Thanks", "A'j'a Wilsong"])
+def test_details_slug_non_match_redirect(client: FlaskClient, guest_slug: str) -> None:
+    """Testing guests.details with slug not matching redirection."""
+    response: TestResponse = client.get(f"/guests/{guest_slug}")
+    _slug = slugify(guest_slug)
+    assert response.status_code == 302
+    assert f"{_slug}" not in response.headers["Location"]
 
 
 def test_all(client: FlaskClient) -> None:

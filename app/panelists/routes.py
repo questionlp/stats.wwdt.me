@@ -6,6 +6,7 @@
 """Panelists Routes for Wait Wait Stats Page."""
 import mysql.connector
 from flask import Blueprint, Response, current_app, redirect, render_template, url_for
+from slugify import slugify
 from wwdtm.panelist import Panelist
 
 from app.utility import redirect_url
@@ -53,6 +54,15 @@ def details(panelist_slug: str) -> Response | str:
     """View: Panelists Details."""
     database_connection = mysql.connector.connect(**current_app.config["database"])
     panelist = Panelist(database_connection=database_connection)
+    slugs = panelist.retrieve_all_slugs()
+    _slug = slugify(panelist_slug)
+
+    if _slug not in slugs:
+        return redirect(url_for("panelists.index"))
+
+    if _slug in slugs and _slug != panelist_slug:
+        return redirect(url_for("panelists.details", panelist_slug=_slug))
+
     _details = panelist.retrieve_details_by_slug(
         panelist_slug,
         use_decimal_scores=current_app.config["app_settings"]["use_decimal_scores"],

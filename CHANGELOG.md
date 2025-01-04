@@ -1,5 +1,19 @@
 # Changes
 
+## 6.3.0
+
+### Application Changes
+
+- Add fuzzy matching for panelist slugs in the `panelists.details` route. The fuzzy matching slugifies the input `panelist_slug` value and compares it against the list of all panelist slugs.
+
+  If the slugified value matches a valid panelist slug and the slugified value does not match the original `panelist_slug` value, then redirect the user to the correct path for the panelist. If there isn't a match, then redirect the user to `panelists.index`.
+
+  The extra check between the slugified `panelist_slug` value against the request's `panelist_slug` is to prevent the chance of an infinite redirect loop from happening.
+
+  For example, if the user requests `/panelists/Luke%20Burbank` will match the slugified value of `Luke%20Burbank` to `luke-burbank` and redirects the user to `/panelists/luke-burbank`. However, if the user requests `/panelists/Luke%20Burbonk`, there won't be a match and redirects the user to `/panelists`.
+- Similar updates to the corresponding guests, hosts and scorekeepers routes have also been made.
+- Add testing for the new slug fuzzy matching redirects for guests, hosts, panelists and scorekeepers.
+
 ## 6.2.5
 
 ### Application Changes
