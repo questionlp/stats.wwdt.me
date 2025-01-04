@@ -1,5 +1,12 @@
 # Changes
 
+## 6.2.5
+
+### Application Changes
+
+- Fix issues with incorrect parameter names in redirects for `shows.year_month` and `shows.year_month_day` which cause errors
+- Update copyright dates from 2024 to 2025
+
 ## 6.2.4-post.1
 
 ### Component Changes
