@@ -1,4 +1,4 @@
-# Copyright (c) 2018-2024 Linh Pham
+# Copyright (c) 2018-2025 Linh Pham
 # stats.wwdt.me is released under the terms of the Apache License 2.0
 # SPDX-License-Identifier: Apache-2.0
 #
@@ -146,7 +146,7 @@ def year_month(show_year: int, show_month: int) -> Response | str:
         database_connection.close()
 
         if not shows:
-            return redirect_url(url_for("shows.year", year=show_year))
+            return redirect_url(url_for("shows.year", show_year=show_year))
 
         return render_template(
             "shows/year_month.html",
@@ -155,7 +155,7 @@ def year_month(show_year: int, show_month: int) -> Response | str:
             format_location_name=format_location_name,
         )
     except ValueError:
-        return redirect_url(url_for("shows.year", year=show_year))
+        return redirect_url(url_for("shows.year", show_year=show_year))
 
 
 @blueprint.route("/<int:show_year>/<int:show_month>/<int:show_day>")
@@ -178,7 +178,7 @@ def year_month_day(show_year: int, show_month: int, show_day: int) -> Response |
 
         if not details:
             return redirect_url(
-                url_for("shows.year_month", year=show_year, month=show_month)
+                url_for("shows.year_month", show_year=show_year, show_month=show_month)
             )
 
         show_list = []
