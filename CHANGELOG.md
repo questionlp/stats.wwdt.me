@@ -14,6 +14,10 @@
 - Similar updates to the corresponding guests, hosts and scorekeepers routes have also been made.
 - Add testing for the new slug fuzzy matching redirects for guests, hosts, panelists and scorekeepers.
 
+### Development Changes
+
+- Added test for `errors.not_found`
+
 ## 6.2.5
 
 ### Application Changes
