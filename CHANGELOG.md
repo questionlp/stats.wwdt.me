@@ -1,12 +1,5 @@
 # Changes
 
-## 6.3.1
-
-### Component Updates
-
-- Upgrade Flask from 3.0.3 to 3.1.0
-- Upgrade Markdown from 3.5.2 to 3.7.0
-
 ## 6.3.0
 
 ### Application Changes
@@ -20,6 +13,11 @@
   For example, if the user requests `/panelists/Luke%20Burbank` will match the slugified value of `Luke%20Burbank` to `luke-burbank` and redirects the user to `/panelists/luke-burbank`. However, if the user requests `/panelists/Luke%20Burbonk`, there won't be a match and redirects the user to `/panelists`.
 - Similar updates to the corresponding guests, hosts and scorekeepers routes have also been made.
 - Add testing for the new slug fuzzy matching redirects for guests, hosts, panelists and scorekeepers.
+
+### Component Updates
+
+- Upgrade Flask from 3.0.3 to 3.1.0
+- Upgrade Markdown from 3.5.2 to 3.7.0
 
 ### Development Changes
 
