@@ -6,6 +6,7 @@
 """Scorekeepers Routes for Wait Wait Stats Page."""
 import mysql.connector
 from flask import Blueprint, Response, current_app, redirect, render_template, url_for
+from slugify import slugify
 from wwdtm.scorekeeper import Scorekeeper
 
 from app.utility import redirect_url
@@ -53,6 +54,15 @@ def details(scorekeeper_slug: str) -> Response | str:
     """View: Scorekeeper Details."""
     database_connection = mysql.connector.connect(**current_app.config["database"])
     scorekeeper = Scorekeeper(database_connection=database_connection)
+    slugs = scorekeeper.retrieve_all_slugs()
+    _slug = slugify(scorekeeper_slug)
+
+    if _slug not in slugs:
+        return redirect_url(url_for("scorekeepers.index"))
+
+    if _slug in slugs and _slug != scorekeeper_slug:
+        return redirect_url(url_for("scorekeepers.details", scorekeeper_slug=_slug))
+
     _details = scorekeeper.retrieve_details_by_slug(scorekeeper_slug)
     database_connection.close()
 

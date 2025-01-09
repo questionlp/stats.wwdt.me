@@ -6,6 +6,7 @@
 """Guests Routes for Wait Wait Stats Page."""
 import mysql.connector
 from flask import Blueprint, Response, current_app, redirect, render_template, url_for
+from slugify import slugify
 from wwdtm.guest import Guest
 
 from app.utility import redirect_url
@@ -53,6 +54,15 @@ def details(guest_slug: str) -> Response | str:
     """View: Guest Details."""
     database_connection = mysql.connector.connect(**current_app.config["database"])
     guest = Guest(database_connection=database_connection)
+    slugs = guest.retrieve_all_slugs()
+    _slug = slugify(guest_slug)
+
+    if _slug not in slugs:
+        return redirect(url_for("guests.index"))
+
+    if _slug in slugs and _slug != guest_slug:
+        return redirect(url_for("guests.details", guest_slug=_slug))
+
     _details = guest.retrieve_details_by_slug(guest_slug)
     database_connection.close()
 

@@ -6,6 +6,7 @@
 """Hosts Routes for Wait Wait Stats Page."""
 import mysql.connector
 from flask import Blueprint, Response, current_app, redirect, render_template, url_for
+from slugify import slugify
 from wwdtm.host import Host
 
 from app.utility import redirect_url
@@ -53,6 +54,15 @@ def details(host_slug: str) -> Response | str:
     """View: Host Details."""
     database_connection = mysql.connector.connect(**current_app.config["database"])
     host = Host(database_connection=database_connection)
+    slugs = host.retrieve_all_slugs()
+    _slug = slugify(host_slug)
+
+    if _slug not in slugs:
+        return redirect(url_for("hosts.index"))
+
+    if _slug in slugs and _slug != host_slug:
+        return redirect_url(url_for("hosts.details", host_slug=_slug))
+
     _details = host.retrieve_details_by_slug(host_slug)
     database_connection.close()
 

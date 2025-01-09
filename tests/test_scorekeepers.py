@@ -6,6 +6,7 @@
 """Testing Scorekeepers Module and Blueprint Views."""
 import pytest
 from flask.testing import FlaskClient
+from slugify import slugify
 from werkzeug.test import TestResponse
 
 
@@ -17,14 +18,36 @@ def test_index(client: FlaskClient) -> None:
     assert b"Random" in response.data
 
 
-@pytest.mark.parametrize("scorekeepers_slug", ["bill-kurtis"])
-def test_details(client: FlaskClient, scorekeepers_slug: str) -> None:
+@pytest.mark.parametrize("scorekeeper_slug", ["bill-kurtis"])
+def test_details(client: FlaskClient, scorekeeper_slug: str) -> None:
     """Testing scorekeepers.details."""
-    response: TestResponse = client.get(f"/scorekeepers/{scorekeepers_slug}")
+    response: TestResponse = client.get(f"/scorekeepers/{scorekeeper_slug}")
     assert response.status_code == 200
     assert b"Scorekeeper Details" in response.data
     assert b"DB ID" in response.data
     assert b"Appearances" in response.data
+
+
+@pytest.mark.parametrize("scorekeeper_slug", ["Carl Kasell", "Chioke I'Anson"])
+def test_details_slug_match_redirect(
+    client: FlaskClient, scorekeeper_slug: str
+) -> None:
+    """Testing scorekeepers.details with slug matching redirection."""
+    response: TestResponse = client.get(f"/scorekeepers/{scorekeeper_slug}")
+    _slug = slugify(scorekeeper_slug)
+    assert response.status_code == 302
+    assert f"{_slug}" in response.headers["Location"]
+
+
+@pytest.mark.parametrize("scorekeeper_slug", ["Karl Cassel", "Chi'oke Ianson"])
+def test_details_slug_non_match_redirect(
+    client: FlaskClient, scorekeeper_slug: str
+) -> None:
+    """Testing scorekeepers.details with slug not matching redirection."""
+    response: TestResponse = client.get(f"/scorekeepers/{scorekeeper_slug}")
+    _slug = slugify(scorekeeper_slug)
+    assert response.status_code == 302
+    assert f"{_slug}" not in response.headers["Location"]
 
 
 def test_all(client: FlaskClient) -> None:
