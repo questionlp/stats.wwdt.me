@@ -4,6 +4,7 @@
 #
 # vim: set noai syntax=python ts=4 sw=4:
 """pytest conftest.py File."""
+
 import pytest
 
 from app import create_app

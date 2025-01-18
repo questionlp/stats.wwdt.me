@@ -4,6 +4,7 @@
 #
 # vim: set noai syntax=python ts=4 sw=4:
 """Main Routes for Wait Wait Stats Page."""
+
 from pathlib import Path
 
 import mysql.connector

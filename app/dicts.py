@@ -4,6 +4,7 @@
 #
 # vim: set noai syntax=python ts=4 sw=4:
 """Dictionary objects used by the Wait Wait Stats Page."""
+
 import mysql.connector
 
 PANELIST_RANKS: dict[str, str] = {

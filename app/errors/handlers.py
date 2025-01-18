@@ -4,6 +4,7 @@
 #
 # vim: set noai syntax=python ts=4 sw=4:
 """Error Handlers Module for Wait Wait Stats Page."""
+
 from typing import Literal
 
 from flask import render_template
