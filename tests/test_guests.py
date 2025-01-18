@@ -4,6 +4,7 @@
 #
 # vim: set noai syntax=python ts=4 sw=4:
 """Testing Guests Module and Blueprint Views."""
+
 import pytest
 from flask.testing import FlaskClient
 from slugify import slugify

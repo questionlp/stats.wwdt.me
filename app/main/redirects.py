@@ -4,6 +4,7 @@
 #
 # vim: set noai syntax=python ts=4 sw=4:
 """Main Redirect Routes for Wait Wait Stats Page."""
+
 from datetime import datetime
 
 import mysql.connector

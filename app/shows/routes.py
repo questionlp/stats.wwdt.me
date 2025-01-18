@@ -4,6 +4,7 @@
 #
 # vim: set noai syntax=python ts=4 sw=4:
 """Shows Routes for Wait Wait Stats Page."""
+
 import datetime
 from datetime import date
 from typing import Any

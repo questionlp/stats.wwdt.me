@@ -4,6 +4,7 @@
 #
 # vim: set noai syntax=python ts=4 sw=4:
 """Hosts Routes for Wait Wait Stats Page."""
+
 import mysql.connector
 from flask import Blueprint, Response, current_app, redirect, render_template, url_for
 from slugify import slugify

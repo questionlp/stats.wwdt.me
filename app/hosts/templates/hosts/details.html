@@ -9,10 +9,10 @@
 
     <div class="details">
         <div class="badges">
+            <span class="badge db-id">DB ID: {{ host.id }}</span>
             {% if host.pronouns %}
             <span class="badge pronouns">Pronouns: {{ host.pronouns|join("/")}}</span>
             {% endif %}
-            <span class="badge db-id">DB ID: {{ host.id }}</span>
         </div>
 
         <div class="row">

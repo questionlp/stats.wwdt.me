@@ -1,5 +1,15 @@
 # Changes
 
+## 6.3.1
+
+### Application Changes
+
+- Change the ordering of database ID and pronoun badges for hosts and panelists to match the correct ordering used for scorekeepers
+
+### Development Changes
+
+- Upgrade ruff from 0.7.4 to 0.9.2
+
 ## 6.3.0
 
 ### Application Changes

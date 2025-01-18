@@ -4,6 +4,7 @@
 #
 # vim: set noai syntax=python ts=4 sw=4:
 """Location name formatting functions used by the Stats Page."""
+
 from decimal import Decimal
 from math import copysign, floor
 

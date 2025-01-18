@@ -5,10 +5,10 @@
     <h3 class="name"><a href="{{ url_for('panelists.details', panelist_slug=panelist.slug) }}">{{ panelist.name }}</a></h3>
     <div class="details">
         <div class="badges">
+            <span class="badge db-id">DB ID: {{ panelist.id }}</span>
             {% if panelist.pronouns %}
             <span class="badge pronouns">Pronouns: {{ panelist.pronouns|join("/")}}</span>
             {% endif %}
-            <span class="badge db-id">DB ID: {{ panelist.id }}</span>
         </div>
 
         <div class="row">
