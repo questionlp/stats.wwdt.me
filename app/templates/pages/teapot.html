@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Teapot{% endblock %}
+
+{% block content %}
+<div class="static-page">
+    <h2>I'm a little teapot, short and stout</h2>
+
+    <p>
+        Hello, I see that you found my little easter egg based on
+        <a href="https://datatracker.ietf.org/doc/html/rfc2324">RFC 2324</a>.
+        For more information, check out the MDN document on
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/418">HTTP
+        status response code 418</a>.
+    </p>
+
+    <p>
+        You can now <a href="{{ url_for('main.index') }}"
+        title="Allamaraine!">move along home</a>.
+</div>
+{% endblock %}

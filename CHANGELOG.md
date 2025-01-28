@@ -1,5 +1,11 @@
 # Changes
 
+## 6.3.2
+
+### Application Changes
+
+- Implementing [HTTP 418](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/418)
+
 ## 6.3.1
 
 ### Application Changes

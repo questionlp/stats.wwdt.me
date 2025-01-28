@@ -79,3 +79,9 @@ def about() -> str:
 def site_history() -> str:
     """View: Site History Page."""
     return render_template("pages/site_history.html")
+
+
+@blueprint.route("/teapot")
+def teapot() -> Response:
+    """View: Teapot."""
+    return render_template("pages/teapot.html"), 418
