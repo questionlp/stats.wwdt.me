@@ -5,10 +5,11 @@
 # vim: set noai syntax=python ts=4 sw=4:
 """Main Routes for Wait Wait Stats Page."""
 
+import json
 from pathlib import Path
 
 import mysql.connector
-from flask import Blueprint, Response, current_app, render_template, send_file
+from flask import Blueprint, Response, current_app, render_template, request, send_file
 from wwdtm.show import Show
 
 from app.config import DEFAULT_RECENT_DAYS_AHEAD, DEFAULT_RECENT_DAYS_BACK
@@ -79,3 +80,25 @@ def about() -> str:
 def site_history() -> str:
     """View: Site History Page."""
     return render_template("pages/site_history.html")
+
+
+@blueprint.route("/teapot", methods=["GET", "POST"])
+def teapot() -> Response:
+    """View: Teapot."""
+    return render_template("pages/teapot.html"), 418
+
+
+@blueprint.route("/", methods=["BREW"])
+@blueprint.route("/teapot", methods=["BREW"])
+def teapot_brew() -> Response:
+    """View Teapot Brew Method."""
+    _content_type = request.headers.get("Content-Type")
+    if _content_type == "application/coffee-pot-command":
+        _response_data = {"data": "I'm a teapot."}
+        return (
+            Response(json.dumps(_response_data), content_type="application/json"),
+            418,
+        )
+
+    _response_data = {"data": "Move along home"}
+    return Response(json.dumps(_response_data), content_type="application/json"), 404

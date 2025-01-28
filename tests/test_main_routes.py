@@ -39,3 +39,47 @@ def test_site_history(client: FlaskClient) -> None:
     assert response.status_code == 200
     assert b"Versions 1 and 2" in response.data
     assert b"Version 4" in response.data
+
+
+def test_teapot(client: FlaskClient) -> None:
+    """Testing main.teapot."""
+    response: TestResponse = client.get("/teapot")
+    assert response.status_code == 418
+    assert b"I'm a little teapot" in response.data
+
+    response = client.post("/teapot")
+    assert response.status_code == 418
+    assert b"I'm a little teapot" in response.data
+
+
+def test_teapot_brew(client: FlaskClient) -> None:
+    """Testing main.teapot_brew."""
+    # Testing passing in valid Content-Type for both endpoints
+    response = client.open(
+        "/",
+        method="BREW",
+        headers={"Content-Type": "application/coffee-pot-command"},
+    )
+    assert response.status_code == 418
+    assert response.content_type == "application/json"
+    assert b"I'm a teapot" in response.data
+
+    response = client.open(
+        "/teapot",
+        method="BREW",
+        headers={"Content-Type": "application/coffee-pot-command"},
+    )
+    assert response.status_code == 418
+    assert response.content_type == "application/json"
+    assert b"I'm a teapot" in response.data
+
+    # Testing passing in incorrect Content-Type for both endpoints
+    response = client.open("/", method="BREW")
+    assert response.status_code == 404
+    assert response.content_type == "application/json"
+    assert b"Move along home" in response.data
+
+    response = client.open("/teapot", method="BREW")
+    assert response.status_code == 404
+    assert response.content_type == "application/json"
+    assert b"Move along home" in response.data
