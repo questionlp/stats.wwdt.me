@@ -88,6 +88,7 @@ def teapot() -> Response:
     return render_template("pages/teapot.html"), 418
 
 
+@blueprint.route("/", methods=["BREW"])
 @blueprint.route("/teapot", methods=["BREW"])
 def teapot_brew() -> Response:
     """View Teapot Brew Method."""

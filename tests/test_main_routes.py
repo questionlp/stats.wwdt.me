@@ -54,7 +54,16 @@ def test_teapot(client: FlaskClient) -> None:
 
 def test_teapot_brew(client: FlaskClient) -> None:
     """Testing main.teapot_brew."""
-    # Testing passing in valid Content-Type
+    # Testing passing in valid Content-Type for both endpoints
+    response = client.open(
+        "/",
+        method="BREW",
+        headers={"Content-Type": "application/coffee-pot-command"},
+    )
+    assert response.status_code == 418
+    assert response.content_type == "application/json"
+    assert b"I'm a teapot" in response.data
+
     response = client.open(
         "/teapot",
         method="BREW",
@@ -64,7 +73,12 @@ def test_teapot_brew(client: FlaskClient) -> None:
     assert response.content_type == "application/json"
     assert b"I'm a teapot" in response.data
 
-    # Testing passing in incorrect Content-Type
+    # Testing passing in incorrect Content-Type for both endpoints
+    response = client.open("/", method="BREW")
+    assert response.status_code == 404
+    assert response.content_type == "application/json"
+    assert b"Move along home" in response.data
+
     response = client.open("/teapot", method="BREW")
     assert response.status_code == 404
     assert response.content_type == "application/json"
