@@ -7,6 +7,5 @@
             "source.fixAll": "explicit",
             "source.sortImports": "explicit",
         },
-        "editor.defaultFormatter": "ms-python.black-formatter"
     }
 }

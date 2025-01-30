@@ -1,8 +1,3 @@
-[tool.black]
-required-version = "24.10.0"
-target-version = ["py310", "py311", "py312", "py313"]
-line-length = 88
-
 [tool.pytest.ini_options]
 minversion = "8.3"
 filterwarnings = [
@@ -17,6 +12,7 @@ norecursedirs = [
 ]
 
 [tool.ruff]
+required-version = ">= 0.9.0"
 target-version = "py310"
 
 exclude = [
@@ -30,7 +26,7 @@ exclude = [
     ".venv",
 ]
 
-line-length = 88 # Must agree with Black
+line-length = 88
 
 [tool.ruff.lint]
 ignore = [
