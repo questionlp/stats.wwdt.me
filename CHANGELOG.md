@@ -1,5 +1,20 @@
 # Changes
 
+## 6.4.1
+
+### Application Changes
+
+- Fix an issue where "Home/Remote Studios" location was not appearing in the Locations page due to an issue that was found in the `wwdtm` library.
+
+### Component Changes
+
+- Update wwdtm from 2.14.0 to 2.15.0
+
+### Development Changes
+
+- Upgrade ruff from 0.9.2 to 0.9.3
+- Remove black from required development packages as part of migrating entirely to Ruff
+
 ## 6.4.0
 
 ### Application Changes
