@@ -1,5 +1,11 @@
 # Changes
 
+## 6.5.1
+
+### Component Updates
+
+- Upgrade wwdtm from 2.17.0 to 2.17.1
+
 ## 6.5.0
 
 ### Application Changes
