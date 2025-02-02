@@ -109,7 +109,7 @@ def test_random(client: FlaskClient) -> None:
 
 @pytest.mark.parametrize("year", [1998, 2020])
 def test_random_year_show(client: FlaskClient, year: int) -> None:
-    """Testing shows.random."""
+    """Testing shows.random_year_show."""
     response: TestResponse = client.get(f"/shows/random/{year}")
     assert response.status_code == 302
     assert str(year) in response.location
