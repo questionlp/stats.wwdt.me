@@ -19,27 +19,6 @@ from app.utility import redirect_url
 blueprint = Blueprint("shows", __name__, template_folder="templates")
 
 
-def random_show_date() -> str | None:
-    """Return a random show date from the ww_shows table."""
-    database_connection = mysql.connector.connect(**current_app.config["database"])
-    cursor = database_connection.cursor(dictionary=False)
-    query = (
-        "SELECT s.showdate FROM ww_shows s "
-        "WHERE s.showdate <= NOW() "
-        "ORDER BY RAND() "
-        "LIMIT 1;"
-    )
-    cursor.execute(query)
-    result = cursor.fetchone()
-    cursor.close()
-    database_connection.close()
-
-    if not result:
-        return None
-
-    return result[0].strftime("%Y/%m/%d")
-
-
 @blueprint.route("/")
 def index() -> Response | str:
     """View: Shows Index."""
@@ -282,8 +261,28 @@ def on_this_day() -> Response | str:
 @blueprint.route("/random")
 def random() -> Response:
     """View: Random Show Redirect."""
-    _date = random_show_date()
+    database_connection = mysql.connector.connect(**current_app.config["database"])
+    show = Show(database_connection=database_connection)
+    _date = show.retrieve_random_date()
     return redirect_url(url_for("shows.date_string", iso_date_string=_date))
+
+
+@blueprint.route("/random/<int:show_year>")
+def random_year_show(show_year: int) -> Response:
+    """View: Random Show for a Given Year."""
+    database_connection = mysql.connector.connect(**current_app.config["database"])
+    show = Show(database_connection=database_connection)
+
+    try:
+        _ = date(year=show_year, month=1, day=1)
+        _date = show.retrieve_random_date_by_year(year=show_year)
+
+        if not _date:
+            return redirect_url(url_for("shows.index"))
+
+        return redirect_url(url_for("shows.date_string", iso_date_string=_date))
+    except ValueError:
+        return redirect_url(url_for("shows.index"))
 
 
 @blueprint.route("/recent")

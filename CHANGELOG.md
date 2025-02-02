@@ -1,5 +1,16 @@
 # Changes
 
+## 6.5.0
+
+### Application Changes
+
+- Migrate random guest, host, location, panelist, scorekeeper and show routes to use the new corresponding methods in the `wwdtm` library.
+- Add the ability to get a random show for a given year
+
+### Component Updates
+
+- Upgrade wwdtm from 2.15.0 to 2.17.0
+
 ## 6.4.1
 
 ### Application Changes
@@ -8,7 +19,7 @@
 
 ### Component Changes
 
-- Update wwdtm from 2.14.0 to 2.15.0
+- Upgrade wwdtm from 2.14.0 to 2.15.0
 
 ### Development Changes
 

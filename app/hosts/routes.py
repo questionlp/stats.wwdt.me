@@ -15,27 +15,6 @@ from app.utility import redirect_url
 blueprint = Blueprint("hosts", __name__, template_folder="templates")
 
 
-def random_host_slug() -> str | None:
-    """Return a random host slug from ww_hosts table."""
-    database_connection = mysql.connector.connect(**current_app.config["database"])
-    cursor = database_connection.cursor(dictionary=False)
-    query = (
-        "SELECT h.hostslug FROM ww_hosts h "
-        "WHERE h.hostslug <> 'tbd' "
-        "ORDER BY RAND() "
-        "LIMIT 1;"
-    )
-    cursor.execute(query)
-    result = cursor.fetchone()
-    cursor.close()
-    database_connection.close()
-
-    if not result:
-        return None
-
-    return str(result[0])
-
-
 @blueprint.route("/")
 def index() -> Response | str:
     """View: Hosts Index."""
@@ -92,5 +71,7 @@ def _all() -> Response | str:
 @blueprint.route("/random")
 def random() -> Response:
     """View: Random Host Redirect."""
-    _slug = random_host_slug()
+    database_connection = mysql.connector.connect(**current_app.config["database"])
+    host = Host(database_connection=database_connection)
+    _slug = host.retrieve_random_slug()
     return redirect_url(url_for("hosts.details", host_slug=_slug))

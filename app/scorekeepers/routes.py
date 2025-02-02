@@ -15,27 +15,6 @@ from app.utility import redirect_url
 blueprint = Blueprint("scorekeepers", __name__, template_folder="templates")
 
 
-def random_scorekeeper_slug() -> str | None:
-    """Return a random scorekeeper slug from ww_scorekeepers table."""
-    database_connection = mysql.connector.connect(**current_app.config["database"])
-    cursor = database_connection.cursor(dictionary=False)
-    query = (
-        "SELECT sk.scorekeeperslug FROM ww_scorekeepers sk "
-        "WHERE sk.scorekeeperslug <> 'tbd' "
-        "ORDER BY RAND() "
-        "LIMIT 1;"
-    )
-    cursor.execute(query)
-    result = cursor.fetchone()
-    cursor.close()
-    database_connection.close()
-
-    if not result:
-        return None
-
-    return str(result[0])
-
-
 @blueprint.route("/")
 def index() -> Response | str:
     """View: Scorekeepers Index."""
@@ -96,5 +75,7 @@ def _all() -> Response | str:
 @blueprint.route("/random")
 def random() -> Response:
     """View: Random Scorekeeper Redirect."""
-    _slug = random_scorekeeper_slug()
+    database_connection = mysql.connector.connect(**current_app.config["database"])
+    scorekeeper = Scorekeeper(database_connection=database_connection)
+    _slug = scorekeeper.retrieve_random_slug()
     return redirect_url(url_for("scorekeepers.details", scorekeeper_slug=_slug))
