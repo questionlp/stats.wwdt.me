@@ -51,6 +51,7 @@ def details(scorekeeper_slug: str) -> Response | str:
 
     scorekeepers = []
     scorekeepers.append(_details)
+
     return render_template(
         "scorekeepers/single.html",
         scorekeeper_name=_details["name"],
@@ -78,4 +79,6 @@ def random() -> Response:
     database_connection = mysql.connector.connect(**current_app.config["database"])
     scorekeeper = Scorekeeper(database_connection=database_connection)
     _slug = scorekeeper.retrieve_random_slug()
+    database_connection.close()
+
     return redirect_url(url_for("scorekeepers.details", scorekeeper_slug=_slug))

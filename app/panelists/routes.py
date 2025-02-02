@@ -54,6 +54,7 @@ def details(panelist_slug: str) -> Response | str:
 
     panelists = []
     panelists.append(_details)
+
     return render_template(
         "panelists/single.html", panelist_name=_details["name"], panelists=panelists
     )
@@ -81,4 +82,6 @@ def random() -> Response:
     database_connection = mysql.connector.connect(**current_app.config["database"])
     panelist = Panelist(database_connection=database_connection)
     _slug = panelist.retrieve_random_slug()
+    database_connection.close()
+
     return redirect_url(url_for("panelists.details", panelist_slug=_slug))

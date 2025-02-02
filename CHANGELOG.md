@@ -6,6 +6,8 @@
 
 - Migrate random guest, host, location, panelist, scorekeeper and show routes to use the new corresponding methods in the `wwdtm` library.
 - Add the ability to get a random show for a given year
+- Add additional exception handling for show routes that have URL parts expecting integer values
+- Clean up database connections within `try/except/finally` blocks
 
 ### Component Updates
 

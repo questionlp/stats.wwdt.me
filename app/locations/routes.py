@@ -63,6 +63,7 @@ def details(location_slug: str) -> Response | str:
     # Template expects a list of location(s)
     locations = []
     locations.append(_details)
+
     return render_template(
         "locations/single.html",
         locations=locations,
@@ -104,4 +105,6 @@ def random() -> Response:
     database_connection = mysql.connector.connect(**current_app.config["database"])
     location = Location(database_connection=database_connection)
     _slug = location.retrieve_random_slug()
+    database_connection.close()
+
     return redirect_url(url_for("locations.details", location_slug=_slug))

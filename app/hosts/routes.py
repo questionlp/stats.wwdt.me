@@ -51,6 +51,7 @@ def details(host_slug: str) -> Response | str:
 
     hosts = []
     hosts.append(_details)
+
     return render_template("hosts/single.html", host_name=_details["name"], hosts=hosts)
 
 
@@ -74,4 +75,6 @@ def random() -> Response:
     database_connection = mysql.connector.connect(**current_app.config["database"])
     host = Host(database_connection=database_connection)
     _slug = host.retrieve_random_slug()
+    database_connection.close()
+
     return redirect_url(url_for("hosts.details", host_slug=_slug))
