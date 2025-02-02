@@ -15,27 +15,6 @@ from app.utility import redirect_url
 blueprint = Blueprint("panelists", __name__, template_folder="templates")
 
 
-def random_panelist_slug() -> str | None:
-    """Return a random panelist slug from ww_panelists table."""
-    database_connection = mysql.connector.connect(**current_app.config["database"])
-    cursor = database_connection.cursor(dictionary=False)
-    query = (
-        "SELECT p.panelistslug FROM ww_panelists p "
-        "WHERE p.panelistslug <> 'multiple' "
-        "ORDER BY RAND() "
-        "LIMIT 1;"
-    )
-    cursor.execute(query)
-    result = cursor.fetchone()
-    cursor.close()
-    database_connection.close()
-
-    if not result:
-        return None
-
-    return str(result[0])
-
-
 @blueprint.route("/")
 def index() -> Response | str:
     """View: Panelists Index."""
@@ -75,6 +54,7 @@ def details(panelist_slug: str) -> Response | str:
 
     panelists = []
     panelists.append(_details)
+
     return render_template(
         "panelists/single.html", panelist_name=_details["name"], panelists=panelists
     )
@@ -99,5 +79,9 @@ def _all() -> Response | str:
 @blueprint.route("/random")
 def random() -> Response:
     """View: Random Panelist Redirect."""
-    _slug = random_panelist_slug()
+    database_connection = mysql.connector.connect(**current_app.config["database"])
+    panelist = Panelist(database_connection=database_connection)
+    _slug = panelist.retrieve_random_slug()
+    database_connection.close()
+
     return redirect_url(url_for("panelists.details", panelist_slug=_slug))

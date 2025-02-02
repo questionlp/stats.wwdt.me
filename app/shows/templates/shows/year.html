@@ -18,6 +18,11 @@
 <div class="info">
     <div class="shows">
         <ul class="list-group show-list">
+            <li class="list-group-item">
+                <a href="{{ url_for('shows.random_year_show', show_year=year.year) }}">
+                    <i class="bi-shuffle" aria-hidden="true"></i>Random Show from {{ year.year }}
+                </a>
+            </li>
             {% for month in show_months %}
             <li class="list-group-item">
                 <a href="{{ url_for('shows.year_month', show_year=month.year, show_month=month.month) }}">{{ month.strftime("%B %Y") }}</a>

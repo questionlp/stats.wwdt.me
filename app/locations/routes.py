@@ -21,27 +21,6 @@ from app.utility import redirect_url
 blueprint = Blueprint("locations", __name__, template_folder="templates")
 
 
-def random_location_slug() -> str | None:
-    """Return a random location slug from ww_locations table."""
-    database_connection = mysql.connector.connect(**current_app.config["database"])
-    cursor = database_connection.cursor(dictionary=False)
-    query = (
-        "SELECT l.locationslug FROM ww_locations l "
-        "WHERE l.locationslug <> 'tbd' "
-        "ORDER BY RAND() "
-        "LIMIT 1;"
-    )
-    cursor.execute(query)
-    result = cursor.fetchone()
-    cursor.close()
-    database_connection.close()
-
-    if not result:
-        return None
-
-    return str(result[0])
-
-
 @blueprint.route("/")
 def index() -> Response | str:
     """View: Locations Index."""
@@ -84,6 +63,7 @@ def details(location_slug: str) -> Response | str:
     # Template expects a list of location(s)
     locations = []
     locations.append(_details)
+
     return render_template(
         "locations/single.html",
         locations=locations,
@@ -122,5 +102,9 @@ def _all() -> Response | str:
 @blueprint.route("/random")
 def random() -> Response:
     """View: Random Location Redirect."""
-    _slug = random_location_slug()
+    database_connection = mysql.connector.connect(**current_app.config["database"])
+    location = Location(database_connection=database_connection)
+    _slug = location.retrieve_random_slug()
+    database_connection.close()
+
     return redirect_url(url_for("locations.details", location_slug=_slug))

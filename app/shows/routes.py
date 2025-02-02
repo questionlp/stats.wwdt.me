@@ -19,27 +19,6 @@ from app.utility import redirect_url
 blueprint = Blueprint("shows", __name__, template_folder="templates")
 
 
-def random_show_date() -> str | None:
-    """Return a random show date from the ww_shows table."""
-    database_connection = mysql.connector.connect(**current_app.config["database"])
-    cursor = database_connection.cursor(dictionary=False)
-    query = (
-        "SELECT s.showdate FROM ww_shows s "
-        "WHERE s.showdate <= NOW() "
-        "ORDER BY RAND() "
-        "LIMIT 1;"
-    )
-    cursor.execute(query)
-    result = cursor.fetchone()
-    cursor.close()
-    database_connection.close()
-
-    if not result:
-        return None
-
-    return result[0].strftime("%Y/%m/%d")
-
-
 @blueprint.route("/")
 def index() -> Response | str:
     """View: Shows Index."""
@@ -62,6 +41,7 @@ def best_ofs() -> Response:
     _best_ofs = show.retrieve_all_best_ofs_details(
         include_decimal_scores=current_app.config["app_settings"]["use_decimal_scores"]
     )
+    database_connection.close()
     if not _best_ofs:
         return redirect_url(url_for("main.index"))
 
@@ -99,6 +79,8 @@ def date_string(iso_date_string: str) -> Response:
         return redirect_url(url_for("shows.index"))
     except TypeError:
         return redirect_url(url_for("shows.index"))
+    finally:
+        database_connection.close()
 
 
 @blueprint.route("/<int:show_year>")
@@ -111,7 +93,6 @@ def year(show_year: str | int) -> Response | str:
         _year = int(show_year)
         date_year = date(year=_year, month=1, day=1)
         show_months = show.retrieve_months_by_year(year=_year)
-        database_connection.close()
 
         if not show_months:
             return redirect_url(url_for("shows.index"))
@@ -127,6 +108,8 @@ def year(show_year: str | int) -> Response | str:
         return redirect_url(url_for("shows.index"))
     except OverflowError:
         return redirect_url(url_for("shows.index"))
+    finally:
+        database_connection.close()
 
 
 @blueprint.route("/<int:show_year>/<int:show_month>")
@@ -144,7 +127,6 @@ def year_month(show_year: int, show_month: int) -> Response | str:
                 "use_decimal_scores"
             ],
         )
-        database_connection.close()
 
         if not shows:
             return redirect_url(url_for("shows.year", show_year=show_year))
@@ -157,6 +139,12 @@ def year_month(show_year: int, show_month: int) -> Response | str:
         )
     except ValueError:
         return redirect_url(url_for("shows.year", show_year=show_year))
+    except TypeError:
+        return redirect_url(url_for("shows.index"))
+    except OverflowError:
+        return redirect_url(url_for("shows.index"))
+    finally:
+        database_connection.close()
 
 
 @blueprint.route("/<int:show_year>/<int:show_month>/<int:show_day>")
@@ -175,7 +163,6 @@ def year_month_day(show_year: int, show_month: int, show_day: int) -> Response |
                 "use_decimal_scores"
             ],
         )
-        database_connection.close()
 
         if not details:
             return redirect_url(
@@ -191,8 +178,13 @@ def year_month_day(show_year: int, show_month: int, show_day: int) -> Response |
             format_location_name=format_location_name,
         )
     except ValueError:
-        database_connection.close()
         return redirect_url(url_for("shows.index"))
+    except TypeError:
+        return redirect_url(url_for("shows.index"))
+    except OverflowError:
+        return redirect_url(url_for("shows.index"))
+    finally:
+        database_connection.close()
 
 
 @blueprint.route("/<int:show_year>/all")
@@ -209,7 +201,6 @@ def year_all(show_year: int) -> Response | str | Any:
                 "use_decimal_scores"
             ],
         )
-        database_connection.close()
 
         if not shows:
             return redirect_url(url_for("shows.index"))
@@ -222,6 +213,12 @@ def year_all(show_year: int) -> Response | str | Any:
         )
     except ValueError:
         return redirect_url(url_for("shows.year", show_year=show_year))
+    except TypeError:
+        return redirect_url(url_for("shows.index"))
+    except OverflowError:
+        return redirect_url(url_for("shows.index"))
+    finally:
+        database_connection.close()
 
 
 @blueprint.route("/all")
@@ -246,8 +243,6 @@ def _all() -> Response | str:
             )
             _shows_by_year[_year] = shows
 
-        database_connection.close()
-
         return render_template(
             "shows/all.html",
             show_years=show_years,
@@ -256,6 +251,8 @@ def _all() -> Response | str:
         )
     except ValueError:
         return redirect_url(url_for("shows.index"))
+    finally:
+        database_connection.close()
 
 
 @blueprint.route("/on-this-day")
@@ -282,8 +279,36 @@ def on_this_day() -> Response | str:
 @blueprint.route("/random")
 def random() -> Response:
     """View: Random Show Redirect."""
-    _date = random_show_date()
+    database_connection = mysql.connector.connect(**current_app.config["database"])
+    show = Show(database_connection=database_connection)
+    _date = show.retrieve_random_date()
+    database_connection.close()
     return redirect_url(url_for("shows.date_string", iso_date_string=_date))
+
+
+@blueprint.route("/random/<int:show_year>")
+def random_year_show(show_year: int) -> Response:
+    """View: Random Show for a Given Year."""
+    database_connection = mysql.connector.connect(**current_app.config["database"])
+    show = Show(database_connection=database_connection)
+
+    try:
+        _year = int(show_year)
+        _ = date(year=_year, month=1, day=1)
+        _date = show.retrieve_random_date_by_year(year=show_year)
+
+        if not _date:
+            return redirect_url(url_for("shows.index"))
+
+        return redirect_url(url_for("shows.date_string", iso_date_string=_date))
+    except ValueError:
+        return redirect_url(url_for("shows.index"))
+    except TypeError:
+        return redirect_url(url_for("shows.index"))
+    except OverflowError:
+        return redirect_url(url_for("shows.index"))
+    finally:
+        database_connection.close()
 
 
 @blueprint.route("/recent")
@@ -300,6 +325,7 @@ def repeat_best_ofs() -> Response:
     _shows = show.retrieve_all_repeat_best_ofs_details(
         include_decimal_scores=current_app.config["app_settings"]["use_decimal_scores"]
     )
+    database_connection.close()
     if not _shows:
         return redirect_url(url_for("main.index"))
 
@@ -318,6 +344,7 @@ def repeats() -> Response:
     _repeats = show.retrieve_all_repeats_details(
         include_decimal_scores=current_app.config["app_settings"]["use_decimal_scores"]
     )
+    database_connection.close()
     if not _repeats:
         return redirect_url(url_for("main.index"))
 

@@ -29,6 +29,7 @@ def primary() -> Response | None:
         return None
 
     sitemap = render_template("sitemaps/sitemap.xml", show_years=years)
+
     return Response(sitemap, mimetype="text/xml")
 
 
@@ -44,6 +45,7 @@ def guests() -> Response | None:
         return None
 
     sitemap = render_template("sitemaps/guests.xml", guests=_guests)
+
     return Response(sitemap, mimetype="text/xml")
 
 
@@ -59,6 +61,7 @@ def hosts() -> Response | None:
         return None
 
     sitemap = render_template("sitemaps/hosts.xml", hosts=_hosts)
+
     return Response(sitemap, mimetype="text/xml")
 
 
@@ -74,6 +77,7 @@ def locations() -> Response | None:
         return None
 
     sitemap = render_template("sitemaps/locations.xml", locations=_locations)
+
     return Response(sitemap, mimetype="text/xml")
 
 
@@ -88,6 +92,7 @@ def panelists() -> Response | None:
         return None
 
     sitemap = render_template("sitemaps/panelists.xml", panelists=_panelists)
+
     return Response(sitemap, mimetype="text/xml")
 
 
@@ -103,6 +108,7 @@ def scorekeepers() -> Response | None:
         return None
 
     sitemap = render_template("sitemaps/scorekeepers.xml", scorekeepers=_scorekeepers)
+
     return Response(sitemap, mimetype="text/xml")
 
 
@@ -121,4 +127,5 @@ def shows() -> Response | None:
     sitemap = render_template(
         "sitemaps/shows.xml", show_dates=dates, show_years_months=years_months
     )
+
     return Response(sitemap, mimetype="text/xml")

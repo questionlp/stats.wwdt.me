@@ -15,27 +15,6 @@ from app.utility import redirect_url
 blueprint = Blueprint("guests", __name__, template_folder="templates")
 
 
-def random_guest_slug() -> str | None:
-    """Return a random guest slug from ww_guests table."""
-    database_connection = mysql.connector.connect(**current_app.config["database"])
-    cursor = database_connection.cursor(dictionary=False)
-    query = (
-        "SELECT g.guestslug FROM ww_guests g "
-        "WHERE g.guestslug <> 'none' "
-        "ORDER BY RAND() "
-        "LIMIT 1;"
-    )
-    cursor.execute(query)
-    result = cursor.fetchone()
-    cursor.close()
-    database_connection.close()
-
-    if not result:
-        return None
-
-    return str(result[0])
-
-
 @blueprint.route("/")
 def index() -> Response | str:
     """View: Guests Index."""
@@ -72,6 +51,7 @@ def details(guest_slug: str) -> Response | str:
 
     guests = []
     guests.append(_details)
+
     return render_template(
         "guests/single.html", guest_name=_details["name"], guests=guests
     )
@@ -94,5 +74,9 @@ def _all() -> Response | str:
 @blueprint.route("/random")
 def random() -> Response:
     """View: Random Guest Redirect."""
-    _slug = random_guest_slug()
+    database_connection = mysql.connector.connect(**current_app.config["database"])
+    guest = Guest(database_connection=database_connection)
+    _slug = guest.retrieve_random_slug()
+    database_connection.close()
+
     return redirect_url(url_for("guests.details", guest_slug=_slug))
