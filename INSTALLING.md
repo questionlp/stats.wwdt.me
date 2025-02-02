@@ -126,4 +126,15 @@ If proxy caching is used, the following configuration settings should be added t
         add_header Cache-Control 'no-cache';
         expires 0;
     }
+
+    location ~* /shows/random/ {
+        proxy_pass http://gunicorn-wwdtmstats$request_uri;
+        proxy_cache off;
+        proxy_set_header Host $http_host;
+        proxy_set_header X-Forwarded-For $remote_addr;
+        proxy_set_header X-Real-IP $remote_addr;
+        add_header Cache-Control 'no-store';
+        add_header Cache-Control 'no-cache';
+        expires 0;
+    }
 ```
