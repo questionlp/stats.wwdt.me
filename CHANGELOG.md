@@ -1,14 +1,24 @@
 # Changes
 
+## 6.5.3
+
+### Application Changes
+
+- Update list of AI bots from <https://github.com/ai-robots-txt/ai.robots.txt> in the default `robots.txt`
+
+### Development Changes
+
+- Upgrade ruff from 0.9.3 to 0.9.6
+
 ## 6.5.2
 
-### Component Updates
+### Component Changes
 
 - Upgrade wwdtm from 2.17.1 to 2.17.2
 
 ## 6.5.1
 
-### Component Updates
+### Component Changes
 
 - Upgrade wwdtm from 2.17.0 to 2.17.1
 
@@ -21,7 +31,7 @@
 - Add additional exception handling for show routes that have URL parts expecting integer values
 - Clean up database connections within `try/except/finally` blocks
 
-### Component Updates
+### Component Changes
 
 - Upgrade wwdtm from 2.15.0 to 2.17.0
 
