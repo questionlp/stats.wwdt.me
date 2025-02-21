@@ -11814,6 +11814,9 @@ main .details .badge.repeat a {
   text-decoration: none;
   color: #0043ce;
 }
+main .details .badge.repeat a:hover {
+  color: #000000;
+}
 main .details .badge.guest {
   background-color: #a7f0ba;
   color: #000000;
