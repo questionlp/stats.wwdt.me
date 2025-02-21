@@ -1,5 +1,11 @@
 # Changes
 
+## 6.5.4
+
+### Application Changes
+
+- Fix: Change hover color for the Repeat show badge for `prefers-color-scheme: dark` to make the link text readable against the light badge background color
+
 ## 6.5.3
 
 ### Application Changes
