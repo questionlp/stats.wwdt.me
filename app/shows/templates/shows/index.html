@@ -18,22 +18,22 @@
         <ul class="list-group show-list">
             <li class="list-group-item">
                 <a href="{{ url_for('shows.best_ofs') }}">
-                    <i class="bi-star" aria-hidden="true"></i>Best Of Shows
+                    <i class="bi bi-star" aria-hidden="true"></i>Best Of Shows
                 </a>
             </li>
             <li class="list-group-item">
                 <a href="{{ url_for('shows.repeat_best_ofs') }}">
-                    <i class="bi-star" aria-hidden="true"></i><i class="bi-repeat" aria-hidden="true"></i>Repeat Best Of Shows
+                    <i class="bi bi-star" aria-hidden="true"></i><i class="bi bi-repeat" aria-hidden="true"></i>Repeat Best Of Shows
                 </a>
             </li>
             <li class="list-group-item">
                 <a href="{{ url_for('shows.repeats') }}">
-                    <i class="bi-repeat" aria-hidden="true"></i>Repeat Shows
+                    <i class="bi bi-repeat" aria-hidden="true"></i>Repeat Shows
                 </a>
             </li>
             <li class="list-group-item">
                 <a href="{{ url_for('shows.random') }}">
-                    <i class="bi-shuffle" aria-hidden="true"></i>Random Show
+                    <i class="bi bi-shuffle" aria-hidden="true"></i>Random Show
                 </a>
             </li>
             {% for year in show_years %}
