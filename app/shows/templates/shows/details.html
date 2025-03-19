@@ -25,9 +25,9 @@
             {% endif %}
             <span class="badge npr-link">
             {% if show.show_url %}
-                <a href="{{ show.show_url }}">NPR<i class="bi-box-arrow-right" aria-hidden="true"></i></a>
+                <a href="{{ show.show_url }}">NPR<i class="bi bi-box-arrow-right" aria-hidden="true"></i></a>
             {% else %}
-                <a href="{{ url_for('main_redirects.npr_show_redirect', show_date=show.date) }}">NPR<i class="bi-box-arrow-right" aria-hidden="true"></i></a>
+                <a href="{{ url_for('main_redirects.npr_show_redirect', show_date=show.date) }}">NPR<i class="bi bi-box-arrow-right" aria-hidden="true"></i></a>
             {% endif %}
             </span>
             <span class="badge db-id">DB ID: {{ show.id }}</span>

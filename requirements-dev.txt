@@ -3,6 +3,7 @@ pytest==8.3.3
 pytest-cov==5.0.0
 
 Flask==3.1.0
+Jinja2~=3.1.6
 gunicorn==23.0.0
 Markdown==3.7.0
 
