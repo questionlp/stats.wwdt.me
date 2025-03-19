@@ -3,7 +3,6 @@
 <head>
     <title>{% block title %}{% endblock %} | Wait Wait Don't Tell Me! Stats Page</title>
     {% include "core/head.html" with context %}
-    {% include "core/init_js.html" %}
 </head>
 <body class="d-flex flex-column h-100">
 {% include "core/nav.html" %}
@@ -15,6 +14,8 @@
 </main>
 
 {% include "core/footer.html" %}
+
+{% include "core/init_js.html" %}
 </body>
 
 </html>

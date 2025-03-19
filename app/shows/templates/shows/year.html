@@ -20,7 +20,7 @@
         <ul class="list-group show-list">
             <li class="list-group-item">
                 <a href="{{ url_for('shows.random_year_show', show_year=year.year) }}">
-                    <i class="bi bi-shuffle" aria-hidden="true"></i>Random Show from {{ year.year }}
+                    <i class="bi-shuffle" aria-hidden="true"></i>Random Show from {{ year.year }}
                 </a>
             </li>
             {% for month in show_months %}

@@ -15,8 +15,9 @@
     </script>
     {% endif %}
 
-    {%- if umami %}
-    {% include "core/umami.html" %}
+    {% if umami_analytics %}
+    <!-- Umami Analytics -->
+    {{ umami_analytics|safe }}
     {% endif %}
 </head>
 <body>
