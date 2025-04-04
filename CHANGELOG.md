@@ -1,5 +1,11 @@
 # Changes
 
+## 6.5.6
+
+### Application Changes
+
+- Fix issue where the location map was not rendering due to changes made in version 6.5.5
+
 ## 6.5.5
 
 ### Application Changes
