@@ -17,10 +17,12 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css')}}">
     {% endif %}
     <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap-icons/bootstrap-icons.min.css')}}">
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
 
     <!-- Import Leaflet -->
     <link rel="stylesheet" href="{{ url_for('static', filename='leaflet/leaflet.css') }}">
     <script src="{{ url_for('static', filename='leaflet/leaflet.js')}}"></script>
+
 
     {% if ga_property_code %}
     <!-- Global site tag (gtag.js) - Google Analytics -->
