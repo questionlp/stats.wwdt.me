@@ -9,21 +9,29 @@
     "license": "Apache-2.0",
     "private": true,
     "dependencies": {
-        "bootstrap": "^5.3.3",
+        "@ibm/plex-mono": "^1.1.0",
+        "@ibm/plex-sans": "^1.1.0",
+        "bootstrap": "^5.3.4",
         "bootstrap-icons": "^1.11.3",
         "css-minify": "^2.0.0",
         "sass": "^1.77.8"
     },
     "scripts": {
         "compile": "sass --no-source-map scss/main.scss:app/static/css/app.css",
+        "compile-testing": "sass --no-source-map scss.testing/main.scss:app/static/css/app.testing.css",
         "compile-mini": "sass --no-source-map --style=compressed scss/main.scss:app/static/css/app.min.css",
+        "compile-testing-mini": "sass --no-source-map --style=compressed scss.testing/main.scss:app/static/css/app.testing.min.css",
         "compile-error": "sass --no-source-map scss/errors.scss:app/static/css/errors.css",
-        "compile-error-mini": "sass --no-source-map --style=compressed scss/errors.scss:app/static/css/errors.min.css",
+        "compile-error-testing": "sass --no-source-map scss.testing/errors.scss:app/static/css/errors.testing.css",
+        "compile-error-testing-mini": "sass --no-source-map --style=compressed scss.testing/errors.scss:app/static/css/errors.testing.min.css",
         "compile-all": "sass --no-source-map scss/main.scss:app/static/css/app.css scss/errors.scss:app/static/css/errors.css",
+        "compile-testing-all": "npm run compile-testing && npm run compile error-testing",
         "compile-all-mini": "sass --no-source-map --style=compressed scss/main.scss:app/static/css/app.min.css scss/errors.scss:app/static/css/errors.min.css",
+        "compile-testing-mini-all": "npm run compile-testing-mini && npm run compile error-testing-mini",
         "compile-ibm-plex": "sass --no-source-map scss/ibm-plex-font.scss:app/static/css/ibm-plex.css",
         "compile-ibm-plex-mini": "sass --no-source-map --style=compressed scss/ibm-plex-font.scss:app/static/css/ibm-plex.min.css",
         "watch": "sass --watch scss/main.scss:app/static/css/app.css",
+        "watch-testing": "sass --watch scss.testing/main.scss:app/static/css/app.testing.css",
         "js-copy-bundle": "cp node_modules/bootstrap/dist/js/bootstrap.bundle.min.js node_modules/bootstrap/dist/js/bootstrap.bundle.min.js.map app/static/js/",
         "test": "echo \"Error: no test specified\" && exit 1"
     }

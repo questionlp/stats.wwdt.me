@@ -1,0 +1,148 @@
+// Copyright (c) 2018-2024 Linh Pham
+// stats.wwdt.me is released under the terms of the Apache License 2.0
+// SPDX-License-Identifier: Apache-2.0
+//
+// vim: set noai syntax=python ts=4 sw=4:
+
+@media print {
+    :root {
+        --bs-body-font-size: 1em;
+    }
+
+    body {
+        background-color: $white;
+        color: $black;
+        padding: 0;
+        margin: 0;
+    }
+
+    header {
+        .fixed-top {
+            position: relative;
+        }
+
+        .navbar {
+            background-color: $white !important;
+            padding-bottom: 0;
+
+            .navbar-brand {
+                color: $black !important;
+            }
+
+            .offcanvasNavbar,
+            button {
+                display: none;
+                visibility: hidden;
+            }
+        }
+    }
+
+    main {
+        padding: 0.2rem;
+
+        .container-fluid.p-3 {
+            padding: 0.2rem 1rem !important;
+        }
+
+        #nav-breadcrumb {
+            display: none;
+            visibility: hidden;
+        }
+
+        h2#welcome {
+            margin: 0.4rem 0;
+        }
+
+        .info {
+            h3.date {
+                margin: 0.4rem 0.2rem;
+            }
+        }
+
+        .details {
+            border-left: none;
+            margin-top: 0.4rem;
+            margin-bottom: 0.4rem;
+            padding: 0.2rem;
+
+            .row {
+                margin: 0 0 0.4rem 0;
+                padding: 0;
+            }
+
+            .row>* {
+                margin: 0;
+                padding: 0;
+            }
+
+            .appearances {
+                .appearance-list {
+                    column-count: 2;
+                    column-fill: balance;
+                }
+            }
+
+            .badges {
+                margin: 0.6rem 0;
+                padding: 0;
+
+                .badge {
+                    background-color: $white !important;
+                    border: 1px solid $black !important;
+                    margin: 0 0.4rem 0 0 !important;
+                    padding: 0.4rem !important;
+                }
+
+                .npr-link a {
+                    background-color: $white;
+                    color: $black !important;
+                }
+            }
+
+            .field-label {
+                border: none;
+                margin-bottom: 0.2rem;
+                padding: 0;
+            }
+
+            .location-map-block {
+                break-before: page;
+            }
+        }
+    }
+
+    .shadow,
+    .shadow-sm,
+    .shadow-lg {
+        box-shadow: none !important;
+    }
+
+    footer {
+        .footer {
+            background-color: $white !important;
+            color: $black !important;
+
+            a {
+                color: $black !important;
+            }
+        }
+
+        .links {
+            display: none;
+            visibility: hidden;
+        }
+
+        .copyright-text,
+        .app-details {
+            display: block;
+            flex: none;
+            width: 100%;
+        }
+
+        .text-lg-end,
+        .app-details,
+        .app-version {
+            text-align: left !important;
+        }
+    }
+}
