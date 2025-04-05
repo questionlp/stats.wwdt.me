@@ -40,7 +40,7 @@ $color-contrast-light: $white !default;
 
 // Using IBM Carbon Design Gray 10 for Light theme
 $body-color: ibm.$gray-100 !default;
-$body-bg: ibm.$gray-10 !default;
+$body-bg: ibm.$white !default;
 
 // Using IBM Carbon Design Gray 100 for Dark theme
 $body-color-dark: ibm.$gray-10 !default;
@@ -64,7 +64,7 @@ $offcanvas-bg-color: ibm.$blue-80;
 $offcanvas-bg-navlink-hover-color: ibm.$blue-70;
 $btn-close-color: $white !important;
 $btn-close-opacity: 1;
-$btn-close-bg: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#{$btn-close-color}'><path d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414'/></svg>") !default;
+// $btn-close-bg: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#{$btn-close-color}'><path d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414'/></svg>") !default;
 
 $site-link-color: ibm.$blue-80;
 $site-link-color-dark: ibm.$blue-50;

@@ -1,5 +1,15 @@
 # Changes
 
+## 6.6.0-beta
+
+### Application Changes
+
+- Update and simplify the `wwdtm-theme` to be compatible with Bootstrap 5.3.5
+
+### Component Changes
+
+- Upgrade Bootstrap from 5.3.3 to 5.3.5
+
 ## 6.5.6
 
 ### Application Changes

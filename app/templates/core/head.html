@@ -7,11 +7,7 @@
     <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='favicon.svg') }}">
 
     <!-- Import Combined Bootstrap CSS and Icons, and IBM Plex Fonts -->
-    {% if use_testing_css and not use_minified_css %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/app.testing.css')}}">
-    {% elif use_testing_css and use_minified_css %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/app.testing.min.css')}}">
-    {% elif not use_testing_css and use_minified_css %}
+    {% if use_minified_css %}
     <link rel="stylesheet" href="{{ url_for('static', filename='css/app.min.css')}}">
     {% else %}
     <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css')}}">
@@ -22,7 +18,6 @@
     <!-- Import Leaflet -->
     <link rel="stylesheet" href="{{ url_for('static', filename='leaflet/leaflet.css') }}">
     <script src="{{ url_for('static', filename='leaflet/leaflet.js')}}"></script>
-
 
     {% if ga_property_code %}
     <!-- Global site tag (gtag.js) - Google Analytics -->
