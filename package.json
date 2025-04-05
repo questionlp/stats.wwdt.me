@@ -1,30 +1,20 @@
 {
-    "name": "stats.wwdt.me-bootstrap",
-    "version": "0.1.0",
-    "description": "Bootstrap UI for stats.wwdt.me",
+    "name": "wwdtm-theme",
+    "description": "wwdtm-theme",
     "author": {
         "name": "Linh Pham",
         "url": "https://linhpham.org/"
     },
-    "license": "Apache-2.0",
+    "license": "MIT",
     "private": true,
     "dependencies": {
         "@ibm/plex-mono": "^1.1.0",
-        "@ibm/plex-sans": "^1.1.0",
-        "bootstrap": "^5.3.5",
-        "bootstrap-icons": "^1.11.3",
-        "css-minify": "^2.0.0",
-        "sass": "^1.77.8"
+        "@ibm/plex-sans": "^1.1.0"
     },
     "scripts": {
-        "compile": "sass --no-source-map scss.testing/main.scss:app/static/css/app.css",
-        "compile-mini": "sass --no-source-map --style=compressed scss.testing/main.scss:app/static/css/app.min.css",
-        "compile-error": "sass --no-source-map scss.testing/errors.scss:app/static/css/errors.css",
-        "compile-error-mini": "sass --no-source-map --style=compressed scss.testing/errors.scss:app/static/css/errors.min.css",
-        "compile-all": "npm run compile && npm run compile-mini && npm run compile-error && npm run compile-error-mini",
-        "watch": "sass --watch scss.testing/main.scss:app/static/css/app.css",
-        "copy-js-bundle": "cp node_modules/bootstrap/dist/js/bootstrap.bundle.min.js node_modules/bootstrap/dist/js/bootstrap.bundle.min.js.map app/static/js/",
-        "deploy": "npm run compile-all && npm run copy-js-bundle",
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "copy-css": "cp wwdtm-theme/dist/css/* app/static/css/",
+        "copy-fonts": "cp -r node_modules/@ibm/plex-mono/fonts/* node_modules/@ibm/plex-sans/fonts/* app/static/fonts/",
+        "copy-js": "cp wwdtm-theme/dist/js/* app/static/js/",
+        "copy-all": "npm run copy-css && npm run copy-fonts && npm run copy-js"
     }
 }
