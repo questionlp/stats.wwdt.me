@@ -1,6 +1,6 @@
-// Copyright (c) 2018-2024 Linh Pham
-// stats.wwdt.me is released under the terms of the Apache License 2.0
-// SPDX-License-Identifier: Apache-2.0
+// Copyright (c) 2018-2025 Linh Pham
+// wwdtm-theme is released under the terms of the MIT License
+// SPDX-License-Identifier: MIT License
 //
 // vim: set noai syntax=python ts=4 sw=4:
 
@@ -102,6 +102,9 @@ $badge-text-db-dark: $white;
 $bg-footer-links: ibm.$blue-70;
 $bg-footer-copyright: ibm.$blue-80;
 
+$tooltip-bg: ibm.$blue-70;
+$tooltip-color: ibm.$white;
+$tooltip-opacity: 1;
 $tooltip-underline: ibm.$green-70;
 $tooltip-underline-dark: ibm.$green-20;
 

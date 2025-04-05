@@ -1,6 +1,6 @@
-// Copyright (c) 2018-2024 Linh Pham
-// stats.wwdt.me is released under the terms of the Apache License 2.0
-// SPDX-License-Identifier: Apache-2.0
+// Copyright (c) 2018-2025 Linh Pham
+// wwdtm-theme is released under the terms of the MIT License
+// SPDX-License-Identifier: MIT License
 //
 // vim: set noai syntax=python ts=4 sw=4:
 
@@ -9,7 +9,6 @@
 
 :root {
   // Adapted from: https://matthewjamestaylor.com/responsive-font-size
-  //--bs-body-font-size: clamp(14px, calc(14px + 0.325vw), 16.5px);
   --bs-body-font-size: clamp(14.5px, calc(14px + 0.325vw), 16.75px);
 }
 
