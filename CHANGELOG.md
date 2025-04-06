@@ -9,10 +9,8 @@ Due to the significant changes around the new application theming, the usual App
 - Complete re-work of the application theme structure and how theme assets are deployed
   - `scss` submodule has been replaced by `wwdtm-theme`
   - `wwdtm-theme` now handles the compiling of the Sass files to CSS into `dist/css` and copies the Bootstrap scripts into `dist/js`
-  - Map files for both non-minimized and minimized CSS files are included in `dist/css`
 - Trimming down the included `package.json` to only require `@ibm/plex-mono` and `@ibm/plex-sans`
 - NPM scripts have been simplified to copy the required CSS and JS files from `wwdtm-theme` and the required IBM Plex web font files into the appropriate paths under `app/static`
-- Inclusion of the CSS map files for debugging purposes
 
 ## 6.5.6
 
