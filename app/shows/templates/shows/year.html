@@ -18,6 +18,35 @@
 <div class="info">
     <div class="shows">
         <ul class="list-group show-list">
+            {% if show_counts %}
+            <li class="list-group-item">
+                {% if show_counts.best_of %}
+                <a href="{{ url_for('shows.year_best_ofs', show_year=year.year) }}">
+                {% else %}
+                <a aria-disabled="true" class="disabled-link">
+                {% endif %}
+                    <i class="bi bi-star" aria-hidden="true"></i>Best Of Shows from {{ year.year }}
+                </a>
+            </li>
+            <li class="list-group-item">
+                {% if show_counts.repeat_best_of %}
+                <a href="{{ url_for('shows.year_repeat_best_ofs', show_year=year.year) }}">
+                {% else %}
+                <a aria-disabled="true" class="disabled-link">
+                {% endif %}
+                    <i class="bi bi-star" aria-hidden="true"></i><i class="bi bi-repeat" aria-hidden="true"></i>Repeat Best Of Shows from {{ year.year }}
+                </a>
+            </li>
+            <li class="list-group-item">
+                {% if show_counts.repeat %}
+                <a href="{{ url_for('shows.year_repeats', show_year=year.year) }}">
+                {% else %}
+                <a aria-disabled="true" class="disabled-link">
+                {% endif %}
+                    <i class="bi bi-repeat" aria-hidden="true"></i>Repeat Shows from {{ year.year }}
+                </a>
+            </li>
+            {% endif %}
             <li class="list-group-item">
                 <a href="{{ url_for('shows.random_year_show', show_year=year.year) }}">
                     <i class="bi bi-shuffle" aria-hidden="true"></i>Random Show from {{ year.year }}

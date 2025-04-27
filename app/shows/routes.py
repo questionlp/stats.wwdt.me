@@ -93,6 +93,7 @@ def year(show_year: str | int) -> Response | str:
         _year = int(show_year)
         date_year = date(year=_year, month=1, day=1)
         show_months = show.retrieve_months_by_year(year=_year)
+        show_counts = show.retrieve_counts_by_year(year=_year, inclusive=True)
 
         if not show_months:
             return redirect_url(url_for("shows.index"))
@@ -101,9 +102,82 @@ def year(show_year: str | int) -> Response | str:
         for month in show_months:
             months.append(date(year=_year, month=month, day=1))
 
-        return render_template("shows/year.html", year=date_year, show_months=months)
+        return render_template(
+            "shows/year.html",
+            year=date_year,
+            show_months=months,
+            show_counts=show_counts,
+        )
     except ValueError:
         return redirect_url(url_for("shows.index"))
+    except TypeError:
+        return redirect_url(url_for("shows.index"))
+    except OverflowError:
+        return redirect_url(url_for("shows.index"))
+    finally:
+        database_connection.close()
+
+
+@blueprint.route("/<int:show_year>/all")
+def year_all(show_year: int) -> Response | str | Any:
+    """View: Show Details for Year."""
+    database_connection = mysql.connector.connect(**current_app.config["database"])
+    show = Show(database_connection=database_connection)
+
+    try:
+        _ = date(year=show_year, month=1, day=1)
+        shows = show.retrieve_details_by_year(
+            year=show_year,
+            include_decimal_scores=current_app.config["app_settings"][
+                "use_decimal_scores"
+            ],
+        )
+
+        if not shows:
+            return redirect_url(url_for("shows.index"))
+
+        return render_template(
+            "shows/year_all.html",
+            year=show_year,
+            shows=shows,
+            format_location_name=format_location_name,
+        )
+    except ValueError:
+        return redirect_url(url_for("shows.year", show_year=show_year))
+    except TypeError:
+        return redirect_url(url_for("shows.index"))
+    except OverflowError:
+        return redirect_url(url_for("shows.index"))
+    finally:
+        database_connection.close()
+
+
+@blueprint.route("/<int:show_year>/best-ofs")
+def year_best_ofs(show_year: str | int) -> Response | str:
+    """View: Best Of Shows for Year."""
+    database_connection = mysql.connector.connect(**current_app.config["database"])
+    show = Show(database_connection=database_connection)
+
+    try:
+        _ = date(year=show_year, month=1, day=1)
+        shows = show.retrieve_best_ofs_details_by_year(
+            year=show_year,
+            include_decimal_scores=current_app.config["app_settings"][
+                "use_decimal_scores"
+            ],
+        )
+
+        if not shows:
+            return redirect_url(url_for("shows.year", show_year=show_year))
+
+        return render_template(
+            "shows/year_best_ofs.html",
+            year=show_year,
+            shows=shows,
+            format_location_name=format_location_name,
+        )
+    except ValueError:
+        return redirect_url(url_for("shows.year", show_year=show_year))
     except TypeError:
         return redirect_url(url_for("shows.index"))
     except OverflowError:
@@ -187,15 +261,15 @@ def year_month_day(show_year: int, show_month: int, show_day: int) -> Response |
         database_connection.close()
 
 
-@blueprint.route("/<int:show_year>/all")
-def year_all(show_year: int) -> Response | str | Any:
-    """View: Show Details for Year."""
+@blueprint.route("/<int:show_year>/repeat-best-ofs")
+def year_repeat_best_ofs(show_year: str | int) -> Response | str:
+    """View: Repeat Best Of Shows for Year."""
     database_connection = mysql.connector.connect(**current_app.config["database"])
     show = Show(database_connection=database_connection)
 
     try:
         _ = date(year=show_year, month=1, day=1)
-        shows = show.retrieve_details_by_year(
+        shows = show.retrieve_repeat_best_ofs_details_by_year(
             year=show_year,
             include_decimal_scores=current_app.config["app_settings"][
                 "use_decimal_scores"
@@ -203,10 +277,44 @@ def year_all(show_year: int) -> Response | str | Any:
         )
 
         if not shows:
-            return redirect_url(url_for("shows.index"))
+            return redirect_url(url_for("shows.year", show_year=show_year))
 
         return render_template(
-            "shows/year_all.html",
+            "shows/year_repeat_best_ofs.html",
+            year=show_year,
+            shows=shows,
+            format_location_name=format_location_name,
+        )
+    except ValueError:
+        return redirect_url(url_for("shows.year", show_year=show_year))
+    except TypeError:
+        return redirect_url(url_for("shows.index"))
+    except OverflowError:
+        return redirect_url(url_for("shows.index"))
+    finally:
+        database_connection.close()
+
+
+@blueprint.route("/<int:show_year>/repeats")
+def year_repeats(show_year: str | int) -> Response | str:
+    """View: Best Of Shows for Year."""
+    database_connection = mysql.connector.connect(**current_app.config["database"])
+    show = Show(database_connection=database_connection)
+
+    try:
+        _ = date(year=show_year, month=1, day=1)
+        shows = show.retrieve_repeats_details_by_year(
+            year=show_year,
+            include_decimal_scores=current_app.config["app_settings"][
+                "use_decimal_scores"
+            ],
+        )
+
+        if not shows:
+            return redirect_url(url_for("shows.year", show_year=show_year))
+
+        return render_template(
+            "shows/year_repeats.html",
             year=show_year,
             shows=shows,
             format_location_name=format_location_name,

@@ -12231,6 +12231,9 @@ textarea.form-control-lg {
   --bs-body-font-size: clamp(14.5px, calc(14px + 0.325vw), 16.75px);
 }
 
+body #skip-nav {
+  color: #000000;
+}
 body .tooltip {
   font-size: 0.9em;
 }
@@ -12410,6 +12413,15 @@ main .info .page-list li,
 main .info .report-list li,
 main .info .show-list li {
   padding: 0.4rem 0.4rem 0.4rem 1.2rem;
+}
+main .info .location-list a.disabled-link,
+main .info .name-list a.disabled-link,
+main .info .page-list a.disabled-link,
+main .info .report-list a.disabled-link,
+main .info .show-list a.disabled-link {
+  border-bottom: none;
+  color: revert !important;
+  opacity: 0.7;
 }
 main .info .report-list h3.title, main .info .report-list .title.h3 {
   font-size: 1.2rem;
@@ -12810,6 +12822,9 @@ footer .copyright {
   background-color: #002d9c;
 }
 
+[data-bs-theme=dark] body #skip-nav {
+  color: #ffffff;
+}
 [data-bs-theme=dark] main a {
   color: #78a9ff;
 }
