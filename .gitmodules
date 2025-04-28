@@ -1,3 +1,4 @@
-[submodule "scss"]
-	path = scss
+[submodule "wwdtm-theme"]
+	path = wwdtm-theme
 	url = https://github.com/questionlp/wwdtm-theme.git
+	branch = v2

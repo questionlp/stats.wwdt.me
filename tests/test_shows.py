@@ -35,6 +35,29 @@ def test_year(client: FlaskClient, year: int) -> None:
     assert b"All Shows from" in response.data
 
 
+@pytest.mark.parametrize("year", [2018])
+def test_year_all(client: FlaskClient, year: int) -> None:
+    """Testing shows.year_all."""
+    response: TestResponse = client.get(f"/shows/{year}/all")
+    assert response.status_code == 200
+    assert b"Show Details" in response.data
+    assert b"Location" in response.data
+    assert b"Host" in response.data
+    assert b"Scorekeeper" in response.data
+
+
+@pytest.mark.parametrize("year", [2008, 2010])
+def test_year_best_ofs(client: FlaskClient, year: int) -> None:
+    """Testing shows.year_best_ofs."""
+    response: TestResponse = client.get(f"/shows/{year}/best-ofs")
+    assert response.status_code == 200
+    assert b"Show Details" in response.data
+    assert b"Best Ofs" in response.data
+    assert b"Location" in response.data
+    assert b"Host" in response.data
+    assert b"Scorekeeper" in response.data
+
+
 @pytest.mark.parametrize("year, month", [(2018, 10)])
 def test_year_month(client: FlaskClient, year: int, month: int) -> None:
     """Testing shows.year_month."""
@@ -57,12 +80,26 @@ def test_year_month_day(client: FlaskClient, year: int, month: int, day: int) ->
     assert b"Scorekeeper" in response.data
 
 
-@pytest.mark.parametrize("year", [2018])
-def test_year_all(client: FlaskClient, year: int) -> None:
-    """Testing shows.year_all."""
-    response: TestResponse = client.get(f"/shows/{year}/all")
+@pytest.mark.parametrize("year", [2008, 2010])
+def test_year_repeat_best_ofs(client: FlaskClient, year: int) -> None:
+    """Testing shows.year_repeat_best_ofs."""
+    response: TestResponse = client.get(f"/shows/{year}/repeat-best-ofs")
     assert response.status_code == 200
     assert b"Show Details" in response.data
+    assert b"Best Ofs" in response.data
+    assert b"Repeat:" in response.data
+    assert b"Location" in response.data
+    assert b"Host" in response.data
+    assert b"Scorekeeper" in response.data
+
+
+@pytest.mark.parametrize("year", [2008, 2010])
+def test_year_repeats(client: FlaskClient, year: int) -> None:
+    """Testing shows.year_repeats."""
+    response: TestResponse = client.get(f"/shows/{year}/repeats")
+    assert response.status_code == 200
+    assert b"Show Details" in response.data
+    assert b"Repeat:" in response.data
     assert b"Location" in response.data
     assert b"Host" in response.data
     assert b"Scorekeeper" in response.data

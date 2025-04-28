@@ -31,6 +31,8 @@ If you would like to help sponsor the continued development and maintenance of t
 
 This web application is licensed under the terms of the [Apache License 2.0](./LICENSE), unless otherwise noted.
 
+The included version 2 of the [wwdtm-theme](https://github.com/questionlp/wwdtm-theme/tree/v2) submodule is licensed under the terms of the [MIT License](https://github.com/questionlp/wwdtm-theme/blob/v2/LICENSE), unless otherwise noted.
+
 [Bootstrap](https://github.com/twbs/bootstrap) and [Bootstrap Icons](https://github.com/twbs/icons) are both licensed under the terms of the [MIT License](https://github.com/twbs/bootstrap/blob/main/LICENSE).
 
 [IBM Plex](https://github.com/IBM/plex/) is licensed under the terms of the [SIL Open Font License Version 1.1](https://github.com/IBM/plex/blob/master/LICENSE.txt).
