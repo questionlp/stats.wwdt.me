@@ -12,7 +12,7 @@ Due to the significant changes around the new application theming, the usual App
 - Trimming down the included `package.json` to only require `@ibm/plex-mono` and `@ibm/plex-sans`
 - NPM scripts have been simplified to copy the required CSS and JS files from `wwdtm-theme` and the required IBM Plex web font files into the appropriate paths under `app/static`
 - Add Best Of Shows, Repeat Best Of Shows and Repeat Shows by Year views for Shows
-- Upgrade wwdtm from 2.17.2 to 2.18.1-beta
+- Upgrade wwdtm from 2.17.2 to 2.18.1-beta.1
 
 ## 6.5.6
 
