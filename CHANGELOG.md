@@ -1,5 +1,19 @@
 # Changes
 
+## 6.6.0
+
+Due to the significant changes around the new application theming, the usual Application, Component and Development changes section are being merged into a single Changes section.
+
+### Changes
+
+- Complete re-work of the application theme structure and how theme assets are deployed
+  - `scss` submodule has been replaced by `wwdtm-theme`
+  - `wwdtm-theme` now handles the compiling of the Sass files to CSS into `dist/css` and copies the Bootstrap scripts into `dist/js`
+- Trimming down the included `package.json` to only require `@ibm/plex-mono` and `@ibm/plex-sans`
+- NPM scripts have been simplified to copy the required CSS and JS files from `wwdtm-theme` and the required IBM Plex web font files into the appropriate paths under `app/static`
+- Add Best Of Shows, Repeat Best Of Shows and Repeat Shows by Year views for Shows
+- Upgrade wwdtm from 2.17.2 to 2.18.1
+
 ## 6.5.6
 
 ### Application Changes

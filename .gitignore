@@ -2,7 +2,7 @@
 scss.bak/
 
 # Ignore CSS source maps
-app/static/css/*.css.map
+# app/static/css/*.css.map
 
 # Ignore venv directory
 venv/

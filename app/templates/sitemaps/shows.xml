@@ -1,5 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{% for year in counts %}
+  {% if counts[year]["best_of"] %}
+  <url>
+    <loc>{{ site_url }}{{ url_for("shows.year_best_ofs",
+                                  show_year=year) }}</loc>
+  </url>
+  {% endif %}
+  {% if counts[year]["repeat_best_of"] %}
+  <url>
+    <loc>{{ site_url }}{{ url_for("shows.year_repeat_best_ofs",
+                                  show_year=year) }}</loc>
+  </url>
+  {% endif %}
+  {% if counts[year]["repeat"] %}
+  <url>
+    <loc>{{ site_url }}{{ url_for("shows.year_repeats",
+                                  show_year=year) }}</loc>
+  </url>
+  {% endif %}
+{% endfor %}
 {% for years_months in show_years_months %}
   <url>
     <loc>{{ site_url }}{{ url_for("shows.year_month",

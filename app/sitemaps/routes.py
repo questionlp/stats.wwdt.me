@@ -119,13 +119,17 @@ def shows() -> Response | None:
     show = Show(database_connection=database_connection)
     dates = show.retrieve_all_dates_tuple()
     years_months = show.retrieve_all_shows_years_months_tuple()
+    counts = show.retrieve_all_counts_by_year(inclusive=True)
     database_connection.close()
 
     if not dates or not years_months:
         return None
 
     sitemap = render_template(
-        "sitemaps/shows.xml", show_dates=dates, show_years_months=years_months
+        "sitemaps/shows.xml",
+        show_dates=dates,
+        show_years_months=years_months,
+        counts=counts,
     )
 
     return Response(sitemap, mimetype="text/xml")
