@@ -6,10 +6,10 @@
                     <ul>
                         <li><a href="{{ url_for('main.about') }}">About</a></li>
                         <li><a href="{{ url_for('main.site_history') }}">Site History</a></li>
-                        <li><a href="{{ api_url }}">API</a></li>
-                        <li><a href="{{ blog_url }}">Blog</a></li>
-                        <li><a href="{{ graphs_url }}">Graphs</a></li>
-                        <li><a href="{{ reports_url }}">Reports</a></li>
+                        <li><a href="{{ api_url }}" target="_blank">API</a></li>
+                        <li><a href="{{ blog_url }}" target="_blank">Blog</a></li>
+                        <li><a href="{{ graphs_url }}" target="_blank">Graphs</a></li>
+                        <li><a href="{{ reports_url }}" target="_blank">Reports</a></li>
                         {% if github_sponsor_url or patreon_url %}
                         <li><a href="{{ url_for('main.about') }}#support-stats">Support Wait Wait Stats</a></li>
                         {% endif %}
@@ -25,9 +25,9 @@
                 <div class="col-lg-6 copyright-text py-1">
                     Copyright &copy; 2007&ndash;{{ current_year(time_zone) }}
                     {% if mastodon_url and mastodon_user %}
-                    <a href="https://linhpham.org/">Linh Pham</a> (<a rel="me" href="{{ mastodon_url }}">{{ mastodon_user }}</a>).
+                    <a href="https://linhpham.org/" target="_blank">Linh Pham</a> (<a rel="me" href="{{ mastodon_url }}" target="_blank">{{ mastodon_user }}</a>).
                     {% else %}
-                    <a href="https://linhpham.org/">Linh Pham</a>.
+                    <a href="https://linhpham.org/" target="_blank">Linh Pham</a>.
                     {% endif %}
                     All rights reserved.
                 </div>

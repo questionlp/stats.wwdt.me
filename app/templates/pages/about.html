@@ -8,7 +8,8 @@
     <p>
         The Wait Wait... Don't Tell Me! Stats Page is collection of details
         and statistics for the weekly NPR news quiz show,
-        <q><a href="https://waitwait.npr.org">Wait Wait... Don't Tell Me!</a></q>
+        <q><a href="https://waitwait.npr.org" target="_blank">Wait Wait... Don't Tell Me!
+        <i class="bi bi-box-arrow-up-right px-1" aria-hidden="true"></i></a></q>
         This site contains data for each of the hosts, panelist, scorekeeper and
         Not My Job guest that has appeared on the show.
     </p>
@@ -29,20 +30,24 @@
     <h3>Source Code</h3>
     <p>
         The source code for this site is released under the terms of 
-        <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache
-        License 2.0</a> and is available on
-        <a href="https://github.com/questionlp/stats.wwdt.me">GitHub</a>.
+        <a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache
+        License 2.0 <i class="bi bi-box-arrow-up-right px-1" aria-hidden="true"></i></a>
+        and is available on
+        <a href="https://github.com/questionlp/stats.wwdt.me" target="_blank">GitHub
+        <i class="bi bi-box-arrow-up-right px-1" aria-hidden="true"></i></a>.
     </p>
 
     <h3>Acknowledgments</h3>
     <p>
         One of the inspirations that I had when building this site was
-        <a href="http://www.mrkland.com/mrkland.com/passive/WWDTM/index.htm">mrk.'s
-        Wait Wait Don't Tell Me Statistics Pages</a> 
-        (<a href="https://web.archive.org/web/20190404122827/http://www.mrkland.com/zone/WWDTM/index.htm">Internet
-        Archive</a>). I used some of the scoring data from that site
-        to fill in some of the informational blanks for some of the shows prior
-        to Peter Sagal becoming the show's host.
+        <a href="http://www.mrkland.com/mrkland.com/passive/WWDTM/index.htm" target="_blank">mrk.'s
+        Wait Wait Don't Tell Me Statistics Pages
+        <i class="bi bi-box-arrow-up-right px-1" aria-hidden="true"></i></a>
+        (<a href="https://web.archive.org/web/20190404122827/http://www.mrkland.com/zone/WWDTM/index.htm" target="_blank">Internet
+        Archive <i class="bi bi-box-arrow-up-right px-1" aria-hidden="true"></i></a>).
+        I used some of the scoring data from that site to fill in some of the
+        informational blanks for some of the shows prior to Peter Sagal becoming
+        the show's host.
     </p>
 
     <p>
@@ -52,9 +57,11 @@
 
     <p>
         I would also like to thank Elijah Conners for contributing code to
-        display a map of a location, using <a href="https://leafletjs.com">Leafjet</a>
-        and <a href="https://www.openstreetmap.org">OpenStreetMap</a>, in the location
-        details page.
+        display a map of a location, using <a href="https://leafletjs.com" target="_blank">Leafjet
+        <i class="bi bi-box-arrow-up-right px-1" aria-hidden="true"></i></a> and
+        <a href="https://www.openstreetmap.org">OpenStreetMap
+        <i class="bi bi-box-arrow-up-right px-1" aria-hidden="true"></i></a>, in the
+        location details page.
     </p>
 
     {% if github_sponsor_url or patreon_url %}
@@ -65,11 +72,16 @@
         improvements, new features, or help cover the host of hosting and maintaining
         the Wait Wait Stats applications, consider supporting me on
         {% if github_sponsor_url and patreon_url %}
-        <a href="{{ github_sponsor_url }}">GitHub</a> or <a href="{{ patreon_url }}">Patreon</a>.
+        <a href="{{ github_sponsor_url }}" target="_blank">GitHub
+        <i class="bi bi-box-arrow-up-right px-1" aria-hidden="true"></i></a> or
+        <a href="{{ patreon_url }}" target="_blank">Patreon
+        <i class="bi bi-box-arrow-up-right px-1" aria-hidden="true"></i></a>.
         {% elif patreon_url %}
-        <a href="{{ patreon_url }}">Patreon</a>.
+        <a href="{{ patreon_url }}" target="_blank">Patreon
+        <i class="bi bi-box-arrow-up-right px-1" aria-hidden="true"></i></a>.
         {% elif github_sponsor_url %}
-        <a href="{{ github_sponsor_url }}">GitHub</a>.
+        <a href="{{ github_sponsor_url }}" target="_blank">GitHub
+        <i class="bi bi-box-arrow-up-right px-1" aria-hidden="true"></i></a>.
         {% endif %}
     </p>
     {% endif %}

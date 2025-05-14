@@ -3,4 +3,4 @@ Jinja2~=3.1.6
 gunicorn==23.0.0
 Markdown==3.7.0
 
-wwdtm==2.18.1
+wwdtm==2.18.2

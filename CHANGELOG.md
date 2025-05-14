@@ -1,5 +1,25 @@
 # Changes
 
+## 6.6.1
+
+### Application Changes
+
+- Set NPR badge links and external links (including Wait Wait Graphs, Wait Wait Reports and Wait Wait Stats API) to open in a new window/tab
+- Use `bi-box-arrow-up-right` icon to denote external links
+
+### Component Changes
+
+- Upgrade wwdtm from 2.18.1 to 2.18.2
+- Upgrade wwdtm-theme from 2.0.0 to 2.0.4
+  - Upgrade Bootstrap from 5.3.5 to 5.3.6
+  - Upgrade Bootstrap Icons from 1.11.3 to 1.13.1
+
+### Development Changes
+
+- Upgrade ruff from 0.9.6 to 0.11.9
+- Upgrade pytest from 8.3.3 to 8.3.5
+- Upgrade pytest-cov from 5.0.0 to 6.1.1
+
 ## 6.6.0
 
 Due to the significant changes around the new application theming, the usual Application, Component and Development changes section are being merged into a single Changes section.
