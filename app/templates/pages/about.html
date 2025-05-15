@@ -85,6 +85,35 @@
         {% endif %}
     </p>
     {% endif %}
+
+    <h3 id="contact">Contact Me</h3>
+
+    <p>
+        If you would like to reach out and contact me via the following means:
+    <p>
+
+    <ul>
+        <li>
+            Website/Blog: <a href="https://linhpham.org/" target="_blank">linhpham.org
+            <i class="bi bi-box-arrow-up-right px-1" aria-hidden="true"></i></a>
+        </li>
+        {% if mastodon_url and mastodon_user %}
+        <li>
+            Mastodon: <a rel="me" href="{{ mastodon_url }}" target="_blank">{{ mastodon_user }}
+            <i class="bi bi-box-arrow-up-right px-1" aria-hidden="true"></i></a>
+        </li>
+        {% endif %}
+        {% if bluesky_url and bluesky_user %}
+        <li>
+            Bluesky: <a href="{{ bluesky_url }}" target="_blank">{{ bluesky_user }}
+            <i class="bi bi-box-arrow-up-right px-1" aria-hidden="true"></i></a>
+        </li>
+        {% endif %}
+        <li>
+            E-mail: <a href="mailto:dev@wwdt.me">dev@wwdt.me
+            <i class="bi bi-envelope px-1" aria-hidden="true"></i></a>
+        </li>
+    </ul>
 </div>
 
 

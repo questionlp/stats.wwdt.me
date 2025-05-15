@@ -29,6 +29,8 @@
         "recent_days_ahead": 1,
         "recent_days_back": 31,
         "time_zone": "UTC",
+        "bluesky_url": "",
+        "bluesky_user": "",
         "mastodon_url": "",
         "mastodon_user": "",
         "patreon_url": "",

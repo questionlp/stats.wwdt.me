@@ -12246,6 +12246,9 @@ body .bi-box-arrow-up-right::before {
   font-size: 85% !important;
   vertical-align: initial !important;
 }
+body .bi-envelope::before {
+  color: var(--bs-body-color) !important;
+}
 
 header {
   color: #ffffff;
