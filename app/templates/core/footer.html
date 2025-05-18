@@ -6,10 +6,10 @@
                     <ul>
                         <li><a href="{{ url_for('main.about') }}">About</a></li>
                         <li><a href="{{ url_for('main.site_history') }}">Site History</a></li>
-                        <li><a href="{{ api_url }}">API</a></li>
-                        <li><a href="{{ blog_url }}">Blog</a></li>
-                        <li><a href="{{ graphs_url }}">Graphs</a></li>
-                        <li><a href="{{ reports_url }}">Reports</a></li>
+                        <li><a href="{{ api_url }}" target="_blank">API</a></li>
+                        <li><a href="{{ blog_url }}" target="_blank">Blog</a></li>
+                        <li><a href="{{ graphs_url }}" target="_blank">Graphs</a></li>
+                        <li><a href="{{ reports_url }}" target="_blank">Reports</a></li>
                         {% if github_sponsor_url or patreon_url %}
                         <li><a href="{{ url_for('main.about') }}#support-stats">Support Wait Wait Stats</a></li>
                         {% endif %}
@@ -22,18 +22,22 @@
     <div class="footer mt-auto py-3 px-1 copyright">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-6 copyright-text py-1">
+                <div class="col-lg-7 copyright-text py-1">
                     Copyright &copy; 2007&ndash;{{ current_year(time_zone) }}
-                    {% if mastodon_url and mastodon_user %}
-                    <a href="https://linhpham.org/">Linh Pham</a> (<a rel="me" href="{{ mastodon_url }}">{{ mastodon_user }}</a>).
+                    {% if mastodon_url and mastodon_user and bluesky_url and bluesky_user %}
+                    <a href="https://linhpham.org/" target="_blank">Linh Pham</a> (<span title="Mastodon">M: <a rel="me" href="{{ mastodon_url }}" target="_blank">{{ mastodon_user }}</a></span> | <span title="Bluesky">B: <a href="{{ bluesky_url }}" target="_blank">{{ bluesky_user }}</a></span>).
+                    {% elif mastodon_url and mastodon_user %}
+                    <a href="https://linhpham.org/" target="_blank">Linh Pham</a> (<span title="Mastodon">M: <a rel="me" href="{{ mastodon_url }}" target="_blank">{{ mastodon_user }}</a></span>).
+                    {% elif bluesky_url and bluesky_user %}
+                    <a href="https://linhpham.org/" target="_blank">Linh Pham</a> (<span title="Bluesky">B: <a href="{{ bluesky_url }}" target="_blank">{{ bluesky_user }}</a></span>).
                     {% else %}
-                    <a href="https://linhpham.org/">Linh Pham</a>.
+                    <a href="https://linhpham.org/" target="_blank">Linh Pham</a>.
                     {% endif %}
                     All rights reserved.
                 </div>
-                <div class="col-lg-6 text-lg-end app-details py-1">
+                <div class="col-lg-5 text-lg-end app-details py-1">
                     <span id="app-version">
-                        <span title="Page Rendered at Time">R: {{ rendered_at(time_zone) }}</span> |
+                        <span title="Page Rendered">R: {{ rendered_at(time_zone) }}</span> |
                         <span title="Application Version">V: {{ app_version }}</span> |
                         <span title="wwdtm Version">L: {{ wwdtm_version }}</span>
                     </span>

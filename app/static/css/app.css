@@ -7433,6 +7433,10 @@ textarea.form-control-lg {
 .visually-hidden-focusable:not(:focus):not(:focus-within):not(caption) {
   position: absolute !important;
 }
+.visually-hidden *,
+.visually-hidden-focusable:not(:focus):not(:focus-within) * {
+  overflow: hidden !important;
+}
 
 .stretched-link::after {
   position: absolute;
@@ -12237,6 +12241,14 @@ body #skip-nav {
 body .tooltip {
   font-size: 0.9em;
 }
+body .bi-box-arrow-up-right::before {
+  color: var(--bs-body-color) !important;
+  font-size: 85% !important;
+  vertical-align: initial !important;
+}
+body .bi-envelope::before {
+  color: var(--bs-body-color) !important;
+}
 
 header {
   color: #ffffff;
@@ -12524,6 +12536,9 @@ main .details .badge.npr-link a {
 }
 main .details .badge.npr-link a i {
   padding-left: 0.6rem;
+}
+main .details .badge.npr-link a .bi-box-arrow-up-right::before {
+  color: inherit !important;
 }
 main .details .badge.repeat {
   background-color: rgb(255, 242.6, 205.4);
