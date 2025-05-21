@@ -1,5 +1,11 @@
 # Changes
 
+## 6.6.2
+
+### Component Changes
+
+- Upgrade Flask from 3.1.0 to 3.1.1
+
 ## 6.6.1
 
 ### Application Changes
