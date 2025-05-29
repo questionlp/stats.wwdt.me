@@ -1,5 +1,14 @@
 # Changes
 
+## 6.6.3
+
+### Application Changes
+
+- Change the `/shows/random` route to redirect using `shows.year_month_day` rather than `shows.date_string`
+  - Example: Instead of the route returning `/shows/2018-10-27`, the route will return `/shows/2018/10/27`
+  - The route will use the `shows.date_string` route as a fallback option
+  - If no random date should be pulled from the database, redirect to the Shows index page
+
 ## 6.6.2
 
 ### Component Changes
