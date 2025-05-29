@@ -389,9 +389,26 @@ def random() -> Response:
     """View: Random Show Redirect."""
     database_connection = mysql.connector.connect(**current_app.config["database"])
     show = Show(database_connection=database_connection)
-    _date = show.retrieve_random_date()
+    _date_str = show.retrieve_random_date()
     database_connection.close()
-    return redirect_url(url_for("shows.date_string", iso_date_string=_date))
+
+    if not _date_str:
+        return redirect_url(url_for("shows.index"))
+
+    try:
+        _date = date.fromisoformat(_date_str)
+        return redirect_url(
+            url_for(
+                "shows.year_month_day",
+                show_year=_date.year,
+                show_month=_date.month,
+                show_day=_date.day,
+            )
+        )
+    except ValueError:
+        return redirect_url(url_for("shows.date_string", iso_date_string=_date))
+    except TypeError:
+        return redirect_url(url_for("shows.date_string", iso_date_string=_date))
 
 
 @blueprint.route("/random/<int:show_year>")
@@ -399,6 +416,7 @@ def random_year_show(show_year: int) -> Response:
     """View: Random Show for a Given Year."""
     database_connection = mysql.connector.connect(**current_app.config["database"])
     show = Show(database_connection=database_connection)
+    database_connection.close()
 
     try:
         _year = int(show_year)
@@ -415,8 +433,6 @@ def random_year_show(show_year: int) -> Response:
         return redirect_url(url_for("shows.index"))
     except OverflowError:
         return redirect_url(url_for("shows.index"))
-    finally:
-        database_connection.close()
 
 
 @blueprint.route("/recent")
