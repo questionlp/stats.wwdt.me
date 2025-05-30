@@ -1,5 +1,16 @@
 # Changes
 
+## 6.6.4
+
+### Application Changes
+
+- Fixed a bug in the `/shows/random/<int:year>` route where the database connection close command was not moved to the correct location
+- Change `/shows/random` and `/shows/random/<int:year>` to use the new `wwdtm.show.Show.retrieve_random_date_object()` and `wwdtm.show.Show.retrieve_random_date_object_by_year()` methods
+
+### Component Changes
+
+- Upgrade wwdtm from 2.18.2 to 2.19.0
+
 ## 6.6.3
 
 ### Application Changes
