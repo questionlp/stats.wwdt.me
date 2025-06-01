@@ -1,3 +1,5 @@
+[MESSAGE CONTROL]
+exclude = R0903
+
 [design]
 max-locals = 20
-
