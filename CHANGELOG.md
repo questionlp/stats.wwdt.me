@@ -1,5 +1,13 @@
 # Changes
 
+## 6.6.5
+
+### Application Changes
+
+- Update the Markdown to HTML filter to modify generated external links to open in a new window/tab and add the `bi-box-arrow-up-right` icon at the end of the link text
+- Update list of AI scraper user agents
+- Change the `block_ai_scrapers` logic so that if the configuration key is set to `true`, the action is set to `Disallow: /`. If the configuration key is set to `false`, the action is set to `Crawl-delay: 10`
+
 ## 6.6.4
 
 ### Application Changes

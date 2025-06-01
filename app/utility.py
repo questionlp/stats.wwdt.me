@@ -6,6 +6,7 @@
 """Utility functions used by the Wait Wait Stats Page."""
 
 import json
+import re
 from datetime import datetime
 
 import markdown
@@ -40,9 +41,17 @@ def generate_date_time_stamp(time_zone: str = "UTC") -> str:
     return now.strftime("%Y-%m-%d %H:%M:%S %Z")
 
 
-def md_to_html(text: str):
+def md_to_html(markdown_text: str):
     """Converts Markdown text into HTML."""
-    return markdown.markdown(text, output_format="html")
+    html_text = markdown.markdown(markdown_text, output_format="html")
+    site_url = current_app.jinja_env.globals["site_url"]
+
+    if html_text and site_url:
+        pattern = r'(<a\s+href="((?:(?!' + site_url + r').)*?)")>([^<]+)</a>'
+        replacement = r'\1 target="_blank">\3<i class="bi bi-box-arrow-up-right px-1" aria-hidden="true"></i></a>'
+        updated_html = re.sub(pattern, replacement, html_text, flags=re.DOTALL)
+
+    return updated_html
 
 
 def pretty_jsonify(data):
