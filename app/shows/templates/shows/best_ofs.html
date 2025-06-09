@@ -1,5 +1,8 @@
 {% extends "base.html" %}
 {% block title %}Best Ofs | Shows{% endblock %}
+{% block canonical_link %}
+    <link rel="canonical" href="{{ site_url }}{{ url_for('shows.best_ofs') }}">
+{% endblock %}
 
 {% block content %}
 <nav aria-label="breadcrumb" id="nav-breadcrumb">

@@ -29,6 +29,14 @@
         "recent_days_ahead": 1,
         "recent_days_back": 31,
         "time_zone": "UTC",
+        "examples": {
+            "guest": "stephen-colbert",
+            "host": "peter-sagal",
+            "location": "studebaker-theater-chicago-il",
+            "panelist": "roxanne-roberts",
+            "scorekeeper": "bill-kurtis",
+            "show": "2017-08-26"
+        },
         "bluesky_url": "",
         "bluesky_user": "",
         "mastodon_url": "",

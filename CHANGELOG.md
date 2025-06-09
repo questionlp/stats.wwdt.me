@@ -1,5 +1,30 @@
 # Changes
 
+## 6.7.0
+
+### Application Changes
+
+- Fix the breadcrumb link for "Shows" for the individual show page so that it properly points to the Shows index page
+- Adding `<link rel="canonical">` header to all pages under the Shows section
+- Adding a new info page titled "Understanding the Wait Wait Stats Page Data" that provides information on badges, panelist ranking, scoring exceptions and other terminology used in the Wait Wait Stats Page
+- Add `exclude_description` and `exclude_notes` flags to the individual show details template in order to exclude the sections when the template is used outside of the Show section
+- Add `exclude_guest_appearances`, `exclude_host_appearances`, `exclude_panelist_appearances` and `exclude_scorekeeper_appearances` flag to the respective details templates and `exclude_location_recordings` flag to the location details template in order to exclude the section when the template is used outside of each section
+- Add `examples` configuration object within `app_settings` in the `config.json` file with `guest`, `host`, `location`, `panelist`, `scorekeeper` and `show` keys used to configure which example data to be used in the "Understanding the Wait Wait Stats Page Data" page. Not all are used in the info page, but are available if needed. The following are the default values:
+  - *guest:* `stephen-colbert`
+  - *host:* `peter-sagal`
+  - *location:* `studebaker-theater-chicago-il`
+  - *panelist:* `roxanne-roberts`
+  - *scorekeeper:* `bill-kurtis`
+  - *show:* `2017-08-26`
+
+### Component Updates
+
+- Upgrade wwdtm-theme from 2.0.5 to 2.0.15
+  - Includes an update to make the footer link list items display as `inline-block` instead of `inline` to prevent line breaks within list items
+  - Add `.static-section` to allow for more semantic granularity versus `.static-page`
+  - Change `$h5-font-size` from `$font-size-base` to `$font-size-base * 1.125`
+  - Add styling for new table of contents block
+
 ## 6.6.5
 
 ### Application Changes

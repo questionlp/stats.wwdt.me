@@ -3,6 +3,7 @@
 <head>
     <title>{% block title %}{% endblock %} | Wait Wait Don't Tell Me! Stats Page</title>
     {% include "core/head.html" with context %}
+    {% block canonical_link %}{% endblock %}
 </head>
 <body class="d-flex flex-column h-100">
 {% include "core/nav.html" %}

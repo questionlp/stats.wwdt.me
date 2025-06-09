@@ -6,14 +6,25 @@
 """Main Routes for Wait Wait Stats Page."""
 
 import json
+from datetime import date
 from pathlib import Path
 
 import mysql.connector
 from flask import Blueprint, Response, current_app, render_template, request, send_file
+from wwdtm.guest import Guest
+from wwdtm.host import Host
+from wwdtm.location import Location
+from wwdtm.panelist import Panelist
+from wwdtm.scorekeeper import Scorekeeper
 from wwdtm.show import Show
 
 from app.config import DEFAULT_RECENT_DAYS_AHEAD, DEFAULT_RECENT_DAYS_BACK
-from app.locations.utility import format_location_name
+from app.locations.utility import (
+    decimal_to_degrees,
+    format_latitude,
+    format_location_name,
+    format_longitude,
+)
 
 blueprint = Blueprint("main", __name__)
 
@@ -56,6 +67,62 @@ def index() -> str:
 
     return render_template(
         "pages/index.html", shows=recent, format_location_name=format_location_name
+    )
+
+
+@blueprint.route("/info")
+def info() -> Response:
+    """View: Understanding the Wait Wait Stats Page Data."""
+    _examples: date = current_app.config["app_settings"]["examples"]
+    database_connection = mysql.connector.connect(**current_app.config["database"])
+    guest = Guest(database_connection=database_connection)
+    host = Host(database_connection=database_connection)
+    location = Location(database_connection=database_connection)
+    panelist = Panelist(database_connection=database_connection)
+    scorekeeper = Scorekeeper(database_connection=database_connection)
+    show = Show(database_connection=database_connection)
+
+    _guest = guest.retrieve_details_by_slug(guest_slug=_examples["guest"])
+    _host = host.retrieve_details_by_slug(host_slug=_examples["host"])
+    _location = location.retrieve_details_by_slug(location_slug=_examples["location"])
+    _panelist = panelist.retrieve_details_by_slug(panelist_slug=_examples["panelist"])
+    _scorekeeper = scorekeeper.retrieve_details_by_slug(
+        scorekeeper_slug=_examples["scorekeeper"]
+    )
+    _show = show.retrieve_details_by_date(
+        year=_examples["show"].year,
+        month=_examples["show"].month,
+        day=_examples["show"].day,
+        include_decimal_scores=current_app.config["app_settings"]["use_decimal_scores"],
+    )
+
+    return render_template(
+        "pages/info.html",
+        guests=[_guest],
+        guest_name=_guest["name"],
+        hosts=[_host],
+        host_name=_host["name"],
+        locations=[_location],
+        location_details=_location,
+        panelists=[_panelist],
+        panelist_name=_panelist["name"],
+        scorekeepers=[_scorekeeper],
+        scorekeeper_name=_scorekeeper["name"],
+        show_date=_examples["show"],
+        shows=[_show],
+        decimal_to_degrees=decimal_to_degrees,
+        format_latitude=format_latitude,
+        format_location_name=format_location_name,
+        format_longitude=format_longitude,
+        display_location_map=False,
+        exclude_host_appearances=True,
+        exclude_location_recordings=True,
+        exclude_panelist_appearances=True,
+        exclude_panelist_graph_links=True,
+        exclude_scorekeeper_appearances=True,
+        exclude_description=True,
+        exclude_notes=True,
+        exclude_recordings=True,
     )
 
 

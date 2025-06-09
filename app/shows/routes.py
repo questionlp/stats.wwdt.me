@@ -125,9 +125,9 @@ def year_all(show_year: int) -> Response | str | Any:
     show = Show(database_connection=database_connection)
 
     try:
-        _ = date(year=show_year, month=1, day=1)
+        _date = date(year=show_year, month=1, day=1)
         shows = show.retrieve_details_by_year(
-            year=show_year,
+            year=_date.year,
             include_decimal_scores=current_app.config["app_settings"][
                 "use_decimal_scores"
             ],
@@ -138,7 +138,7 @@ def year_all(show_year: int) -> Response | str | Any:
 
         return render_template(
             "shows/year_all.html",
-            year=show_year,
+            year=_date.year,
             shows=shows,
             format_location_name=format_location_name,
         )
@@ -159,7 +159,7 @@ def year_best_ofs(show_year: str | int) -> Response | str:
     show = Show(database_connection=database_connection)
 
     try:
-        _ = date(year=show_year, month=1, day=1)
+        _date = date(year=show_year, month=1, day=1)
         shows = show.retrieve_best_ofs_details_by_year(
             year=show_year,
             include_decimal_scores=current_app.config["app_settings"][
@@ -172,7 +172,7 @@ def year_best_ofs(show_year: str | int) -> Response | str:
 
         return render_template(
             "shows/year_best_ofs.html",
-            year=show_year,
+            year=_date.year,
             shows=shows,
             format_location_name=format_location_name,
         )
@@ -193,10 +193,10 @@ def year_month(show_year: int, show_month: int) -> Response | str:
     show = Show(database_connection=database_connection)
 
     try:
-        _year_month = date(year=show_year, month=show_month, day=1)
+        _date = date(year=show_year, month=show_month, day=1)
         shows = show.retrieve_details_by_year_month(
-            year=show_year,
-            month=show_month,
+            year=_date.year,
+            month=_date.month,
             include_decimal_scores=current_app.config["app_settings"][
                 "use_decimal_scores"
             ],
@@ -207,7 +207,7 @@ def year_month(show_year: int, show_month: int) -> Response | str:
 
         return render_template(
             "shows/year_month.html",
-            year_month=_year_month,
+            year_month=_date,
             shows=shows,
             format_location_name=format_location_name,
         )
@@ -228,11 +228,11 @@ def year_month_day(show_year: int, show_month: int, show_day: int) -> Response |
     show = Show(database_connection=database_connection)
 
     try:
-        show_date = date(year=show_year, month=show_month, day=show_day)
+        _date = date(year=show_year, month=show_month, day=show_day)
         details = show.retrieve_details_by_date(
-            year=show_year,
-            month=show_month,
-            day=show_day,
+            year=_date.year,
+            month=_date.month,
+            day=_date.day,
             include_decimal_scores=current_app.config["app_settings"][
                 "use_decimal_scores"
             ],
@@ -240,14 +240,16 @@ def year_month_day(show_year: int, show_month: int, show_day: int) -> Response |
 
         if not details:
             return redirect_url(
-                url_for("shows.year_month", show_year=show_year, show_month=show_month)
+                url_for(
+                    "shows.year_month", show_year=_date.year, show_month=_date.month
+                )
             )
 
         show_list = []
         show_list.append(details)
         return render_template(
             "shows/single.html",
-            show_date=show_date,
+            show_date=_date,
             shows=show_list,
             format_location_name=format_location_name,
         )
@@ -268,20 +270,20 @@ def year_repeat_best_ofs(show_year: str | int) -> Response | str:
     show = Show(database_connection=database_connection)
 
     try:
-        _ = date(year=show_year, month=1, day=1)
+        _date = date(year=show_year, month=1, day=1)
         shows = show.retrieve_repeat_best_ofs_details_by_year(
-            year=show_year,
+            year=_date.year,
             include_decimal_scores=current_app.config["app_settings"][
                 "use_decimal_scores"
             ],
         )
 
         if not shows:
-            return redirect_url(url_for("shows.year", show_year=show_year))
+            return redirect_url(url_for("shows.year", show_year=_date.year))
 
         return render_template(
             "shows/year_repeat_best_ofs.html",
-            year=show_year,
+            year=_date.year,
             shows=shows,
             format_location_name=format_location_name,
         )
@@ -302,20 +304,20 @@ def year_repeats(show_year: str | int) -> Response | str:
     show = Show(database_connection=database_connection)
 
     try:
-        _ = date(year=show_year, month=1, day=1)
+        _date = date(year=show_year, month=1, day=1)
         shows = show.retrieve_repeats_details_by_year(
-            year=show_year,
+            year=_date.year,
             include_decimal_scores=current_app.config["app_settings"][
                 "use_decimal_scores"
             ],
         )
 
         if not shows:
-            return redirect_url(url_for("shows.year", show_year=show_year))
+            return redirect_url(url_for("shows.year", show_year=_date.year))
 
         return render_template(
             "shows/year_repeats.html",
-            year=show_year,
+            year=_date.year,
             shows=shows,
             format_location_name=format_location_name,
         )

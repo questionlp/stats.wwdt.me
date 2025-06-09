@@ -1,0 +1,137 @@
+{% extends "base.html" %}
+{% block title %}Understanding the Wait Wait Stats Page Data{% endblock %}
+
+{% block content %}
+<div class="static-section">
+    <h2>Understanding the Wait Wait Stats Page Data</h2>
+    <div id="toc" class="border">
+        <ul class="my-2">
+            <li><a href="#info-shows">Shows</a></li>
+            <li><a href="#info-hosts-scorekeepers">Hosts and Scorekeepers</a></li>
+            <li><a href="#info-locations">Locations</a></li>
+            <li><a href="#info-guests">Not My Job Guests</a></li>
+            <li><a href="#info-panelists">Panelists</a></li>
+        </ul>
+    </div>
+
+    <h3>Overview</h3>
+    <p>
+        The Wait Wait Don't Tell Me! Stats Page provides details about Not My
+        Job guests, shows, hosts, scorekeepers, panelist and locations with the
+        data presented in a straightfoward, if not slightly minimal, format.
+    </p>
+
+    <p>
+        This page provides additional information and context to how the data
+        is presented and notated for each section of this site.
+    </p>
+
+    <h3 id="info-shows">Shows</h3>
+    <p>
+        The following is a live example of the information block with data and
+        details for the show that aired on
+        <a href="{{ url_for('shows.year_month_day', show_year=show_date.year, show_month=show_date.month, show_day=show_date.day) }}">{{ show_date.isoformat() }}</a>,
+        though with the show description and notes fields removed for brevity.
+    </p>
+</div>
+
+<div class="mx-2">
+{% include "shows/details.html" %}
+</div>
+
+<div class="static-section">
+    <h4>Badges</h4>
+    <p>
+        The first section of the show information block displays the various
+        badges for the show. All shows will have a badge with a link to the
+        show page on NPR's website and a database ID for the show in the Wait
+        Wait Stats Database.
+    <p>
+    <p>
+        Additional badges will appear to denote Best Of and repeat shows. The
+        repeat show badge will also include the original show date and a link
+        to the show page.
+    </p>
+
+    <h4>People and Places</h4>
+    <p>
+        The next sections include the location where the show was recorded,
+        including the name of the venue, city and state, the host and the
+        scorekeeper for the show. If the show has a guest host or a guest
+        scorekeeper, their name will be prefixed with "Guest".
+    </p>
+    <p>
+        If the scorekeeper introduced themself in a unique way, their
+        intro quote will be listed above the scorekeeper name.
+    </p>
+
+    <h5>Panelists</h5>
+    <p>
+        The Panelists section includes a list of panelists who were on the
+        panel for a regular show. For Best Of shows, all panelists who made
+        appearances on the original show where each segment came from.
+    </p>
+    <p>
+        If panelist scoring information is available, panelist ranking and
+        scoring information will be included. The Wait Wait Stats Project uses
+        <a href="https://en.wikipedia.org/wiki/Ranking">standard competition
+        ranking</a> where a gap is in place between the tied panelists and the
+        next rank after that.
+    </p>
+    <p>
+        For example, a show in which two panelists sharing the highest score are
+        ranked as "First Tied" while the remaining panelist would be ranked as
+        "Third". This ranking method was chosen due to the inconsistent ranking
+        method used on each Wait Wait... Don't Tell Me! show.
+    </p>
+    <p>
+        The scoring information for each panelist includes their total score,
+        and if available, the score they had at the start of the final round
+        (currently known as "Lightning Fill-in-the-Blank") and how many
+        questions they answered correctly. The total score should equal the
+        sum of starting score plus two times the number of correct answers.
+        There can also be scoring anamolies that lead to a panelist not getting
+        credit for correct answers. Any scoring anamolies should be noted in the
+        Notes section for the show.
+    </p>
+
+    <h5>Not My Job Guest(s)</h5>
+    <p>
+        The Guest(s) section will include a list of one or more Not My Job
+        guests and their score, based on the number of questions that were
+        correctly answered.
+    </p>
+    <p>
+        If a scoring exception was given, be it the scorekeeper given the
+        guest(s) a win even if they did not correctly answer two or more
+        questions or granting all three points, an asterisk (*) will denote the
+        exception and an explanation included in the Notes section.
+    </p>
+
+</div>
+
+<div class="static-section">
+    <h3 id="info-hosts-scorekeepers">Hosts and Scorekeepers</h3>
+</div>
+
+{% include "hosts/details.html" %}
+
+<div class="static-section">
+    <h3 id="info-location">Locations</h3>
+</div>
+
+{% include "locations/details.html" %}
+
+<div class="static-section">
+    <h3 id="info-guests">Not My Job Guests</h3>
+</div>
+
+{% include "guests/details.html" %}
+
+<div class="static-section">
+    <h3 id="info-panelists">Panelists</h3>
+</div>
+
+{% include "panelists/details.html" %}
+
+{% endblock %}

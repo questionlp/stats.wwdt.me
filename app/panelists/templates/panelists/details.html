@@ -104,6 +104,7 @@
             </div>
         </div>
 
+        {% if not exclude_panelist_graph_links %}
         <div class="row">
             <div class="col-md-12">
                 <span class="field-label">Available Graphs</span>
@@ -113,7 +114,9 @@
                 </ul>
             </div>
         </div>
+        {% endif %}
 
+        {% if not exclude_panelist_appearances %}
         <div class="row">
             <div class="col-md-12 appearances">
                 <span class="field-label">List of Appearances</span>
@@ -165,6 +168,7 @@
                 {% endif %}
             </div>
         </div>
+        {% endif %}
     </div>
 </div>
 {% endif %}

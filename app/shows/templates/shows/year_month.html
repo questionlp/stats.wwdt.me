@@ -1,5 +1,8 @@
 {% extends "base.html" %}
 {% block title %}{{ year_month.strftime("%B %Y") }} | Shows{% endblock %}
+{% block canonical_link %}
+    <link rel="canonical" href="{{ site_url }}{{ url_for('shows.year_month', show_year=year_month.year, show_month=year_month.month) }}">
+{% endblock %}
 
 {% block content %}
 <nav aria-label="breadcrumb" id="nav-breadcrumb">
