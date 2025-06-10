@@ -5,6 +5,7 @@
 <div class="static-section">
     <h2>Understanding the Wait Wait Stats Page Data</h2>
     <div id="toc" class="border">
+        <h3 class="toc-title">Table of Contents</h3>
         <ul class="my-2">
             <li><a href="#info-shows">Shows</a></li>
             <li><a href="#info-hosts-scorekeepers">Hosts and Scorekeepers</a></li>
@@ -45,7 +46,11 @@
         The first section of the show information block displays the various
         badges for the show. All shows will have a badge with a link to the
         show page on NPR's website and a database ID for the show in the Wait
-        Wait Stats Database.
+        Wait Stats Database. This database ID does not represent the show number
+        or the proper order of all shows. Instead, the database ID is useful for
+        querying the Wait Wait Stats data via the
+        <a href="{{ api_url }}" target="_blank">Wait Wait Stats API
+        <i class="bi bi-box-arrow-up-right px-1" aria-hidden="true"></i></a>.
     <p>
     <p>
         Additional badges will appear to denote Best Of and repeat shows. The
@@ -107,14 +112,69 @@
         questions or granting all three points, an asterisk (*) will denote the
         exception and an explanation included in the Notes section.
     </p>
+</div>
 
+<div class="text-end pt-2 pb-4">
+    <a href="#main-content">^ Go to top of page</a>
 </div>
 
 <div class="static-section">
     <h3 id="info-hosts-scorekeepers">Hosts and Scorekeepers</h3>
+    <p>
+        The following is a live example of the host information block with data
+        and appearance information for
+        <a href="{{ url_for('hosts.details', host_slug=hosts[0]['slug']) }}">{{ host_name }}</a>.
+        Both the host and scorekeeper information blocks contain the same
+        sections.
+    </p>
 </div>
 
 {% include "hosts/details.html" %}
+
+<div class="static-section">
+    <h4>Badges</h4>
+    <p>
+        The first section of the host and scorekeeper information block displays
+        the database ID for the respective host or scorekeeper in the Wait Wait
+        Stats Database. As with the database ID for each show, the ID does not
+        represent any official numbering or ID used by Wait Wait... Don't Tell
+        Me!
+    </p>
+    <p>
+        Another badge that may appear for some hosts and scorekeepers is a
+        preferred pronouns badge. The preferred pronouns are available if the
+        host or scorekeeper provides them on their own official social media
+        page or their official website. If their preferred pronouns cannot be
+        found from either source, then none are entered into the Stats Database.
+    </p>
+
+    <h4>Appearances</h4>
+    <p>
+        The first two pieces of data presented in the appearances section are
+        the number of times a host or a scorekeeper has appeared on regular
+        shows (excluding Best Of and repeat shows) and on all shows (including
+        regular, Best Of and repeat shows).
+    </p>
+    <p>
+        Following the number of appearances is a list of shows that a host or
+        scorekeeper has been on. Best Of and repeat shows will be denoted with
+        their respective badges.
+    </p>
+</div>
+
+<div class="text-end pt-2 pb-4">
+    <a href="#main-content">^ Go to top of page</a>
+</div>
+
+<div class="static-section">
+    <h3 id="info-guests">Not My Job Guests</h3>
+</div>
+
+{% include "guests/details.html" %}
+
+<div class="text-end pt-2 pb-4">
+    <a href="#main-content">^ Go to top of page</a>
+</div>
 
 <div class="static-section">
     <h3 id="info-location">Locations</h3>
@@ -122,11 +182,9 @@
 
 {% include "locations/details.html" %}
 
-<div class="static-section">
-    <h3 id="info-guests">Not My Job Guests</h3>
+<div class="text-end pt-2 pb-4">
+    <a href="#main-content">^ Go to top of page</a>
 </div>
-
-{% include "guests/details.html" %}
 
 <div class="static-section">
     <h3 id="info-panelists">Panelists</h3>

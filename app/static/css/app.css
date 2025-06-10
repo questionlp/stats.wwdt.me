@@ -12784,9 +12784,12 @@ main .static-page h2, main .static-page .h2, main .static-section h2, main .stat
 }
 main .static-page #toc, main .static-section #toc {
   font-size: 1.125rem;
-  margin-left: 1rem;
-  padding: 1rem 2rem 1rem 1rem;
+  margin-left: 1.5rem;
+  padding: 0 2rem 0.5rem 1.5rem;
   width: max-content;
+}
+main .static-page #toc h3.toc-title, main .static-page #toc .toc-title.h3, main .static-section #toc h3.toc-title, main .static-section #toc .toc-title.h3 {
+  margin: 1.4rem 0 1rem;
 }
 main .static-page #toc ol li, main .static-page #toc ul li, main .static-section #toc ol li, main .static-section #toc ul li {
   line-height: 2;

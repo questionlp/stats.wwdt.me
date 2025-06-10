@@ -19,7 +19,7 @@
 
 ### Component Updates
 
-- Upgrade wwdtm-theme from 2.0.5 to 2.0.15
+- Upgrade wwdtm-theme from 2.0.5 to 2.0.17
   - Includes an update to make the footer link list items display as `inline-block` instead of `inline` to prevent line breaks within list items
   - Add `.static-section` to allow for more semantic granularity versus `.static-page`
   - Change `$h5-font-size` from `$font-size-base` to `$font-size-base * 1.125`

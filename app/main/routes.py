@@ -115,7 +115,7 @@ def info() -> Response:
         format_location_name=format_location_name,
         format_longitude=format_longitude,
         display_location_map=False,
-        exclude_host_appearances=True,
+        exclude_host_appearances=False,
         exclude_location_recordings=True,
         exclude_panelist_appearances=True,
         exclude_panelist_graph_links=True,
