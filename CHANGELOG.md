@@ -11,7 +11,7 @@
 - Add `exclude_guest_appearances`, `exclude_host_appearances`, `exclude_panelist_appearances` and `exclude_scorekeeper_appearances` flag to the respective details templates and `exclude_location_recordings` flag to the location details template in order to exclude the section when the template is used outside of each section
 - Add `examples` configuration object within `app_settings` in the `config.json` file with `guest`, `host`, `location`, `panelist`, `scorekeeper` and `show` keys used to configure which example data to be used in the "Understanding the Wait Wait Stats Page Data" page. Not all are used in the info page, but are available if needed. The following are the default values:
   - *guest:* `stephen-colbert`
-  - *host:* `peter-sagal`
+  - *host:* `josh-gondelman`
   - *location:* `studebaker-theater-chicago-il`
   - *panelist:* `roxanne-roberts`
   - *scorekeeper:* `bill-kurtis`
