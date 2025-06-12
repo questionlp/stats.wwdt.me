@@ -2,15 +2,15 @@
 {% block title %}Understanding the Wait Wait Stats Page Data{% endblock %}
 
 {% block content %}
-<div class="static-section">
+<div class="static-page">
     <h2>Understanding the Wait Wait Stats Page Data</h2>
     <div id="toc" class="border">
         <h3 class="toc-title">Table of Contents</h3>
         <ul class="my-2">
             <li><a href="#shows">Shows</a></li>
+            <li><a href="#guests">Guests</a></li>
             <li><a href="#hosts-scorekeepers">Hosts and Scorekeepers</a></li>
             <li><a href="#locations">Locations</a></li>
-            <li><a href="#guests">Guests</a></li>
             <li><a href="#panelists">Panelists</a></li>
         </ul>
     </div>
@@ -34,13 +34,11 @@
         <a href="{{ url_for('shows.year_month_day', show_year=show_date.year, show_month=show_date.month, show_day=show_date.day) }}">{{ show_date.isoformat() }}</a>,
         though with the show description and notes fields removed for brevity.
     </p>
-</div>
 
-<div class="mx-2">
-{% include "shows/details.html" %}
-</div>
+    <div class="mx-2">
+    {% include "shows/details.html" %}
+    </div>
 
-<div class="static-section">
     <h4>Badges</h4>
     <p>
         The first section of the show information block displays the various
@@ -51,7 +49,7 @@
         querying the Wait Wait Stats data via the
         <a href="{{ api_url }}" target="_blank">Wait Wait Stats API
         <i class="bi bi-box-arrow-up-right px-1" aria-hidden="true"></i></a>.
-    <p>
+    </p>
     <p>
         Additional badges will appear to denote Best Of and repeat shows. The
         repeat show badge will also include the original show date and a link
@@ -112,13 +110,76 @@
         questions or granting all three points, an asterisk (*) will denote the
         exception and an explanation included in the Notes section.
     </p>
-</div>
 
-<div class="text-end py-4">
-    <a href="#main-content">^ Go to top of page</a>
-</div>
+    <h5>Bluff</h5>
+    <p>
+        The Bluff section will include a list data for each of the Bluff the
+        Listener or Bluff-like segment with the panelist whose story or topic
+        was chosen and the panelist whose story or topic was correct. Shows from
+        1998 had segments called "We'll Wait, You Tell Us" and "Listener Bluff"
+        in which the listener contestant must correctly choose the correct story
+        or topic to win. The first time "Bluff the Listener" was used for a
+        segment name was on the
+        <a href="{{ url_for('shows.year_month_day', show_year=1998, show_month=11, show_day=28) }}">1998-11-28</a>
+        show.
+    </p>
+    <p>
+        Only shows with a unique Bluff segment will have data entered, which
+        would regular shows with a Bluff segment or Best Of shows that include
+        Bluff segments that have never been included in a previous regular or
+        Best Of show. Such unique Bluff segments from Best Of shows would be
+        segments that were done when Wait Wait... Don't Tell Me! travels to
+        other cities and have a second show taping.
+    </p>
 
-<div class="static-section">
+    <div class="text-end pt-4 pb-3">
+        <a href="#main-content">^ Go to top of page</a>
+    </div>
+
+    <h3 id="guests">Guests</h3>
+
+    <p>
+        The following is a live example of the Not My Job guest information
+        block with data, appearance and scoring information for
+        <a href="{{ url_for('guests.details', guest_slug=guests[0]['slug']) }}">{{ guest_name }}</a>.
+    </p>
+
+    <div class="mx-2">
+        {% include "guests/details.html" %}
+    </div>
+    
+    <h4>Badges</h4>
+    <p>
+        The first section of the Not My Job guest information block displays the
+        database ID for the guest in the Wait Wait Stats Database. As with the
+        database ID for each show, the ID does not represent any official
+        numbering or ID used by Wait Wait... Don't Tell Me!
+    </p>
+    
+    <h4>Appearances</h4>
+    <p>
+        The first two pieces of data presented in the appearances section are
+        the number of times the guest has appeared on regular shows (excluding
+        Best Of and repeat shows) and on all shows (including regular, Best Of
+        and repeat shows).
+    </p>
+
+    <h4>List of Appearances</h4>
+    <p>
+        Following the appearances section is a list of shows that the guest have
+        appeared on and their score from the Not My Job segment, if available.
+        As with the Not My Job Guest(s) segment in the Shows information block,
+        scoring exceptions will be marked with an asterisk (*).
+    </p>
+    <p>
+        Best Of and repeat shows will also be denoted with their respective
+        badges.
+    </p>
+
+    <div class="text-end pt-4 pb-3">
+        <a href="#main-content">^ Go to top of page</a>
+    </div>
+
     <h3 id="#hosts-scorekeepers">Hosts and Scorekeepers</h3>
     <p>
         The following is a live example of the host information block with data
@@ -127,11 +188,11 @@
         Both the host and scorekeeper information blocks contain the same
         sections.
     </p>
-</div>
 
-{% include "hosts/details.html" %}
+    <div class="mx-2">
+        {% include "hosts/details.html" %}
+    </div>
 
-<div class="static-section">
     <h4>Badges</h4>
     <p>
         The first section of the host and scorekeeper information block displays
@@ -141,55 +202,55 @@
         Me!
     </p>
     <p>
-        Another badge that may appear for some hosts and scorekeepers is a
-        preferred pronouns badge. The preferred pronouns are available if the
-        host or scorekeeper provides them on their own official social media
-        page or their official website. If their preferred pronouns cannot be
-        found from either source, then none are entered into the Stats Database.
+        If preferred pronouns have been collected and entered into the Wait Wait
+        Stats Database, a pronouns badge will be displayed. The pronouns will
+        only be entered into the database if the host or scorekeeper provides
+        them in their own official social media bio or on their official
+        website. If their preferred pronouns cannot be found from either source,
+        then none are entered into the database.
     </p>
 
     <h4>Appearances</h4>
     <p>
         The first two pieces of data presented in the appearances section are
-        the number of times a host or a scorekeeper has appeared on regular
+        the number of times the host or scorekeeper has appeared on regular
         shows (excluding Best Of and repeat shows) and on all shows (including
         regular, Best Of and repeat shows).
     </p>
+
+    <h4>List of Appearances</h4>
     <p>
-        Following the number of appearances is a list of shows that a host or
-        scorekeeper has been on. Best Of and repeat shows will be denoted with
-        their respective badges.
+        Following the appearances section is a list of shows that the host or
+        scorekeeper have appeared on. Best Of and repeat shows will also be
+        denoted with their respective badges.
     </p>
-</div>
 
-<div class="text-end py-4">
-    <a href="#main-content">^ Go to top of page</a>
-</div>
+    <div class="text-end pt-4 pb-3">
+        <a href="#main-content">^ Go to top of page</a>
+    </div>
 
-<div class="static-section">
-    <h3 id="guests">Guests</h3>
-</div>
-
-{% include "guests/details.html" %}
-
-<div class="text-end py-4">
-    <a href="#main-content">^ Go to top of page</a>
-</div>
-
-<div class="static-section">
     <h3 id="location">Locations</h3>
-</div>
 
-{% include "locations/details.html" %}
+    <div class="mx-2">
+    {% include "locations/details.html" %}
+    </div>
 
-<div class="text-end py-4">
-    <a href="#main-content">^ Go to top of page</a>
-</div>
+    <div class="text-end pt-4 pb-3">
+        <a href="#main-content">^ Go to top of page</a>
+    </div>
 
-<div class="static-section">
+
     <h3 id="panelists">Panelists</h3>
-</div>
 
-{% include "panelists/details.html" %}
+    <div class="mx-2">
+    {% include "panelists/details.html" %}
+    </div>
+
+
+
+    <div class="text-end pt-4 pb-3">
+        <a href="#main-content">^ Go to top of page</a>
+    </div>
+</div>
 
 {% endblock %}
