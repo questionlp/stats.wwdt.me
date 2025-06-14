@@ -12779,22 +12779,35 @@ main .card.report-form input.btn-submit {
   background-color: #0043ce;
   color: #ffffff;
 }
-main .static-page h2, main .static-page .h2, main .static-section h2, main .static-section .h2 {
+main .static-page h2, main .static-page .h2,
+main .static-section h2,
+main .static-section .h2 {
   margin-bottom: 1.6rem;
 }
-main .static-page #toc, main .static-section #toc {
+main .static-page #toc,
+main .static-section #toc {
   font-size: 1.125rem;
-  margin-left: 1.5rem;
-  padding: 0 2rem 0.5rem 1.5rem;
   width: max-content;
 }
-main .static-page #toc h3.toc-title, main .static-page #toc .toc-title.h3, main .static-section #toc h3.toc-title, main .static-section #toc .toc-title.h3 {
+main .static-page #toc h3.toc-title, main .static-page #toc .toc-title.h3,
+main .static-section #toc h3.toc-title,
+main .static-section #toc .toc-title.h3 {
   margin: 1.4rem 0 1rem;
 }
-main .static-page #toc ol li, main .static-page #toc ul li, main .static-section #toc ol li, main .static-section #toc ul li {
+main .static-page #toc ol li,
+main .static-page #toc ul li,
+main .static-section #toc ol li,
+main .static-section #toc ul li {
   line-height: 2;
 }
-main .static-page img, main .static-section img {
+main .static-page .section-anchor::before,
+main .static-section .section-anchor::before {
+  content: "";
+  display: block;
+  height: 3.6rem;
+}
+main .static-page img,
+main .static-section img {
   margin: 1.4rem auto;
 }
 

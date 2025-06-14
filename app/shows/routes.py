@@ -46,7 +46,7 @@ def best_ofs() -> Response:
         return redirect_url(url_for("main.index"))
 
     return render_template(
-        "shows/best_ofs.html",
+        "shows/best-ofs.html",
         shows=_best_ofs,
         format_location_name=format_location_name,
     )
@@ -137,7 +137,7 @@ def year_all(show_year: int) -> Response | str | Any:
             return redirect_url(url_for("shows.index"))
 
         return render_template(
-            "shows/year_all.html",
+            "shows/year-all.html",
             year=_date.year,
             shows=shows,
             format_location_name=format_location_name,
@@ -171,7 +171,7 @@ def year_best_ofs(show_year: str | int) -> Response | str:
             return redirect_url(url_for("shows.year", show_year=show_year))
 
         return render_template(
-            "shows/year_best_ofs.html",
+            "shows/year-best-ofs.html",
             year=_date.year,
             shows=shows,
             format_location_name=format_location_name,
@@ -206,7 +206,7 @@ def year_month(show_year: int, show_month: int) -> Response | str:
             return redirect_url(url_for("shows.year", show_year=show_year))
 
         return render_template(
-            "shows/year_month.html",
+            "shows/year-month.html",
             year_month=_date,
             shows=shows,
             format_location_name=format_location_name,
@@ -282,7 +282,7 @@ def year_repeat_best_ofs(show_year: str | int) -> Response | str:
             return redirect_url(url_for("shows.year", show_year=_date.year))
 
         return render_template(
-            "shows/year_repeat_best_ofs.html",
+            "shows/year-repeat-best-ofs.html",
             year=_date.year,
             shows=shows,
             format_location_name=format_location_name,
@@ -316,7 +316,7 @@ def year_repeats(show_year: str | int) -> Response | str:
             return redirect_url(url_for("shows.year", show_year=_date.year))
 
         return render_template(
-            "shows/year_repeats.html",
+            "shows/year-repeats.html",
             year=_date.year,
             shows=shows,
             format_location_name=format_location_name,
@@ -382,7 +382,7 @@ def on_this_day() -> Response | str:
         return redirect_url(url_for("shows.index"))
 
     return render_template(
-        "shows/on_this_day.html", shows=shows, format_location_name=format_location_name
+        "shows/on-this-day.html", shows=shows, format_location_name=format_location_name
     )
 
 
@@ -458,7 +458,7 @@ def repeat_best_ofs() -> Response:
         return redirect_url(url_for("main.index"))
 
     return render_template(
-        "shows/repeat_best_ofs.html",
+        "shows/repeat-best-ofs.html",
         shows=_shows,
         format_location_name=format_location_name,
     )

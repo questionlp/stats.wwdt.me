@@ -54,6 +54,14 @@ def test_hosts(client: FlaskClient) -> None:
     assert response.location
 
 
+def test_info(client: FlaskClient) -> None:
+    """Testing main_redirects.info."""
+    response: TestResponse = client.get("info")
+    assert response.status_code == 302
+    assert response.location
+    assert "stats-data" in response.location
+
+
 def test_locations(client: FlaskClient) -> None:
     """Testing main_redirects.locations."""
     response: TestResponse = client.get("/location")

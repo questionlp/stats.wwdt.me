@@ -12,14 +12,15 @@
 - Add `examples` configuration object within `app_settings` in the `config.json` file with `guest`, `host`, `location`, `panelist`, `scorekeeper` and `show` keys used to configure which example data to be used in the "Understanding the Wait Wait Stats Page Data" page. Not all are used in the info page, but are available if needed. The following are the default values:
   - *guest:* `stephen-colbert`
   - *host:* `josh-gondelman`
-  - *location:* `studebaker-theater-chicago-il`
+  - *location:* `arlene-schnitzer-concert-hall-portland-or`
   - *panelist:* `roxanne-roberts`
   - *scorekeeper:* `bill-kurtis`
   - *show:* `2017-08-26`
+- Replace underscores with hyphens in HTML template file names
 
 ### Component Updates
 
-- Upgrade wwdtm-theme from 2.0.5 to 2.0.17
+- Upgrade wwdtm-theme from 2.0.5 to 2.0.19
   - Includes an update to make the footer link list items display as `inline-block` instead of `inline` to prevent line breaks within list items
   - Add `.static-section` to allow for more semantic granularity versus `.static-page`
   - Change `$h5-font-size` from `$font-size-base` to `$font-size-base * 1.125`

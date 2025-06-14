@@ -100,9 +100,9 @@ def load_config(
     examples = {}
     if _examples:
         examples["guest"] = _examples.get("guest", "stephen-colbert")
-        examples["host"] = _examples.get("host", "peter-sagal")
+        examples["host"] = _examples.get("host", "josh-gondelman")
         examples["location"] = _examples.get(
-            "location", "studebaker-theater-chicago-il"
+            "location", "arlene-schnitzer-concert-hall-portland-or"
         )
         examples["panelist"] = _examples.get("panelist", "roxanne-roberts")
         examples["scorekeeper"] = _examples.get("scorekeeper", "bill-kurtis")

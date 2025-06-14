@@ -4,9 +4,22 @@
 {% block content %}
 <div class="static-page">
     <h2>Understanding the Wait Wait Stats Page Data</h2>
-    <div id="toc" class="border">
+
+    {% if valid_data %}
+    <h3>Overview</h3>
+    <p>
+        The Wait Wait Don't Tell Me! Stats Page provides details about Not My
+        Job guests, shows, hosts, scorekeepers, panelist and locations with the
+        data presented in a straightfoward, if not slightly minimal, format.
+    </p>
+    <p>
+        This page provides additional information and context to how the data
+        is presented and notated for each section of this site.
+    </p>
+
+    <div id="toc" class="border ms-3 mt-4 px-4 py-2">
         <h3 class="toc-title">Table of Contents</h3>
-        <ul class="my-2">
+        <ul class="mt-2 mb-3">
             <li><a href="#shows">Shows</a></li>
             <li><a href="#guests">Guests</a></li>
             <li><a href="#hosts-scorekeepers">Hosts and Scorekeepers</a></li>
@@ -15,19 +28,8 @@
         </ul>
     </div>
 
-    <h3>Overview</h3>
-    <p>
-        The Wait Wait Don't Tell Me! Stats Page provides details about Not My
-        Job guests, shows, hosts, scorekeepers, panelist and locations with the
-        data presented in a straightfoward, if not slightly minimal, format.
-    </p>
-
-    <p>
-        This page provides additional information and context to how the data
-        is presented and notated for each section of this site.
-    </p>
-
-    <h3 id="shows">Shows</h3>
+    <span id="shows" class="section-anchor"></span>
+    <h3>Shows</h3>
     <p>
         The following is a live example of the information block with data and
         details for the show that aired on
@@ -100,9 +102,9 @@
 
     <h5>Not My Job Guest(s)</h5>
     <p>
-        The Guest(s) section will include a list of one or more Not My Job
-        guests and their score, based on the number of questions that were
-        correctly answered.
+        The Not My Job Guest(s) section will include a list of one or more Not
+        My Job guests and their score, based on the number of questions that
+        were correctly answered.
     </p>
     <p>
         If a scoring exception was given, be it the scorekeeper given the
@@ -132,12 +134,12 @@
         other cities and have a second show taping.
     </p>
 
-    <div class="text-end pt-4 pb-3">
+    <div class="text-end pt-4">
         <a href="#main-content">^ Go to top of page</a>
     </div>
 
-    <h3 id="guests">Guests</h3>
-
+    <span id="guests" class="section-anchor"></span>
+    <h3>Guests</h3>
     <p>
         The following is a live example of the Not My Job guest information
         block with data, appearance and scoring information for
@@ -147,7 +149,7 @@
     <div class="mx-2">
         {% include "guests/details.html" %}
     </div>
-    
+
     <h4>Badges</h4>
     <p>
         The first section of the Not My Job guest information block displays the
@@ -158,7 +160,7 @@
     
     <h4>Appearances</h4>
     <p>
-        The first two pieces of data presented in the appearances section are
+        The first two pieces of data presented in the Appearances section are
         the number of times the guest has appeared on regular shows (excluding
         Best Of and repeat shows) and on all shows (including regular, Best Of
         and repeat shows).
@@ -166,7 +168,7 @@
 
     <h4>List of Appearances</h4>
     <p>
-        Following the appearances section is a list of shows that the guest have
+        Following the Appearances section is a list of shows that the guest have
         appeared on and their score from the Not My Job segment, if available.
         As with the Not My Job Guest(s) segment in the Shows information block,
         scoring exceptions will be marked with an asterisk (*).
@@ -176,14 +178,15 @@
         badges.
     </p>
 
-    <div class="text-end pt-4 pb-3">
+    <div class="text-end pt-4">
         <a href="#main-content">^ Go to top of page</a>
     </div>
 
-    <h3 id="#hosts-scorekeepers">Hosts and Scorekeepers</h3>
+    <span id="hosts-scorekeepers" class="section-anchor"></span>
+    <h3>Hosts and Scorekeepers</h3>
     <p>
         The following is a live example of the host information block with data
-        and appearance information for
+        and appearance information for guest show host
         <a href="{{ url_for('hosts.details', host_slug=hosts[0]['slug']) }}">{{ host_name }}</a>.
         Both the host and scorekeeper information blocks contain the same
         sections.
@@ -212,7 +215,7 @@
 
     <h4>Appearances</h4>
     <p>
-        The first two pieces of data presented in the appearances section are
+        The first two pieces of data presented in the Appearances section are
         the number of times the host or scorekeeper has appeared on regular
         shows (excluding Best Of and repeat shows) and on all shows (including
         regular, Best Of and repeat shows).
@@ -220,27 +223,73 @@
 
     <h4>List of Appearances</h4>
     <p>
-        Following the appearances section is a list of shows that the host or
+        Following the Appearances section is a list of shows that the host or
         scorekeeper have appeared on. Best Of and repeat shows will also be
         denoted with their respective badges.
     </p>
 
-    <div class="text-end pt-4 pb-3">
+    <div class="text-end pt-4">
         <a href="#main-content">^ Go to top of page</a>
     </div>
 
-    <h3 id="location">Locations</h3>
+    <span id="locations" class="section-anchor"></span>
+    <h3>Locations</h3>
+    {% set location = locations[0]%}
+    {% if postal_abbreviations and location.state %}
+        {% set state_name = postal_abbreviations[location.state].name %}
+        {% set location_name = format_location_name(location, state_name=state_name) %}
+    {% else %}
+        {% set location_name = format_location_name(location) %}
+    {% endif %}
+    <p>
+        The following is a live example of the location information block with
+        data and recording information for
+        <a href="{{ url_for('locations.details', location_slug=location['slug']) }}">{{ location_name }}</a>.
+        The location map has omitted from the block for brevity.
+    </p>
 
     <div class="mx-2">
     {% include "locations/details.html" %}
     </div>
 
-    <div class="text-end pt-4 pb-3">
+    <h4>Badge</h4>
+    <p>
+        The first section of the location information block displays the
+        database ID for the location in the Wait Wait Stats Database. As with
+        the database ID for shows, hosts and scorekeepers, the ID does not
+        represent any official number or ID used by Wait Wait... Don't Tell Me!
+    </p>
+
+    <h4>Located In and Coordinates</h4>
+    <p>
+        If available or applicable, the Located In and Coordinates fields will
+        display the city and state, and the latitude and longitude (both listed
+        as decimal degrees) for the location. When hovering over the latitude
+        and longitude, the degrees, minutes and seconds equivalent will be
+        displayed in the tooltip.
+    </p>
+
+    <h4>Recordings</h4>
+    <p>
+        The two pieces of data presented in the Recordings section are the
+        number of times a regular show (excluding Best Of and repeat shows) has
+        been recorded at the location and all shows (including regular, Best Of
+        and repeat shows) that have been recorded there.
+    </p>
+
+    <h4>List of Recordings</h4>
+    <p>
+        Following the Recordings section is a list of shows that have been
+        recorded at the location. Best Of and repeat shows will also be denoted
+        with their respective badges.
+    </p>
+
+    <div class="text-end pt-4">
         <a href="#main-content">^ Go to top of page</a>
     </div>
 
-
-    <h3 id="panelists">Panelists</h3>
+    <span id="panelists" class="section-anchor"></span>
+    <h3>Panelists</h3>
 
     <div class="mx-2">
     {% include "panelists/details.html" %}
@@ -248,9 +297,15 @@
 
 
 
-    <div class="text-end pt-4 pb-3">
+    <div class="text-end pt-4">
         <a href="#main-content">^ Go to top of page</a>
     </div>
+    {% else %}
+    <p>
+        Unable to retrieve live data required for this page. Please check back
+        later.
+    </p>
+    {% endif %}
 </div>
 
 {% endblock %}
