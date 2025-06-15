@@ -41,6 +41,14 @@ def test_site_history(client: FlaskClient) -> None:
     assert b"Version 4" in response.data
 
 
+def test_stats_data(client: FlaskClient) -> None:
+    """Testing main.stats_data."""
+    response: TestResponse = client.get("/stats-data")
+    assert response.status_code == 200
+    assert b"Understanding Wait Wait Stats Page Data" in response.data
+    assert b"Bluff the Listener" in response.data
+
+
 def test_teapot(client: FlaskClient) -> None:
     """Testing main.teapot."""
     response: TestResponse = client.get("/teapot")
