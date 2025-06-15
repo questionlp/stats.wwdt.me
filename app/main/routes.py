@@ -15,6 +15,7 @@ from wwdtm.guest import Guest
 from wwdtm.host import Host
 from wwdtm.location import Location
 from wwdtm.panelist import Panelist
+from wwdtm.scorekeeper import Scorekeeper
 from wwdtm.show import Show
 
 from app.config import DEFAULT_RECENT_DAYS_AHEAD, DEFAULT_RECENT_DAYS_BACK
@@ -78,12 +79,16 @@ def stats_data() -> Response:
     host = Host(database_connection=database_connection)
     location = Location(database_connection=database_connection)
     panelist = Panelist(database_connection=database_connection)
+    scorekeeper = Scorekeeper(database_connection=database_connection)
     show = Show(database_connection=database_connection)
 
     _guest = guest.retrieve_details_by_slug(guest_slug=_examples["guest"])
     _host = host.retrieve_details_by_slug(host_slug=_examples["host"])
     _location = location.retrieve_details_by_slug(location_slug=_examples["location"])
     _panelist = panelist.retrieve_details_by_slug(panelist_slug=_examples["panelist"])
+    _scorekeeper = scorekeeper.retrieve_details_by_slug(
+        scorekeeper_slug=_examples["scorekeeper"]
+    )
     _show = show.retrieve_details_by_date(
         year=_examples["show"].year,
         month=_examples["show"].month,
@@ -103,6 +108,8 @@ def stats_data() -> Response:
             location_details=_location,
             panelists=[_panelist],
             panelist_name=_panelist["name"],
+            scorekeepers=[_scorekeeper],
+            scorekeeper_name=_scorekeeper["name"],
             show_date=_examples["show"],
             shows=[_show],
             decimal_to_degrees=decimal_to_degrees,

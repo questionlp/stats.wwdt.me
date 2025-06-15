@@ -58,19 +58,24 @@
         to the show page.
     </p>
 
-    <h4>People and Places</h4>
+    <h4>Location</h4>
     <p>
-        The next sections include the location where the show was recorded,
-        including the name of the venue, city and state, the host and the
-        scorekeeper for the show. If the show has a guest host or a guest
-        scorekeeper, their name will be prefixed with "Guest".
-    </p>
-    <p>
-        If the scorekeeper introduced themself in a unique way, their
-        intro quote will be listed above the scorekeeper name.
+        The venue and, if available or applicable, the city and state where the
+        show was recorded.
     </p>
 
-    <h5>Panelists</h5>
+    <h4>Host and Scorekeeper</h4>
+    <p>
+        The Host and Scorekeeper sections list the show host and scorekeeper. If
+        the show has a guest host or a guest scorekeeper, their name will be
+        prefixed with "Guest".
+    </p>
+    <p>
+        If the scorekeeper used a unique introduction at the start of the show,
+        the introduction will be listed above the scorekeeper's name.
+    </p>
+
+    <h4>Panelists</h4>
     <p>
         The Panelists section includes a list of panelists who were on the
         panel for a regular show. For Best Of shows, all panelists who made
@@ -95,12 +100,12 @@
         (currently known as "Lightning Fill-in-the-Blank") and how many
         questions they answered correctly. The total score should equal the
         sum of starting score plus two times the number of correct answers.
-        There can also be scoring anamolies that lead to a panelist not getting
-        credit for correct answers. Any scoring anamolies should be noted in the
+        There can also be scoring anomalies that lead to a panelist not getting
+        credit for correct answers. Any scoring anomalies should be noted in the
         Notes section for the show.
     </p>
 
-    <h5>Not My Job Guest(s)</h5>
+    <h4>Not My Job Guest(s)</h4>
     <p>
         The Not My Job Guest(s) section will include a list of one or more Not
         My Job guests and their score, based on the number of questions that
@@ -113,7 +118,7 @@
         exception and an explanation included in the Notes section.
     </p>
 
-    <h5>Bluff</h5>
+    <h4>Bluff</h4>
     <p>
         The Bluff section will include a list data for each of the Bluff the
         Listener or Bluff-like segment with the panelist whose story or topic
@@ -135,7 +140,7 @@
     </p>
 
     <div class="text-end pt-4">
-        <a href="#main-content">^ Go to top of page</a>
+        <a href="#main-content"><i class="bi bi-arrow-up" aria-hidden="true"></i>Return to Top of Page</a>
     </div>
 
     <span id="guests" class="section-anchor"></span>
@@ -168,7 +173,7 @@
 
     <h4>List of Appearances</h4>
     <p>
-        Following the Appearances section is a list of shows that the guest have
+        Following the Appearances section is a list of shows that the guest has
         appeared on and their score from the Not My Job segment, if available.
         As with the Not My Job Guest(s) segment in the Shows information block,
         scoring exceptions will be marked with an asterisk (*).
@@ -179,7 +184,7 @@
     </p>
 
     <div class="text-end pt-4">
-        <a href="#main-content">^ Go to top of page</a>
+        <a href="#main-content"><i class="bi bi-arrow-up" aria-hidden="true"></i>Return to Top of Page</a>
     </div>
 
     <span id="hosts-scorekeepers" class="section-anchor"></span>
@@ -229,7 +234,7 @@
     </p>
 
     <div class="text-end pt-4">
-        <a href="#main-content">^ Go to top of page</a>
+        <a href="#main-content"><i class="bi bi-arrow-up" aria-hidden="true"></i>Return to Top of Page</a>
     </div>
 
     <span id="locations" class="section-anchor"></span>
@@ -245,7 +250,7 @@
         The following is a live example of the location information block with
         data and recording information for
         <a href="{{ url_for('locations.details', location_slug=location['slug']) }}">{{ location_name }}</a>.
-        The location map has omitted from the block for brevity.
+        The location map section has omitted from the block for brevity.
     </p>
 
     <div class="mx-2">
@@ -285,20 +290,93 @@
     </p>
 
     <div class="text-end pt-4">
-        <a href="#main-content">^ Go to top of page</a>
+        <a href="#main-content"><i class="bi bi-arrow-up" aria-hidden="true"></i>Return to Top of Page</a>
     </div>
 
     <span id="panelists" class="section-anchor"></span>
     <h3>Panelists</h3>
+    <p>
+        The following is a live example of panelist information block with data
+        and for the panelist
+        <a href="{{ url_for('panelists.details', panelist_slug=panelists[0]['slug']) }}">{{ panelist_name }}</a>.
+        The List of Appearances section has been omitted for brevity.
+    </p>
 
     <div class="mx-2">
     {% include "panelists/details.html" %}
     </div>
 
+    <h4>Badges</h4>
+    <p>
+        The first section of the panelist information block displays the
+        database ID for the panelist in the Wait Wait Stats Database. As with
+        the database ID for guests, hosts and scorekeepers, the ID does not
+        represent any official numbering or ID used by Wait Wait... Don't Tell
+        Me!
+    </p>
 
+    <h4>Appearances</h4>
+    <p>
+        The Appearances section provides a count of regular shows (excluding
+        Best Of and repeat shows) and all shows (including regular shows, Best
+        Of and repeat shows) the panelist has appeared on, as well as shows
+        where scores have been entered for the panelist. In addition, the
+        section lists the first time the panelist has appeared on the show and
+        their most recent show (excluding Best Of and repeat shows).
+    </p>
+
+    <h4>Scoring</h4>
+    <p>
+        The Scoring section lists the panelist's minimum, maximum, mean (or
+        average), median, (population) standard deviation and total scores
+        across all regular shows (excluding Best Of and repeat shows). Both the
+        mean and standard deviation values are rounded to 
+    </p>
+
+    <h4>Rankings</h4>
+    <p>
+        The Rankings section provides a count of each time a panelist has come
+        in first, second or third place, or has been tied for first or tied for
+        second. Along with each ranking count is a percentage based on the
+        ranking count divided by the number of appearances for Shows with
+        Scores.
+    </p>
+
+    <h4>Bluff the Listener</h4>
+    <p>
+        The Bluff the Listener section lists the number of times the panelist's
+        Bluff story was chosen and the number of times they had the correct
+        story. The counts include all unique Bluff the Listener-like segments.
+    </p>
+
+    <h4>Available Graphs</h4>
+    <p>
+        The Available Graphs section includes links to two graphs for the
+        panelist on the Wait Wait Graphs Site. The Score Breakdown graph plots
+        out how many times the panelist has scored a specific score. The Scores
+        by Appearance graph plots how the panelist's score for each appearance
+        on a regular show (excluding Best Ofs and repeat shows).
+    </p>
+
+    <h4>List of Appearances</h4>
+    <p>
+        Following the Available Graphs section is a list of shows that the
+        panelist has appeared on, scoring information, ranking, and if
+        applicable, badges for Best Of and repeat shows.
+    </p>
+    <p>
+        If scoring information is available, the panelist's total score is
+        listed along with their score at the start of the final round (currently
+        known as "Lightning Fill-in-the-Blank") and how many questions they
+        answered correctly. The total score should equal the sum of starting
+        score plus two times the number of correct answers. There can also be
+        scoring anomalies that lead to a panelist not getting credit for correct
+        answers. Any scoring anomalies should be noted in the Notes section for
+        the show.
+    </p>
 
     <div class="text-end pt-4">
-        <a href="#main-content">^ Go to top of page</a>
+        <a href="#main-content"><i class="bi bi-arrow-up" aria-hidden="true"></i>Return to Top of Page</a>
     </div>
     {% else %}
     <p>

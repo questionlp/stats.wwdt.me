@@ -104,7 +104,7 @@ def load_config(
         examples["location"] = _examples.get(
             "location", "arlene-schnitzer-concert-hall-portland-or"
         )
-        examples["panelist"] = _examples.get("panelist", "roxanne-roberts")
+        examples["panelist"] = _examples.get("panelist", "hari-kondabolu")
         examples["scorekeeper"] = _examples.get("scorekeeper", "bill-kurtis")
         _show_date: date = _examples.get("show", "2017-08-26")
         try:
