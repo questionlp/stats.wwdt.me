@@ -46,8 +46,8 @@ def hosts() -> Response:
 
 @blueprint.route("/info")
 def info_page() -> Response:
-    """Redirect: /info to /stats-data."""
-    return redirect_url(url_for("main.stats_data"))
+    """Redirect: /info to /understanding-data."""
+    return redirect_url(url_for("main.understanding_data"))
 
 
 @blueprint.route("/location")

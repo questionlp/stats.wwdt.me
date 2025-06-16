@@ -59,7 +59,7 @@ def test_info(client: FlaskClient) -> None:
     response: TestResponse = client.get("info")
     assert response.status_code == 302
     assert response.location
-    assert "stats-data" in response.location
+    assert "understanding-data" in response.location
 
 
 def test_locations(client: FlaskClient) -> None:

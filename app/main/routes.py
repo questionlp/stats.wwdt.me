@@ -70,9 +70,9 @@ def index() -> str:
     )
 
 
-@blueprint.route("/stats-data")
-def stats_data() -> Response:
-    """View: Understanding the Wait Wait Stats Page Data."""
+@blueprint.route("/understanding-data")
+def understanding_data() -> Response:
+    """View: Understanding Wait Wait Stats Page Data."""
     _examples: date = current_app.config["app_settings"]["examples"]
     database_connection = mysql.connector.connect(**current_app.config["database"])
     guest = Guest(database_connection=database_connection)
@@ -98,7 +98,7 @@ def stats_data() -> Response:
 
     if all((_guest, _host, _location, _panelist, _show)):
         return render_template(
-            "pages/stats-data.html",
+            "pages/understanding-data.html",
             valid_data=True,
             guests=[_guest],
             guest_name=_guest["name"],
@@ -123,7 +123,7 @@ def stats_data() -> Response:
             exclude_recordings=True,
         )
     else:
-        return render_template("pages/stats-data.html")
+        return render_template("pages/understanding-data.html")
 
 
 @blueprint.route("/robots.txt")

@@ -41,9 +41,9 @@ def test_site_history(client: FlaskClient) -> None:
     assert b"Version 4" in response.data
 
 
-def test_stats_data(client: FlaskClient) -> None:
-    """Testing main.stats_data."""
-    response: TestResponse = client.get("/stats-data")
+def test_understanding_data(client: FlaskClient) -> None:
+    """Testing main.understanding_data."""
+    response: TestResponse = client.get("/understanding-data")
     assert response.status_code == 200
     assert b"Understanding Wait Wait Stats Page Data" in response.data
     assert b"Bluff the Listener" in response.data
