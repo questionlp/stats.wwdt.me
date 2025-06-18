@@ -21,7 +21,8 @@
 
 ### Component Updates
 
-- Upgrade wwdtm-theme from 2.0.5 to 2.0.19
+- Upgrade wwdtm-theme from 2.0.5 to 2.0.20
+  - Upgrade Bootstrap from 5.3.6 to 5.3.7
   - Includes an update to make the footer link list items display as `inline-block` instead of `inline` to prevent line breaks within list items
   - Add `.static-section` to allow for more semantic granularity versus `.static-page`
   - Change `$h5-font-size` from `$font-size-base` to `$font-size-base * 1.125`
