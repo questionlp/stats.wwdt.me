@@ -1,15 +1,18 @@
 {% extends "base.html" %}
-{% block title %}Repeat Best Ofs | {{ year }} | Shows{% endblock %}
+{% block title %}Best Ofs | Shows{% endblock %}
+{% block canonical_link %}
+    <link rel="canonical" href="{{ site_url }}{{ url_for('shows.best_ofs') }}">
+{% endblock %}
 
 {% block content %}
 <nav aria-label="breadcrumb" id="nav-breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{ url_for('shows.index') }}">Shows</a></li>
-        <li class="breadcrumb-item active" aria-current="page"><a href="{{ url_for('shows.year', show_year=year) }}">{{ year }}</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Best Ofs</li>
     </ol>
 </nav>
 
-<h2>Show Details: {{ year }} Repeat Best Ofs</h2>
+<h2>Show Details: Best Ofs</h2>
 
 {% include "shows/details.html" %}
 {% endblock %}

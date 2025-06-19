@@ -50,6 +50,7 @@ def create_app() -> Flask:
     app.jinja_env.globals["rendered_at"] = utility.generate_date_time_stamp
 
     app.jinja_env.globals["time_zone"] = _config["settings"]["time_zone"]
+    app.jinja_env.globals["examples"] = _config["settings"]["examples"]
     app.jinja_env.globals["ga_property_code"] = _config["settings"].get(
         "ga_property_code", ""
     )

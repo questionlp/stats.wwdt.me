@@ -179,7 +179,7 @@
             {% endif %}
         {% endif %}
 
-        {% if show.description %}
+        {% if show.description and not exclude_description %}
         <div class="row">
             <div class="col show-description">
                 <span class="field-label">Description</span>
@@ -188,7 +188,7 @@
         </div>
         {% endif %}
 
-        {% if show.notes %}
+        {% if show.notes and not exclude_notes %}
         <div class="row">
             <div class="col show-notes">
                 <span class="field-label">Notes</span>

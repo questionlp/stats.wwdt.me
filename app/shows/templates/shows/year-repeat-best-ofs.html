@@ -1,5 +1,8 @@
 {% extends "base.html" %}
-{% block title %}Repeats | {{ year }} | Shows{% endblock %}
+{% block title %}Repeat Best Ofs | {{ year }} | Shows{% endblock %}
+{% block canonical_link %}
+    <link rel="canonical" href="{{ site_url }}{{ url_for('shows.year_repeat_best_ofs', show_year=year) }}">
+{% endblock %}
 
 {% block content %}
 <nav aria-label="breadcrumb" id="nav-breadcrumb">
@@ -9,7 +12,7 @@
     </ol>
 </nav>
 
-<h2>Show Details: {{ year }} Repeats</h2>
+<h2>Show Details: {{ year }} Repeat Best Ofs</h2>
 
 {% include "shows/details.html" %}
 {% endblock %}

@@ -1,5 +1,8 @@
 {% extends "base.html" %}
 {% block title %}All | Shows{% endblock %}
+{% block canonical_link %}
+    <link rel="canonical" href="{{ site_url }}{{ url_for('shows._all') }}">
+{% endblock %}
 
 {% block content %}
 <nav aria-label="breadcrumb" id="nav-breadcrumb">
@@ -23,6 +26,6 @@
 </ul>
 
 <div class="info all-shows">
-{% include "shows/all_details.html" %}
+{% include "shows/all-details.html" %}
 </div>
 {% endblock %}

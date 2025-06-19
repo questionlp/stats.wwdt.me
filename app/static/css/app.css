@@ -1423,50 +1423,6 @@
   src: local("IBM Plex Mono Thin Italic"), local("IBMPlexMono-ThinItalic"), url("../fonts/split/woff2/IBMPlexMono-ThinItalic-Latin1.woff2") format("woff2");
   unicode-range: U+0000, U+000D, U+0020-007E, U+00A0-00A3, U+00A4-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2013-2014, U+2018-201A, U+201C-201E, U+2020-2022, U+2026, U+2030, U+2039-203A, U+2044, U+2074, U+20AC, U+2122, U+2212, U+FB01-FB02;
 }
-/*
-$font-family-sans-serif: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", "Roboto", "Helvetica Neue", "Inter", "Noto Sans", "Liberation Sans", "Arial", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
-$font-family-monospace: "IBM Plex Mono", "SFMono-Regular", "Menlo", "Consolas", "Monaco", "Liberation Mono", "Lucida Console", "Courier New", monospace !default;
-$input-btn-font-family: $font-family-sans-serif !default;
-
-// Enable use of data-bs-theme for color mode
-$color-mode-type: data;
-
-// Reduce motion and disable transitions
-$enable-reduced-motion: true;
-$enable-transitions: false;
-
-// Using IBM Carbon Design Gray 10 for Light theme
-$body-color: ibm.$gray-100 !default;
-$body-bg: ibm.$gray-10 !default;
-
-// Using IBM Carbon Design Gray 100 for Dark theme
-$body-color-dark: ibm.$gray-10 !default;
-$body-bg-dark: ibm.$gray-100 !default;
-
-$primary: ibm.$blue-60 !default;
-$secondary: ibm.$gray-60 !default;
-$success: ibm.$success !default;
-$info: ibm.$teal-40 !default;
-$warning: ibm.$alert-40 !default;
-$danger: ibm.$alert-60 !default;
-$light: ibm.$gray-10 !default;
-$dark: ibm.$gray-90 !default;
-
-$link-color: ibm.$blue-90 !default;
-$link-color-dark: ibm.$blue-40 !default;
-
-$navbar-bg-navlink-hover-color: ibm.$blue-70;
-$navbar-nav-link-padding-x: 0.6rem;
-
-$article-clip-bg: ibm.$gray-20;
-$article-clip-bg-dark: ibm.$gray-90;
-
-$card-title-bg: ibm.$gray-20;
-$card-title-bg-dark: ibm.$gray-90;
-
-$code-color: ibm.$red-80;
-$code-color-dark: ibm.$red-30;
-*/
 :root,
 [data-bs-theme=light] {
   --bs-blue: #4589ff;
@@ -1720,7 +1676,7 @@ h4, .h4 {
 }
 
 h5, .h5 {
-  font-size: 1rem;
+  font-size: 1.125rem;
 }
 
 h6, .h6 {
@@ -8640,7 +8596,7 @@ textarea.form-control-lg {
 }
 
 .fs-5 {
-  font-size: 1rem !important;
+  font-size: 1.125rem !important;
 }
 
 .fs-6 {
@@ -12356,6 +12312,26 @@ main nav#nav-breadcrumb .breadcrumb {
 main nav#nav-breadcrumb .breadcrumb .active {
   color: #000000;
 }
+main .accordion .accordion-button {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: revert;
+}
+main .accordion .accordion-button:not(.collapsed) {
+  color: inherit;
+  background-color: #f4f4f4;
+}
+main .accordion .accordion-button:disabled {
+  font-weight: 400;
+}
+main .accordion .accordion-button:disabled::after {
+  background-image: none;
+  background-repeat: unset;
+  background-size: unset;
+}
+main .accordion .accordion-header {
+  margin: unset;
+}
 main .container-fluid.p-4, main .p-4.container-sm, main .p-4.container-md, main .p-4.container-lg, main .p-4.container-xl, main .p-4.container-xxl {
   padding: 2rem !important;
 }
@@ -12803,10 +12779,35 @@ main .card.report-form input.btn-submit {
   background-color: #0043ce;
   color: #ffffff;
 }
-main .static-page h2, main .static-page .h2 {
+main .static-page h2, main .static-page .h2,
+main .static-section h2,
+main .static-section .h2 {
   margin-bottom: 1.6rem;
 }
-main .static-page img {
+main .static-page #toc,
+main .static-section #toc {
+  font-size: 1.125rem;
+  width: max-content;
+}
+main .static-page #toc h3.toc-title, main .static-page #toc .toc-title.h3,
+main .static-section #toc h3.toc-title,
+main .static-section #toc .toc-title.h3 {
+  margin: 1.4rem 0 1rem;
+}
+main .static-page #toc ol li,
+main .static-page #toc ul li,
+main .static-section #toc ol li,
+main .static-section #toc ul li {
+  line-height: 2;
+}
+main .static-page .section-anchor::before,
+main .static-section .section-anchor::before {
+  content: "";
+  display: block;
+  height: 3.6rem;
+}
+main .static-page img,
+main .static-section img {
   margin: 1.4rem auto;
 }
 
@@ -12829,7 +12830,7 @@ footer .links ul {
   margin-bottom: 0;
 }
 footer .links ul li {
-  display: inline;
+  display: inline-block;
   margin: 0 0.4rem;
   padding: 0;
 }
@@ -12848,6 +12849,10 @@ footer .copyright {
 }
 [data-bs-theme=dark] main #nav-breadcrumb .breadcrumb .active {
   color: #ffffff;
+}
+[data-bs-theme=dark] main .accordion-button:not(.collapsed) {
+  background-color: #393939;
+  box-shadow: unset;
 }
 [data-bs-theme=dark] main .info .dms-coordinates,
 [data-bs-theme=dark] main .info .score-exception,

@@ -6,6 +6,7 @@
 """Configuration Loading and Parsing for Wait Wait Stats Page."""
 
 import json
+from datetime import date
 from pathlib import Path
 from typing import Any
 
@@ -93,6 +94,27 @@ def load_config(
     settings_config["display_location_map"] = bool(
         settings_config.get("display_location_map", False)
     )
+
+    # Parse example objects
+    _examples: dict[str, str] = settings_config.get("examples")
+    examples = {}
+    if _examples:
+        examples["guest"] = _examples.get("guest", "stephen-colbert")
+        examples["host"] = _examples.get("host", "josh-gondelman")
+        examples["location"] = _examples.get(
+            "location", "arlene-schnitzer-concert-hall-portland-or"
+        )
+        examples["panelist"] = _examples.get("panelist", "hari-kondabolu")
+        examples["scorekeeper"] = _examples.get("scorekeeper", "bill-kurtis")
+        _show_date: date = _examples.get("show", "2017-08-26")
+        try:
+            _date = date.fromisoformat(_show_date)
+        except ValueError:
+            _date = date(year=2017, month=8, day=26)
+        finally:
+            examples["show"] = _date
+
+    settings_config["examples"] = examples
 
     return {
         "database": database_config,

@@ -1,10 +1,13 @@
 {% extends "base.html" %}
 {% block title %}{{ show_date.isoformat() }} | Shows{% endblock %}
+{% block canonical_link %}
+    <link rel="canonical" href="{{ site_url }}{{ url_for('shows.year_month_day', show_year=show_date.year, show_month=show_date.month, show_day=show_date.day) }}">
+{% endblock %}
 
 {% block content %}
 <nav aria-label="breadcrumb" id="nav-breadcrumb">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="#">Shows</a></li>
+        <li class="breadcrumb-item"><a href="{{ url_for('shows.index') }}">Shows</a></li>
         <li class="breadcrumb-item"><a href="{{ url_for('shows.year', show_year=show_date.year) }}">{{ show_date.year }}</a></li>
         <li class="breadcrumb-item"><a href="{{ url_for('shows.year_month', show_year=show_date.year, show_month=show_date.month) }}">{{ show_date.strftime("%B") }}</a></li>
         <li class="breadcrumb-item active" aria-current="page">{{ show_date.strftime("%d")|lstrip("0") }}</li>

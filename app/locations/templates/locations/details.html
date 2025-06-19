@@ -73,6 +73,7 @@
             </div>
         </div>
 
+        {% if not exclude_location_recordings %}
         <div class="row">
             <div class="col-md-12 recordings">
                 <span class="field-label">List of Recordings</span>
@@ -98,6 +99,7 @@
                 {% endif %}
             </div>
         </div>
+        {% endif %}
 
         {% if location.coordinates and display_location_map %}
         <div class="row" id="map-block">

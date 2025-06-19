@@ -28,7 +28,7 @@
                         {% set location_name = format_location_name(location, state_name=state_name) %}
                     {% else %}
                         {% set location_name = format_location_name(location) %}
-                {% endif %}
+                    {% endif %}
             <li class="list-group-item">
                 <a href="{{ url_for('locations.details', location_slug=location.slug) }}">{{ location_name }}</a>
             </li>

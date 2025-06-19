@@ -1,0 +1,389 @@
+{% extends "base.html" %}
+{% block title %}Understanding Wait Wait Stats Page Data{% endblock %}
+
+{% block content %}
+<div class="static-page">
+    <h2>Understanding Wait Wait Stats Page Data</h2>
+
+    {% if valid_data %}
+    <h3>Overview</h3>
+    <p>
+        The Wait Wait Don't Tell Me! Stats Page provides details about Not My
+        Job guests, shows, hosts, scorekeepers, panelist and locations with the
+        data presented in a straightfoward, if not slightly minimal, format.
+    </p>
+    <p>
+        This page provides additional information and context to how the data
+        is presented and notated for each section of this site.
+    </p>
+
+    <div id="toc" class="border ms-3 mt-4 px-4 py-2">
+        <h3 class="toc-title">Table of Contents</h3>
+        <ul class="mt-2 mb-3">
+            <li><a href="#shows">Shows</a></li>
+            <li><a href="#guests">Guests</a></li>
+            <li><a href="#hosts-scorekeepers">Hosts and Scorekeepers</a></li>
+            <li><a href="#locations">Locations</a></li>
+            <li><a href="#panelists">Panelists</a></li>
+        </ul>
+    </div>
+
+    <span id="shows" class="section-anchor"></span>
+    <h3>Shows</h3>
+    <p>
+        The following is a live example of the information block with data and
+        details for the show that aired on
+        <a href="{{ url_for('shows.year_month_day', show_year=show_date.year, show_month=show_date.month, show_day=show_date.day) }}">{{ show_date.isoformat() }}</a>,
+        though with the show description and notes fields removed for brevity.
+    </p>
+
+    <div class="mx-2">
+    {% include "shows/details.html" %}
+    </div>
+
+    <h4>Badges</h4>
+    <p>
+        The first section of the show information block displays the various
+        badges for the show. All shows will have a badge with a link to the
+        show page on NPR's website and a database ID for the show in the Wait
+        Wait Stats Database. This database ID does not represent the show number
+        or the proper order of all shows. Instead, the database ID is useful for
+        querying the Wait Wait Stats data via the
+        <a href="{{ api_url }}" target="_blank">Wait Wait Stats API
+        <i class="bi bi-box-arrow-up-right px-1" aria-hidden="true"></i></a>.
+    </p>
+    <p>
+        Additional badges will appear to denote Best Of and repeat shows. The
+        repeat show badge will also include the original show date and a link
+        to the show page.
+    </p>
+
+    <h4>Location</h4>
+    <p>
+        The venue and, if available or applicable, the city and state where the
+        show was recorded.
+    </p>
+
+    <h4>Host and Scorekeeper</h4>
+    <p>
+        The Host and Scorekeeper sections list the show host and scorekeeper. If
+        the show has a guest host or a guest scorekeeper, their name will be
+        prefixed with "Guest".
+    </p>
+    <p>
+        If the scorekeeper used a unique introduction at the start of the show,
+        the introduction will be listed above the scorekeeper's name.
+    </p>
+
+    <h4>Panelists</h4>
+    <p>
+        The Panelists section includes a list of panelists who were on the
+        panel for a regular show. For Best Of shows, all panelists who made
+        appearances on the original show where each segment came from.
+    </p>
+    <p>
+        If panelist scoring information is available, panelist ranking and
+        scoring information will be included. The Wait Wait Stats Project uses
+        <a href="https://en.wikipedia.org/wiki/Ranking">standard competition
+        ranking</a> where a gap is in place between the tied panelists and the
+        next rank after that.
+    </p>
+    <p>
+        For example, a show in which two panelists sharing the highest score are
+        ranked as "First Tied" while the remaining panelist would be ranked as
+        "Third". This ranking method was chosen due to the inconsistent ranking
+        method used on each Wait Wait... Don't Tell Me! show.
+    </p>
+    <p>
+        The scoring information for each panelist includes their total score,
+        and if available, the score they had at the start of the final round
+        (currently known as "Lightning Fill-in-the-Blank") and how many
+        questions they answered correctly. The total score should equal the
+        sum of starting score plus two times the number of correct answers.
+        There can also be scoring anomalies that lead to a panelist not getting
+        credit for correct answers. Any scoring anomalies should be noted in the
+        Notes section for the show.
+    </p>
+
+    <h4>Not My Job Guest(s)</h4>
+    <p>
+        The Not My Job Guest(s) section will include a list of one or more Not
+        My Job guests and their score, based on the number of questions that
+        were correctly answered.
+    </p>
+    <p>
+        If a scoring exception was given, be it the scorekeeper given the
+        guest(s) a win even if they did not correctly answer two or more
+        questions or granting all three points, an asterisk (*) will denote the
+        exception and an explanation included in the Notes section.
+    </p>
+
+    <h4>Bluff</h4>
+    <p>
+        The Bluff section will include a list data for each of the Bluff the
+        Listener or Bluff-like segment with the panelist whose story or topic
+        was chosen and the panelist whose story or topic was correct. Shows from
+        1998 had segments called "We'll Wait, You Tell Us" and "Listener Bluff"
+        in which the listener contestant must correctly choose the correct story
+        or topic to win. The first time "Bluff the Listener" was used for a
+        segment name was on the
+        <a href="{{ url_for('shows.year_month_day', show_year=1998, show_month=11, show_day=28) }}">1998-11-28</a>
+        show.
+    </p>
+    <p>
+        Only shows with a unique Bluff segment will have data entered, which
+        would regular shows with a Bluff segment or Best Of shows that include
+        Bluff segments that have never been included in a previous regular or
+        Best Of show. Such unique Bluff segments from Best Of shows would be
+        segments that were done when Wait Wait... Don't Tell Me! travels to
+        other cities and have a second show taping.
+    </p>
+
+    <div class="text-end pt-4">
+        <a href="#main-content"><i class="bi bi-arrow-up" aria-hidden="true"></i>Return to Top of Page</a>
+    </div>
+
+    <span id="guests" class="section-anchor"></span>
+    <h3>Guests</h3>
+    <p>
+        The following is a live example of the Not My Job guest information
+        block with data, appearance and scoring information for
+        <a href="{{ url_for('guests.details', guest_slug=guests[0]['slug']) }}">{{ guest_name }}</a>.
+    </p>
+
+    <div class="mx-2">
+        {% include "guests/details.html" %}
+    </div>
+
+    <h4>Badges</h4>
+    <p>
+        The first section of the Not My Job guest information block displays the
+        database ID for the guest in the Wait Wait Stats Database. As with the
+        database ID for each show, the ID does not represent any official
+        numbering or ID used by Wait Wait... Don't Tell Me!
+    </p>
+    
+    <h4>Appearances</h4>
+    <p>
+        The first two pieces of data presented in the Appearances section are
+        the number of times the guest has appeared on regular shows (excluding
+        Best Of and repeat shows) and on all shows (including regular, Best Of
+        and repeat shows).
+    </p>
+
+    <h4>List of Appearances</h4>
+    <p>
+        Following the Appearances section is a list of shows that the guest has
+        appeared on and their score from the Not My Job segment, if available.
+        As with the Not My Job Guest(s) segment in the Shows information block,
+        scoring exceptions will be marked with an asterisk (*).
+    </p>
+    <p>
+        Best Of and repeat shows will also be denoted with their respective
+        badges.
+    </p>
+
+    <div class="text-end pt-4">
+        <a href="#main-content"><i class="bi bi-arrow-up" aria-hidden="true"></i>Return to Top of Page</a>
+    </div>
+
+    <span id="hosts-scorekeepers" class="section-anchor"></span>
+    <h3>Hosts and Scorekeepers</h3>
+    <p>
+        The following is a live example of the host information block with data
+        and appearance information for guest show host
+        <a href="{{ url_for('hosts.details', host_slug=hosts[0]['slug']) }}">{{ host_name }}</a>.
+        Both the host and scorekeeper information blocks contain the same
+        sections.
+    </p>
+
+    <div class="mx-2">
+        {% include "hosts/details.html" %}
+    </div>
+
+    <h4>Badges</h4>
+    <p>
+        The first section of the host and scorekeeper information block displays
+        the database ID for the respective host or scorekeeper in the Wait Wait
+        Stats Database. As with the database ID for each show, the ID does not
+        represent any official numbering or ID used by Wait Wait... Don't Tell
+        Me!
+    </p>
+    <p>
+        If preferred pronouns have been collected and entered into the Wait Wait
+        Stats Database, a pronouns badge will be displayed. The pronouns will
+        only be entered into the database if the host or scorekeeper provides
+        them in their own official social media bio or on their official
+        website. If their preferred pronouns cannot be found from either source,
+        then none are entered into the database.
+    </p>
+
+    <h4>Appearances</h4>
+    <p>
+        The first two pieces of data presented in the Appearances section are
+        the number of times the host or scorekeeper has appeared on regular
+        shows (excluding Best Of and repeat shows) and on all shows (including
+        regular, Best Of and repeat shows).
+    </p>
+
+    <h4>List of Appearances</h4>
+    <p>
+        Following the Appearances section is a list of shows that the host or
+        scorekeeper have appeared on. Best Of and repeat shows will also be
+        denoted with their respective badges.
+    </p>
+
+    <div class="text-end pt-4">
+        <a href="#main-content"><i class="bi bi-arrow-up" aria-hidden="true"></i>Return to Top of Page</a>
+    </div>
+
+    <span id="locations" class="section-anchor"></span>
+    <h3>Locations</h3>
+    {% set location = locations[0]%}
+    {% if postal_abbreviations and location.state %}
+        {% set state_name = postal_abbreviations[location.state].name %}
+        {% set location_name = format_location_name(location, state_name=state_name) %}
+    {% else %}
+        {% set location_name = format_location_name(location) %}
+    {% endif %}
+    <p>
+        The following is a live example of the location information block with
+        data and recording information for
+        <a href="{{ url_for('locations.details', location_slug=location['slug']) }}">{{ location_name }}</a>.
+        The location map section has omitted from the block for brevity.
+    </p>
+
+    <div class="mx-2">
+    {% include "locations/details.html" %}
+    </div>
+
+    <h4>Badge</h4>
+    <p>
+        The first section of the location information block displays the
+        database ID for the location in the Wait Wait Stats Database. As with
+        the database ID for shows, hosts and scorekeepers, the ID does not
+        represent any official number or ID used by Wait Wait... Don't Tell Me!
+    </p>
+
+    <h4>Located In and Coordinates</h4>
+    <p>
+        If available or applicable, the Located In and Coordinates fields will
+        display the city and state, and the latitude and longitude (both listed
+        as decimal degrees) for the location. When hovering over the latitude
+        and longitude, the degrees, minutes and seconds equivalent will be
+        displayed in the tooltip.
+    </p>
+
+    <h4>Recordings</h4>
+    <p>
+        The two pieces of data presented in the Recordings section are the
+        number of times a regular show (excluding Best Of and repeat shows) has
+        been recorded at the location and all shows (including regular, Best Of
+        and repeat shows) that have been recorded there.
+    </p>
+
+    <h4>List of Recordings</h4>
+    <p>
+        Following the Recordings section is a list of shows that have been
+        recorded at the location. Best Of and repeat shows will also be denoted
+        with their respective badges.
+    </p>
+
+    <div class="text-end pt-4">
+        <a href="#main-content"><i class="bi bi-arrow-up" aria-hidden="true"></i>Return to Top of Page</a>
+    </div>
+
+    <span id="panelists" class="section-anchor"></span>
+    <h3>Panelists</h3>
+    <p>
+        The following is a live example of panelist information block with data
+        and for the panelist
+        <a href="{{ url_for('panelists.details', panelist_slug=panelists[0]['slug']) }}">{{ panelist_name }}</a>.
+        The List of Appearances section has been omitted for brevity.
+    </p>
+
+    <div class="mx-2">
+    {% include "panelists/details.html" %}
+    </div>
+
+    <h4>Badges</h4>
+    <p>
+        The first section of the panelist information block displays the
+        database ID for the panelist in the Wait Wait Stats Database. As with
+        the database ID for guests, hosts and scorekeepers, the ID does not
+        represent any official numbering or ID used by Wait Wait... Don't Tell
+        Me!
+    </p>
+
+    <h4>Appearances</h4>
+    <p>
+        The Appearances section provides a count of regular shows (excluding
+        Best Of and repeat shows) and all shows (including regular shows, Best
+        Of and repeat shows) the panelist has appeared on, as well as shows
+        where scores have been entered for the panelist. In addition, the
+        section lists the first time the panelist has appeared on the show and
+        their most recent show (excluding Best Of and repeat shows).
+    </p>
+
+    <h4>Scoring</h4>
+    <p>
+        The Scoring section lists the panelist's minimum, maximum, mean (or
+        average), median, (population) standard deviation and total scores
+        across all regular shows (excluding Best Of and repeat shows). Both the
+        mean and standard deviation values are rounded to 
+    </p>
+
+    <h4>Rankings</h4>
+    <p>
+        The Rankings section provides a count of each time a panelist has come
+        in first, second or third place, or has been tied for first or tied for
+        second. Along with each ranking count is a percentage based on the
+        ranking count divided by the number of appearances for Shows with
+        Scores.
+    </p>
+
+    <h4>Bluff the Listener</h4>
+    <p>
+        The Bluff the Listener section lists the number of times the panelist's
+        Bluff story was chosen and the number of times they had the correct
+        story. The counts include all unique Bluff the Listener-like segments.
+    </p>
+
+    <h4>Available Graphs</h4>
+    <p>
+        The Available Graphs section includes links to two graphs for the
+        panelist on the Wait Wait Graphs Site. The Score Breakdown graph plots
+        out how many times the panelist has scored a specific score. The Scores
+        by Appearance graph plots how the panelist's score for each appearance
+        on a regular show (excluding Best Ofs and repeat shows).
+    </p>
+
+    <h4>List of Appearances</h4>
+    <p>
+        Following the Available Graphs section is a list of shows that the
+        panelist has appeared on, scoring information, ranking, and if
+        applicable, badges for Best Of and repeat shows.
+    </p>
+    <p>
+        If scoring information is available, the panelist's total score is
+        listed along with their score at the start of the final round (currently
+        known as "Lightning Fill-in-the-Blank") and how many questions they
+        answered correctly. The total score should equal the sum of starting
+        score plus two times the number of correct answers. There can also be
+        scoring anomalies that lead to a panelist not getting credit for correct
+        answers. Any scoring anomalies should be noted in the Notes section for
+        the show.
+    </p>
+
+    <div class="text-end pt-4">
+        <a href="#main-content"><i class="bi bi-arrow-up" aria-hidden="true"></i>Return to Top of Page</a>
+    </div>
+    {% else %}
+    <p>
+        Unable to retrieve live data required for this page. Please check back
+        later.
+    </p>
+    {% endif %}
+</div>
+
+{% endblock %}
