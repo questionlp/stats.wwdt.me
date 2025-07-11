@@ -1,5 +1,11 @@
 # Changes
 
+## 6.7.1
+
+### Application Changes
+
+- Updated handling of Not My Job Guest score exception in both Shows and Guests details pages so that the `<span>` for the score exception only appears when there is a score exception. Previously, an empty `<span>` was needlessly rendered for all guest score entries.
+
 ## 6.7.0
 
 ### Application Changes

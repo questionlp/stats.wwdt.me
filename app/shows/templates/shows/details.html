@@ -132,8 +132,9 @@
                             {% if guest.score != None %}
                         <span class="score">
                             {{ guest.score }}
-                            <span class="score-exception" data-bs-toggle="tooltip"
-                                title="Scoring Exception">{{ "*" if guest.score_exception }}</span>
+                            {% if guest.score_exception %}
+                            <span class="score-exception" data-bs-toggle="tooltip" title="Scoring Exception">*</span>
+                            {% endif %}
                         </span>
                             {% endif %}
                         {% else %}
