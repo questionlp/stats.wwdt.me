@@ -1,17 +1,12 @@
 # Changes
 
-## 6.7.2
-
-### Application Changes
-
-- Add `support_npr_url` to the `app_settings` section in the `config.json` file
-- Display link to "Support NPR" in the pop-out side navigation and in the footer with the value from `support_npr_url`, if not blank or `None`
-
 ## 6.7.1
 
 ### Application Changes
 
-- Updated handling of Not My Job Guest score exception in both Shows and Guests details pages so that the `<span>` for the score exception only appears when there is a score exception. Previously, an empty `<span>` was needlessly rendered for all guest score entries.
+- Updated handling of Not My Job Guest score exception in both Shows and Guests details pages so that the `<span>` for the score exception only appears when there is a score exception. Previously, an empty `<span>` was needlessly rendered for all guest score entries
+- - Add `support_npr_url` to the `app_settings` section in the `config.json` file
+- Display link to "Support NPR" in the pop-out side navigation and in the footer with the value from `support_npr_url`, if not blank or `None`
 
 ## 6.7.0
 
