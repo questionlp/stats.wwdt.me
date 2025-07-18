@@ -1,5 +1,12 @@
 # Changes
 
+## 6.7.2
+
+### Application Changes
+
+- Add `support_npr_url` to the `app_settings` section in the `config.json` file
+- Display link to "Support NPR" in the pop-out side navigation and in the footer with the value from `support_npr_url`, if not blank or `None`
+
 ## 6.7.1
 
 ### Application Changes

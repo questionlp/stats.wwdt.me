@@ -43,6 +43,7 @@
         "mastodon_user": "",
         "patreon_url": "",
         "github_sponsor_url": "",
+        "support_npr_url": "",
         "sort_by_venue": false,
         "use_decimal_scores": false,
         "display_location_map": false,

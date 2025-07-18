@@ -17,6 +17,9 @@
                         {% if github_sponsor_url or patreon_url %}
                         <li><a href="{{ url_for('main.about') }}#support-stats">Support Wait Wait Stats</a></li>
                         {% endif %}
+                        {% if support_npr_url %}
+                        <li><a href="{{ support_npr_url }}" target="_blank">Support NPR</a></li>
+                        {% endif %}
                     </ul>
                 </div>
             </div>
