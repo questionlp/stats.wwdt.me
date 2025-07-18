@@ -66,6 +66,9 @@ def create_app() -> Flask:
     app.jinja_env.globals["mastodon_user"] = _config["settings"].get(
         "mastodon_user", ""
     )
+    app.jinja_env.globals["support_npr_url"] = _config["settings"].get(
+        "support_npr_url", ""
+    )
     app.jinja_env.globals["patreon_url"] = _config["settings"].get("patreon_url", "")
     app.jinja_env.globals["github_sponsor_url"] = _config["settings"].get(
         "github_sponsor_url", ""

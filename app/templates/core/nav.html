@@ -89,6 +89,14 @@
                         <li class="nav-item d-block d-xl-none">
                             <a class="nav-link" href="{{ blog_url }}" target="_blank">Blog</a>
                         </li>
+                        {% if support_npr_url %}
+                        <li class="nav-item d-block d-xl-none">
+                            <hr>
+                        </li>
+                        <li class="nav-item d-block d-xl-none">
+                            <a class="nav-link" href="{{ support_npr_url }}" target="_blank">Support NPR</a>
+                        </li>
+                        {% endif %}
                         {% if github_sponsor_url or patreon_url %}
                         <li class="nav-item d-block d-xl-none">
                             <hr>
