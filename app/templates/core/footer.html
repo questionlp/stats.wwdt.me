@@ -14,11 +14,11 @@
                         <li><a href="{{ blog_url }}" target="_blank">Blog</a></li>
                         <li><a href="{{ graphs_url }}" target="_blank">Graphs</a></li>
                         <li><a href="{{ reports_url }}" target="_blank">Reports</a></li>
-                        {% if github_sponsor_url or patreon_url %}
-                        <li><a href="{{ url_for('main.about') }}#support-stats">Support Wait Wait Stats</a></li>
-                        {% endif %}
                         {% if support_npr_url %}
                         <li><a href="{{ support_npr_url }}" target="_blank">Support NPR</a></li>
+                        {% endif %}
+                        {% if github_sponsor_url or patreon_url %}
+                        <li><a href="{{ url_for('main.about') }}#support-stats">Support Wait Wait Stats</a></li>
                         {% endif %}
                     </ul>
                 </div>
