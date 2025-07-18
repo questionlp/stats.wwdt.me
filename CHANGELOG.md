@@ -1,5 +1,12 @@
 # Changes
 
+## 6.7.4
+
+### Component Changes
+
+- Upgrade wwdtm-theme from 2.0.23 to 2.0.24
+  - Increased line height for the `.footer.links` on smaller screens from 2 to 2.6
+
 ## 6.7.3
 
 ### Component Changes

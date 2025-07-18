@@ -12931,7 +12931,7 @@ footer .copyright {
     column-count: 3;
   }
   footer .footer.links {
-    line-height: 2;
+    line-height: 2.6;
     padding: 1rem 0.25rem !important;
   }
 }
