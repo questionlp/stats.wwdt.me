@@ -1,5 +1,11 @@
 # Changes
 
+## 6.7.2
+
+### Application Changes
+
+- Swap position of the "Support NPR" link in the footer to match the ordering used on the [Wait Wait Reports Site](https://reports.wwdt.me/) and the upcoming version of the [Wait Wait Graphs Site](https://graphs.wwdt.me/)
+
 ## 6.7.1
 
 ### Application Changes
