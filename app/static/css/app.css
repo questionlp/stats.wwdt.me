@@ -12822,6 +12822,9 @@ footer a {
   color: #ffffff;
   text-decoration: none;
 }
+footer .footer.links {
+  line-height: 2.25;
+}
 footer .links {
   background-color: #0043ce;
 }
@@ -12907,6 +12910,11 @@ footer .copyright {
     column-count: 4;
   }
 }
+@media only screen and (max-width: 950px) {
+  footer .footer.links {
+    line-height: 2.5;
+  }
+}
 @media only screen and (max-width: 801px) {
   main {
     padding-top: 3rem;
@@ -12931,8 +12939,7 @@ footer .copyright {
     column-count: 3;
   }
   footer .footer.links {
-    line-height: 2.6;
-    padding: 1rem 0.25rem !important;
+    line-height: 2.625;
   }
 }
 @media only screen and (max-width: 767px) {
