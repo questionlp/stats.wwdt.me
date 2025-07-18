@@ -12646,6 +12646,9 @@ main .report.table th {
   text-align: center;
   vertical-align: middle;
 }
+main .report.table tbody .filled {
+  background-color: #f4f4f4;
+}
 main .report.table col.state {
   width: 6rem;
 }
@@ -12664,7 +12667,7 @@ main .report.table col.stats.float {
 main .report.table col.rank {
   width: 9rem;
 }
-main .report.table col.city {
+main .report.table col.city, main .report.table col.date.medium {
   width: 12rem;
 }
 main .report.table col.count.long,
@@ -12874,6 +12877,9 @@ footer .copyright {
   background-color: #393939;
   color: #ffffff;
 }
+[data-bs-theme=dark] main .report.table tbody .filled {
+  background-color: #393939;
+}
 [data-bs-theme=dark] main .report.table .header-info {
   border-bottom: 1px dotted #a7f0ba;
 }
@@ -12923,6 +12929,10 @@ footer .copyright {
   }
   main ul.name-list-pvp {
     column-count: 3;
+  }
+  footer .footer.links {
+    line-height: 2;
+    padding: 1rem 0.25rem !important;
   }
 }
 @media only screen and (max-width: 767px) {
