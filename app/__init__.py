@@ -5,6 +5,8 @@
 # vim: set noai syntax=python ts=4 sw=4:
 """Core Application for Wait Wait Stats Page."""
 
+import platform
+
 from flask import Flask
 from wwdtm import VERSION as WWDTM_VERSION
 
@@ -87,6 +89,10 @@ def create_app() -> Flask:
     )
     app.jinja_env.globals["postal_abbreviations"] = dicts.postal_abbreviations(
         database_config=_config["database"]
+    )
+
+    app.jinja_env.globals["node_name"] = (
+        platform.node().split(".")[0] if platform.node() else None
     )
 
     # Register Jinja template filters

@@ -44,7 +44,7 @@
                 </div>
                 <div class="col-lg-5 text-lg-end app-details py-1">
                     <span id="app-version">
-                        <span title="Page Rendered">R: {{ rendered_at(time_zone) }}</span> |
+                        <span title="Page Rendered {%- if node_name %}: {{ node_name }}{% endif %}">R: {{ rendered_at(time_zone) }}</span> |
                         <span title="Application Version">V: {{ app_version }}</span> |
                         <span title="wwdtm Version">L: {{ wwdtm_version }}</span>
                     </span>
