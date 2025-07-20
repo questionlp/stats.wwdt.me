@@ -1,5 +1,11 @@
 # Changes
 
+## 6.7.6
+
+### Application Changes
+
+- Discreetly display the node rendering and serving the page as a tooltip in the footer
+
 ## 6.7.5
 
 ### Component Changes
