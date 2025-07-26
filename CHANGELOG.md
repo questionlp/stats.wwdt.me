@@ -1,5 +1,17 @@
 # Changes
 
+## 6.7.7
+
+### Application Changes
+
+- Add visually hidden "Start" and "Correct" text before the corresponding panelist scoring information in both show and panelist details to provide additional context for screen readers and parsers
+
+### Component Changes
+
+- Upgrade wwdtm-theme from 2.0.26 to 2.0.27
+  - Increase line height for host and scorekeeper names from the default 1.5 to 1.625
+  - Increase panelist and guest lists from 1.75 to 2
+
 ## 6.7.6
 
 ### Application Changes

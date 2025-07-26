@@ -12559,6 +12559,11 @@ main .details .row ul {
   margin: 0;
   padding: 0 0 0.4rem;
 }
+main .details .host-info .host-name,
+main .details .scorekeeper-info,
+main .details .scorekeeper-name {
+  line-height: 1.625;
+}
 main .details .scorekeeper-description {
   display: block;
   font-style: italic;
@@ -12566,7 +12571,7 @@ main .details .scorekeeper-description {
 main .details .stats,
 main .details .panelist-info ul,
 main .details .guest-info ul {
-  line-height: 1.75;
+  line-height: 2;
 }
 main .details .graph-list {
   column-count: 2;
@@ -12667,7 +12672,8 @@ main .report.table col.stats.float {
 main .report.table col.rank {
   width: 9rem;
 }
-main .report.table col.city, main .report.table col.date.medium {
+main .report.table col.city,
+main .report.table col.date.medium {
   width: 12rem;
 }
 main .report.table col.count.long,
