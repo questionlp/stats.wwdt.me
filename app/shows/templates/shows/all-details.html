@@ -94,17 +94,17 @@
                                 {% if panelist.lightning_round_start_decimal != None and panelist.lightning_round_correct_decimal != None %}
                                     {% set start = "{:f}".format(panelist.lightning_round_start_decimal.normalize()) %}
                                     {% set correct = "{:f}".format(panelist.lightning_round_correct_decimal.normalize()) %}
-                        <span class="score">{{ score }} ({{ start }} / {{ correct }})</span>
+                        <span class="score">{{ score }} (<span class="visually-hidden">Start: </span>{{ start }} / <span class="visually-hidden">Correct: </span>{{ correct }})</span>
                                 {% elif panelist.lightning_round_start != None and panelist.lightning_round_correct != None %}
                                     {% set start = "{:f}".format(panelist.lightning_round_start) %}
                                     {% set correct = "{:f}".format(panelist.lightning_round_correct) %}
-                        <span class="score">{{ score }} ({{ start }} / {{ correct }})</span>
+                        <span class="score">{{ score }} (<span class="visually-hidden">Start: </span>{{ start }} / <span class="visually-hidden">Correct: </span>{{ correct }})</span>
                                 {% else %}
                         <span class="score">{{ score }}</span>
                                 {% endif %}
                             {% elif panelist.score %}
                                 {% if panelist.lightning_round_start != None and panelist.lightning_round_correct != None %}
-                        <span class="score">{{ panelist.score }} ({{ panelist.lightning_round_start }} / {{ panelist.light_round_correct }})</span>
+                        <span class="score">{{ panelist.score }} (<span class="visually-hidden">Start: </span>{{ panelist.lightning_round_start }} / <span class="visually-hidden">Correct: </span>{{ panelist.light_round_correct }})</span>
                                 {% else %}
                         <span class="score">{{ panelist.score }}</span>
                                 {% endif %}

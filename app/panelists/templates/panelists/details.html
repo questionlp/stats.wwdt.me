@@ -131,11 +131,11 @@
                             {% if appearance.lightning_round_start_decimal != None and appearance.lightning_round_correct_decimal != None %}
                                 {% set start = "{:f}".format(appearance.lightning_round_start_decimal.normalize()) %}
                                 {% set correct = "{:f}".format(appearance.lightning_round_correct_decimal.normalize()) %}
-                        <span class="score">{{ score }} ({{ start }} / {{ correct }})</span>
+                        <span class="score">{{ score }} (<span class="visually-hidden">Start: </span>{{ start }} / <span class="visually-hidden">Correct: </span>{{ correct }})</span>
                             {% elif appearance.lightning_round_start != None and appearance.lightning_round_correct != None %}
                                 {% set start = "{:f}".format(appearance.lightning_round_start) %}
                                 {% set correct = "{:f}".format(appearance.lightning_round_correct) %}
-                        <span class="score">{{ score }} ({{ start }} / {{ correct }})</span>
+                        <span class="score">{{ score }} (<span class="visually-hidden">Start: </span>{{ start }} / <span class="visually-hidden">Correct: </span>{{ correct }})</span>
                             {% else %}
                         <span class="score">{{ score }}</span>
                             {% endif %}
@@ -145,7 +145,7 @@
                         {% elif appearance.score != None %}
                             {% if appearance.lightning_round_start != None and appearance.lightning_round_correct != None %}
                         <span class="score">
-                            {{ appearance.score }} ({{ appearance.lightning_round_start}} / {{ appearance.lightning_round_correct}})
+                            {{ appearance.score }} (<span class="visually-hidden">Start: </span>{{ appearance.lightning_round_start }} / <span class="visually-hidden">Correct: </span>{{ appearance.lightning_round_correct }})
                         </span>
                             {% else %}
                         <span class="score">{{ appearance.score }}</span>
