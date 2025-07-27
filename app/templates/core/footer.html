@@ -31,16 +31,29 @@
             <div class="row">
                 <div class="col-lg-7 copyright-text py-1">
                     Copyright &copy; 2007&ndash;{{ current_year(time_zone) }}
+                    <a href="https://linhpham.org/" target="_blank">Linh Pham</a>
                     {% if mastodon_url and mastodon_user and bluesky_url and bluesky_user %}
-                    <a href="https://linhpham.org/" target="_blank">Linh Pham</a> (<span title="Mastodon">M: <a rel="me" href="{{ mastodon_url }}" target="_blank">{{ mastodon_user }}</a></span> | <span title="Bluesky">B: <a href="{{ bluesky_url }}" target="_blank">{{ bluesky_user }}</a></span>).
+                    (<span title="Mastodon">M: <a rel="me" href="{{ mastodon_url }}" target="_blank">{{ mastodon_user }}</a></span> | <span title="Bluesky">B: <a href="{{ bluesky_url }}" target="_blank">{{ bluesky_user }}</a></span>).
                     {% elif mastodon_url and mastodon_user %}
-                    <a href="https://linhpham.org/" target="_blank">Linh Pham</a> (<span title="Mastodon">M: <a rel="me" href="{{ mastodon_url }}" target="_blank">{{ mastodon_user }}</a></span>).
+                    (<span title="Mastodon">M: <a rel="me" href="{{ mastodon_url }}" target="_blank">{{ mastodon_user }}</a></span>).
                     {% elif bluesky_url and bluesky_user %}
-                    <a href="https://linhpham.org/" target="_blank">Linh Pham</a> (<span title="Bluesky">B: <a href="{{ bluesky_url }}" target="_blank">{{ bluesky_user }}</a></span>).
-                    {% else %}
-                    <a href="https://linhpham.org/" target="_blank">Linh Pham</a>.
+                    (<span title="Bluesky">B: <a href="{{ bluesky_url }}" target="_blank">{{ bluesky_user }}</a></span>).
                     {% endif %}
                     All rights reserved.
+                    <span class="disclaimer ps-1">
+                        <a href="#collapseDisclaimer" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="collapseDisclaimer">
+                            <i class="bi bi-info-circle" aria-hidden="true"></i>
+                            <span class="visually-hidden">Toggle disclaimer</span>
+                        </a>
+                    </span>
+                    <div class="collapse" id="collapseDisclaimer">
+                        <div class="col disclaimer">
+                            <div class="mt-2 mb-1 ps-2 border-start">
+                                <b>Disclaimer:</b> I am not an employee of or associated with NPR, Chicago
+                                Public Radio (WBEZ), or Urgent Haircut Productions.
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-lg-5 text-lg-end app-details py-1">
                     <span id="app-version">
@@ -48,11 +61,6 @@
                         <span title="Application Version">V: {{ app_version }}</span> |
                         <span title="wwdtm Version">L: {{ wwdtm_version }}</span>
                     </span>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col disclaimer py-1">
-                    Disclaimer: I am not an employee of or associated with NPR, Chicago Public Radio (WBEZ), or Urgent Haircut Productions.
                 </div>
             </div>
         </div>

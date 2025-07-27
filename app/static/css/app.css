@@ -13005,6 +13005,9 @@ footer .copyright {
   main .info .name-list {
     column-count: 1;
   }
+  footer .copyright-text {
+    line-height: 2;
+  }
 }
 @media only screen and (max-width: 569px) {
   main ul.name-list-pvp {
