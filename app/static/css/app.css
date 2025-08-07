@@ -13678,6 +13678,10 @@ footer .copyright {
   outline: unset;
   box-shadow: 0 0 0 0.25rem #0099ff;
 }
+[data-bs-theme=retro] .ww-tooltip {
+  --bs-tooltip-bg: #0000ff;
+  --bs-tooltip-color: #ffffff;
+}
 [data-bs-theme=retro] footer .links {
   background-color: #003399 !important;
 }
