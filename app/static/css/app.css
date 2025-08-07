@@ -13563,6 +13563,9 @@ footer .copyright {
 [data-bs-theme=retro] main a {
   color: #0000ff !important;
 }
+[data-bs-theme=retro] main a:active {
+  color: #ff0000 !important;
+}
 [data-bs-theme=retro] main a:visited {
   color: #800080 !important;
 }
