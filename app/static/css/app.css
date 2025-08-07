@@ -13638,6 +13638,9 @@ footer .copyright {
 [data-bs-theme=retro] main .recordings .recording-list {
   column-rule: 1px dotted #666666;
 }
+[data-bs-theme=retro] main .accordion .accordion-button:disabled {
+  color: #666666 !important;
+}
 [data-bs-theme=retro] main .accordion .accordion-button:focus {
   border: unset;
   outline: unset;
