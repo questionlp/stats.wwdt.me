@@ -22,7 +22,7 @@
             <div class="col-md-6 appearances-regular">
                 <span class="field-label">
                     Appearances
-                    (<span class="help-notes" data-bs-toggle="tooltip" title="Excludes Best Of and Repeat Shows">Regular Shows</span>)
+                    (<span class="help-notes" data-bs-toggle="tooltip" data-bs-custom-class="ww-tooltip" title="Excludes Best Of and Repeat Shows">Regular Shows</span>)
                 </span>
                 {% if scorekeeper.appearances.count %}
                 {{ scorekeeper.appearances.count.regular_shows }}
@@ -33,7 +33,7 @@
             <div class="col-md-6 appearances-all">
                 <span class="field-label">
                     Appearances
-                    (<span class="help-notes" data-bs-toggle="tooltip" title="Includes Best Of and Repeat Shows">All Shows</span>)
+                    (<span class="help-notes" data-bs-toggle="tooltip" data-bs-custom-class="ww-tooltip" title="Includes Best Of and Repeat Shows">All Shows</span>)
                 </span>
                 {% if scorekeeper.appearances.count %}
                 {{ scorekeeper.appearances.count.all_shows }}

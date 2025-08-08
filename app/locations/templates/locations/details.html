@@ -30,7 +30,7 @@
                 {% if location.coordinates.latitude and location.coordinates.longitude %}
                     {% set lat_deg, lat_min, lat_sec = decimal_to_degrees(location.coordinates.latitude) %}
                     {% set lon_deg, lon_min, lon_sec = decimal_to_degrees(location.coordinates.longitude) %}
-                <span class="dms-coordinates" data-bs-toggle="tooltip"
+                <span class="dms-coordinates" data-bs-toggle="tooltip" data-bs-custom-class="ww-tooltip"
                     title="DMS Coordinates: {{ format_latitude(lat_deg, lat_min, lat_sec) | safe }}, {{ format_longitude(lon_deg, lon_min, lon_sec) | safe }}">
                     {{ "{:.5f}".format(location.coordinates.latitude.normalize()) }}&deg;, {{
                     "{:.5f}".format(location.coordinates.longitude.normalize()) }}&deg;
@@ -50,7 +50,7 @@
             <div class="col-md-6 recordings-regular">
                 <span class="field-label">
                     Recordings
-                    (<span class="help-notes" data-bs-toggle="tooltip" data-bs-placement="top"
+                    (<span class="help-notes" data-bs-toggle="tooltip" data-bs-custom-class="ww-tooltip" data-bs-placement="top"
                         title="Excludes Best Of and Repeat Shows">Regular Shows
                     </span>)
                 </span>
@@ -63,7 +63,7 @@
             <div class="col-md-6 recordings-all">
                 <span class="field-label">
                     Recordings
-                    (<span class="help-notes" data-bs-toggle="tooltip" data-bs-placement="top"
+                    (<span class="help-notes" data-bs-toggle="tooltip" data-bs-custom-class="ww-tooltip" data-bs-placement="top"
                     title="Includes Best Of and Repeat Shows">All Shows</span>)</span>
                 {% if location.recordings.count %}
                 {{ location.recordings.count.all_shows }}

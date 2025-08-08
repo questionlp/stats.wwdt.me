@@ -16,8 +16,8 @@
                 <span class="field-label">Appearances</span>
                 {% if panelist.appearances.count %}
                 <ul class="stats">
-                    <li><span class="help-notes" data-bs-toggle="tooltip" title="Excludes Best Of and Repeat Shows">Regular Shows</span>: {{ panelist.appearances.count.regular_shows }}</li>
-                    <li><span class="help-notes" data-bs-toggle="tooltip" title="Includes Best Of and Repeat Shows">All Shows</span>: {{ panelist.appearances.count.all_shows }}</li>
+                    <li><span class="help-notes" data-bs-toggle="tooltip" data-bs-custom-class="ww-tooltip" title="Excludes Best Of and Repeat Shows">Regular Shows</span>: {{ panelist.appearances.count.regular_shows }}</li>
+                    <li><span class="help-notes" data-bs-toggle="tooltip" data-bs-custom-class="ww-tooltip" title="Includes Best Of and Repeat Shows">All Shows</span>: {{ panelist.appearances.count.all_shows }}</li>
                     <li>Shows with Scores: {{ panelist.appearances.count.shows_with_scores }}</li>
                     {% if panelist.appearances.milestones %}
                     {% set first_show = date_string_to_date(date_string=panelist.appearances.milestones.first.show_date) %}
