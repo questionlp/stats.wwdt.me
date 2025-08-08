@@ -1,6 +1,6 @@
 # Changes
 
-## 6.8.0-beta
+## 6.8.0
 
 ### Application Changes
 
