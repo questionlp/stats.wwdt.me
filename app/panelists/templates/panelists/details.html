@@ -7,7 +7,16 @@
         <div class="badges">
             <span class="badge db-id">DB ID: {{ panelist.id }}</span>
             {% if panelist.pronouns %}
-            <span class="badge pronouns">Pronouns: {{ panelist.pronouns|join("/")}}</span>
+            <span class="badge pronouns">Pronouns: {{ panelist.pronouns|join("/") }}</span>
+            {% endif %}
+            {% if panelist.is_guest %}
+            <span class="badge is-guest">Guest: <a href="{{ url_for('guests.details', guest_slug=panelist.slug) }}">{{ panelist.name }}<i class="bi bi-arrow-right" aria-hidden="true"></i></a></span>
+            {% endif %}
+            {% if panelist.is_host %}
+            <span class="badge is-host">Host: <a href="{{ url_for('hosts.details', host_slug=panelist.slug) }}">{{ panelist.name }}<i class="bi bi-arrow-right" aria-hidden="true"></i></a></span>
+            {% endif %}
+            {% if panelist.is_scorekeeper %}
+            <span class="badge is-scorekeeper">Scorekeeper: <a href="{{ url_for('scorekeepers.details', scorekeeper_slug=panelist.slug) }}">{{ panelist.name }}<i class="bi bi-arrow-right" aria-hidden="true"></i></a></span>
             {% endif %}
         </div>
 

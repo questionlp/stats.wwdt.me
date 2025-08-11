@@ -13158,6 +13158,19 @@ main .details .badge.db-id {
   background-color: #f4f4f4;
   color: #000000;
 }
+main .details .badge.is-guest,
+main .details .badge.is-host,
+main .details .badge.is-panelist,
+main .details .badge.is-scorekeeper {
+  border: 1px dotted;
+  color: #161616 !important;
+}
+main .details .badge.is-guest a i,
+main .details .badge.is-host a i,
+main .details .badge.is-panelist a i,
+main .details .badge.is-scorekeeper a i {
+  padding-left: 0.6rem;
+}
 main .details .badge.npr-link {
   background-color: #0043ce;
   color: #ffffff;
@@ -13588,6 +13601,12 @@ footer .copyright {
 [data-bs-theme=retro] main .details .badge.db-id {
   background-color: #ffffff;
 }
+[data-bs-theme=retro] main .details .badge.is-guest,
+[data-bs-theme=retro] main .details .badge.is-host,
+[data-bs-theme=retro] main .details .badge.is-panelist,
+[data-bs-theme=retro] main .details .badge.is-scorekeeper {
+  color: #000000 !important;
+}
 [data-bs-theme=retro] main .details .badge.guest {
   background-color: #66ffcc;
 }
@@ -13719,6 +13738,12 @@ footer .copyright {
 [data-bs-theme=dark] main .details .badge.db-id {
   background-color: #262626;
   color: #ffffff;
+}
+[data-bs-theme=dark] main .details .badge.is-guest,
+[data-bs-theme=dark] main .details .badge.is-host,
+[data-bs-theme=dark] main .details .badge.is-panelist,
+[data-bs-theme=dark] main .details .badge.is-scorekeeper {
+  color: #f4f4f4 !important;
 }
 [data-bs-theme=dark] main .name-list {
   column-rule: 1px dotted rgba(255, 255, 255, 0.6);

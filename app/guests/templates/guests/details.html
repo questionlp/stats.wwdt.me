@@ -4,12 +4,21 @@
 
 <div class="info">
     <h3 class="name">
-        <a href="{{ url_for('guests.details', guest_slug=guest.slug )}}">{{ guest.name }}</a>
+        <a href="{{ url_for('guests.details', guest_slug=guest.slug) }}">{{ guest.name }}</a>
     </h3>
 
     <div class="details">
         <div class="badges">
             <span class="badge db-id">DB ID: {{ guest.id }}</span>
+            {% if guest.is_host %}
+            <span class="badge is-host">Host: <a href="{{ url_for('hosts.details', host_slug=guest.slug) }}">{{ guest.name }}<i class="bi bi-arrow-right" aria-hidden="true"></i></a></span>
+            {% endif %}
+            {% if guest.is_panelist %}
+            <span class="badge is-panelist">Panelist: <a href="{{ url_for('panelists.details', panelist_slug=guest.slug) }}">{{ guest.name }}<i class="bi bi-arrow-right" aria-hidden="true"></i></a></span>
+            {% endif %}
+            {% if guest.is_scorekeeper %}
+            <span class="badge is-scorekeeper">Scorekeeper: <a href="{{ url_for('scorekeepers.details', scorekeeper_slug=guest.slug) }}">{{ guest.name }}<i class="bi bi-arrow-right" aria-hidden="true"></i></a></span>
+            {% endif %}
         </div>
 
         <div class="row">

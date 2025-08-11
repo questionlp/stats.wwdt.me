@@ -1,5 +1,25 @@
 # Changes
 
+## 6.9.0
+
+### Application Changes
+
+- Added new badges to Not My Job Guest, Host, Panelist and Scorekeeper details pages that notes if they have been on the show as another role (for example: a panelist who has also been a scorekeeper) with a link to the corresponding details page
+  - The new badges do not have a special background color, but have a border to differentiate those badges from other badges
+  - How that is determined by the [Wait Wait Stats Library](https://docs.wwdt.me/) is if the slug string matches the slug string for another role
+  - The slug string for the same person for each of their roles should match, but it is not 100% guaranteed based on how their data was originally captured
+
+### Component Changes
+
+- Upgrade wwdtm from 2.19.0 to 2.20.0
+- Upgrade wwdtm-theme from 2.1.0 to 2.1.1
+
+### Development Changes
+
+- Upgrade Ruff from 0.11.9 to 0.12.8
+- Upgrade pytest from 8.3.5 to 8.4.1
+- Upgrade pytest-cov from 6.1.1 to 6.2.1
+
 ## 6.8.0
 
 ### Application Changes
