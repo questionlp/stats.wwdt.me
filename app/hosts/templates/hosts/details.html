@@ -4,14 +4,23 @@
 
 <div class="info">
     <h3 class="name">
-        <a href="{{ url_for('hosts.details', host_slug=host.slug )}}">{{ host.name }}</a>
+        <a href="{{ url_for('hosts.details', host_slug=host.slug) }}">{{ host.name }}</a>
     </h3>
 
     <div class="details">
         <div class="badges">
             <span class="badge db-id">DB ID: {{ host.id }}</span>
             {% if host.pronouns %}
-            <span class="badge pronouns">Pronouns: {{ host.pronouns|join("/")}}</span>
+            <span class="badge pronouns">Pronouns: {{ host.pronouns|join("/") }}</span>
+            {% endif %}
+            {% if host.is_guest %}
+            <span class="badge is-guest">Guest: <a href="{{ url_for('guests.details', guest_slug=host.slug) }}">{{ host.name }}<i class="bi bi-arrow-right" aria-hidden="true"></i></a></span>
+            {% endif %}
+            {% if host.is_panelist %}
+            <span class="badge is-panelist">Panelist: <a href="{{ url_for('panelists.details', panelist_slug=host.slug) }}">{{ host.name }}<i class="bi bi-arrow-right" aria-hidden="true"></i></a></span>
+            {% endif %}
+            {% if host.is_scorekeeper %}
+            <span class="badge is-scorekeeper">Scorekeeper: <a href="{{ url_for('scorekeepers.details', scorekeeper_slug=host.slug) }}">{{ host.name }}<i class="bi bi-arrow-right" aria-hidden="true"></i></a></span>
             {% endif %}
         </div>
 
