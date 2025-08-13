@@ -27,7 +27,7 @@
 
 ### Component Changes
 
-- Upgrade wwdtm-theme from 2.1.1 to 2.2.3
+- Upgrade wwdtm-theme from 2.1.1 to 2.2.4
 
 ## 6.9.0
 

@@ -13521,6 +13521,12 @@ footer .copyright {
   background-color: #002d9c;
 }
 
+thead,
+tfoot,
+th {
+  font-weight: 600;
+}
+
 [data-bs-theme=retro] {
   --bs-body-bg: #c0c0c0;
   --bs-body-bg-rgb: 192, 192, 192;
