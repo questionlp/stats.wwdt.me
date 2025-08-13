@@ -2390,7 +2390,7 @@ blockquote {
 
 b,
 strong {
-  font-weight: bolder;
+  font-weight: 600;
 }
 
 small, .small {
@@ -9292,7 +9292,7 @@ textarea.form-control-lg {
 }
 
 .fw-bolder {
-  font-weight: bolder !important;
+  font-weight: 600 !important;
 }
 
 .lh-1 {
@@ -13519,17 +13519,6 @@ footer .links ul li {
 }
 footer .copyright {
   background-color: #002d9c;
-}
-
-.nav-underline .nav-link.active,
-.nav-underline .show > .nav-link {
-  font-weight: 600;
-}
-
-thead,
-tfoot,
-th {
-  font-weight: 600;
 }
 
 [data-bs-theme=retro] {
