@@ -14,7 +14,7 @@
   - Added an info icon after the coordinates to indicate that there is additional information available (DMS coordinates)
   - Added a left border to the span containing the "Location Map" link
   - Switched the location of the map icon from before to after the "Location Map" text for consistency with the other info icons
-- Standardized on a font weight of 600 for all headers, subheaders and bottom navigation links.
+- Moved towards standardizing on a font weight of 600 for all headers, subheaders and bottom navigation links
   - Prior to this update, both 500 and 600 font weights were used
   - This matches the [recommended font weights](https://carbondesignsystem.com/elements/typography/overview/#weights) defined in the [Carbon Design System](https://carbondesignsystem.com/)
 - Changed the sans-serif, serif and monospace font stacks based on the [font stack](https://carbondesignsystem.com/elements/typography/overview/#typeface:-ibm-plex) defined in the Carbon Design System
@@ -27,7 +27,7 @@
 
 ### Component Changes
 
-- Upgrade wwdtm-theme from 2.1.1 to 2.2.1
+- Upgrade wwdtm-theme from 2.1.1 to 2.2.2
 
 ## 6.9.0
 
