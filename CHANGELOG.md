@@ -27,7 +27,7 @@
 
 ### Component Changes
 
-- Upgrade wwdtm-theme from 2.1.1 to 2.2.0
+- Upgrade wwdtm-theme from 2.1.1 to 2.2.1
 
 ## 6.9.0
 
@@ -41,6 +41,7 @@
 ### Component Changes
 
 - Upgrade wwdtm from 2.19.0 to 2.20.0
+  - Includes upgrading NumPy from 2.1.2 to 2.2.6
 - Upgrade wwdtm-theme from 2.1.0 to 2.1.1
 
 ### Development Changes
