@@ -85,7 +85,7 @@ def create_app() -> Flask:
         _config["settings"].get("block_ai_scrapers", False)
     )
     app.jinja_env.globals["use_minified_css"] = bool(
-        _config["settings"].get("use_minified_css", False)
+        _config["settings"].get("use_minified_css", True)
     )
     app.jinja_env.globals["postal_abbreviations"] = dicts.postal_abbreviations(
         database_config=_config["database"]

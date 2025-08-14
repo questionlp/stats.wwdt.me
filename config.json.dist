@@ -48,6 +48,6 @@
         "use_decimal_scores": false,
         "display_location_map": false,
         "block_ai_scrapers": false,
-        "use_minified_css": false,
+        "use_minified_css": true,
     }
 }
