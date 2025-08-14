@@ -24,6 +24,7 @@
 - Added a little spacing between the panelist total score and the starting score and questions answered correctly amount, if available
 - Updated the visually hidden text for panelist scores to provide better context for screen readers and parsers
 - Changed the panelist rank in the Panelist details page from being text enclosed in square brackets to be a badge
+- Added [Bootstrap](https://getbootstrap.com/), [Bootstrap Icons](https://icons.getbootstrap.com/) and [wwdtm-theme](https://github.com/questionlp/wwdtm-theme) license information in the About page
 
 ### Component Changes
 
