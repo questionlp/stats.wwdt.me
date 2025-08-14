@@ -32,12 +32,14 @@
                     {% set lon_deg, lon_min, lon_sec = decimal_to_degrees(location.coordinates.longitude) %}
                 <span class="dms-coordinates" data-bs-toggle="tooltip" data-bs-custom-class="ww-tooltip"
                     title="DMS Coordinates: {{ format_latitude(lat_deg, lat_min, lat_sec) | safe }}, {{ format_longitude(lon_deg, lon_min, lon_sec) | safe }}">
-                    {{ "{:.5f}".format(location.coordinates.latitude.normalize()) }}&deg;, {{
-                    "{:.5f}".format(location.coordinates.longitude.normalize()) }}&deg;
+                    {{ "{:.5f}".format(location.coordinates.latitude.normalize()) }}&deg;,
+                    {{ "{:.5f}".format(location.coordinates.longitude.normalize()) }}&deg;
+                    <i class="ps-1 bi bi-info-circle" aria-hidden="true"></i>
                 </span>
                     {% if display_location_map %}
-                <span class="map-link">
-                    <i class="bi bi-map" aria-hidden="true"></i> <a href="#map-block" title="Scroll down to location map">Location Map</a>
+                <span class="ps-2 border-start map-link">
+                    <a href="#map-block" title="Scroll down to location map">Location Map</a>
+                    <i class="ps-1 bi bi-map" aria-hidden="true"></i>
                 </span>
                     {% endif %}
                 {% else %}
@@ -49,10 +51,10 @@
         <div class="row">
             <div class="col-md-6 recordings-regular">
                 <span class="field-label">
-                    Recordings
-                    (<span class="help-notes" data-bs-toggle="tooltip" data-bs-custom-class="ww-tooltip" data-bs-placement="top"
-                        title="Excludes Best Of and Repeat Shows">Regular Shows
-                    </span>)
+                    <span class="help-notes" data-bs-toggle="tooltip" data-bs-custom-class="ww-tooltip" data-bs-placement="top" title="Excludes Best Of and Repeat Shows">
+                        Recordings: Regular Shows
+                        <i class="ps-1 bi bi-info-circle" aria-hidden="true"></i>
+                    </span>
                 </span>
                 {% if location.recordings.count %}
                 {{ location.recordings.count.regular_shows }}
@@ -62,9 +64,11 @@
             </div>
             <div class="col-md-6 recordings-all">
                 <span class="field-label">
-                    Recordings
-                    (<span class="help-notes" data-bs-toggle="tooltip" data-bs-custom-class="ww-tooltip" data-bs-placement="top"
-                    title="Includes Best Of and Repeat Shows">All Shows</span>)</span>
+                    <span class="help-notes" data-bs-toggle="tooltip" data-bs-custom-class="ww-tooltip" data-bs-placement="top" title="Includes Best Of and Repeat Shows">
+                        Recordings: All Shows
+                        <i class="ps-1 bi bi-info-circle" aria-hidden="true"></i>
+                    </span>
+                </span>
                 {% if location.recordings.count %}
                 {{ location.recordings.count.all_shows }}
                 {% else %}

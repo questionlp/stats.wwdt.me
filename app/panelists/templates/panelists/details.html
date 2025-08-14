@@ -25,8 +25,16 @@
                 <span class="field-label">Appearances</span>
                 {% if panelist.appearances.count %}
                 <ul class="stats">
-                    <li><span class="help-notes" data-bs-toggle="tooltip" data-bs-custom-class="ww-tooltip" title="Excludes Best Of and Repeat Shows">Regular Shows</span>: {{ panelist.appearances.count.regular_shows }}</li>
-                    <li><span class="help-notes" data-bs-toggle="tooltip" data-bs-custom-class="ww-tooltip" title="Includes Best Of and Repeat Shows">All Shows</span>: {{ panelist.appearances.count.all_shows }}</li>
+                    <li>
+                        <span class="help-notes" data-bs-toggle="tooltip" data-bs-custom-class="ww-tooltip" title="Excludes Best Of and Repeat Shows">
+                            Regular Shows <i class="ps-1 bi bi-info-circle" aria-hidden="true"></i>
+                        </span>: {{ panelist.appearances.count.regular_shows }}
+                    </li>
+                    <li>
+                        <span class="help-notes" data-bs-toggle="tooltip" data-bs-custom-class="ww-tooltip" title="Includes Best Of and Repeat Shows">
+                            All Shows <i class="ps-1 bi bi-info-circle" aria-hidden="true"></i>
+                        </span>: {{ panelist.appearances.count.all_shows }}
+                    </li>
                     <li>Shows with Scores: {{ panelist.appearances.count.shows_with_scores }}</li>
                     {% if panelist.appearances.milestones %}
                     {% set first_show = date_string_to_date(date_string=panelist.appearances.milestones.first.show_date) %}
@@ -140,27 +148,47 @@
                             {% if appearance.lightning_round_start_decimal != None and appearance.lightning_round_correct_decimal != None %}
                                 {% set start = "{:f}".format(appearance.lightning_round_start_decimal.normalize()) %}
                                 {% set correct = "{:f}".format(appearance.lightning_round_correct_decimal.normalize()) %}
-                        <span class="score">{{ score }} (<span class="visually-hidden">Start: </span>{{ start }} / <span class="visually-hidden">Correct: </span>{{ correct }})</span>
+                        <span class="score">
+                            <span class="me-1"><span class="visually-hidden">Total Score: </span>{{ score }}</span>
+                            (<span class="visually-hidden">Starting Score: </span>{{ start }} /
+                            <span class="visually-hidden">Correct Answers: </span>{{ correct }})
+                        </span>
                             {% elif appearance.lightning_round_start != None and appearance.lightning_round_correct != None %}
                                 {% set start = "{:f}".format(appearance.lightning_round_start) %}
                                 {% set correct = "{:f}".format(appearance.lightning_round_correct) %}
-                        <span class="score">{{ score }} (<span class="visually-hidden">Start: </span>{{ start }} / <span class="visually-hidden">Correct: </span>{{ correct }})</span>
+                        <span class="score">
+                            <span class="me-1"><span class="visually-hidden">Total Score: </span>{{ score }}</span>
+                            (<span class="visually-hidden">Starting Score: </span>{{ start }} /
+                            <span class="visually-hidden">Correct Answers: </span>{{ correct }})
+                        </span>
                             {% else %}
-                        <span class="score">{{ score }}</span>
+                        <span class="score">
+                            <span class="visually-hidden">Total Score: </span>{{ score }}
+                        </span>
                             {% endif %}
                             {% if appearance.rank %}
-                        <span class="rank">[{{ rank_map[appearance.rank] }}]</span> 
+                        <span class="rank">
+                            <span class="visually-hidden">Rank: </span>
+                            <span class="badge rank">{{ rank_map[appearance.rank] }}</span>
+                        </span>
                             {% endif %}
                         {% elif appearance.score != None %}
                             {% if appearance.lightning_round_start != None and appearance.lightning_round_correct != None %}
                         <span class="score">
-                            {{ appearance.score }} (<span class="visually-hidden">Start: </span>{{ appearance.lightning_round_start }} / <span class="visually-hidden">Correct: </span>{{ appearance.lightning_round_correct }})
+                            <span class="me-1"><span class="visually-hidden">Total Score: </span>{{ appearance.score }}</span>
+                            (<span class="visually-hidden">Starting Score: </span>{{ appearance.lightning_round_start }} /
+                            <span class="visually-hidden">Correct Answers: </span>{{ appearance.light_round_correct }})
                         </span>
                             {% else %}
-                        <span class="score">{{ appearance.score }}</span>
+                        <span class="score">
+                            <span class="visually-hidden">Total: </span>{{ appearance.score }}
+                        </span>
                             {% endif %}
                             {% if appearance.rank %}
-                        <span class="rank">[{{ rank_map[appearance.rank] }}]</span>
+                        <span class="rank">
+                            <span class="visually-hidden">Rank: </span>
+                            <span class="badge rank">{{ rank_map[appearance.rank] }}</span>
+                        </span>
                             {% endif %}
                         {% endif %}
                         {% if appearance.best_of %}

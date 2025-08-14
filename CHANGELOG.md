@@ -1,5 +1,36 @@
 # Changes
 
+## 6.10.0
+
+### Application Changes
+
+- Cleaned up the "Appearances: Regular Shows" and "Appearances: All Shows" labels in the Not My Job Guest, Host, Location, Panelist and Scorekeeper details pages
+  - The entire label now has a Bootstrap tooltip that displays a note when hovering over the full label text
+  - Removed the dotted line under "Regular Shows" and "All Shows"
+  - Removed the opening and closing parentheses around "Regular Shows" and "All Shows"
+  - Added an info icon at the end of the label to indicate that there is additional information available
+- Changed the Coordinates block in the Location details page
+  - Removed the dotted line under the location's coordinates
+  - Added an info icon after the coordinates to indicate that there is additional information available (DMS coordinates)
+  - Added a left border to the span containing the "Location Map" link
+  - Switched the location of the map icon from before to after the "Location Map" text for consistency with the other info icons
+- Moved towards standardizing on a font weight of 600 for all headers, subheaders and bottom navigation links
+  - Prior to this update, both 500 and 600 font weights were used
+  - This matches the [recommended font weights](https://carbondesignsystem.com/elements/typography/overview/#weights) defined in the [Carbon Design System](https://carbondesignsystem.com/)
+- Changed the sans-serif, serif and monospace font stacks based on the [font stack](https://carbondesignsystem.com/elements/typography/overview/#typeface:-ibm-plex) defined in the Carbon Design System
+  - sans-serif: `"IBM Plex Sans", "Helvetica Neue", system-ui, -apple-system, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji"`
+  - serif: `"IBM Plex Serif", "Georgia", Times, serif, "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji"`
+  - monospace: `"IBM Plex Mono", "Menlo", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", Courier, "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", monospace`
+- Added a little spacing between the panelist total score and the starting score and questions answered correctly amount, if available
+- Updated the visually hidden text for panelist scores to provide better context for screen readers and parsers
+- Changed the panelist rank in the Panelist details page from being text enclosed in square brackets to be a badge
+- Added [Bootstrap](https://getbootstrap.com/), [Bootstrap Icons](https://icons.getbootstrap.com/) and [wwdtm-theme](https://github.com/questionlp/wwdtm-theme) license information in the About page
+- Changed the default value of `settings.use_minified_css` from `False` to `True`, as the non-minified CSS file is best used for development purposes
+
+### Component Changes
+
+- Upgrade wwdtm-theme from 2.1.1 to 2.2.4
+
 ## 6.9.0
 
 ### Application Changes
@@ -12,6 +43,7 @@
 ### Component Changes
 
 - Upgrade wwdtm from 2.19.0 to 2.20.0
+  - Includes upgrading NumPy from 2.1.2 to 2.2.6
 - Upgrade wwdtm-theme from 2.1.0 to 2.1.1
 
 ### Development Changes

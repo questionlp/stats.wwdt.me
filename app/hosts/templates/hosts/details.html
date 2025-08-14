@@ -27,8 +27,10 @@
         <div class="row">
             <div class="col-md-6 appearances-regular">
                 <span class="field-label">
-                    Appearances
-                    (<span class="help-notes" data-bs-toggle="tooltip" data-bs-custom-class="ww-tooltip" title="Excludes Best Of and Repeat Shows">Regular Shows</span>)
+                    <span class="help-notes" data-bs-toggle="tooltip" data-bs-custom-class="ww-tooltip" title="Excludes Best Of and Repeat Shows">
+                        Appearances: Regular Shows
+                        <i class="ps-1 bi bi-info-circle" aria-hidden="true"></i>
+                    </span>
                 </span>
                 {% if host.appearances.count %}
                 {{ host.appearances.count.regular_shows }}
@@ -38,8 +40,10 @@
             </div>
             <div class="col-md-6 appearances-all">
                 <span class="field-label">
-                    Appearances
-                    (<span class="help-notes" data-bs-toggle="tooltip" data-bs-custom-class="ww-tooltip" title="Includes Best Of and Repeats">All Shows</span>)
+                    <span class="help-notes" data-bs-toggle="tooltip" data-bs-custom-class="ww-tooltip" title="Includes Best Of and Repeats">
+                        Appearances: All Shows
+                        <i class="ps-1 bi bi-info-circle" aria-hidden="true"></i>
+                    </span>
                 </span>
                 {% if host.appearances.count %}
                 {{ host.appearances.count.all_shows }}
