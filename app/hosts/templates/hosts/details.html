@@ -63,6 +63,9 @@
                     {% set show_date = date_string_to_date(date_string=appearance.date) %}
                     <li>
                         <a href="{{ url_for('shows.year_month_day', show_year=show_date.year, show_month=show_date.month, show_day=show_date.day) }}">{{ appearance.date }}</a>
+                        {% if appearance.guest %}
+                        <span class="badge guest">Guest</span>
+                        {% endif %}
                         {% if appearance.best_of %}
                         <span class="badge best-of">Best Of</span>
                         {% endif %}
