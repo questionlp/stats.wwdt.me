@@ -1,5 +1,11 @@
 # Changes
 
+## 6.10.2
+
+### Application Changes
+
+- Update robots.txt to include latest list of AI bots from [ai-robots-txt/ai.robots.txt](https://github.com/ai-robots-txt/ai.robots.txt)
+
 ## 6.10.1
 
 ### Component Changes
