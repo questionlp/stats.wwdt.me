@@ -1,5 +1,11 @@
 # Changes
 
+## 6.10.3
+
+### Application Changes
+
+- Added missing guest host badge for guest hosts in the Host details page
+
 ## 6.10.2
 
 ### Application Changes
