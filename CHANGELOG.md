@@ -1,5 +1,15 @@
 # Changes
 
+## 6.10.5
+
+### Application Changes
+
+- Fixed exception handling logic for `shows.routes.date_string()` that was caused an additional unhandled exception
+
+### Development Changes
+
+- Added new test for `shows.routes.date_string()` with invalid date strings to validate that a redirect is being returned and not an error or a normal response
+
 ## 6.10.4
 
 ### Application Changes
