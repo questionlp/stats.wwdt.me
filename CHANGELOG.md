@@ -1,5 +1,11 @@
 # Changes
 
+## 6.10.4
+
+### Application Changes
+
+- Standardized on the name and spelling "Lightning Fill In The Blank" instead of "Lightning Fill-in-the-Blank"
+
 ## 6.10.3
 
 ### Application Changes
