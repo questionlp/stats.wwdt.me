@@ -59,28 +59,30 @@ def date_string(iso_date_string: str) -> Response:
         parsed_date = datetime.datetime.strptime(iso_date_string, "%Y-%m-%d")
         database_connection = mysql.connector.connect(**current_app.config["database"])
         show_utility = ShowUtility(database_connection=database_connection)
-        if not show_utility.date_exists(
+
+        if show_utility.date_exists(
             year=parsed_date.year, month=parsed_date.month, day=parsed_date.day
         ):
+            database_connection.close()
+            return redirect_url(
+                url_for(
+                    "shows.year_month_day",
+                    show_year=parsed_date.year,
+                    show_month=parsed_date.month,
+                    show_day=parsed_date.day,
+                ),
+                301,
+            )
+        else:
+            database_connection.close()
             return redirect_url(url_for("shows.index"))
 
-        return redirect_url(
-            url_for(
-                "shows.year_month_day",
-                show_year=parsed_date.year,
-                show_month=parsed_date.month,
-                show_day=parsed_date.day,
-            ),
-            301,
-        )
     except ValueError:
         return redirect_url(url_for("shows.index"))
     except OverflowError:
         return redirect_url(url_for("shows.index"))
     except TypeError:
         return redirect_url(url_for("shows.index"))
-    finally:
-        database_connection.close()
 
 
 @blueprint.route("/<int:show_year>")

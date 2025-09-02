@@ -26,6 +26,14 @@ def test_date_string(client: FlaskClient, date_string: str) -> None:
     assert response.location
 
 
+@pytest.mark.parametrize("date_string", ["abcd-ef-gh", "1-2", "3-2-1"])
+def test_date_string_invalid_value(client: FlaskClient, date_string: str) -> None:
+    """Testing shows.date_string with invalid date strings."""
+    response: TestResponse = client.get(f"/shows/{date_string}")
+    assert response.status_code in (301, 302)
+    assert response.location
+
+
 @pytest.mark.parametrize("year", [2018])
 def test_year(client: FlaskClient, year: int) -> None:
     """Testing shows.year."""
