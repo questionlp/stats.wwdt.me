@@ -1,5 +1,12 @@
 # Changes
 
+## 6.10.6
+
+### Application Changes
+
+- Fixed the issue on the show details page where the label for the panelist with the correct Bluff the Listener story was listed as "Chosen" and not "Correct"
+- Fixed the issue on the panelist details page where the label where the count of correct Bluff the Listener stories is not available was listed as "Chosen" and not "Correct"
+
 ## 6.10.5
 
 ### Application Changes
