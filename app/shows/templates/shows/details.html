@@ -186,7 +186,7 @@
                     {% endif %}
                     </div>
                     <div class="col-md-5">
-                        <span class="field-label">Chosen</span>
+                        <span class="field-label">Correct</span>
                     {% if bluff.correct_panelist %}
                         <a href="{{ url_for('panelists.details', panelist_slug=bluff.correct_panelist.slug) }}">{{ bluff.correct_panelist.name }}</a>
                     {% else %}
