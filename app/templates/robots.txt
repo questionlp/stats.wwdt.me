@@ -103,7 +103,7 @@ User-agent: YandexAdditional
 User-agent: YandexAdditionalBot
 User-agent: YouBot
 Disallow: /
-{% else %}
+{% endif %}
 
 User-agent: *
 Crawl-delay: 10
