@@ -20,6 +20,7 @@
 - Changed `parsed_date` from a `DateTime` object to `Date` in `shows.routes.date_string` rather than using `datetime.datetime.strptime` as the time portion of `DateTime` is not needed
 - Changed the behavior of the `block_ai_scrapers` settings flag to only include the list of blocked AI scrapers and the disallow statement in the rendered `robots.txt` file when set to `true`
 - Moved the `Crawl-delay: 10` line in the default `robots.txt` file to live under `User-agent: *`
+- Updated robots.txt to include latest list of AI bots from [ai-robots-txt/ai.robots.txt](https://github.com/ai-robots-txt/ai.robots.txt)
 
 ## 6.10.6
 
