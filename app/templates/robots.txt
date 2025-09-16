@@ -6,6 +6,7 @@ Sitemap: {{ site_url }}{{ url_for("sitemaps.panelists") }}
 Sitemap: {{ site_url }}{{ url_for("sitemaps.scorekeepers") }}
 Sitemap: {{ site_url }}{{ url_for("sitemaps.shows") }}
 
+{% if block_ai_scrapers %}
 User-agent: AddSearchBot
 User-agent: AI2Bot
 User-agent: Ai2Bot-Dolma
@@ -101,13 +102,11 @@ User-agent: YaK
 User-agent: YandexAdditional
 User-agent: YandexAdditionalBot
 User-agent: YouBot
-{% if block_ai_scrapers %}
 Disallow: /
 {% else %}
-Crawl-delay: 10
-{% endif %}
 
 User-agent: *
+Crawl-delay: 10
 Disallow: {{ url_for("guests._all") }}$
 Disallow: {{ url_for("hosts._all") }}$
 Disallow: {{ url_for("panelists._all") }}$

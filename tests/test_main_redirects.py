@@ -127,3 +127,14 @@ def test_npr_show_redirect(client: FlaskClient, show_date: str) -> None:
     response: TestResponse = client.get(f"/s/{show_date}")
     assert response.status_code == 302
     assert response.location
+
+
+def test_stats(client: FlaskClient) -> None:
+    """Testing main_redirects.stats."""
+    response: TestResponse = client.get("/stats")
+    assert response.status_code == 301
+    assert response.location
+
+    response: TestResponse = client.get("/stats/")
+    assert response.status_code == 301
+    assert response.location

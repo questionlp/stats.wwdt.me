@@ -1,0 +1,33 @@
+{
+    "guests": {
+        "slugs": {
+            "anna-kendrick-1149": "anna-kendrick",
+            "nina-totenberg-and-robert-siegel": "nina-totenberg-and-robert-siegel-npr"
+        }
+    },
+    "hosts": {
+        "slugs": {
+            "robert-siegel": "robert-siegel-npr"
+        }
+    },
+    "locations": {
+        "slugs": {
+            "wang-theatre-at-citi-performing-arts-center-boston-ma": "wang-theatre-boston-ma"
+        }
+    },
+    "panelists": {
+        "slugs": null
+    },
+    "scorekeepers": {
+        "slugs": {
+            "che-kweku": "che-rhymefest-smith",
+            "robert-siegel": "robert-siegel-npr",
+            "test": null
+        }
+    },
+    "shows": {
+        "dates": {
+            "2025-02-13": "2025-02-15"
+        }
+    }
+}

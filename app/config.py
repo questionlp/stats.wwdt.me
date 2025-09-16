@@ -5,6 +5,7 @@
 # vim: set noai syntax=python ts=4 sw=4:
 """Configuration Loading and Parsing for Wait Wait Stats Page."""
 
+import copy
 import json
 from datetime import date
 from pathlib import Path
@@ -14,6 +15,27 @@ from app import utility
 
 DEFAULT_RECENT_DAYS_AHEAD = 2
 DEFAULT_RECENT_DAYS_BACK = 30
+
+DEFAULT_URL_REDIRECTS: dict[str, dict[str, None]] = {
+    "guests": {
+        "slugs": None,
+    },
+    "hosts": {
+        "slugs": None,
+    },
+    "locations": {
+        "slugs": None,
+    },
+    "panelists": {
+        "slugs": None,
+    },
+    "scorekeepers": {
+        "slugs": None,
+    },
+    "shows": {
+        "dates": None,
+    },
+}
 
 
 def load_config(
@@ -120,3 +142,36 @@ def load_config(
         "database": database_config,
         "settings": settings_config,
     }
+
+
+def load_url_redirects(
+    url_redirects_path: str = "url-redirects.json",
+) -> dict[str, dict[str, str | None]]:
+    """Read URL Redirect Settings."""
+    _redirects = copy.deepcopy(DEFAULT_URL_REDIRECTS)
+    _url_redirects_path = Path(url_redirects_path)
+    if not _url_redirects_path.exists:
+        return DEFAULT_URL_REDIRECTS
+
+    with _url_redirects_path.open(mode="r", encoding="utf-8") as url_redirects_file:
+        url_redirects: dict[str, dict[str, str | None]] = json.load(url_redirects_file)
+
+    if "guests" in url_redirects:
+        _redirects["guests"]["slugs"] = url_redirects["guests"].get("slugs")
+
+    if "hosts" in url_redirects:
+        _redirects["hosts"]["slugs"] = url_redirects["hosts"].get("slugs")
+
+    if "locations" in url_redirects:
+        _redirects["locations"]["slugs"] = url_redirects["locations"].get("slugs")
+
+    if "panelists" in url_redirects:
+        _redirects["panelists"]["slugs"] = url_redirects["panelists"].get("slugs")
+
+    if "scorekeepers" in url_redirects:
+        _redirects["scorekeepers"]["slugs"] = url_redirects["scorekeepers"].get("slugs")
+
+    if "shows" in url_redirects:
+        _redirects["shows"]["dates"] = url_redirects["shows"].get("dates")
+
+    return _redirects

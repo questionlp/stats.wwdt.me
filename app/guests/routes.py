@@ -38,6 +38,19 @@ def details(guest_slug: str) -> Response | str:
     _slug = slugify(guest_slug)
 
     if _slug not in slugs:
+        database_connection.close()
+        _guest_redirects: dict[str, str] = current_app.config["url_redirects"][
+            "guests"
+        ]["slugs"]
+        if _guest_redirects and _slug in _guest_redirects:
+            if _guest_redirects[_slug]:
+                return redirect(
+                    url_for("guests.details", guest_slug=_guest_redirects[_slug]),
+                    code=301,
+                )
+
+            return redirect(url_for("guests.index"))
+
         return redirect(url_for("guests.index"))
 
     if _slug in slugs and _slug != guest_slug:

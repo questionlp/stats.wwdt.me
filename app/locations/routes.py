@@ -6,7 +6,7 @@
 """Locations Routes for Wait Wait Stats Page."""
 
 import mysql.connector
-from flask import Blueprint, Response, current_app, render_template, url_for
+from flask import Blueprint, Response, current_app, redirect, render_template, url_for
 from slugify import slugify
 from wwdtm.location import Location
 
@@ -44,20 +44,35 @@ def index() -> Response | str:
 @blueprint.route("/<string:location_slug>")
 def details(location_slug: str) -> Response | str:
     """View: Location Details."""
-    slug = slugify(location_slug)
-    if location_slug and location_slug != slug:
-        return redirect_url(url_for("locations.details", location_slug=slug))
-
     database_connection = mysql.connector.connect(**current_app.config["database"])
     location = Location(database_connection=database_connection)
-    _details = location.retrieve_details_by_slug(slug)
-    database_connection.close()
+    slugs = location.retrieve_all_slugs()
+    _slug = slugify(location_slug)
 
-    if not _details:
+    if _slug not in slugs:
+        database_connection.close()
+        _location_redirects: dict[str, str] = current_app.config["url_redirects"][
+            "locations"
+        ]["slugs"]
+        if _location_redirects and _slug in _location_redirects:
+            if _location_redirects[_slug]:
+                return redirect(
+                    url_for(
+                        "locations.details", location_slug=_location_redirects[_slug]
+                    ),
+                    code=301,
+                )
+
+            return redirect_url(url_for("locations.index"))
+
         return redirect_url(url_for("locations.index"))
 
+    _details = location.retrieve_details_by_slug(location_slug=_slug)
+    database_connection.close()
+
     # Redirect back to /locations for certain placeholder locations
-    if "id" in _details and (_details["id"] == 3 or _details["id"] == 38):
+    _placeholder_ids: list[int] = current_app.config["location_placeholders"]
+    if "id" in _details and _details["id"] in _placeholder_ids:
         return redirect_url(url_for("locations.index"))
 
     # Template expects a list of location(s)

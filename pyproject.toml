@@ -46,6 +46,7 @@ ignore = [
     "F401",
     "TRY003", # Avoid specifying messages outside exception class; overly strict, especially for ValueError
     "S608",
+    "SIM102",
 ]
 
 select = [

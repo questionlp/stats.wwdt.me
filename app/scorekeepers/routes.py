@@ -38,6 +38,22 @@ def details(scorekeeper_slug: str) -> Response | str:
     _slug = slugify(scorekeeper_slug)
 
     if _slug not in slugs:
+        database_connection.close()
+        _scorekeeper_redirects: dict[str, str] = current_app.config["url_redirects"][
+            "scorekeepers"
+        ]["slugs"]
+        if _scorekeeper_redirects and _slug in _scorekeeper_redirects:
+            if _scorekeeper_redirects[_slug]:
+                return redirect(
+                    url_for(
+                        "scorekeepers.details",
+                        scorekeeper_slug=_scorekeeper_redirects[_slug],
+                    ),
+                    code=301,
+                )
+
+            return redirect_url(url_for("scorekeepers.index"))
+
         return redirect_url(url_for("scorekeepers.index"))
 
     if _slug in slugs and _slug != scorekeeper_slug:
