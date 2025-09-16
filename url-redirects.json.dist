@@ -21,8 +21,7 @@
     "scorekeepers": {
         "slugs": {
             "che-kweku": "che-rhymefest-smith",
-            "robert-siegel": "robert-siegel-npr",
-            "test": null
+            "robert-siegel": "robert-siegel-npr"
         }
     },
     "shows": {
