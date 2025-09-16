@@ -130,3 +130,10 @@ def npr_show_redirect(show_date: str) -> Response:
 
     database_connection.close()
     return redirect_url(url_for("main.index"))
+
+
+@blueprint.route("/stats")
+@blueprint.route("/stats/")
+def stats() -> Response:
+    """Redirect: /stats and /stats/ to /."""
+    return redirect_url(url_for("main.index"), status_code=301)

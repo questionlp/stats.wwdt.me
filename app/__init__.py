@@ -42,6 +42,13 @@ def create_app() -> Flask:
     _config = config.load_config()
     app.config["database"] = _config["database"]
     app.config["app_settings"] = _config["settings"]
+    app.config["location_placeholders"] = _config["settings"].get(
+        "location_placeholders", [3, 38]
+    )
+
+    # Load URL Redirects file
+    _redirects = config.load_url_redirects()
+    app.config["url_redirects"] = _redirects if _redirects else None
 
     # Set up Jinja globals
     app.jinja_env.globals["app_version"] = APP_VERSION

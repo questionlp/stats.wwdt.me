@@ -10,7 +10,6 @@
         "charset": "utf8mb4",
         "collation": "utf8mb4_unicode_ci"
     },
-
     "settings": {
         "api_url": "",
         "blog_url": "",
@@ -49,5 +48,9 @@
         "display_location_map": false,
         "block_ai_scrapers": false,
         "use_minified_css": true,
+        "location_placeholders": [
+            3,
+            38
+        ]
     }
 }

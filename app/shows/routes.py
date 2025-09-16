@@ -10,7 +10,7 @@ from datetime import date
 from typing import Any
 
 import mysql.connector
-from flask import Blueprint, Response, current_app, render_template, url_for
+from flask import Blueprint, Response, current_app, redirect, render_template, url_for
 from wwdtm.show import Show, ShowUtility
 
 from app.locations.utility import format_location_name
@@ -56,7 +56,8 @@ def best_ofs() -> Response:
 def date_string(iso_date_string: str) -> Response:
     """View: Show Details for a given ISO Date String."""
     try:
-        parsed_date = datetime.datetime.strptime(iso_date_string, "%Y-%m-%d")
+        parsed_date: date = date.fromisoformat(iso_date_string)
+        parsed_date_iso: str = parsed_date.isoformat()
         database_connection = mysql.connector.connect(**current_app.config["database"])
         show_utility = ShowUtility(database_connection=database_connection)
 
@@ -75,6 +76,26 @@ def date_string(iso_date_string: str) -> Response:
             )
         else:
             database_connection.close()
+            _show_redirects: dict[str, str] = current_app.config["url_redirects"][
+                "shows"
+            ]["dates"]
+            if _show_redirects and parsed_date_iso in _show_redirects:
+                if _show_redirects[parsed_date_iso]:
+                    _redirect_parsed_date: date = date.fromisoformat(
+                        _show_redirects[parsed_date_iso]
+                    )
+                    return redirect(
+                        url_for(
+                            "shows.year_month_day",
+                            show_year=_redirect_parsed_date.year,
+                            show_month=_redirect_parsed_date.month,
+                            show_day=_redirect_parsed_date.day,
+                        ),
+                        code=301,
+                    )
+
+                return redirect_url(url_for("shows.index"))
+
             return redirect_url(url_for("shows.index"))
 
     except ValueError:
@@ -231,6 +252,31 @@ def year_month_day(show_year: int, show_month: int, show_day: int) -> Response |
 
     try:
         _date = date(year=show_year, month=show_month, day=show_day)
+        _date_iso = _date.isoformat()
+        _show_redirects: dict[str, str] = current_app.config["url_redirects"]["shows"][
+            "dates"
+        ]
+        if _show_redirects and _date_iso in _show_redirects:
+            if _show_redirects[_date_iso]:
+                _redirect_parsed_date = datetime.datetime(
+                    _show_redirects[_date_iso], "%Y-%m-%d"
+                )
+                return redirect(
+                    url_for(
+                        "shows.year_month_day",
+                        show_year=_redirect_parsed_date.year,
+                        show_month=_redirect_parsed_date.month,
+                        show_day=_redirect_parsed_date.day,
+                    ),
+                    code=301,
+                )
+
+            return redirect_url(
+                url_for(
+                    "shows.year_month", show_year=_date.year, show_month=_date.month
+                )
+            )
+
         details = show.retrieve_details_by_date(
             year=_date.year,
             month=_date.month,

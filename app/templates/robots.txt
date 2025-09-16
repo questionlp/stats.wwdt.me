@@ -6,6 +6,7 @@ Sitemap: {{ site_url }}{{ url_for("sitemaps.panelists") }}
 Sitemap: {{ site_url }}{{ url_for("sitemaps.scorekeepers") }}
 Sitemap: {{ site_url }}{{ url_for("sitemaps.shows") }}
 
+{% if block_ai_scrapers %}
 User-agent: AddSearchBot
 User-agent: AI2Bot
 User-agent: Ai2Bot-Dolma
@@ -63,6 +64,7 @@ User-agent: meta-externalagent
 User-agent: Meta-ExternalAgent
 User-agent: meta-externalfetcher
 User-agent: Meta-ExternalFetcher
+User-agent: meta-webindexer
 User-agent: MistralAI-User
 User-agent: MistralAI-User/1.0
 User-agent: MyCentralAIScraperBot
@@ -90,6 +92,7 @@ User-agent: SemrushBot-OCOB
 User-agent: SemrushBot-SWA
 User-agent: ShapBot
 User-agent: Sidetrade indexer bot
+User-agent: TerraCotta
 User-agent: Thinkbot
 User-agent: TikTokSpider
 User-agent: Timpibot
@@ -101,13 +104,11 @@ User-agent: YaK
 User-agent: YandexAdditional
 User-agent: YandexAdditionalBot
 User-agent: YouBot
-{% if block_ai_scrapers %}
 Disallow: /
-{% else %}
-Crawl-delay: 10
 {% endif %}
 
 User-agent: *
+Crawl-delay: 10
 Disallow: {{ url_for("guests._all") }}$
 Disallow: {{ url_for("hosts._all") }}$
 Disallow: {{ url_for("panelists._all") }}$

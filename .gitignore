@@ -4,13 +4,17 @@ scss.bak/
 # Ignore CSS source maps
 # app/static/css/*.css.map
 
-# Ignore venv directory
+# Ignore venv directories
 venv/
+venv*/
+.venv/
+.venv*/
 
 # Ignore the default configuration files
 .env
 config.json
 gunicorn.conf.py
+url-redirects.json
 
 # Ignore uWSGI configuration and related files
 uwsgi.ini

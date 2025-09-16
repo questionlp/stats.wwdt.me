@@ -1,5 +1,27 @@
 # Changes
 
+## 6.11.0
+
+### Important Notes
+
+- Starting with version 6.12.0 of the Wait Wait Stats Page, Python 3.12 will become the minimum supported version of Python. The requirement is due to the [wwdtm](https://github.com/questionlp/wwdtm) library requiring Python 3.12 with support for newer versions being tested.
+
+### Application Changes
+
+- Added `location_placeholders` configuration setting in `config.json` to contain a list of location placeholder IDs, rather than hard-coding them within `locations.routes.details`. The default value if not defined in `config.json` will be `[3, 38]`
+- Added support for configurable URL redirects for guests, hosts, locations, panelists, scorekeepers and shows based on a new `url-redirects.json` file and logic added to specific routes. This removes the need of setting up specific redirects at the fronting web server or forwarding proxy level:
+  - The JSON file is read on application initialization. Default values for either `slugs` or `dates` objects are `None` if not defined in the JSON file.
+  - **Note:** A baseline `url-redirects.json.dist` file is included in the repository, but a copy of the file needs to be made and named `url-redirects.json` for the application to read in the values
+  - For guests, hosts, locations, panelsts and scorekeepers, a key/value pairs are defined within the respective `slugs` object, with the key being the slug string to match and the key value containing the slug string to use in the redirection
+  - For shows, a key/value pairs are defined within the `dates` object, with the key being an ISO-formatted date string
+  - For shows routes, both `date_string` and `year_month_day` have been updated to handle the new redirects
+  - Check for redirects done if the slug string or date doesn't match against an existing value in the database. This is prevent the need to check each and every request, which adds unwanted overhead
+- Added redirects for `/stats` and `/stats/` to return the URL for the main index route
+- Changed `parsed_date` from a `DateTime` object to `Date` in `shows.routes.date_string` rather than using `datetime.datetime.strptime` as the time portion of `DateTime` is not needed
+- Changed the behavior of the `block_ai_scrapers` settings flag to only include the list of blocked AI scrapers and the disallow statement in the rendered `robots.txt` file when set to `true`
+- Moved the `Crawl-delay: 10` line in the default `robots.txt` file to live under `User-agent: *`
+- Updated robots.txt to include latest list of AI bots from [ai-robots-txt/ai.robots.txt](https://github.com/ai-robots-txt/ai.robots.txt)
+
 ## 6.10.6
 
 ### Application Changes

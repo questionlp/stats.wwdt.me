@@ -38,6 +38,21 @@ def details(panelist_slug: str) -> Response | str:
     _slug = slugify(panelist_slug)
 
     if _slug not in slugs:
+        database_connection.close()
+        _panelist_redirects: dict[str, str] = current_app.config["url_redirects"][
+            "panelists"
+        ]["slugs"]
+        if _panelist_redirects and _slug in _panelist_redirects:
+            if _panelist_redirects[_slug]:
+                return redirect(
+                    url_for(
+                        "panelists.details", panelist_slug=_panelist_redirects[_slug]
+                    ),
+                    code=301,
+                )
+
+            return redirect(url_for("panelists.index"))
+
         return redirect(url_for("panelists.index"))
 
     if _slug in slugs and _slug != panelist_slug:
