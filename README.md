@@ -23,6 +23,10 @@ For changelogs, refer to [CHANGELOG.md](./CHANGELOG.md).
 
 If you would like contribute to this project, please make sure to review both the [Code of Conduct](./CODE_OF_CONDUCT.md) and the [Contributing](./CONTRIBUTING.md) documents in this repository.
 
+### AI Generated Code
+
+Please note that this project does not accept pull requests or bugfixes that include code that has been partially or wholly generated using AI.
+
 ## Sponsoring
 
 If you would like to help sponsor the continued development and maintenance of the Wait Wait Stats project, please consider sponsoring me on [GitHub](https://github.com/sponsors/questionlp).

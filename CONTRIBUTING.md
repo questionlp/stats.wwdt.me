@@ -2,9 +2,14 @@
 
 If you would like to contribute to this projects, there are a few guidelines that you'll want to review below.
 
+## AI Generated Code
+
+This project does not accept pull requests or bugfixes that include code that
+has been partially or wholly generated using AI.
+
 ## Code of Conduct
 
-A copy of this project's [Code of Conduct](CODE_OF_CONDUCT.md) is based on version 2.1 of the Contributor Covenant.
+A copy of this project's [Code of Conduct](CODE_OF_CONDUCT.md) is based on version 3.0 of the Contributor Covenant.
 
 ## Branching
 
