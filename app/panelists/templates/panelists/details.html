@@ -149,45 +149,81 @@
                                 {% set start = "{:f}".format(appearance.lightning_round_start_decimal.normalize()) %}
                                 {% set correct = "{:f}".format(appearance.lightning_round_correct_decimal.normalize()) %}
                         <span class="score">
-                            <span class="me-1"><span class="visually-hidden">Total Score: </span>{{ score }}</span>
-                            (<span class="visually-hidden">Starting Score: </span>{{ start }} /
-                            <span class="visually-hidden">Correct Answers: </span>{{ correct }})
+                            <span class="visually-hidden">Total:</span> {{ score }}
+                                {% if appearance.rank %}
+                            <span class="rank">
+                                <span class="visually-hidden">Rank:</span>
+                                <span class="badge rank">{{ rank_map[appearance.rank] }}</span>
+                            </span>
+                                {% endif %}
                         </span>
+                        <div class="score-details ms-4">
+                            <span class="score-start">
+                                <span class="score-label">Lightning Start:</span> {{ start }}
+                            </span>
+                            <span class="score-correct">
+                                <span class="score-label">Correct:</span> {{ correct }}
+                            </span>
+                        </div>
                             {% elif appearance.lightning_round_start != None and appearance.lightning_round_correct != None %}
                                 {% set start = "{:f}".format(appearance.lightning_round_start) %}
                                 {% set correct = "{:f}".format(appearance.lightning_round_correct) %}
                         <span class="score">
-                            <span class="me-1"><span class="visually-hidden">Total Score: </span>{{ score }}</span>
-                            (<span class="visually-hidden">Starting Score: </span>{{ start }} /
-                            <span class="visually-hidden">Correct Answers: </span>{{ correct }})
+                            <span class="visually-hidden">Total:</span> {{ score }}
+                                {% if appearance.rank %}
+                            <span class="rank">
+                                <span class="visually-hidden">Rank:</span>
+                                <span class="badge rank">{{ rank_map[appearance.rank] }}</span>
+                            </span>
+                                {% endif %}
                         </span>
+                        <div class="score-details ms-4">
+                            <span class="score-start">
+                                <span class="score-label">Lightning Start:</span> {{ start }}
+                            </span>
+                            <span class="score-correct">
+                                <span class="score-label">Correct:</span> {{ correct }}
+                            </span>
+                        </div>
                             {% else %}
                         <span class="score">
-                            <span class="visually-hidden">Total Score: </span>{{ score }}
-                        </span>
-                            {% endif %}
-                            {% if appearance.rank %}
-                        <span class="rank">
-                            <span class="visually-hidden">Rank: </span>
-                            <span class="badge rank">{{ rank_map[appearance.rank] }}</span>
+                            <span class="visually-hidden">Total:</span> {{ score }}
+                                {% if appearance.rank %}
+                            <span class="rank">
+                                <span class="visually-hidden">Rank:</span>
+                                <span class="badge rank">{{ rank_map[appearance.rank] }}</span>
+                            </span>
+                                {% endif %}
                         </span>
                             {% endif %}
                         {% elif appearance.score != None %}
                             {% if appearance.lightning_round_start != None and appearance.lightning_round_correct != None %}
                         <span class="score">
-                            <span class="me-1"><span class="visually-hidden">Total Score: </span>{{ appearance.score }}</span>
-                            (<span class="visually-hidden">Starting Score: </span>{{ appearance.lightning_round_start }} /
-                            <span class="visually-hidden">Correct Answers: </span>{{ appearance.light_round_correct }})
+                            <span class="visually-hidden">Total:</span> {{ appearance.score }}
+                                {% if appearance.rank %}
+                            <span class="rank">
+                                <span class="visually-hidden">Rank:</span>
+                                <span class="badge rank">{{ rank_map[appearance.rank] }}</span>
+                            </span>
+                                {% endif %}
                         </span>
+                        <div class="score-details ms-4">
+                            <span class="score-start">
+                                <span class="score-label">Lightning Start:</span> {{ appearance.lightning_round_start }}
+                            </span>
+                            <span class="score-correct">
+                                <span class="score-label">Correct:</span> {{ appearance.lightning_round_correct }}
+                            </span>
+                        </div>
                             {% else %}
                         <span class="score">
-                            <span class="visually-hidden">Total: </span>{{ appearance.score }}
-                        </span>
-                            {% endif %}
-                            {% if appearance.rank %}
-                        <span class="rank">
-                            <span class="visually-hidden">Rank: </span>
-                            <span class="badge rank">{{ rank_map[appearance.rank] }}</span>
+                            <span class="visually-hidden">Total:</span> {{ appearance.score }}
+                                {% if appearance.rank %}
+                            <span class="rank">
+                                <span class="visually-hidden">Rank:</span>
+                                <span class="badge rank">{{ rank_map[appearance.rank] }}</span>
+                            </span>
+                                {% endif %}
                         </span>
                             {% endif %}
                         {% endif %}

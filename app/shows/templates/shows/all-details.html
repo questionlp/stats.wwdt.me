@@ -83,7 +83,10 @@
                     {% for panelist in show.panelists %}
                     <li>
                         {% if panelist.rank %}
-                        <span class="rank">{{- "{:s}".format(rank_map[panelist.rank]) -}}:</span>
+                        <span class="rank">
+                            <span class="visually-hidden">Rank:</span>
+                            <span>{{- "{:s}".format(rank_map[panelist.rank]) -}}:</span>
+                        </span>
                         {% endif %}
                         {% if panelist.slug == 'multiple' %}
                         <span class="data-multiple">Multiple Panelists</span>
@@ -95,33 +98,51 @@
                                     {% set start = "{:f}".format(panelist.lightning_round_start_decimal.normalize()) %}
                                     {% set correct = "{:f}".format(panelist.lightning_round_correct_decimal.normalize()) %}
                         <span class="score">
-                            <span class="me-1"><span class="visually-hidden">Total Score: </span>{{ score }}</span>
-                            (<span class="visually-hidden">Starting Score: </span>{{ start }} /
-                            <span class="visually-hidden">Correct Answers: </span>{{ correct }})
+                            <span class="visually-hidden">Total:</span> {{ score }}
                         </span>
+                        <div class="score-details ms-4">
+                            <span class="score-start">
+                                <span class="score-label">Lightning Start:</span> {{ start }}
+                            </span>
+                            <span class="score-correct">
+                                <span class="score-label">Correct:</span> {{ correct }}
+                            </span>
+                        </div>
                                 {% elif panelist.lightning_round_start != None and panelist.lightning_round_correct != None %}
                                     {% set start = "{:f}".format(panelist.lightning_round_start) %}
                                     {% set correct = "{:f}".format(panelist.lightning_round_correct) %}
                         <span class="score">
-                            <span class="me-1"><span class="visually-hidden">Total Score: </span>{{ score }}</span>
-                            (<span class="visually-hidden">Starting Score: </span>{{ start }} /
-                            <span class="visually-hidden">Correct Answers: </span>{{ correct }})
+                            <span class="visually-hidden">Total:</span> {{ score }}
                         </span>
+                        <div class="score-details ms-4">
+                            <span class="score-start">
+                                <span class="score-label">Lightning Start:</span> {{ start }}
+                            </span>
+                            <span class="score-correct">
+                                <span class="score-label">Correct:</span> {{ correct }}
+                            </span>
+                        </div>
                                 {% else %}
                         <span class="score">
-                            <span class="visually-hidden">Total Score: </span>{{ score }}
+                            <span class="visually-hidden">Total:</span> {{ score }}
                         </span>
                                 {% endif %}
                             {% elif panelist.score %}
                                 {% if panelist.lightning_round_start != None and panelist.lightning_round_correct != None %}
                         <span class="score">
-                            <span class="me-1"><span class="visually-hidden">Total Score: </span>{{ panelist.score }}</span>
-                            (<span class="visually-hidden">Starting Score: </span>{{ panelist.lightning_round_start }} /
-                            <span class="visually-hidden">Correct Answers: </span>{{ panelist.light_round_correct }})
+                            <span class="visually-hidden">Total:</span> {{ panelist.score }}
                         </span>
+                        <div class="score-details ms-4">
+                            <span class="score-start">
+                                <span class="score-label">Lightning Start:</span> {{ panelist.lightning_round_start }}
+                            </span>
+                            <span class="score-correct">
+                                <span class="score-label">Correct:</span> {{ panelist.light_round_correct }}
+                            </span>
+                        </div>
                                 {% else %}
                         <span class="score">
-                            <span class="visually-hidden">Total Score: </span>{{ panelist.score }}
+                            <span class="visually-hidden">Total:</span> {{ panelist.score }}
                         </span>
                                 {% endif %}
                             {% endif %}
