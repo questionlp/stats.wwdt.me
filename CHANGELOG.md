@@ -1,5 +1,23 @@
 # Changes
 
+## 6.11.1
+
+### Important Notes
+
+- Starting with version 6.12.0 of the Wait Wait Stats Page, Python 3.12 will become the minimum supported version of Python. The requirement is due to the [wwdtm](https://github.com/questionlp/wwdtm) library requiring Python 3.12 with support for newer versions being tested.
+
+### Application Changes
+
+- Changed how Panelist Lightning Fill In The Blank Start and Correct scoring are displayed for Shows and Panelist Details
+  - Start and Correct numbers are now listed below the rank, panelist name and total score
+  - Made labels for both Start and Correct visible
+
+### Component Changes
+
+- Upgraded wwdtm-theme from 2.3.0 to 2.4.2
+  - Added styles to support for the new way Panelist scores are displayed
+  - Changed the dark theme background color from IBM Gray 100 to IBM Gray 90 to improve readability
+
 ## 6.11.0
 
 ### Important Notes
