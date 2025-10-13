@@ -1,5 +1,25 @@
 # Changes
 
+## 6.12.0
+
+### Application Changes
+
+- Python 3.12 is now the minimum supported version of Python
+- Added denoting of Panelist scoring exceptions or anomalies when the panelist total score is not the sum of the panelist's Lightning Fill In The Blank starting score and the number of correct answers doubled
+- Cleaned up the template code for rendering panelist scoring information for both Show and Panelist details pages
+- Corrected location of "Best Of" and "Repeat" badges on Panelist details pages to appear after the panelist total score and rank badge and, if available, before the Lightning Fill In The Blank start and correct answers
+- Updated background color for DB ID and Panelist rank badges from IBM Gray 90 to IBM Gray 80 for the dark color theme due to the page background being set to IBM Gray 90
+
+### Component Changes
+
+- Upgraded Flask from 3.1.1 to 3.1.2
+- Upgraded wwdtm from 2.20.0 to 2.21.1
+- Upgraded wwdtm-theme from 2.4.2 to 2.4.4
+
+### Development Changes
+
+- Upgraded Ruff from 0.12.8 to 0.13.3
+
 ## 6.11.1
 
 ### Important Notes
