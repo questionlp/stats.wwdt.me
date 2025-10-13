@@ -4,7 +4,7 @@
 
 ### Application Changes
 
-- Python 3.12 is now the minimum supported version of Python
+- Python 3.12 is now the minimum supported version
 - Added denoting of Panelist scoring exceptions or anomalies when the panelist total score is not the sum of the panelist's Lightning Fill In The Blank starting score and the number of correct answers doubled
 - Cleaned up the template code for rendering panelist scoring information for both Show and Panelist details pages
 - Corrected location of "Best Of" and "Repeat" badges on Panelist details pages to appear after the panelist total score and rank badge and, if available, before the Lightning Fill In The Blank start and correct answers
