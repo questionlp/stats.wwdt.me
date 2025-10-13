@@ -13756,7 +13756,7 @@ th {
   color: #ffffff;
 }
 [data-bs-theme=dark] main .details .badge.db-id {
-  background-color: #262626;
+  background-color: #393939;
   color: #ffffff;
 }
 [data-bs-theme=dark] main .details .badge.is-guest,
@@ -13766,7 +13766,7 @@ th {
   color: #f4f4f4 !important;
 }
 [data-bs-theme=dark] main .details .badge.rank {
-  background-color: #262626;
+  background-color: #393939;
   color: #f4f4f4;
 }
 [data-bs-theme=dark] main .name-list {

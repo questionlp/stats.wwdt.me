@@ -140,98 +140,89 @@
                 {% if panelist.appearances.shows %}
                 <ul class="appearance-list panelist">
                     {% for appearance in panelist.appearances.shows %}
-                    {% set show_date = date_string_to_date(date_string=appearance.date) %}
-                    <li>
-                        <a href="{{ url_for('shows.year_month_day', show_year=show_date.year, show_month=show_date.month, show_day=show_date.day) }}">{{ appearance.date }}</a>
+                        {% set show_date = date_string_to_date(date_string=appearance.date) %}
                         {% if appearance.score_decimal != None %}
                             {% set score = "{:f}".format(appearance.score_decimal.normalize()) %}
                             {% if appearance.lightning_round_start_decimal != None and appearance.lightning_round_correct_decimal != None %}
                                 {% set start = "{:f}".format(appearance.lightning_round_start_decimal.normalize()) %}
                                 {% set correct = "{:f}".format(appearance.lightning_round_correct_decimal.normalize()) %}
-                        <span class="score">
-                            <span class="visually-hidden">Total:</span> {{ score }}
-                                {% if appearance.rank %}
-                            <span class="rank">
-                                <span class="visually-hidden">Rank:</span>
-                                <span class="badge rank">{{ rank_map[appearance.rank] }}</span>
-                            </span>
-                                {% endif %}
-                        </span>
-                        <div class="score-details ms-4">
-                            <span class="score-start">
-                                <span class="score-label">Lightning Start:</span> {{ start }}
-                            </span>
-                            <span class="score-correct">
-                                <span class="score-label">Correct:</span> {{ correct }}
-                            </span>
-                        </div>
-                            {% elif appearance.lightning_round_start != None and appearance.lightning_round_correct != None %}
-                                {% set start = "{:f}".format(appearance.lightning_round_start) %}
-                                {% set correct = "{:f}".format(appearance.lightning_round_correct) %}
-                        <span class="score">
-                            <span class="visually-hidden">Total:</span> {{ score }}
-                                {% if appearance.rank %}
-                            <span class="rank">
-                                <span class="visually-hidden">Rank:</span>
-                                <span class="badge rank">{{ rank_map[appearance.rank] }}</span>
-                            </span>
-                                {% endif %}
-                        </span>
-                        <div class="score-details ms-4">
-                            <span class="score-start">
-                                <span class="score-label">Lightning Start:</span> {{ start }}
-                            </span>
-                            <span class="score-correct">
-                                <span class="score-label">Correct:</span> {{ correct }}
-                            </span>
-                        </div>
-                            {% else %}
-                        <span class="score">
-                            <span class="visually-hidden">Total:</span> {{ score }}
-                                {% if appearance.rank %}
-                            <span class="rank">
-                                <span class="visually-hidden">Rank:</span>
-                                <span class="badge rank">{{ rank_map[appearance.rank] }}</span>
-                            </span>
-                                {% endif %}
-                        </span>
                             {% endif %}
+                        {% elif appearance.score != None and appearance.lightning_round_start != None and appearance.lightning_round_correct != None %}
+                            {% set score = appearance.score %}
+                            {% set start = appearance.lightning_round_start %}
+                            {% set correct = appearance.lightning_round_correct %}
                         {% elif appearance.score != None %}
-                            {% if appearance.lightning_round_start != None and appearance.lightning_round_correct != None %}
+                            {% set score = appearance.score %}
+                        {% endif %}
+                        {% if appearance.rank %}
+                            {% set rank = rank_map[appearance.rank] %}
+                        {% endif %}
+                    <li>
+                        <a href="{{ url_for('shows.year_month_day', show_year=show_date.year, show_month=show_date.month, show_day=show_date.day) }}">{{ appearance.date }}</a>
+                        {% if score and start and correct and rank %}
                         <span class="score">
-                            <span class="visually-hidden">Total:</span> {{ appearance.score }}
-                                {% if appearance.rank %}
+                            <span class="visually-hidden">Total:</span> {{ score }}
+                            {% if appearance.score_exception %}
+                            <span class="score-exception ms-1" data-bs-toggle="tooltip" data-bs-custom-class="ww-tooltip" title="Scoring Exception">*</span>
+                            {% endif %}
                             <span class="rank">
                                 <span class="visually-hidden">Rank:</span>
-                                <span class="badge rank">{{ rank_map[appearance.rank] }}</span>
+                                <span class="badge rank">{{ rank }}</span>
                             </span>
-                                {% endif %}
+                            {% if appearance.best_of %}
+                            <span class="badge best-of">Best Of</span>
+                            {% endif %}
+                            {% if appearance.repeat_show %}
+                            <span class="badge repeat">Repeat</span>
+                            {% endif %}
                         </span>
                         <div class="score-details ms-4">
                             <span class="score-start">
-                                <span class="score-label">Lightning Start:</span> {{ appearance.lightning_round_start }}
+                                <span class="score-label">Lightning Start:</span> {{ start }}
                             </span>
                             <span class="score-correct">
-                                <span class="score-label">Correct:</span> {{ appearance.lightning_round_correct }}
+                                <span class="score-label">Correct:</span> {{ correct }}
                             </span>
                         </div>
-                            {% else %}
+                        {% elif score and rank %}
                         <span class="score">
-                            <span class="visually-hidden">Total:</span> {{ appearance.score }}
-                                {% if appearance.rank %}
+                            <span class="visually-hidden">Total:</span> {{ score }}
+                            {% if appearance.score_exception %}
+                            <span class="score-exception ms-1" data-bs-toggle="tooltip" data-bs-custom-class="ww-tooltip" title="Scoring Exception">*</span>
+                            {% endif %}
                             <span class="rank">
                                 <span class="visually-hidden">Rank:</span>
-                                <span class="badge rank">{{ rank_map[appearance.rank] }}</span>
+                                <span class="badge rank">{{ rank }}</span>
                             </span>
-                                {% endif %}
-                        </span>
+                            {% if appearance.best_of %}
+                            <span class="badge best-of">Best Of</span>
                             {% endif %}
-                        {% endif %}
-                        {% if appearance.best_of %}
-                        <span class="badge best-of">Best Of</span>
-                        {% endif %}
-                        {% if appearance.repeat_show %}
-                        <span class="badge repeat">Repeat</span>
+                            {% if appearance.repeat_show %}
+                            <span class="badge repeat">Repeat</span>
+                            {% endif %}
+                        </span>
+                        {% elif score %}
+                        <span class="score">
+                            <span class="visually-hidden">Total:</span> {{ score }}
+                            {%- if appearance.score_exception -%}
+                            <span class="score-exception ms-1" data-bs-toggle="tooltip" data-bs-custom-class="ww-tooltip" title="Scoring Exception">*</span>
+                            {%- endif -%}
+                            {% if appearance.best_of %}
+                            <span class="badge best-of">Best Of</span>
+                            {% endif %}
+                            {% if appearance.repeat_show %}
+                            <span class="badge repeat">Repeat</span>
+                            {% endif %}
+                        </span>
+                        {% else %}
+                        <span class="score">
+                            {% if appearance.best_of %}
+                            <span class="badge best-of">Best Of</span>
+                            {% endif %}
+                            {% if appearance.repeat_show %}
+                            <span class="badge repeat">Repeat</span>
+                            {% endif %}
+                        </span>
                         {% endif %}
                     </li>
                     {% endfor %}
