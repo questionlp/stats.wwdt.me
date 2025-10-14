@@ -1,6 +1,6 @@
 # INSTALLING
 
-The following instructions target Ubuntu 22.04 LTS and Debian 12; but, with some minor changes, should also apply to Linux distribution that uses `systemd` to manage services. Python 3.10 or newer is required and the system must already have a working installation available.
+The following instructions target Debian 12 and 13; but, with some minor changes, should also apply to Linux distribution that uses `systemd` to manage services. Python 3.12 or newer is required and the system must already have a working installation available.
 
 This document provides instructions on how to serve the application through [Gunicorn](https://gunicorn.org) and use [NGINX](https://nginx.org/) as a front-end HTTP server. Other options are available for serving up applications built using Flask, but those options will not be covered here.
 

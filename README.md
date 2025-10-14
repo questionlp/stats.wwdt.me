@@ -8,8 +8,10 @@ Flask-based web application that serves up statistics and details for the NPR we
 
 ## Requirements
 
-- Python 3.10 through 3.12 (Python 3.13 has not been tested)
-- MySQL Server 8.0 or newer, or another MySQL Server distribution based on MySQL Server 8.0 or newer, hosting a version of the aforementioned Wait Wait Don't Tell Me! Stats database
+- Python 3.12 or newer
+- MySQL Server 8.0 or newer (or another MySQL Server distribution based on MySQL Server 8.0 or newer) or MariaDB Server 11.8 or newer *(Provisional)*
+
+**Note:** Provisional support for MariaDB Server is only available starting with version 6.12.0 of the Stats Page. Older versions of MariaDB Server are not supported.
 
 ## Installation
 
