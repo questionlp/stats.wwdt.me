@@ -14,6 +14,7 @@
     },
     "locations": {
         "slugs": {
+            "segerstrom-concert-hall-costa-mesa-ca": "segerstrom-center-for-the-arts-costa-mesa-ca",
             "wang-theatre-at-citi-performing-arts-center-boston-ma": "wang-theatre-boston-ma"
         }
     },
