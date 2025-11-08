@@ -14,7 +14,6 @@ venv*/
 .env
 config.json
 gunicorn.conf.py
-url-redirects.json
 
 # Ignore uWSGI configuration and related files
 uwsgi.ini
