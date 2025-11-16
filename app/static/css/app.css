@@ -13317,6 +13317,12 @@ main .details .recordings .appearance-list .appearance-list.panelist,
 main .details .recordings .recording-list .appearance-list.panelist {
   column-count: 2;
 }
+main .details .appearances .appearance-list li,
+main .details .appearances .recording-list li,
+main .details .recordings .appearance-list li,
+main .details .recordings .recording-list li {
+  break-inside: avoid-column;
+}
 main .details .appearances .appearance-list.list-col-2,
 main .details .appearances .recording-list.list-col-2,
 main .details .recordings .appearance-list.list-col-2,
@@ -13343,6 +13349,12 @@ main .report.table th {
 }
 main .report.table tbody .filled {
   background-color: #f4f4f4;
+}
+main .report.table colgroup.cg-border-end {
+  border-right: 2px solid;
+}
+main .report.table colgroup.cg-border-start {
+  border-left: 2px solid;
 }
 main .report.table col.state {
   width: 6rem;
