@@ -1,5 +1,15 @@
 # Changes
 
+## 6.12.1
+
+### Application Changes
+
+- Add `break-inside: avoid-column` to `.appearance-list li` to prevent panelist scoring information from being split across multiple list columns in the Panelist details pages
+
+### Component Changes
+
+- Upgraded wwdtm-theme from 2.4.4 to 2.4.6
+
 ## 6.12.0
 
 ### Application Changes
