@@ -1,5 +1,12 @@
 # Changes
 
+## 6.12.2
+
+### Application Changes
+
+- Removed unnecessary `aria-labelledby` in the page navigation
+- Updated the list of AI bots in the `robots.txt` template to reflect the latest version published at [ai.robots.txt](https://github.com/ai-robots-txt/ai.robots.txt)
+
 ## 6.12.1
 
 ### Application Changes
