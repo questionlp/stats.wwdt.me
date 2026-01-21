@@ -13748,6 +13748,77 @@ th {
   background-color: #000099;
 }
 
+[data-bs-theme=dark-contrast] {
+  --bs-body-bg: #000000;
+  --bs-body-bg-rgb: 0, 0, 0;
+  --bs-body-color: #c6c6c6;
+  --bs-body-color-rgb: #c6c6c6;
+  --bs-border-color: #a8a8a8;
+  --bs-border-color-rgb: 168, 168, 168;
+  --bs-body-font-family: IBM Plex Sans, Helvetica Neue, system-ui, -apple-system, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Noto Color Emoji;
+  --bs-font-sans-serif: IBM Plex Sans, Helvetica Neue, system-ui, -apple-system, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Noto Color Emoji;
+}
+[data-bs-theme=dark-contrast] body {
+  background-color: #000000;
+  color: #c6c6c6;
+}
+[data-bs-theme=dark-contrast] body #skip-nav {
+  color: #ffffff;
+}
+[data-bs-theme=dark-contrast] main a {
+  color: #78a9ff;
+}
+[data-bs-theme=dark-contrast] main #nav-breadcrumb {
+  background-color: #262626;
+}
+[data-bs-theme=dark-contrast] main #nav-breadcrumb .breadcrumb .active {
+  color: #ffffff;
+}
+[data-bs-theme=dark-contrast] main #nav-breadcrumb .breadcrumb-item + .breadcrumb-item::before {
+  color: rgba(255, 255, 255, 0.75);
+}
+[data-bs-theme=dark-contrast] main .accordion-button:not(.collapsed) {
+  background-color: #393939;
+  box-shadow: unset;
+}
+[data-bs-theme=dark-contrast] main .details {
+  border-left: 3px solid rgba(168, 168, 168, 0.8);
+}
+[data-bs-theme=dark-contrast] main .details a:hover {
+  color: #ffffff;
+}
+[data-bs-theme=dark-contrast] main .details .badge.db-id {
+  background-color: #393939;
+  color: #ffffff;
+}
+[data-bs-theme=dark-contrast] main .details .badge.is-guest,
+[data-bs-theme=dark-contrast] main .details .badge.is-host,
+[data-bs-theme=dark-contrast] main .details .badge.is-panelist,
+[data-bs-theme=dark-contrast] main .details .badge.is-scorekeeper {
+  color: #f4f4f4 !important;
+}
+[data-bs-theme=dark-contrast] main .details .badge.rank {
+  background-color: #393939;
+  color: #f4f4f4;
+}
+[data-bs-theme=dark-contrast] main .details .field-label {
+  border-bottom: 1px solid #a8a8a8;
+}
+[data-bs-theme=dark-contrast] main .name-list {
+  column-rule: 1px dotted rgba(255, 255, 255, 0.6);
+}
+[data-bs-theme=dark-contrast] main .report.table thead th,
+[data-bs-theme=dark-contrast] main .report.table tfoot th {
+  background-color: #393939;
+  color: #ffffff;
+}
+[data-bs-theme=dark-contrast] main .report.table tbody .filled {
+  background-color: #393939;
+}
+[data-bs-theme=dark-contrast] main .report.table .header-info {
+  border-bottom: 1px dotted #a7f0ba;
+}
+
 [data-bs-theme=dark] body #skip-nav {
   color: #ffffff;
 }

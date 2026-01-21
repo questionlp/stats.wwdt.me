@@ -59,7 +59,7 @@
 
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
         const storedTheme = getStoredTheme()
-        if (storedTheme !== 'light' && storedTheme !== 'dark' && storedTheme !== 'retro') {
+        if (storedTheme !== 'light' && storedTheme !== 'dark' && storedTheme !== 'retro' && storedTheme !== "dark-contrast") {
             setTheme(getPreferredTheme())
         }
     })
