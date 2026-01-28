@@ -81,7 +81,7 @@
 
 /*!
  * stats.wwdt.me (https://github.com/questionlp/stats.wwdt.me)
- * Copyright 2018-2025 Linh Pham, Elijah Conners
+ * Copyright 2018-2026 Linh Pham, Elijah Conners
  * Apache License 2.0 (https://github.com/questionlp/stats.wwdt.me/blob/main/LICENSE)
  */
 

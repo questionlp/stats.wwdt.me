@@ -1,15 +1,26 @@
 # Changes
 
-## 6.13.0-alpha
+## 6.13.0
 
 ### Application Changes
 
 - Added a new higher contrast dark theme that increases the contrast between the page background and text colors
   - This was introduced for those who prefer or require a higher contrast than the slightly decreased contrast of the updated dark theme
+- Updated copyright year in source code comments
+- Updated the list of AI bots in the `robots.txt` template to reflect the latest version published at [ai.robots.txt](https://github.com/ai-robots-txt/ai.robots.txt)
 
 ### Component Changes
 
-- Upgraded wwdtm-theme from 2.4.6 to 2.5.0-alpha
+- Upgraded gunicorn from 23.0.0 to 24.1.1
+- Upgraded Markdown from 3.7.0 to 2.10.1
+- Upgraded wwdtm from 2.21.1 to 2.22.1
+- Upgraded wwdtm-theme from 2.4.6 to 2.5.1
+
+### Development Changes
+
+- Upgraded Ruff from 0.13.3 to 0.14.14
+- Upgraded pytest from 8.4.1 to 9.0.2
+- Upgraded pytest-cov from 6.2.1
 
 ## 6.12.2
 
