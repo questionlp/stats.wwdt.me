@@ -1,5 +1,16 @@
 # Changes
 
+## 6.13.0-alpha
+
+### Application Changes
+
+- Added a new higher contrast dark theme that increases the contrast between the page background and text colors
+  - This was introduced for those who prefer or require a higher contrast than the slightly decreased contrast of the updated dark theme
+
+### Component Changes
+
+- Upgraded wwdtm-theme from 2.4.6 to 2.5.0-alpha
+
 ## 6.12.2
 
 ### Application Changes

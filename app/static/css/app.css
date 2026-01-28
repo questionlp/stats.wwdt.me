@@ -13748,6 +13748,105 @@ th {
   background-color: #000099;
 }
 
+[data-bs-theme=dark-contrast] {
+  --bs-body-bg: #000000;
+  --bs-body-bg-rgb: 0, 0, 0;
+  --bs-body-color: #f4f4f4;
+  --bs-body-color-rgb: 244, 244, 244;
+  --bs-border-color: #c6c6c6;
+  --bs-border-color-rgb: 198, 198, 198;
+  --bs-body-font-family: IBM Plex Sans, Helvetica Neue, system-ui, -apple-system, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Noto Color Emoji;
+  --bs-font-sans-serif: IBM Plex Sans, Helvetica Neue, system-ui, -apple-system, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Noto Color Emoji;
+  --bs-table-color: #f4f4f4;
+  --bs-accordion-btn-color: #f4f4f4;
+}
+[data-bs-theme=dark-contrast] body {
+  background-color: #000000;
+  color: #f4f4f4;
+}
+[data-bs-theme=dark-contrast] body #skip-nav {
+  color: #ffffff;
+}
+[data-bs-theme=dark-contrast] header nav #theme-dropdown {
+  border: 1px solid #262626;
+}
+[data-bs-theme=dark-contrast] header nav .dropdown-item:hover {
+  background-color: #262626;
+}
+[data-bs-theme=dark-contrast] main a {
+  color: #a6c8ff;
+}
+[data-bs-theme=dark-contrast] main #nav-breadcrumb {
+  background-color: #262626;
+}
+[data-bs-theme=dark-contrast] main #nav-breadcrumb .breadcrumb .active {
+  color: #ffffff;
+}
+[data-bs-theme=dark-contrast] main #nav-breadcrumb .breadcrumb-item + .breadcrumb-item::before {
+  color: rgba(255, 255, 255, 0.75);
+}
+[data-bs-theme=dark-contrast] main .accordion .accordion-button {
+  color: #f4f4f4;
+}
+[data-bs-theme=dark-contrast] main .accordion .accordion-button::after {
+  color: #f4f4f4;
+  --bs-accordion-btn-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23f4f4f4' stroke-linecap='round' stroke-linejoin='round'><path d='m2 5 6 6 6-6'/></svg>");
+  --bs-accordion-btn-active-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23f4f4f4' stroke-linecap='round' stroke-linejoin='round'><path d='m2 5 6 6 6-6'/></svg>");
+}
+[data-bs-theme=dark-contrast] main .accordion .accordion-button:not(.collapsed) {
+  background-color: #393939;
+  box-shadow: unset;
+}
+[data-bs-theme=dark-contrast] main .card {
+  border-color: #c6c6c6 !important;
+}
+[data-bs-theme=dark-contrast] main .card .form-select {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23f4f4f4' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+}
+[data-bs-theme=dark-contrast] main .details {
+  border-left: 3px solid rgba(198, 198, 198, 0.8);
+}
+[data-bs-theme=dark-contrast] main .details a:hover {
+  color: #ffffff;
+}
+[data-bs-theme=dark-contrast] main .details .badge.db-id {
+  background-color: #393939;
+  color: #ffffff;
+}
+[data-bs-theme=dark-contrast] main .details .badge.is-guest,
+[data-bs-theme=dark-contrast] main .details .badge.is-host,
+[data-bs-theme=dark-contrast] main .details .badge.is-panelist,
+[data-bs-theme=dark-contrast] main .details .badge.is-scorekeeper {
+  color: #f4f4f4 !important;
+}
+[data-bs-theme=dark-contrast] main .details .badge.rank {
+  background-color: #393939;
+  color: #f4f4f4;
+}
+[data-bs-theme=dark-contrast] main .details .field-label {
+  border-bottom: 1px solid #c6c6c6;
+}
+[data-bs-theme=dark-contrast] main .name-list {
+  column-rule: 1px dotted rgba(255, 255, 255, 0.6);
+}
+[data-bs-theme=dark-contrast] main .report.table thead th,
+[data-bs-theme=dark-contrast] main .report.table tfoot th {
+  background-color: #393939;
+  color: #ffffff;
+}
+[data-bs-theme=dark-contrast] main .report.table tbody .filled {
+  background-color: #393939;
+}
+[data-bs-theme=dark-contrast] main .report.table .header-info {
+  border-bottom: 1px dotted #a7f0ba;
+}
+[data-bs-theme=dark-contrast] main .report.table td {
+  color: #f4f4f4 !important;
+}
+[data-bs-theme=dark-contrast] main .report.table td.score-higher, [data-bs-theme=dark-contrast] main .report.table td.score-tied {
+  color: #000000 !important;
+}
+
 [data-bs-theme=dark] body #skip-nav {
   color: #ffffff;
 }
