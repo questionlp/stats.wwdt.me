@@ -20,7 +20,7 @@
 
 - Upgraded Ruff from 0.13.3 to 0.14.14
 - Upgraded pytest from 8.4.1 to 9.0.2
-- Upgraded pytest-cov from 6.2.1
+- Upgraded pytest-cov from 6.2.1 to 7.0.0
 
 ## 6.12.2
 
