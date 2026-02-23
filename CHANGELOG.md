@@ -1,5 +1,16 @@
 # Changes
 
+## 6.13.1
+
+### Development Changes
+
+- Simplified the `runner.sh` and `runner-remote.sh` scripts used to run the Flask application for local development and testing
+
+### Component Changes
+
+- Upgraded @ibm/plex-serif from 1.1.0 to 2.0.0
+- Upgraded wwdtm-theme from 2.5.1 to 2.5.2
+
 ## 6.13.0
 
 ### Application Changes
