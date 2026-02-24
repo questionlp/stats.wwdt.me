@@ -1,5 +1,13 @@
 # Changes
 
+## 6.13.2
+
+**Note:** All Materialize-related files will be removed in the next minor release
+
+### Component Changes
+
+- Upgraded Flask from 3.1.2 to 3.1.3
+
 ## 6.13.1
 
 ### Development Changes
