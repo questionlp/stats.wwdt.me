@@ -5,11 +5,13 @@
 ### Application Changes
 
 - Added a field to the scoring statistics section of the Panelists Details view that lists the statistical mode or modes, if there is more than one mode
+- Added a link to the "[Scorekeeper Introductions](https://reports.wwdt.me/scorekeepers/scorekeepers-introductions)" report on the [Wait Wait Reports Site](https://reports.wwdt.me/) to the Scorekeeper Details view
 - Removed all Materialize-related CSS, JavaScript and web font files
 
 ### Component Changes
 
 - Upgraded wwdtm from 2.22.1 to 2.23.0
+- Upgraded wwdtm-theme from 2.5.2 to 2.5.4
 
 ## 6.13.2
 
