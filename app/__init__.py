@@ -107,6 +107,7 @@ def create_app() -> Flask:
     app.jinja_env.filters["markdown"] = utility.md_to_html
     app.jinja_env.filters["lstrip"] = str.lstrip
     app.jinja_env.filters["rstrip"] = str.rstrip
+    app.jinja_env.filters["join_decimals"] = utility.join_decimals
 
     # Register application blueprints
     app.register_blueprint(main_bp)

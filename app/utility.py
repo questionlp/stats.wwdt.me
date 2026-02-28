@@ -8,6 +8,7 @@
 import json
 import re
 from datetime import datetime
+from decimal import Decimal
 
 import markdown
 import pytz
@@ -32,6 +33,12 @@ def date_string_to_date(**kwargs) -> datetime | None:
         return date_object
 
     return None
+
+
+def join_decimals(decimals: list[Decimal], delimiter: str = ", ") -> str:
+    """Return a joined string of formatted decimals."""
+    normalized: list[str] = [str(Decimal.normalize(d)) for d in decimals]
+    return delimiter.join(normalized)
 
 
 def generate_date_time_stamp(time_zone: str = "UTC") -> str:

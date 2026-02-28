@@ -1,5 +1,16 @@
 # Changes
 
+## 6.14.0
+
+### Application Changes
+
+- Added a field to the scoring statistics section of the Panelists Details view that lists the statistical mode or modes, if there is more than one mode
+- Removed all Materialize-related CSS, JavaScript and web font files
+
+### Component Changes
+
+- Upgraded wwdtm from 2.22.1 to 2.23.0
+
 ## 6.13.2
 
 **Note:** All Materialize-related files will be removed in the next minor release

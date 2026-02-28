@@ -62,6 +62,15 @@
                     <li>Minimum / Maximum: {{ "{:f}".format(panelist.statistics.scoring_decimal.minimum.normalize()) }} / {{ "{:f}".format(panelist.statistics.scoring_decimal.maximum.normalize()) }}</li>
                     <li>Mean: {{ "{:f}".format(panelist.statistics.scoring_decimal.mean.normalize()) }}</li>
                     <li>Median: {{ "{:f}".format(panelist.statistics.scoring_decimal.median.normalize()) }}</li>
+                    {% if panelist.statistics.scoring_decimal.mode_multiple %}
+                        {% if panelist.statistics.scoring_decimal.mode_multiple | length > 1 %}
+                    <li>Modes: {{ panelist.statistics.scoring_decimal.mode_multiple | join_decimals(", ") }}</li>
+                        {% else %}
+                    <li>Mode: {{ panelist.statistics.scoring_decimal.mode.normalize() }}</li>
+                        {% endif %}
+                    {% else %}
+                        Mode: N/A
+                    {% endif %}
                     <li>Standard Deviation: {{ "{:f}".format(panelist.statistics.scoring_decimal.standard_deviation.normalize()) }}</li>
                     <li>Total: {{ "{:f}".format(panelist.statistics.scoring_decimal.total.normalize()) }}</li>
                 </ul>
@@ -70,6 +79,15 @@
                     <li>Minimum / Maximum: {{ panelist.statistics.scoring.minimum }} / {{ panelist.statistics.scoring.maximum }}</li>
                     <li>Mean: {{ panelist.statistics.scoring.mean }}</li>
                     <li>Median: {{ panelist.statistics.scoring.median }}</li>
+                    {% if panelist.statistics.scoring.mode_multiple %}
+                        {% if panelist.statistics.scoring.mode_multiple | length > 1 %}
+                    <li>Modes: {{ panelist.statistics.scoring.mode_multiple | join(", ") }}</li>
+                        {% else %}
+                    <li>Mode: {{ panelist.statistics.scoring.mode }}</li>
+                        {% endif %}
+                    {% else %}
+                        Mode: N/A
+                    {% endif %}
                     <li>Standard Deviation: {{ panelist.statistics.scoring.standard_deviation }}</li>
                     <li>Total: {{ panelist.statistics.scoring.total }}</li>
                 </ul>
