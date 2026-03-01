@@ -56,6 +56,17 @@
             </div>
         </div>
 
+        {% if not exclude_scorekeeper_report_links %}
+        <div class="row">
+            <div class="col-md-12">
+                <span class="field-label">Available Reports</span>
+                <ul class="report-links">
+                    <li><a href="{{ reports_url }}/scorekeepers/scorekeeper-introductions" target="_blank">Scorekeeper Introductions <i class="bi bi-box-arrow-up-right px-1" aria-hidden="true"></i></a></li>
+                </ul>
+            </div>
+        </div>
+        {% endif %}
+
         {% if not exclude_scorekeeper_appearances %}
         <div class="row">
             <div class="col-md-12 appearances">
