@@ -37,7 +37,7 @@ def date_string_to_date(**kwargs) -> datetime | None:
 
 def join_decimals(decimals: list[Decimal], delimiter: str = ", ") -> str:
     """Return a joined string of formatted decimals."""
-    normalized: list[str] = [str(Decimal.normalize(d)) for d in decimals]
+    normalized: list[str] = [f"{d.normalize():f}" for d in decimals]
     return delimiter.join(normalized)
 
 
