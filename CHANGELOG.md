@@ -10,7 +10,7 @@
 
 ### Component Changes
 
-- Upgraded wwdtm from 2.22.1 to 2.23.0
+- Upgraded wwdtm from 2.22.1 to 2.23.1
 - Upgraded wwdtm-theme from 2.5.2 to 2.5.4
 
 ## 6.13.2
