@@ -1,5 +1,15 @@
 # Changes
 
+## 6.14.1
+
+### Application Changes
+
+- Fixed the formatting for a panelist's single mode value in the Panelist Details view
+
+### Component Changes
+
+- Upgraded wwdtm-theme from 2.5.4 to 2.5.6
+
 ## 6.14.0
 
 ### Application Changes
