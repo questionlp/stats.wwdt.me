@@ -13051,6 +13051,11 @@ header .navbar ul#theme-dropdown button.dropdown-item {
 main {
   padding-top: 3.2rem;
 }
+main .dms-coordinates,
+main .score-exception,
+main .help-notes {
+  cursor: help;
+}
 main .p-3 {
   padding: 1.4rem !important;
 }
@@ -13194,11 +13199,6 @@ main .info .report-list .description {
 main .info .report-list p {
   line-height: initial;
   margin-bottom: 1.2rem;
-}
-main .info .dms-coordinates,
-main .info .score-exception,
-main .info .help-notes {
-  cursor: help;
 }
 main .info .dms-coordinates {
   margin-right: 0.4rem;

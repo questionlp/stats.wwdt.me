@@ -66,7 +66,7 @@
                         {% if panelist.statistics.scoring_decimal.mode_multiple | length > 1 %}
                     <li>Modes: {{ panelist.statistics.scoring_decimal.mode_multiple | join_decimals(", ") }}</li>
                         {% else %}
-                    <li>Mode: {{ panelist.statistics.scoring_decimal.mode.normalize() }}</li>
+                    <li>Mode: {{ "{:f}".format(panelist.statistics.scoring_decimal.mode.normalize()) }}</li>
                         {% endif %}
                     {% else %}
                         Mode: N/A
