@@ -13,4 +13,4 @@ def test_not_found(client: FlaskClient) -> None:
     """Testing errors.not_found."""
     response: TestResponse = client.get("/host/peter-seagull")
     assert response.status_code == 404
-    assert b"Not Found" in response.data
+    assert "Not Found" in response.text

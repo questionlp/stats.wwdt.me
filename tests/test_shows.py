@@ -14,8 +14,8 @@ def test_index(client: FlaskClient) -> None:
     """Testing shows.index."""
     response: TestResponse = client.get("/shows/")
     assert response.status_code == 200
-    assert b"Shows" in response.data
-    assert b"Random" in response.data
+    assert "Shows" in response.text
+    assert "Random" in response.text
 
 
 @pytest.mark.parametrize("date_string", ["2018-10-27"])
@@ -39,8 +39,8 @@ def test_year(client: FlaskClient, year: int) -> None:
     """Testing shows.year."""
     response: TestResponse = client.get(f"/shows/{year}")
     assert response.status_code == 200
-    assert b"January" in response.data
-    assert b"All Shows from" in response.data
+    assert "January" in response.text
+    assert "All Shows from" in response.text
 
 
 @pytest.mark.parametrize("year", [2018])
@@ -48,10 +48,10 @@ def test_year_all(client: FlaskClient, year: int) -> None:
     """Testing shows.year_all."""
     response: TestResponse = client.get(f"/shows/{year}/all")
     assert response.status_code == 200
-    assert b"Show Details" in response.data
-    assert b"Location" in response.data
-    assert b"Host" in response.data
-    assert b"Scorekeeper" in response.data
+    assert "Show Details" in response.text
+    assert "Location" in response.text
+    assert "Host" in response.text
+    assert "Scorekeeper" in response.text
 
 
 @pytest.mark.parametrize("year", [2008, 2010])
@@ -59,11 +59,11 @@ def test_year_best_ofs(client: FlaskClient, year: int) -> None:
     """Testing shows.year_best_ofs."""
     response: TestResponse = client.get(f"/shows/{year}/best-ofs")
     assert response.status_code == 200
-    assert b"Show Details" in response.data
-    assert b"Best Ofs" in response.data
-    assert b"Location" in response.data
-    assert b"Host" in response.data
-    assert b"Scorekeeper" in response.data
+    assert "Show Details" in response.text
+    assert "Best Ofs" in response.text
+    assert "Location" in response.text
+    assert "Host" in response.text
+    assert "Scorekeeper" in response.text
 
 
 @pytest.mark.parametrize("year, month", [(2018, 10)])
@@ -71,10 +71,10 @@ def test_year_month(client: FlaskClient, year: int, month: int) -> None:
     """Testing shows.year_month."""
     response: TestResponse = client.get(f"/shows/{year}/{month}")
     assert response.status_code == 200
-    assert b"Show Details" in response.data
-    assert b"Location" in response.data
-    assert b"Host" in response.data
-    assert b"Scorekeeper" in response.data
+    assert "Show Details" in response.text
+    assert "Location" in response.text
+    assert "Host" in response.text
+    assert "Scorekeeper" in response.text
 
 
 @pytest.mark.parametrize("year, month, day", [(2018, 10, 27)])
@@ -82,10 +82,10 @@ def test_year_month_day(client: FlaskClient, year: int, month: int, day: int) ->
     """Testing shows.year_month_day."""
     response: TestResponse = client.get(f"/shows/{year}/{month}/{day}")
     assert response.status_code == 200
-    assert b"Show Details" in response.data
-    assert b"Location" in response.data
-    assert b"Host" in response.data
-    assert b"Scorekeeper" in response.data
+    assert "Show Details" in response.text
+    assert "Location" in response.text
+    assert "Host" in response.text
+    assert "Scorekeeper" in response.text
 
 
 @pytest.mark.parametrize("year", [2008, 2010])
@@ -93,12 +93,12 @@ def test_year_repeat_best_ofs(client: FlaskClient, year: int) -> None:
     """Testing shows.year_repeat_best_ofs."""
     response: TestResponse = client.get(f"/shows/{year}/repeat-best-ofs")
     assert response.status_code == 200
-    assert b"Show Details" in response.data
-    assert b"Best Ofs" in response.data
-    assert b"Repeat:" in response.data
-    assert b"Location" in response.data
-    assert b"Host" in response.data
-    assert b"Scorekeeper" in response.data
+    assert "Show Details" in response.text
+    assert "Best Ofs" in response.text
+    assert "Repeat:" in response.text
+    assert "Location" in response.text
+    assert "Host" in response.text
+    assert "Scorekeeper" in response.text
 
 
 @pytest.mark.parametrize("year", [2008, 2010])
@@ -106,43 +106,43 @@ def test_year_repeats(client: FlaskClient, year: int) -> None:
     """Testing shows.year_repeats."""
     response: TestResponse = client.get(f"/shows/{year}/repeats")
     assert response.status_code == 200
-    assert b"Show Details" in response.data
-    assert b"Repeat:" in response.data
-    assert b"Location" in response.data
-    assert b"Host" in response.data
-    assert b"Scorekeeper" in response.data
+    assert "Show Details" in response.text
+    assert "Repeat:" in response.text
+    assert "Location" in response.text
+    assert "Host" in response.text
+    assert "Scorekeeper" in response.text
 
 
 def test_all(client: FlaskClient) -> None:
     """Testing shows._all."""
     response: TestResponse = client.get("/shows/all")
     assert response.status_code == 200
-    assert b"All Show Details" in response.data
-    assert b"show years" in response.data
-    assert b"Location" in response.data
-    assert b"Host" in response.data
-    assert b"Scorekeeper" in response.data
+    assert "All Show Details" in response.text
+    assert "show years" in response.text
+    assert "Location" in response.text
+    assert "Host" in response.text
+    assert "Scorekeeper" in response.text
 
 
 def test_best_ofs(client: FlaskClient) -> None:
     """Testing shows.best_ofs."""
     response: TestResponse = client.get("/shows/best-ofs")
     assert response.status_code == 200
-    assert b"Show Details: Best Ofs" in response.data
-    assert b"Location" in response.data
-    assert b"Host" in response.data
-    assert b"Scorekeeper" in response.data
+    assert "Show Details: Best Ofs" in response.text
+    assert "Location" in response.text
+    assert "Host" in response.text
+    assert "Scorekeeper" in response.text
 
 
 def test_on_this_day(client: FlaskClient) -> None:
     """Testing shows.on_this_day."""
     response: TestResponse = client.get("/shows/on-this-day")
     assert response.status_code == 200
-    assert b"Show Details" in response.data
-    assert b"On This Day" in response.data
-    assert b"Location" in response.data
-    assert b"Host" in response.data
-    assert b"Scorekeeper" in response.data
+    assert "Show Details" in response.text
+    assert "On This Day" in response.text
+    assert "Location" in response.text
+    assert "Host" in response.text
+    assert "Scorekeeper" in response.text
 
 
 def test_random(client: FlaskClient) -> None:
@@ -172,17 +172,17 @@ def test_repeat_best_ofs(client: FlaskClient) -> None:
     """Testing shows.repeat_best_ofs."""
     response: TestResponse = client.get("/shows/repeat-best-ofs")
     assert response.status_code == 200
-    assert b"Show Details: Repeat Best Ofs" in response.data
-    assert b"Location" in response.data
-    assert b"Host" in response.data
-    assert b"Scorekeeper" in response.data
+    assert "Show Details: Repeat Best Ofs" in response.text
+    assert "Location" in response.text
+    assert "Host" in response.text
+    assert "Scorekeeper" in response.text
 
 
 def test_repeats(client: FlaskClient) -> None:
     """Testing shows.repeats."""
     response: TestResponse = client.get("/shows/repeats")
     assert response.status_code == 200
-    assert b"Show Details: Repeats" in response.data
-    assert b"Location" in response.data
-    assert b"Host" in response.data
-    assert b"Scorekeeper" in response.data
+    assert "Show Details: Repeats" in response.text
+    assert "Location" in response.text
+    assert "Host" in response.text
+    assert "Scorekeeper" in response.text

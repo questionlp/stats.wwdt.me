@@ -15,8 +15,8 @@ def test_index(client: FlaskClient) -> None:
     """Testing scorekeepers.index."""
     response: TestResponse = client.get("/scorekeepers/")
     assert response.status_code == 200
-    assert b"Scorekeepers" in response.data
-    assert b"Random" in response.data
+    assert "Scorekeepers" in response.text
+    assert "Random" in response.text
 
 
 @pytest.mark.parametrize("scorekeeper_slug", ["bill-kurtis"])
@@ -24,9 +24,9 @@ def test_details(client: FlaskClient, scorekeeper_slug: str) -> None:
     """Testing scorekeepers.details."""
     response: TestResponse = client.get(f"/scorekeepers/{scorekeeper_slug}")
     assert response.status_code == 200
-    assert b"Scorekeeper Details" in response.data
-    assert b"DB ID" in response.data
-    assert b"Appearances" in response.data
+    assert "Scorekeeper Details" in response.text
+    assert "DB ID" in response.text
+    assert "Appearances" in response.text
 
 
 @pytest.mark.parametrize("scorekeeper_slug", ["Carl Kasell", "Chioke I'Anson"])
@@ -55,9 +55,9 @@ def test_all(client: FlaskClient) -> None:
     """Testing scorekeepers._all."""
     response: TestResponse = client.get("/scorekeepers/all")
     assert response.status_code == 200
-    assert b"Scorekeeper Details" in response.data
-    assert b"DB ID" in response.data
-    assert b"Appearances" in response.data
+    assert "Scorekeeper Details" in response.text
+    assert "DB ID" in response.text
+    assert "Appearances" in response.text
 
 
 def test_random(client: FlaskClient) -> None:
