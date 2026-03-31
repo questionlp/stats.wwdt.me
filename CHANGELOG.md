@@ -1,5 +1,18 @@
 # Changes
 
+## 6.15.0
+
+### Application Changes
+
+- Refactored how AI robots list is included in the rendered `robots.txt` file if the `block_ai_scrapers` application configuration key is set to `True`
+  - Added the `robots.ai.txt` file that contains the latest version of the `robots.txt` file from [ai-robots-txt/ai.robots.txt](https://github.com/ai-robots-txt/ai.robots.txt)
+  - When `block_ai_scrapers` is set to `True`, include `Content-Signal: ai-train=no, search=yes, ai-input=no` in the rendered `robots.txt` file
+  - When `block_ai_scrapers` is set to `False`, include `Content-Signal: search=yes` in the rendered `robots.txt` file
+
+### Development Changes
+
+- Changed tests to use `response.text` rather than `response.data` when checking contents of the page to remove the need to use `b""`
+
 ## 6.14.1
 
 ### Application Changes
