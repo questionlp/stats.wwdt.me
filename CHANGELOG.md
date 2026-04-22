@@ -1,5 +1,11 @@
 # Changes
 
+## 6.15.0-post0 (Non-Release)
+
+### Development Changes
+
+- Upgraded pytest from 9.0.2 to 9.0.3
+
 ## 6.15.0
 
 ### Application Changes
