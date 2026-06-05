@@ -95,12 +95,6 @@
                                 {% set start = "{:f}".format(panelist.lightning_round_start_decimal.normalize()) %}
                                 {% set correct = "{:f}".format(panelist.lightning_round_correct_decimal.normalize()) %}
                             {% endif %}
-                        {% elif panelist.score != None and panelist.lightning_round_start != None and panelist.lightning_round_correct != None %}
-                            {% set score = panelist.score %}
-                            {% set start = panelist.lightning_round_start %}
-                            {% set correct = panelist.lightning_round_correct %}
-                        {% elif panelist.score != None %}
-                            {% set score = panelist.score %}
                         {% endif %}
                         {% if panelist.rank %}
                             {% set rank = rank_map[panelist.rank] %}

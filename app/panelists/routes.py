@@ -60,7 +60,9 @@ def details(panelist_slug: str) -> Response | str:
 
     _details = panelist.retrieve_details_by_slug(
         panelist_slug,
-        use_decimal_scores=current_app.config["app_settings"]["use_decimal_scores"],
+        number_decimal_places=current_app.config["app_settings"][
+            "number_decimal_places"
+        ],
     )
     database_connection.close()
 
@@ -81,7 +83,9 @@ def _all() -> Response | str:
     database_connection = mysql.connector.connect(**current_app.config["database"])
     panelist = Panelist(database_connection=database_connection)
     panelists = panelist.retrieve_all_details(
-        use_decimal_scores=current_app.config["app_settings"]["use_decimal_scores"]
+        number_decimal_places=current_app.config["app_settings"][
+            "number_decimal_places"
+        ]
     )
     database_connection.close()
 

@@ -1,5 +1,17 @@
 # Changes
 
+## 6.16.0 (Work in Progress)
+
+### Application Changes
+
+- The Stats Page now requires panelist decimal score columns in the Wait Wait Stats Database
+  - Removed the `settings.use_decimal_scores` configuration key references and logic
+
+### Component Changes
+
+- Upgraded wwdtm from 2.23.1 to a minimum version of 3.2.0
+  - A version constraint is set to only allow versions starting from 3.2.0 but less than 3.3
+
 ## 6.15.0-post0 (Non-Release)
 
 ### Development Changes

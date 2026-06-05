@@ -19,6 +19,7 @@ norecursedirs = [
     "dist",
     ".eggs",
     "wwdtm.egg-info",
+    "node_modules"
 ]
 
 [tool.ruff]

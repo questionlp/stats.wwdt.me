@@ -82,9 +82,6 @@ def create_app() -> Flask:
     app.jinja_env.globals["github_sponsor_url"] = _config["settings"].get(
         "github_sponsor_url", ""
     )
-    app.jinja_env.globals["use_decimal_scores"] = _config["settings"][
-        "use_decimal_scores"
-    ]
     app.jinja_env.globals["display_location_map"] = _config["settings"][
         "display_location_map"
     ]

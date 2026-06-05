@@ -89,11 +89,6 @@ def load_config(
     # Read in setting to override locations sorting
     settings_config["sort_by_venue"] = bool(settings_config.get("sort_by_venue", False))
 
-    # Read in setting on whether to use decimal scores
-    settings_config["use_decimal_scores"] = bool(
-        settings_config.get("use_decimal_scores", False)
-    )
-
     # Read in Umami Analytics settings
     if "umami_analytics" in settings_config:
         _umami = dict(settings_config["umami_analytics"])
@@ -116,6 +111,17 @@ def load_config(
     settings_config["display_location_map"] = bool(
         settings_config.get("display_location_map", False)
     )
+
+    # Read in setting for number of decimal places when rounding
+    # panelist statistics values
+    try:
+        settings_config["number_decimal_places"] = int(
+            settings_config.get("number_decimal_places", 6)
+        )
+    except ValueError:
+        settings_config["number_decimal_places"] = 6
+    except TypeError:
+        settings_config["number_decimal_places"] = 6
 
     # Parse example objects
     _examples: dict[str, str] = settings_config.get("examples")
