@@ -6,6 +6,19 @@
 
 - The Stats Page now requires panelist decimal score columns in the Wait Wait Stats Database
   - Removed the `settings.use_decimal_scores` configuration key references and logic
+- Added `settings.scorekeeper_emeriti` configuration key that will contain a list of scorekeeper emeriti
+  - Currently, Carl Kasell has been the only scorekeeper granted the official rank of scorekeeper emeritus after he retired
+  - With Bill Kurtis' retirement, it is not yet known if he will also gain the official rank of scorekeeper emeritus as well
+- Changed the handling of the following configuration keys within `settings` to use `None` as the default value rather than an empty string and exclude links if they are `None` or empty
+  - `api_url`
+  - `blog_url`
+  - `graphs_url`
+  - `reports_url`
+  - `bluesky_url`
+  - `bluesky_user`
+  - `mastodon_url`
+  - `mastodon_user`
+  - `support_npr_url`
 
 ### Component Changes
 

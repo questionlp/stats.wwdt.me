@@ -10,10 +10,18 @@
                             <a href="{{ url_for('main.understanding_data') }}"
                             title="Understanding Wait Wait Stats Page Data">Stats Data</a>
                         </li>
+                        {% if api_url %}
                         <li><a href="{{ api_url }}" target="_blank">API</a></li>
+                        {% endif %}
+                        {% if blog_url %}
                         <li><a href="{{ blog_url }}" target="_blank">Blog</a></li>
+                        {% endif %}
+                        {% if graphs_url %}
                         <li><a href="{{ graphs_url }}" target="_blank">Graphs</a></li>
+                        {% endif %}
+                        {% if reports_url %}
                         <li><a href="{{ reports_url }}" target="_blank">Reports</a></li>
+                        {% endif %}
                         {% if support_npr_url %}
                         <li><a href="{{ support_npr_url }}" target="_blank">Support NPR</a></li>
                         {% endif %}

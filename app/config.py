@@ -107,11 +107,6 @@ def load_config(
             "enabled": False,
         }
 
-    # Read in setting on whether to display location map
-    settings_config["display_location_map"] = bool(
-        settings_config.get("display_location_map", False)
-    )
-
     # Read in setting for number of decimal places when rounding
     # panelist statistics values
     try:
@@ -122,6 +117,11 @@ def load_config(
         settings_config["number_decimal_places"] = 6
     except TypeError:
         settings_config["number_decimal_places"] = 6
+
+    # Read in setting for scorekeeper emeriti
+    scorekeeker_emeriti = settings_config.get("scorekeeper_emeriti", None)
+    if scorekeeker_emeriti and not isinstance(scorekeeker_emeriti, list):
+        scorekeeker_emeriti = None
 
     # Parse example objects
     _examples: dict[str, str] = settings_config.get("examples")
