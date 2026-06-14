@@ -30,6 +30,24 @@ def test_details(client: FlaskClient, location_slug: str) -> None:
     assert "Recordings" in response.text
 
 
+@pytest.mark.parametrize(
+    "location_slug, redirect_location_slug",
+    [
+        (
+            "comerica-theatre-phoenix-az",
+            "arizona-financial-theatre-comerica-theatre-phoenix-az",
+        )
+    ],
+)
+def test_details_url_redirect(
+    client: FlaskClient, location_slug: str, redirect_location_slug: str
+) -> None:
+    """Testing locations.details that includes a URL redirect."""
+    response: TestResponse = client.get(f"/locations/{location_slug}")
+    assert response.status_code in (301, 302)
+    assert redirect_location_slug in response.location
+
+
 def test_all(client: FlaskClient) -> None:
     """Testing locations._all."""
     response: TestResponse = client.get("/locations/all")

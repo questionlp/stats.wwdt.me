@@ -61,33 +61,34 @@ def create_app() -> Flask:
     app.jinja_env.globals["time_zone"] = _config["settings"]["time_zone"]
     app.jinja_env.globals["examples"] = _config["settings"]["examples"]
     app.jinja_env.globals["ga_property_code"] = _config["settings"].get(
-        "ga_property_code", ""
+        "ga_property_code", None
     )
     app.jinja_env.globals["umami"] = _config["settings"]["umami"]
-    app.jinja_env.globals["api_url"] = _config["settings"].get("api_url", "")
-    app.jinja_env.globals["blog_url"] = _config["settings"].get("blog_url", "")
-    app.jinja_env.globals["graphs_url"] = _config["settings"].get("graphs_url", "")
-    app.jinja_env.globals["reports_url"] = _config["settings"].get("reports_url", "")
+    app.jinja_env.globals["api_url"] = _config["settings"].get("api_url", None)
+    app.jinja_env.globals["blog_url"] = _config["settings"].get("blog_url", None)
+    app.jinja_env.globals["graphs_url"] = _config["settings"].get("graphs_url", None)
+    app.jinja_env.globals["reports_url"] = _config["settings"].get("reports_url", None)
     app.jinja_env.globals["site_url"] = _config["settings"].get("site_url", "")
-    app.jinja_env.globals["bluesky_url"] = _config["settings"].get("bluesky_url", "")
-    app.jinja_env.globals["bluesky_user"] = _config["settings"].get("bluesky_user", "")
-    app.jinja_env.globals["mastodon_url"] = _config["settings"].get("mastodon_url", "")
+    app.jinja_env.globals["bluesky_url"] = _config["settings"].get("bluesky_url", None)
+    app.jinja_env.globals["bluesky_user"] = _config["settings"].get(
+        "bluesky_user", None
+    )
+    app.jinja_env.globals["mastodon_url"] = _config["settings"].get(
+        "mastodon_url", None
+    )
     app.jinja_env.globals["mastodon_user"] = _config["settings"].get(
-        "mastodon_user", ""
+        "mastodon_user", None
     )
     app.jinja_env.globals["support_npr_url"] = _config["settings"].get(
-        "support_npr_url", ""
+        "support_npr_url", None
     )
-    app.jinja_env.globals["patreon_url"] = _config["settings"].get("patreon_url", "")
+    app.jinja_env.globals["patreon_url"] = _config["settings"].get("patreon_url", None)
     app.jinja_env.globals["github_sponsor_url"] = _config["settings"].get(
-        "github_sponsor_url", ""
+        "github_sponsor_url", None
     )
-    app.jinja_env.globals["use_decimal_scores"] = _config["settings"][
-        "use_decimal_scores"
-    ]
-    app.jinja_env.globals["display_location_map"] = _config["settings"][
-        "display_location_map"
-    ]
+    app.jinja_env.globals["display_location_map"] = bool(
+        _config["settings"].get("display_location_map", False)
+    )
     app.jinja_env.globals["block_ai_scrapers"] = bool(
         _config["settings"].get("block_ai_scrapers", False)
     )
@@ -96,6 +97,9 @@ def create_app() -> Flask:
     )
     app.jinja_env.globals["postal_abbreviations"] = dicts.postal_abbreviations(
         database_config=_config["database"]
+    )
+    app.jinja_env.globals["scorekeeper_emeriti"] = _config["settings"].get(
+        "scorekeeper_emeriti"
     )
 
     app.jinja_env.globals["node_name"] = (

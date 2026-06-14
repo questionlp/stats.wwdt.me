@@ -1,5 +1,48 @@
 # Changes
 
+## 6.16.0 (Work in Progress)
+
+### Application Changes
+
+- The Stats Page now requires panelist decimal score columns in the Wait Wait Stats Database
+  - Removed the `settings.use_decimal_scores` configuration key references and logic
+- Added `settings.scorekeeper_emeriti` configuration key that will contain a list of scorekeeper emeriti.
+  - Default value: `['carl-kasell']`
+  - Currently, Carl Kasell has been the only scorekeeper granted the official rank of scorekeeper emeritus after he retired
+  - With Bill Kurtis' retirement, it is not yet known if he will also gain the official rank of scorekeeper emeritus as well
+- Added `settings.number_decimal_places` configuration key that's used to set the number of decimal places panelist statistics will be rounded to. The default is `6`.
+  - The value is constrained to be between `0` and `20` to match the constraint used by the Wait Wait Stats Library
+- Changed the handling of the following configuration keys within `settings` to use `None` as the default value rather than an empty string and exclude links if they are `None` or empty
+  - `api_url`
+  - `blog_url`
+  - `graphs_url`
+  - `reports_url`
+  - `bluesky_url`
+  - `bluesky_user`
+  - `mastodon_url`
+  - `mastodon_user`
+  - `support_npr_url`
+- Fixed handling of ISO date format parsing for `shows.routes.year_month_day` when the request year, month and day match an ISO date listed under `shows.dates` within `url-redirects.json`
+- Updated `url-redirects.json` to include an incorrect spellings for Carl Kasell and Peter Sagal
+
+### Component Changes
+
+- Upgraded wwdtm from 2.23.1 to 3.2.0
+- Upgraded wwdtm-theme from 2.5.6 to 2.6.1
+  - Includes an upgrade of IBM Plex Mono from 1.1.0 to 2.5.0
+
+### Development Changes
+
+- Added URL redirection tests based on the key/value pairs from `url-redirects.json`
+  - `guests.details`
+  - `hosts.details`
+  - `locations.details`
+  - `panelists.details`
+  - `scorekeepers.details`
+  - `shows.date_string`
+  - `shows.year_month_day`
+- Changed the reference repository for the `wwdtm-theme` submodule from GitHub to Codeberg
+
 ## 6.15.0-post0 (Non-Release)
 
 ### Development Changes

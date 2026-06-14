@@ -9,7 +9,7 @@
 
     <div class="details">
         <div class="badges">
-            {% if scorekeeper.slug == 'carl-kasell' %}
+            {% if scorekeeper.slug in scorekeeper_emeriti %}
             <span class="badge emeritus">Scorekeeper Emeritus</span>
             {% endif %}
             <span class="badge db-id">DB ID: {{ scorekeeper.id }}</span>
@@ -56,7 +56,7 @@
             </div>
         </div>
 
-        {% if not exclude_scorekeeper_report_links %}
+        {% if not exclude_scorekeeper_report_links and reports_url %}
         <div class="row">
             <div class="col-md-12">
                 <span class="field-label">Available Reports</span>

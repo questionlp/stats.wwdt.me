@@ -54,9 +54,6 @@ def index() -> str:
         recent = show.retrieve_recent_details(
             include_days_ahead=days_ahead,
             include_days_back=days_back,
-            include_decimal_scores=current_app.config["app_settings"][
-                "use_decimal_scores"
-            ],
         )
         recent.reverse()
     except AttributeError:
@@ -93,7 +90,6 @@ def understanding_data() -> Response:
         year=_examples["show"].year,
         month=_examples["show"].month,
         day=_examples["show"].day,
-        include_decimal_scores=current_app.config["app_settings"]["use_decimal_scores"],
     )
 
     if all((_guest, _host, _location, _panelist, _show)):

@@ -1,4 +1,4 @@
 [submodule "wwdtm-theme"]
 	path = wwdtm-theme
-	url = https://github.com/questionlp/wwdtm-theme.git
-	branch = retro
+	url = https://codeberg.org/qlp/wwdtm-theme.git
+	branch = main

@@ -38,9 +38,7 @@ def best_ofs() -> Response:
     """View: Show Details for all Best Of shows."""
     database_connection = mysql.connector.connect(**current_app.config["database"])
     show = Show(database_connection=database_connection)
-    _best_ofs = show.retrieve_all_best_ofs_details(
-        include_decimal_scores=current_app.config["app_settings"]["use_decimal_scores"]
-    )
+    _best_ofs = show.retrieve_all_best_ofs_details()
     database_connection.close()
     if not _best_ofs:
         return redirect_url(url_for("main.index"))
@@ -149,12 +147,7 @@ def year_all(show_year: int) -> Response | str | Any:
 
     try:
         _date = date(year=show_year, month=1, day=1)
-        shows = show.retrieve_details_by_year(
-            year=_date.year,
-            include_decimal_scores=current_app.config["app_settings"][
-                "use_decimal_scores"
-            ],
-        )
+        shows = show.retrieve_details_by_year(year=_date.year)
 
         if not shows:
             return redirect_url(url_for("shows.index"))
@@ -183,12 +176,7 @@ def year_best_ofs(show_year: str | int) -> Response | str:
 
     try:
         _date = date(year=show_year, month=1, day=1)
-        shows = show.retrieve_best_ofs_details_by_year(
-            year=show_year,
-            include_decimal_scores=current_app.config["app_settings"][
-                "use_decimal_scores"
-            ],
-        )
+        shows = show.retrieve_best_ofs_details_by_year(year=show_year)
 
         if not shows:
             return redirect_url(url_for("shows.year", show_year=show_year))
@@ -217,13 +205,7 @@ def year_month(show_year: int, show_month: int) -> Response | str:
 
     try:
         _date = date(year=show_year, month=show_month, day=1)
-        shows = show.retrieve_details_by_year_month(
-            year=_date.year,
-            month=_date.month,
-            include_decimal_scores=current_app.config["app_settings"][
-                "use_decimal_scores"
-            ],
-        )
+        shows = show.retrieve_details_by_year_month(year=_date.year, month=_date.month)
 
         if not shows:
             return redirect_url(url_for("shows.year", show_year=show_year))
@@ -258,9 +240,7 @@ def year_month_day(show_year: int, show_month: int, show_day: int) -> Response |
         ]
         if _show_redirects and _date_iso in _show_redirects:
             if _show_redirects[_date_iso]:
-                _redirect_parsed_date = datetime.datetime(
-                    _show_redirects[_date_iso], "%Y-%m-%d"
-                )
+                _redirect_parsed_date = date.fromisoformat(_show_redirects[_date_iso])
                 return redirect(
                     url_for(
                         "shows.year_month_day",
@@ -281,9 +261,6 @@ def year_month_day(show_year: int, show_month: int, show_day: int) -> Response |
             year=_date.year,
             month=_date.month,
             day=_date.day,
-            include_decimal_scores=current_app.config["app_settings"][
-                "use_decimal_scores"
-            ],
         )
 
         if not details:
@@ -319,12 +296,7 @@ def year_repeat_best_ofs(show_year: str | int) -> Response | str:
 
     try:
         _date = date(year=show_year, month=1, day=1)
-        shows = show.retrieve_repeat_best_ofs_details_by_year(
-            year=_date.year,
-            include_decimal_scores=current_app.config["app_settings"][
-                "use_decimal_scores"
-            ],
-        )
+        shows = show.retrieve_repeat_best_ofs_details_by_year(year=_date.year)
 
         if not shows:
             return redirect_url(url_for("shows.year", show_year=_date.year))
@@ -353,12 +325,7 @@ def year_repeats(show_year: str | int) -> Response | str:
 
     try:
         _date = date(year=show_year, month=1, day=1)
-        shows = show.retrieve_repeats_details_by_year(
-            year=_date.year,
-            include_decimal_scores=current_app.config["app_settings"][
-                "use_decimal_scores"
-            ],
-        )
+        shows = show.retrieve_repeats_details_by_year(year=_date.year)
 
         if not shows:
             return redirect_url(url_for("shows.year", show_year=_date.year))
@@ -393,12 +360,7 @@ def _all() -> Response | str:
 
         _shows_by_year = {}
         for _year in show_years:
-            shows = show.retrieve_details_by_year(
-                year=_year,
-                include_decimal_scores=current_app.config["app_settings"][
-                    "use_decimal_scores"
-                ],
-            )
+            shows = show.retrieve_details_by_year(year=_year)
             _shows_by_year[_year] = shows
 
         return render_template(
@@ -419,11 +381,7 @@ def on_this_day() -> Response | str:
     database_connection = mysql.connector.connect(**current_app.config["database"])
     show = Show(database_connection=database_connection)
     today = date.today()
-    shows = show.retrieve_details_by_month_day(
-        month=today.month,
-        day=today.day,
-        include_decimal_scores=current_app.config["app_settings"]["use_decimal_scores"],
-    )
+    shows = show.retrieve_details_by_month_day(month=today.month, day=today.day)
     database_connection.close()
 
     if not shows:
@@ -498,9 +456,7 @@ def repeat_best_ofs() -> Response:
     """View: Show Details for all Repeat Best Of shows."""
     database_connection = mysql.connector.connect(**current_app.config["database"])
     show = Show(database_connection=database_connection)
-    _shows = show.retrieve_all_repeat_best_ofs_details(
-        include_decimal_scores=current_app.config["app_settings"]["use_decimal_scores"]
-    )
+    _shows = show.retrieve_all_repeat_best_ofs_details()
     database_connection.close()
     if not _shows:
         return redirect_url(url_for("main.index"))
@@ -517,9 +473,7 @@ def repeats() -> Response:
     """View: Show Details for all Repeat shows."""
     database_connection = mysql.connector.connect(**current_app.config["database"])
     show = Show(database_connection=database_connection)
-    _repeats = show.retrieve_all_repeats_details(
-        include_decimal_scores=current_app.config["app_settings"]["use_decimal_scores"]
-    )
+    _repeats = show.retrieve_all_repeats_details()
     database_connection.close()
     if not _repeats:
         return redirect_url(url_for("main.index"))
