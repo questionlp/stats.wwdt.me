@@ -28,7 +28,7 @@
 ### Component Changes
 
 - Upgraded wwdtm from 2.23.1 to 3.2.0
-- Upgraded wwdtm from 2.5.6 to 2.6.1
+- Upgraded wwdtm-theme from 2.5.6 to 2.6.1
   - Includes an upgrade of IBM Plex Mono from 1.1.0 to 2.5.0
 
 ### Development Changes
@@ -41,6 +41,7 @@
   - `scorekeepers.details`
   - `shows.date_string`
   - `shows.year_month_day`
+- Changed the reference repository for the `wwdtm-theme` submodule from GitHub to Codeberg
 
 ## 6.15.0-post0 (Non-Release)
 
