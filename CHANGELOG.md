@@ -23,6 +23,7 @@
   - `mastodon_user`
   - `support_npr_url`
 - Fixed handling of ISO date format parsing for `shows.routes.year_month_day` when the request year, month and day match an ISO date listed under `shows.dates` within `url-redirects.json`
+- Replaced GitHub repository URLs with Codeberg repository URLs for the Wait Wait Stats Project repositories that have migrated over to Codeberg
 - Updated `url-redirects.json` to include an incorrect spellings for Carl Kasell and Peter Sagal
 
 ### Component Changes

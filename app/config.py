@@ -49,10 +49,10 @@ def load_config(
     """Read configuration and database settings."""
     _config_file_path = Path(config_file_path)
     with _config_file_path.open(mode="r", encoding="utf-8") as config_file:
-        app_config = json.load(config_file)
+        app_config: dict[str, dict[str, Any]] = json.load(config_file)
 
-    database_config = app_config.get("database", None)
-    settings_config = app_config.get("settings", None)
+    database_config: dict[str, Any] | None = app_config.get("database")
+    settings_config: dict[str, Any] | None = app_config.get("settings")
 
     # Process database configuration settings
     if database_config:
@@ -93,7 +93,7 @@ def load_config(
 
     # Read in Umami Analytics settings
     if "umami_analytics" in settings_config:
-        _umami = dict(settings_config["umami_analytics"])
+        _umami: dict[str, Any] = dict(settings_config["umami_analytics"])
         settings_config["umami"] = {
             "enabled": bool(_umami.get("enabled", False)),
             "url": _umami.get("url"),
@@ -123,11 +123,11 @@ def load_config(
         settings_config["number_decimal_places"] = 6
 
     # Read in setting for scorekeeper emeriti
-    scorekeeker_emeriti = settings_config.get(
+    scorekeeker_emeriti: list[str] | Any = settings_config.get(
         "scorekeeper_emeriti", DEFAULT_SCOREKEEPER_EMERITI
     )
     if scorekeeker_emeriti and not isinstance(scorekeeker_emeriti, list):
-        scorekeeker_emeriti = DEFAULT_SCOREKEEPER_EMERITI
+        scorekeeker_emeriti: list[str] = DEFAULT_SCOREKEEPER_EMERITI
 
     # Parse example objects
     _examples: dict[str, str] = settings_config.get("examples")
@@ -160,7 +160,7 @@ def load_url_redirects(
     url_redirects_path: str = "url-redirects.json",
 ) -> dict[str, dict[str, str | None]]:
     """Read URL Redirect Settings."""
-    _redirects = copy.deepcopy(DEFAULT_URL_REDIRECTS)
+    _redirects: dict[str, dict[str, None]] = copy.deepcopy(DEFAULT_URL_REDIRECTS)
     _url_redirects_path = Path(url_redirects_path)
     if not _url_redirects_path.exists:
         return DEFAULT_URL_REDIRECTS
