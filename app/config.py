@@ -123,11 +123,13 @@ def load_config(
         settings_config["number_decimal_places"] = 6
 
     # Read in setting for scorekeeper emeriti
-    scorekeeker_emeriti: list[str] | Any = settings_config.get(
+    scorekeeper_emeriti: list[str] | Any = settings_config.get(
         "scorekeeper_emeriti", DEFAULT_SCOREKEEPER_EMERITI
     )
-    if scorekeeker_emeriti and not isinstance(scorekeeker_emeriti, list):
-        scorekeeker_emeriti: list[str] = DEFAULT_SCOREKEEPER_EMERITI
+    if scorekeeper_emeriti and not isinstance(scorekeeper_emeriti, list):
+        scorekeeper_emeriti: list[str] = DEFAULT_SCOREKEEPER_EMERITI
+
+    settings_config["scorekeeper_emeriti"] = scorekeeper_emeriti
 
     # Parse example objects
     _examples: dict[str, str] = settings_config.get("examples")
