@@ -8,7 +8,7 @@
   "license": "Apache-2.0",
   "private": true,
   "dependencies": {
-    "@ibm/plex-mono": "^1.1.0",
+    "@ibm/plex-mono": "^2.5.0",
     "@ibm/plex-sans": "^1.1.0",
     "@ibm/plex-serif": "^2.0.0"
   },
@@ -25,7 +25,7 @@
   },
   "lavamoat": {
     "allowScripts": {
-      "@ibm/plex-mono#1.1.0": false,
+      "@ibm/plex-mono#2.5.0": false,
       "@ibm/plex-sans#1.1.0": false,
       "@ibm/plex-serif#2.0.0": false,
       "@lavamoat/preinstall-always-fail#3.0.0": false

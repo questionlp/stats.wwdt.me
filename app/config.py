@@ -37,6 +37,8 @@ DEFAULT_URL_REDIRECTS: dict[str, dict[str, None]] = {
     },
 }
 
+DEFAULT_SCOREKEEPER_EMERITI: list[str] = ["carl-kasell"]
+
 
 def load_config(
     config_file_path: str = "config.json",
@@ -110,18 +112,22 @@ def load_config(
     # Read in setting for number of decimal places when rounding
     # panelist statistics values
     try:
-        settings_config["number_decimal_places"] = int(
-            settings_config.get("number_decimal_places", 6)
-        )
+        number_decimal_places = int(settings_config.get("number_decimal_places", 6))
+        if 0 <= number_decimal_places <= 20:
+            settings_config["number_decimal_places"] = number_decimal_places
+        else:
+            settings_config["number_decimal_places"] = 6
     except ValueError:
         settings_config["number_decimal_places"] = 6
     except TypeError:
         settings_config["number_decimal_places"] = 6
 
     # Read in setting for scorekeeper emeriti
-    scorekeeker_emeriti = settings_config.get("scorekeeper_emeriti", None)
+    scorekeeker_emeriti = settings_config.get(
+        "scorekeeper_emeriti", DEFAULT_SCOREKEEPER_EMERITI
+    )
     if scorekeeker_emeriti and not isinstance(scorekeeker_emeriti, list):
-        scorekeeker_emeriti = None
+        scorekeeker_emeriti = DEFAULT_SCOREKEEPER_EMERITI
 
     # Parse example objects
     _examples: dict[str, str] = settings_config.get("examples")

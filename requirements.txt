@@ -3,4 +3,4 @@ gunicorn==24.1.1
 Jinja2~=3.1.6
 Markdown==3.10.1
 
-wwdtm>=3.2.0, <3.3
+wwdtm==3.2.0

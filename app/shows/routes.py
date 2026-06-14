@@ -240,9 +240,7 @@ def year_month_day(show_year: int, show_month: int, show_day: int) -> Response |
         ]
         if _show_redirects and _date_iso in _show_redirects:
             if _show_redirects[_date_iso]:
-                _redirect_parsed_date = datetime.datetime(
-                    _show_redirects[_date_iso], "%Y-%m-%d"
-                )
+                _redirect_parsed_date = date.fromisoformat(_show_redirects[_date_iso])
                 return redirect(
                     url_for(
                         "shows.year_month_day",

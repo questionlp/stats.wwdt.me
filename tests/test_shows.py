@@ -34,6 +34,18 @@ def test_date_string_invalid_value(client: FlaskClient, date_string: str) -> Non
     assert response.location
 
 
+@pytest.mark.parametrize(
+    "date_string, redirect_date_string", [("2025-02-13", "2025/2/15")]
+)
+def test_date_string_url_redirect(
+    client: FlaskClient, date_string: str, redirect_date_string: str
+) -> None:
+    """Testing shows.date_string that includes a URL redirect."""
+    response: TestResponse = client.get(f"/shows/{date_string}")
+    assert response.status_code in (301, 302)
+    assert redirect_date_string in response.location
+
+
 @pytest.mark.parametrize("year", [2018])
 def test_year(client: FlaskClient, year: int) -> None:
     """Testing shows.year."""
@@ -86,6 +98,25 @@ def test_year_month_day(client: FlaskClient, year: int, month: int, day: int) ->
     assert "Location" in response.text
     assert "Host" in response.text
     assert "Scorekeeper" in response.text
+
+
+@pytest.mark.parametrize(
+    "year, month, day, redirect_year, redirect_month, redirect_day",
+    [(2025, 2, 13, 2025, 2, 15)],
+)
+def test_year_month_day_url_redirect(
+    client: FlaskClient,
+    year: int,
+    month: int,
+    day: int,
+    redirect_year: int,
+    redirect_month: int,
+    redirect_day: int,
+) -> None:
+    """Testing shows.year_month_day that includes a URL redirection."""
+    response: TestResponse = client.get(f"/shows/{year}/{month}/{day}")
+    assert response.status_code in (301, 302)
+    assert f"{redirect_year}/{redirect_month}/{redirect_day}" in response.location
 
 
 @pytest.mark.parametrize("year", [2008, 2010])
