@@ -1,6 +1,6 @@
 # Changes
 
-## 6.16.0 (Work in Progress)
+## 6.16.0
 
 ### Application Changes
 
@@ -42,7 +42,7 @@
   - `scorekeepers.details`
   - `shows.date_string`
   - `shows.year_month_day`
-- Changed the reference repository for the `wwdtm-theme` submodule from GitHub to Codeberg
+- Changed the repository URL from GitHub to Codeberg for the `wwdtm-theme` submodule
 
 ## 6.15.0-post0 (Non-Release)
 
