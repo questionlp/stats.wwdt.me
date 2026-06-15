@@ -1,7 +1,7 @@
 /*!
- * stats.wwdt.me (https://github.com/questionlp/stats.wwdt.me)
+ * stats.wwdt.me (https://codeberg.org/qlp/stats.wwdt.me)
  * Copyright 2018-2026 Linh Pham, Elijah Conners
- * Apache License 2.0 (https://github.com/questionlp/stats.wwdt.me/blob/main/LICENSE)
+ * Apache License 2.0 (https://codeberg.org/qlp/stats.wwdt.me/src/branch/main/LICENSE)
  */
 
 if (document.getElementById("map")) {

@@ -1,6 +1,6 @@
 # Wait Wait Don't Tell Me! Stats and Details Site
 
-**Note:** This project's repository has been renamed from `stats.wwdt.me_v5` to `stats.wwdt.me`. Please make sure that you update your `.git/config` accordingly. The `stats.wwdt.me_v5` repository on GitHub is now just a placeholder repository.
+**Note:** The authoritative version of this repository now resides on Codeberg as [stats.wwdt.me](https://codeberg.org/qlp/stats.wwdt.me) and mirrors changes to GitHub. Going forward, issues and pull requests should be created on Codeberg rather than GitHub.
 
 ## Overview
 

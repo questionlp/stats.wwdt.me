@@ -49,6 +49,18 @@ def test_details_slug_non_match_redirect(
     assert f"{_slug}" not in response.headers["Location"]
 
 
+@pytest.mark.parametrize(
+    "panelist_slug, redirect_panelist_slug", [("peter-segal", "peter-sagal")]
+)
+def test_details_url_redirect(
+    client: FlaskClient, panelist_slug: str, redirect_panelist_slug: str
+) -> None:
+    """Testing panelists.details that includes a URL redirect."""
+    response: TestResponse = client.get(f"/panelists/{panelist_slug}")
+    assert response.status_code in (301, 302)
+    assert redirect_panelist_slug in response.location
+
+
 def test_all(client: FlaskClient) -> None:
     """Testing panelists._all."""
     response: TestResponse = client.get("/panelists/all")

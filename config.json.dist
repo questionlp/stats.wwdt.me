@@ -44,13 +44,16 @@
         "github_sponsor_url": "",
         "support_npr_url": "",
         "sort_by_venue": false,
-        "use_decimal_scores": false,
         "display_location_map": false,
         "block_ai_scrapers": false,
         "use_minified_css": true,
         "location_placeholders": [
             3,
             38
-        ]
+        ],
+        "scorekeeper_emeriti": [
+            "carl-kasell"
+        ],
+        "number_decimal_places": 6
     }
 }

@@ -74,23 +74,6 @@
                     <li>Standard Deviation: {{ "{:f}".format(panelist.statistics.scoring_decimal.standard_deviation.normalize()) }}</li>
                     <li>Total: {{ "{:f}".format(panelist.statistics.scoring_decimal.total.normalize()) }}</li>
                 </ul>
-                {% elif panelist.statistics.scoring %}
-                <ul class="panelist-stats">
-                    <li>Minimum / Maximum: {{ panelist.statistics.scoring.minimum }} / {{ panelist.statistics.scoring.maximum }}</li>
-                    <li>Mean: {{ panelist.statistics.scoring.mean }}</li>
-                    <li>Median: {{ panelist.statistics.scoring.median }}</li>
-                    {% if panelist.statistics.scoring.mode_multiple %}
-                        {% if panelist.statistics.scoring.mode_multiple | length > 1 %}
-                    <li>Modes: {{ panelist.statistics.scoring.mode_multiple | join(", ") }}</li>
-                        {% else %}
-                    <li>Mode: {{ panelist.statistics.scoring.mode }}</li>
-                        {% endif %}
-                    {% else %}
-                        Mode: N/A
-                    {% endif %}
-                    <li>Standard Deviation: {{ panelist.statistics.scoring.standard_deviation }}</li>
-                    <li>Total: {{ panelist.statistics.scoring.total }}</li>
-                </ul>
                 {% else %}
                 <span class="data-na">N/A</span>
                 {% endif %}
@@ -139,7 +122,7 @@
             </div>
         </div>
 
-        {% if not exclude_panelist_graph_links %}
+        {% if not exclude_panelist_graph_links and graphs_url %}
         <div class="row">
             <div class="col-md-12">
                 <span class="field-label">Available Graphs</span>
@@ -165,12 +148,6 @@
                                 {% set start = "{:f}".format(appearance.lightning_round_start_decimal.normalize()) %}
                                 {% set correct = "{:f}".format(appearance.lightning_round_correct_decimal.normalize()) %}
                             {% endif %}
-                        {% elif appearance.score != None and appearance.lightning_round_start != None and appearance.lightning_round_correct != None %}
-                            {% set score = appearance.score %}
-                            {% set start = appearance.lightning_round_start %}
-                            {% set correct = appearance.lightning_round_correct %}
-                        {% elif appearance.score != None %}
-                            {% set score = appearance.score %}
                         {% endif %}
                         {% if appearance.rank %}
                             {% set rank = rank_map[appearance.rank] %}

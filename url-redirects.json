@@ -11,24 +11,33 @@
     },
     "hosts": {
         "slugs": {
+            "peter-segal": "peter-sagal",
             "robert-siegel": "robert-siegel-npr"
         }
     },
     "locations": {
         "slugs": {
             "comerica-theatre-phoenix-az": "arizona-financial-theatre-comerica-theatre-phoenix-az",
+            "savannah-civic-center-savannah-ga": "johnny-mercer-theatre-savannah-ga",
             "segerstrom-center-for-the-arts-costa-mesa-ca": "segerstrom-hall-at-the-segerstrom-center-for-the-arts-costa-mesa-ca",
             "segerstrom-concert-hall-costa-mesa-ca": "segerstrom-center-for-the-arts-costa-mesa-ca",
-            "wang-theatre-at-citi-performing-arts-center-boston-ma": "wang-theatre-boston-ma",
-            "savannah-civic-center-savannah-ga": "johnny-mercer-theatre-savannah-ga"
+            "wang-theatre-at-citi-performing-arts-center-boston-ma": "wang-theatre-boston-ma"
         }
     },
     "panelists": {
-        "slugs": null
+        "slugs": {
+            "peter-segal": "peter-sagal"
+        }
     },
     "scorekeepers": {
         "slugs": {
+            "carl-casal": "carl-kasell",
+            "carl-casell": "carl-kasell",
+            "carl-kasal": "carl-kasell",
+            "carl-kassal": "carl-kasell",
+            "carl-kassel": "carl-kasell",
             "che-kweku": "che-rhymefest-smith",
+            "karl-kasell": "carl-kasell",
             "robert-siegel": "robert-siegel-npr"
         }
     },

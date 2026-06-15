@@ -1,0 +1,18 @@
+# EditorConfig File
+root = true
+
+[*]
+end_of_line = lf
+insert_final_newline = true
+
+[*.{css,html,json,py,rst,tmpl,md}]
+indent_size = 4
+indent_style = space
+charset = utf-8
+
+[{package,package-lock}.json]
+indent_size = 2
+
+[*.xml]
+indent_size = 2
+indent_style = space

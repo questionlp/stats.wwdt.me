@@ -49,8 +49,12 @@
         Wait Stats Database. This database ID does not represent the show number
         or the proper order of all shows. Instead, the database ID is useful for
         querying the Wait Wait Stats data via the
+        {% if api_url %}
         <a href="{{ api_url }}" target="_blank">Wait Wait Stats API
         <i class="bi bi-box-arrow-up-right px-1" aria-hidden="true"></i></a>.
+        {% else %}
+        Wait Wait Stats API.
+        {% endif %}
     </p>
     <p>
         Additional badges will appear to denote Best Of and repeat shows. The
