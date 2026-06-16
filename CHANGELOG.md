@@ -1,5 +1,13 @@
 # Changes
 
+## 6.16.0-post.0 (Non-Release)
+
+### Development Changes
+
+- The following changes were introduced in version 6.16.0, but were not mentioned in this document
+  - Upgraded Ruff from 0.14.14 to 0.15.6
+    - Version 0.15.6 was chosen as it was released before Astral announced that they had joined OpenAI
+
 ## 6.16.0
 
 ### Application Changes
