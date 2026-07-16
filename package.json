@@ -19,16 +19,9 @@
     "copy-icons": "cp -r wwdtm-theme/dist/bootstrap-icons app/static/",
     "copy-all": "npm run copy-css && npm run copy-fonts && npm run copy-js && npm run copy-icons"
   },
-  "devDependencies": {
-    "@lavamoat/allow-scripts": "^5.0.2",
-    "@lavamoat/preinstall-always-fail": "^3.0.0"
-  },
-  "lavamoat": {
-    "allowScripts": {
-      "@ibm/plex-mono#2.5.0": false,
-      "@ibm/plex-sans#1.1.0": false,
-      "@ibm/plex-serif#2.0.0": false,
-      "@lavamoat/preinstall-always-fail#3.0.0": false
-    }
+  "allowScripts": {
+    "@ibm/plex-mono#2.5.0": false,
+    "@ibm/plex-sans#1.1.0": false,
+    "@ibm/plex-serif#2.0.0": false
   }
 }
