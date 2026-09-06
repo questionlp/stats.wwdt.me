@@ -11,6 +11,6 @@ from werkzeug.test import TestResponse
 
 def test_not_found(client: FlaskClient) -> None:
     """Testing errors.not_found."""
-    response: TestResponse = client.get("/host/peter-seagull")
+    response: TestResponse = client.get("/host/a/peter-seagull")
     assert response.status_code == 404
     assert "Not Found" in response.text

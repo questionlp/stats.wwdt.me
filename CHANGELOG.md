@@ -1,5 +1,24 @@
 # Changes
 
+## 6.17.0
+
+### Application Changes
+
+- Added new redirect routes for variations of core routes and blueprints
+  - `/guest/<guest_slug>` redirects to `/guests/<guest_slug>`
+  - `/host/<host_slug>` redirects to `/hosts/<host_slug>`
+  - `/location/<location_slug>` redirects to `/locations/<location_slug>`
+  - `/panelist/<panelist_slug>` redirects to `/panelists/<panelist_slug>`
+  - `/scorekeeper/<scorekeeper_slug>` redirects to `/scorekeepers/<scorekeeper_slug>`
+  - `/show/<iso_date_string>` redirects to `/shows/<iso_date_string>`
+  - `/show/<year>` redirects to `/shows/<year>`
+  - `/show/<year>/<month>` redirects to `/shows/<year>/<month>`
+  - `/show/<year>/<month>/<day>` redirects to `/shows/<year>/<month>/<day>`
+
+### Development Changes
+
+- Added tests for the new redirect routes and missing panelist redirect routes
+
 ## 6.16.0-post.0 (Non-Release)
 
 ### Development Changes
