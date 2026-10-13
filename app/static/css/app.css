@@ -13301,12 +13301,10 @@ main .details .badge.npr-link a i {
 main .details .badge.npr-link a .bi-box-arrow-up-right::before {
   color: inherit !important;
 }
-main .details .badge.social {
-  padding: 0rem 0.3rem;
-}
 main .details .badge.social a {
   border-bottom: none;
   color: #161616 !important;
+  font-size: initial !important;
   text-decoration: none;
 }
 main .details .badge.repeat {

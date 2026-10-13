@@ -11,13 +11,14 @@
   - Use Bootstrap Icons for corresponding social media networks wherever possible
   - If there are not corresponding icon from Bootstrap Icons for a social media network, use a generic link icon instead
   - Add filters for determining which Bootstrap Icon to use and to format the account name displayed in the tooltip
+- Added `utility.format_social_account_name` and `utility.format_social_network_icon` functions for the `format_social_account` and `format_social_icon` Jinja filters
 
 ### Component Changes
 
 - Upgraded gunicorn from 24.1.1 to 26.2.0
 - Upgraded Markdown from 3.10.1 to 3.11
 - Upgraded wwdtm from 3.2.0 to 3.3.0
-- Upgraded wwdtm-theme from 2.6.1 to 2.6.6
+- Upgraded wwdtm-theme from 2.6.1 to 2.6.7
 
 ### Development Changes
 

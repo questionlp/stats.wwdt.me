@@ -81,6 +81,17 @@ def redirect_url(url: str, status_code: int = 302):
     return response
 
 
+def format_social_account_name(username: str, network_slug: str) -> str:
+    """Returns a formatted social media account name."""
+    match network_slug:
+        case "facebook" | "tumblr":
+            return username
+        case "reddit":
+            return f"u/{username.removeprefix('u/')}"
+        case _:
+            return f"@{username.removeprefix('@')}"
+
+
 def format_social_network_icon(network_slug: str) -> str:
     """Returns a formatted social network icon name."""
     bootstrap_icons: list[str] = [
@@ -99,17 +110,6 @@ def format_social_network_icon(network_slug: str) -> str:
         return f"bi-{network_slug}"
     else:
         return "bi-link-45deg"
-
-
-def format_social_account_name(username: str, network_slug: str) -> str:
-    """Returns a formatted social media account name."""
-    match network_slug:
-        case "facebook" | "tumblr":
-            return username
-        case "reddit":
-            return f"u/{username.removeprefix('u/')}"
-        case _:
-            return f"@{username.removeprefix('@')}"
 
 
 def time_zone_parser(time_zone: str) -> tuple:
