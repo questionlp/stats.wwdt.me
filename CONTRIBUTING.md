@@ -22,7 +22,7 @@ All new feature development is handled off of the `develop` branch, which in tur
 
 ## Pull Requests
 
-Once the new branch has been published to GitHub, the next step will be to create a new pull request to merge the new branch with the `main` branch for production bugfixes or the `develop` branch for new features.
+Once the new branch has been published to Codeberg, the next step will be to create a new pull request to merge the new branch with the `main` branch for production bugfixes or the `develop` branch for new features.
 
 After creating the pull request, it will go through a review and the request will either be accepted or declined based on needs, code quality, testing problems or any other reason that will be included in the commit message or request declined message.
 
