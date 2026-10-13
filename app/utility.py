@@ -48,7 +48,7 @@ def generate_date_time_stamp(time_zone: str = "UTC") -> str:
     return now.strftime("%Y-%m-%d %H:%M:%S %Z")
 
 
-def md_to_html(markdown_text: str):
+def md_to_html(markdown_text: str) -> str:
     """Converts Markdown text into HTML."""
     html_text = markdown.markdown(markdown_text, output_format="html")
     site_url = current_app.jinja_env.globals["site_url"]
@@ -61,7 +61,7 @@ def md_to_html(markdown_text: str):
     return updated_html
 
 
-def pretty_jsonify(data):
+def pretty_jsonify(data) -> str:
     """Returns a prettified JSON output of the data."""
     return json.dumps(data, indent=2)
 
@@ -79,6 +79,37 @@ def redirect_url(url: str, status_code: int = 302):
     response.headers["Expires"] = 0
     response.headers["Location"] = url
     return response
+
+
+def format_social_network_icon(network_slug: str) -> str:
+    """Returns a formatted social network icon name."""
+    bootstrap_icons: list[str] = [
+        "bluesky",
+        "facebook",
+        "instagram",
+        "mastodon",
+        "threads",
+        "tiktok",
+        "twitter-x",
+        "youtube",
+        "reddit",
+    ]
+
+    if network_slug in bootstrap_icons:
+        return f"bi-{network_slug}"
+    else:
+        return "bi-link-45deg"
+
+
+def format_social_account_name(username: str, network_slug: str) -> str:
+    """Returns a formatted social media account name."""
+    match network_slug:
+        case "facebook" | "tumblr":
+            return username
+        case "reddit":
+            return f"u/{username.removeprefix('u/')}"
+        case _:
+            return f"@{username.removeprefix('@')}"
 
 
 def time_zone_parser(time_zone: str) -> tuple:

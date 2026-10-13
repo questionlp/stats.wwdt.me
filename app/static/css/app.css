@@ -13159,6 +13159,7 @@ main .info .data-tbd {
 }
 main .info .location-list,
 main .info .name-list,
+main .info .pack-list,
 main .info .page-list,
 main .info .report-list,
 main .info .show-list {
@@ -13168,6 +13169,7 @@ main .info .show-list {
 }
 main .info .location-list i,
 main .info .name-list i,
+main .info .pack-list i,
 main .info .page-list i,
 main .info .report-list i,
 main .info .show-list i {
@@ -13175,6 +13177,7 @@ main .info .show-list i {
 }
 main .info .location-list li,
 main .info .name-list li,
+main .info .pack-list li,
 main .info .page-list li,
 main .info .report-list li,
 main .info .show-list li {
@@ -13182,6 +13185,7 @@ main .info .show-list li {
 }
 main .info .location-list a.disabled-link,
 main .info .name-list a.disabled-link,
+main .info .pack-list a.disabled-link,
 main .info .page-list a.disabled-link,
 main .info .report-list a.disabled-link,
 main .info .show-list a.disabled-link {
@@ -13296,6 +13300,14 @@ main .details .badge.npr-link a i {
 }
 main .details .badge.npr-link a .bi-box-arrow-up-right::before {
   color: inherit !important;
+}
+main .details .badge.social {
+  padding: 0rem 0.3rem;
+}
+main .details .badge.social a {
+  border-bottom: none;
+  color: #161616 !important;
+  text-decoration: none;
 }
 main .details .badge.repeat {
   background-color: rgb(255, 242.6, 205.4);
@@ -13683,6 +13695,7 @@ th {
   --bs-font-sans-serif: IBM Plex Serif, Georgia, Times, serif, Apple Color Emoji, Segoe UI Emoji, Noto Color Emoji;
   --bs-focus-ring-opacity: 1;
   --bs-focus-ring-color: #0099ff;
+  --bs-link-color: #0000ff;
 }
 [data-bs-theme=retro] body {
   background-color: #c0c0c0;
@@ -13853,6 +13866,9 @@ th {
   --bs-tooltip-bg: #0000ff;
   --bs-tooltip-color: #ffffff;
 }
+[data-bs-theme=retro] .nav-tabs .nav-link:hover {
+  color: #0000ff;
+}
 [data-bs-theme=retro] footer .links {
   background-color: #003399 !important;
 }
@@ -13871,6 +13887,7 @@ th {
   --bs-font-sans-serif: IBM Plex Sans, Helvetica Neue, system-ui, -apple-system, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Noto Color Emoji;
   --bs-table-color: #f4f4f4;
   --bs-accordion-btn-color: #f4f4f4;
+  --bs-nav-tabs-link-active-color: #f4f4f4;
 }
 [data-bs-theme=dark-contrast] body {
   background-color: #000000;
@@ -13928,7 +13945,11 @@ th {
 [data-bs-theme=dark-contrast] main .details .badge.is-guest,
 [data-bs-theme=dark-contrast] main .details .badge.is-host,
 [data-bs-theme=dark-contrast] main .details .badge.is-panelist,
-[data-bs-theme=dark-contrast] main .details .badge.is-scorekeeper {
+[data-bs-theme=dark-contrast] main .details .badge.is-scorekeeper,
+[data-bs-theme=dark-contrast] main .details .badge.social {
+  color: #f4f4f4 !important;
+}
+[data-bs-theme=dark-contrast] main .details .badge.social a {
   color: #f4f4f4 !important;
 }
 [data-bs-theme=dark-contrast] main .details .badge.rank {
@@ -13958,6 +13979,9 @@ th {
 [data-bs-theme=dark-contrast] main .report.table td.score-higher, [data-bs-theme=dark-contrast] main .report.table td.score-tied {
   color: #000000 !important;
 }
+[data-bs-theme=dark-contrast] main .nav-tabs .nav-link.active {
+  color: #f4f4f4;
+}
 
 [data-bs-theme=dark] body #skip-nav {
   color: #ffffff;
@@ -13985,7 +14009,11 @@ th {
 [data-bs-theme=dark] main .details .badge.is-guest,
 [data-bs-theme=dark] main .details .badge.is-host,
 [data-bs-theme=dark] main .details .badge.is-panelist,
-[data-bs-theme=dark] main .details .badge.is-scorekeeper {
+[data-bs-theme=dark] main .details .badge.is-scorekeeper,
+[data-bs-theme=dark] main .details .badge.social {
+  color: #f4f4f4 !important;
+}
+[data-bs-theme=dark] main .details .badge.social a {
   color: #f4f4f4 !important;
 }
 [data-bs-theme=dark] main .details .badge.rank {

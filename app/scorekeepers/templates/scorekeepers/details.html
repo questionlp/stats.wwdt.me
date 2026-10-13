@@ -25,6 +25,16 @@
             {% if scorekeeper.is_panelist %}
             <span class="badge is-panelist">Panelist: <a href="{{ url_for('panelists.details', panelist_slug=scorekeeper.slug) }}">{{ scorekeeper.name }}<i class="bi bi-arrow-right" aria-hidden="true"></i></a></span>
             {% endif %}
+            {% if scorekeeper.social_media_accounts %}
+            <span class="ps-1">
+                {% for account in scorekeeper.social_media_accounts %}
+                <span class="badge social" data-bs-toggle="tooltip" data-bs-custom-class="ww-tooltip"
+                    title="{{ account.network }}: {{ account.account | format_social_account(account.network_slug) }}">
+                    <a href="{{ account.url }}" target="_blank"><i class="bi {{ account.network_slug | format_social_icon }}"></i></a>
+                </span>
+                {% endfor %}
+            </span>
+            {% endif %}
         </div>
 
         <div class="row">
