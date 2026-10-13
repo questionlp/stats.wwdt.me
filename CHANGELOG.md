@@ -17,7 +17,7 @@
 - Upgraded gunicorn from 24.1.1 to 26.2.0
 - Upgraded Markdown from 3.10.1 to 3.11
 - Upgraded wwdtm from 3.2.0 to 3.3.0
-- Upgraded wwdtm-theme from 2.6.1 to 2.6.5
+- Upgraded wwdtm-theme from 2.6.1 to 2.6.6
 
 ### Development Changes
 
