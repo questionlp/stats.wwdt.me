@@ -1,5 +1,33 @@
 # Changes
 
+## 6.18.0
+
+### Application Changes
+
+**Note:** The minimum version of the Wait Wait Stats Database is now 4.8.0
+
+- Added social media account icons to Host, Panelists and Scorekeeper details pages
+  - The name of the social media network and formatted account name is displayed when hovering over the icon badge
+  - Use Bootstrap Icons for corresponding social media networks wherever possible
+  - If there are not corresponding icon from Bootstrap Icons for a social media network, use a generic link icon instead
+  - Add filters for determining which Bootstrap Icon to use and to format the account name displayed in the tooltip
+- Added `utility.format_social_account_name` and `utility.format_social_network_icon` functions for the `format_social_account` and `format_social_icon` Jinja filters
+
+### Component Changes
+
+- Upgraded gunicorn from 24.1.1 to 26.2.0
+- Upgraded Markdown from 3.10.1 to 3.11
+- Upgraded wwdtm from 3.2.0 to 3.3.0
+- Upgraded wwdtm-theme from 2.6.1 to 2.6.7
+
+### Development Changes
+
+- Upgraded pydoclint from 0.8.4 to 0.11.0
+- Upgraded pytest from 9.0.3 to 9.1.1
+- Upgraded pytest-cov from 7.0.0 to 7.1.0
+- Upgraded ruff from 0.15.6 to 0.17.0
+  - Minimum version of ruff in `pyproject.toml` has been increased to 0.17.0 to match
+
 ## 6.17.1
 
 ### Application Changes

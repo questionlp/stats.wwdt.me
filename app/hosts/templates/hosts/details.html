@@ -22,6 +22,19 @@
             {% if host.is_scorekeeper %}
             <span class="badge is-scorekeeper">Scorekeeper: <a href="{{ url_for('scorekeepers.details', scorekeeper_slug=host.slug) }}">{{ host.name }}<i class="bi bi-arrow-right" aria-hidden="true"></i></a></span>
             {% endif %}
+            {% if host.social_media_accounts %}
+            <span class="ps-0 ps-sm-1 py-3 py-sm-0 d-block d-sm-inline" id="social-accounts-icons">
+                {% for account in host.social_media_accounts %}
+                {% set account_title %}{{ account.network }}: {{ account.account | format_social_account(account.network_slug) }}{% endset %}
+                <span class="badge social pe-3 pe-sm-1" data-bs-toggle="tooltip" data-bs-custom-class="ww-tooltip" title="{{ account_title }}">
+                    <a href="{{ account.url }}" target="_blank">
+                        <i class="bi {{ account.network_slug | format_social_icon }}" aria-hidden="true"></i>
+                        <span class="d-none">{{ account_title }}</span>
+                    </a>
+                </span>
+                {% endfor %}
+            </span>
+            {% endif %}
         </div>
 
         <div class="row">

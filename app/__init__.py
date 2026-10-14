@@ -105,6 +105,8 @@ def create_app() -> Flask:
     app.jinja_env.filters["markdown"] = utility.md_to_html
     app.jinja_env.filters["lstrip"] = str.lstrip
     app.jinja_env.filters["rstrip"] = str.rstrip
+    app.jinja_env.filters["format_social_account"] = utility.format_social_account_name
+    app.jinja_env.filters["format_social_icon"] = utility.format_social_network_icon
     app.jinja_env.filters["join_decimals"] = utility.join_decimals
 
     # Register application blueprints
