@@ -92,26 +92,6 @@ def format_social_account_name(username: str, network_slug: str) -> str:
             return f"@{username.removeprefix('@')}"
 
 
-def format_social_network_icon(network_slug: str) -> str:
-    """Returns a formatted social network icon name."""
-    bootstrap_icons: list[str] = [
-        "bluesky",
-        "facebook",
-        "instagram",
-        "mastodon",
-        "threads",
-        "tiktok",
-        "twitter-x",
-        "youtube",
-        "reddit",
-    ]
-
-    if network_slug in bootstrap_icons:
-        return f"bi-{network_slug}"
-    else:
-        return "bi-link-45deg"
-
-
 def time_zone_parser(time_zone: str) -> tuple:
     """Parses a time zone name into a pytz.timezone object.
 

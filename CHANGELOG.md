@@ -1,5 +1,26 @@
 # Changes
 
+## 6.19.0
+
+### Application Changes
+
+**Note:** The minimum version of the Wait Wait Stats Database is now 4.9.0
+
+- Migrated from using social media account information to external sites information for Host, Panelist and Scorekeeper details pages
+  - External sites links can also include links to non-social media websites, including Wikipedia
+  - For external sites that do not include value for the icon, a generic link icon is used instead
+- Removed `utility.format_social_network_icon` as it is no longer required
+
+### Component Changes
+
+- Upgraded wwdtm from 3.3.0 to 3.4.4
+- Upgraded wwdtm-theme from 2.6.7 to 2.6.9
+  - Includes upgrading Bootstrap Icons from 1.13.1 to 1.13.2
+
+### Development Changes
+
+- The minimum version of pytest in `pyproject.toml` has been increased from 8.4 to 9.0
+
 ## 6.18.0
 
 ### Application Changes

@@ -13301,7 +13301,8 @@ main .details .badge.npr-link a i {
 main .details .badge.npr-link a .bi-box-arrow-up-right::before {
   color: inherit !important;
 }
-main .details .badge.social a {
+main .details .badge.social a,
+main .details .badge.external-sites a {
   border-bottom: none;
   color: #161616 !important;
   font-size: initial !important;
@@ -13368,7 +13369,8 @@ main .details .panelist-info ul,
 main .details .guest-info ul {
   line-height: 2;
 }
-main .details .graph-links, main .details .graph-list .report-links {
+main .details .graph-links,
+main .details .graph-list .report-links {
   column-count: 2;
   column-fill: balance;
   column-rule: none;
@@ -13944,10 +13946,12 @@ th {
 [data-bs-theme=dark-contrast] main .details .badge.is-host,
 [data-bs-theme=dark-contrast] main .details .badge.is-panelist,
 [data-bs-theme=dark-contrast] main .details .badge.is-scorekeeper,
-[data-bs-theme=dark-contrast] main .details .badge.social {
+[data-bs-theme=dark-contrast] main .details .badge.social,
+[data-bs-theme=dark-contrast] main .details .badge.external-sites {
   color: #f4f4f4 !important;
 }
-[data-bs-theme=dark-contrast] main .details .badge.social a {
+[data-bs-theme=dark-contrast] main .details .badge.social a,
+[data-bs-theme=dark-contrast] main .details .badge.external-sites a {
   color: #f4f4f4 !important;
 }
 [data-bs-theme=dark-contrast] main .details .badge.rank {
@@ -13974,7 +13978,8 @@ th {
 [data-bs-theme=dark-contrast] main .report.table td {
   color: #f4f4f4 !important;
 }
-[data-bs-theme=dark-contrast] main .report.table td.score-higher, [data-bs-theme=dark-contrast] main .report.table td.score-tied {
+[data-bs-theme=dark-contrast] main .report.table td.score-higher,
+[data-bs-theme=dark-contrast] main .report.table td.score-tied {
   color: #000000 !important;
 }
 [data-bs-theme=dark-contrast] main .nav-tabs .nav-link.active {
@@ -14008,10 +14013,12 @@ th {
 [data-bs-theme=dark] main .details .badge.is-host,
 [data-bs-theme=dark] main .details .badge.is-panelist,
 [data-bs-theme=dark] main .details .badge.is-scorekeeper,
-[data-bs-theme=dark] main .details .badge.social {
+[data-bs-theme=dark] main .details .badge.social,
+[data-bs-theme=dark] main .details .badge.external-sites {
   color: #f4f4f4 !important;
 }
-[data-bs-theme=dark] main .details .badge.social a {
+[data-bs-theme=dark] main .details .badge.social a,
+[data-bs-theme=dark] main .details .badge.badge.external-sites a {
   color: #f4f4f4 !important;
 }
 [data-bs-theme=dark] main .details .badge.rank {
@@ -14103,7 +14110,9 @@ th {
     font-weight: 600;
     padding-bottom: 0.6rem;
   }
-  main .details .graph-links, main .details .graph-list, main .details .report-links {
+  main .details .graph-links,
+  main .details .graph-list,
+  main .details .report-links {
     column-count: 1;
   }
   main .info .name-list {
