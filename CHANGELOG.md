@@ -2,6 +2,10 @@
 
 ## 6.19.1
 
+### Application Changes
+
+- Adjusted the padding for the Disclaimer and AI Policy links in the footer
+
 ### Component Changes
 
 - Upgraded gunicorn from 26.2.0 to 27.0.1
