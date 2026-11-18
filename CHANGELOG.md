@@ -1,5 +1,13 @@
 # Changes
 
+## 6.19.1
+
+### Component Changes
+
+- Upgraded gunicorn from 26.2.0 to 27.0.1
+- Upgraded wwdtm-theme from 2.6.9 to 2.7.0
+  - Includes upgrading Bootstrap from 5.3.8 to 5.3.9
+
 ## 6.19.0
 
 ### Application Changes
