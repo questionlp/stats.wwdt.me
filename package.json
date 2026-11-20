@@ -9,7 +9,7 @@
   "private": true,
   "dependencies": {
     "@ibm/plex-mono": "^2.5.0",
-    "@ibm/plex-sans": "^1.1.0",
+    "@ibm/plex-sans": "^2.0.0",
     "@ibm/plex-serif": "^2.0.0"
   },
   "scripts": {
@@ -21,7 +21,7 @@
   },
   "allowScripts": {
     "@ibm/plex-mono#2.5.0": false,
-    "@ibm/plex-sans#1.1.0": false,
+    "@ibm/plex-sans#2.0.0": false,
     "@ibm/plex-serif#2.0.0": false
   }
 }
